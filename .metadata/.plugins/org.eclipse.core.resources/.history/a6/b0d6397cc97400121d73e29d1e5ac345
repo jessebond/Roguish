@@ -9,7 +9,7 @@ public class Unit {
 	private static int baseHealth; 	// Determined by Class/Race combo
 	private int maxMana;
 	private int currentMana;
-	private boolean alive;			// Should be True is currentHealth <= 0
+	private boolean dead;			// Should be True is currentHealth <= 0
 	private boolean finalMonster;	// If dead && finalMonster load next level. (used on bosses only?)
 	private int[] status;			// Most likely an array with status effects
 	private int def;				// ??? not sure yet - like AC in DCSS/NetHack (Could be based on
@@ -41,61 +41,11 @@ public class Unit {
 		this.currentMana = mana;
 	}
 	
-	public void updateDead(boolean a){
-		this.alive = a;
+	public void updateDead(boolean d){
+		this.dead = d;
 	}
 	
 	public void setStatus(int a, int b){
 		// Finish
 	}
-	
-	// 
-	public int getX(){
-		return this.x;
-	}
-	
-	public int getY(){
-		return this.y;
-	}
-	
-	public int getHP(){
-		return this.currentHP;
-	}
-	
-	public int getMaxHP(){
-		return this.maxHP;
-	}
-	
-	public int getMana(){
-		return this.currentMana;
-	}
-	
-	public int getMaxMana(){
-		return this.maxMana;
-	}
-	
-	public boolean isAlive(){
-		return this.alive;
-	}
-	
-	public int getDef(){
-		return this.def;
-	}
-
-	public int getRes(){
-		return this.res;
-	}
-
-	public int getStr(){
-		return this.baseStr;
-	}
-
-	public int getDex(){
-		return this.baseStr;
-	}
-	
-	public int getInt(){
-		return this.baseStr;
-	}
-
 }

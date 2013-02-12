@@ -730,3 +730,6 @@ Caused by: java.lang.IllegalArgumentException: Project facet jst.web has not bee
 
 !ENTRY org.eclipse.core.contenttype 4 0 2013-02-11 22:28:44.260
 !MESSAGE Could not create content describer for org.eclipse.jpt.jpa.core.content.baseJpaContent. Content type has been disabled.
+
+!ENTRY org.eclipse.ui 4 4 2013-02-11 23:01:53.041
+!MESSAGE Invalid preference page path: CSS Files
