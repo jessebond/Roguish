@@ -3,7 +3,7 @@ package com.me.Roguish;
 public class Unit {
 	private int x;					// x position
 	private int y;					// y position
-	private static int baseHP;				// Determined by Class/Race combo
+	private static int baseHP;		// Determined by Class/Race combo
   	private int maxHP;				// Calculated
 	private int currentHP;
 	private static int baseHealth; 	// Determined by Class/Race combo
