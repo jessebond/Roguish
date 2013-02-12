@@ -49,7 +49,7 @@ public class Unit {
 		// Finish
 	}
 	
-	// 
+	// Getter and setter methods for attributes
 	public int getX(){
 		return this.x;
 	}
