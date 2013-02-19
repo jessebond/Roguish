@@ -17,6 +17,8 @@ public class GameScreen implements Screen, InputProcessor {
 	private LevelRenderer renderer;
 	private LevelController controller;
 
+	private int width, height;
+	
 	@Override
 	public void show() {
 		level = new Level();
@@ -120,7 +122,9 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
+		renderer.setSize(width, height);
+		this.width = width;
+		this.height = height;
 
 	}
 

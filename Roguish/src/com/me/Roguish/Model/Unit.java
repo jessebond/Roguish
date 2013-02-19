@@ -1,6 +1,6 @@
 package com.me.Roguish.Model;
 
-public abstract class Unit {
+public abstract class Unit{
 	private int x;					// x position
 	private int y;					// y position
 	private static int baseHP;		// Determined by Class/Race combo
