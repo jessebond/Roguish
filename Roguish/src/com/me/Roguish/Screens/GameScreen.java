@@ -1,5 +1,6 @@
 package com.me.Roguish.Screens;
 
+import com.me.Roguish.Roguish;
 import com.me.Roguish.Model.Level;
 import com.me.Roguish.View.LevelRenderer;
 import com.me.Roguish.Controller.LevelController;
@@ -18,6 +19,7 @@ public class GameScreen implements Screen, InputProcessor {
 	private LevelController controller;
 
 	private int width, height;
+
 	
 	@Override
 	public void show() {
