@@ -15,7 +15,7 @@ import com.me.Roguish.Roguish;
 public class AbstractScreen implements Screen {
 	
 	protected Roguish game;
-	protected  BitmapFont font;
+	protected BitmapFont font;
 	protected SpriteBatch batch;
 	protected Stage stage;
 	protected Skin skin;
