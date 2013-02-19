@@ -1,4 +1,4 @@
-package com.me.Roguish;
+package com.me.Roguish.Model;
 
 public abstract class Unit {
 	private int x;					// x position

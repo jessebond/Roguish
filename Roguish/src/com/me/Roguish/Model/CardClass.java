@@ -1,4 +1,4 @@
-package com.me.Roguish;
+package com.me.Roguish.Model;
 
 public class CardClass extends Card {
 	private static int baseStr;

@@ -1,4 +1,4 @@
-package com.me.Roguish;
+package com.me.Roguish.Model;
 
 public abstract class Card {
 	private String name;		// Unique flavor based card name
