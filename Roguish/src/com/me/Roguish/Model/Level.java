@@ -11,7 +11,7 @@ public class Level{
 	private Array<Entity> entities = new Array<Entity>();
 	
     public TiledMap map = TiledLoader.createMap(Gdx.files.internal("data/test.tmx"));
-    public TileAtlas atlas = new TileAtlas(map, Gdx.files.internal("data/levels/pack"));
+    public TileAtlas atlas = new TileAtlas(map, Gdx.files.internal("data/"));
 
     
 	public Level(){
