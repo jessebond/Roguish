@@ -19,7 +19,7 @@ public class MenuScreen extends AbstractScreen {
 	
 	@Override
 	public void show () {
-		title = new TextureRegion(new Texture(Gdx.files.internal("data/title.png")), 0, 0, 480, 320);
+		title = new TextureRegion(new Texture(Gdx.files.internal("data/Hero.png")), 0, 0, 480, 320);
 		batch = new SpriteBatch();
 		batch.getProjectionMatrix().setToOrtho2D(0, 0, 480, 320);
 	}
