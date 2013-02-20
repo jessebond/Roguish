@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Vector3;
 
 public class LevelRenderer {
 
@@ -33,7 +34,7 @@ public class LevelRenderer {
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		this.cam.position.set(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f, 0);
 		this.cam.update();
-		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, 5, 5);
+		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32);
 		spriteBatch = new SpriteBatch();
 		//loadTextures();
 	}
@@ -46,28 +47,18 @@ public class LevelRenderer {
 	public void render() {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-        /*
-        if (automove) {
-                updateCameraPosition();
-        }*/
-
+		tileMapRenderer.getProjectionMatrix().set(cam.combined);
+		 
+		Vector3 tmp = new Vector3();
+		tmp.set(0, 0, 0);
+		cam.unproject(tmp);
+ 
+		tileMapRenderer.render((int) tmp.x, (int) tmp.y,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         cam.zoom = 0.9f;
         cam.update();
         
         tileMapRenderer.render(cam);
 
-        spriteBatch.begin();
-        /*font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 20, 20);
-        font.draw(spriteBatch, "InitialCol, LastCol: " + tileMapRenderer.getInitialCol() + "," + tileMapRenderer.getLastCol(), 20,
-                40);
-        font.draw(spriteBatch, "InitialRow, LastRow: " + tileMapRenderer.getInitialRow() + "," + tileMapRenderer.getLastRow(), 20,
-                60);
-
-        tmp.set(0, 0, 0);
-        cam.unproject(tmp);
-        font.draw(spriteBatch, "Location: " + tmp.x + "," + tmp.y, 20, 80);
-        */
-        spriteBatch.end();
 		if (debug)
 			drawDebug();
 	}
