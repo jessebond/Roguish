@@ -12,7 +12,7 @@ public class Roguish extends Game {
 	
 	@Override
 	public void create() {	
-		setScreen(new MenuScreen(this));
+		setScreen(new SplashScreen(this));
 		fps = new FPSLogger();
 	}
 
