@@ -1,0 +1,11 @@
+d:
+d:data
+i:data/Hero.png
+d:data/level
+b:data/level/test.tmx
+i:data/libgdx.png
+d:data/pack
+b:data/pack/.DS_Store
+b:data/pack/TileSheet packfile
+i:data/pack/TileSheet.png
+i:data/TileSheet.png
