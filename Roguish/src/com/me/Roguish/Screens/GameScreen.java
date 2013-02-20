@@ -12,14 +12,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 
-public class GameScreen implements Screen, InputProcessor {
+public class GameScreen extends AbstractScreen implements InputProcessor {
 	
 	private Level level;
 	private LevelRenderer renderer;
 	private LevelController controller;
 
 	private int width, height;
-
+ 
+	public GameScreen(Roguish game){
+        super(game);
+    }
 	
 	@Override
 	public void show() {
