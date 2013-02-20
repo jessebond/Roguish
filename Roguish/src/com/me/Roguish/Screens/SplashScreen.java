@@ -1,63 +1,52 @@
 package com.me.Roguish.Screens;
 
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.delay;
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeOut;
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
-
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import com.me.Roguish.Roguish;
 
 public class SplashScreen extends AbstractScreen {
 	
-	private Image splashImage;
+	TextureRegion intro;
+	SpriteBatch batch;
+	float time = 0;
 
     public SplashScreen(Roguish game){
         super(game);
     }
 
     @Override
-    public void show()
-    {
-        super.show();
+	public void show () {
+		intro = new TextureRegion(new Texture(Gdx.files.internal("data/intro.png")), 0, 0, 480, 320);
+		batch = new SpriteBatch();
+		batch.getProjectionMatrix().setToOrtho2D(0, 0, 480, 320);
+	}
 
-        // Code for music should we decide to add some
-        // game.getMusicManager().play( Music.MENU );
+	@Override
+	public void render (float delta) {
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		batch.begin();
+		batch.draw(intro, 0, 0);
+		batch.end();
 
-        // retrieve the splash image's region from the atlas
-        AtlasRegion splashRegion = getAtlas().findRegion( "splash-screen/splash-image" );
-        Drawable splashDrawable = new TextureRegionDrawable( splashRegion );
+		time += delta;
+		if (time > 1) {
+			if (Gdx.input.isKeyPressed(Keys.ANY_KEY) || Gdx.input.justTouched()) {
+				game.setScreen(new MenuScreen(game));
+			}
+		}
+	}
 
-        // here we create the splash image actor; its size is set when the
-        // resize() method gets called
-        splashImage = new Image( splashDrawable, Scaling.stretch );
-        splashImage.setFillParent( true );
+	@Override
+	public void hide () {
+		Gdx.app.debug("Roguish", "dispose intro");
+		batch.dispose();
+		intro.getTexture().dispose();
+	}
 
-        // this is needed for the fade-in effect to work correctly; we're just
-        // making the image completely transparent
-        splashImage.getColor().a = 0f;
-
-        // configure the fade-in/out effect on the splash image
-        splashImage.addAction( sequence( fadeIn( 0.75f ), delay( 1.75f ), fadeOut( 0.75f ),
-            new Action() {
-                @Override
-                public boolean act(
-                    float delta )
-                {
-                	//Update after creating the main menu
-                    // the last action will move to the next screen
-              //      game.setScreen( new MenuScreen( game ) );
-                    return true;
-                }
-            } ) );
-
-        // and finally we add the actor to the stage
-        stage.addActor( splashImage );
-    }
 }
