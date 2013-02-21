@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="TileSheet" tilewidth="32" tileheight="32">
-  <image source="TileSheet.png" width="160" height="32"/>
+  <image source="../pack/TileSheet.png" width="256" height="32"/>
  </tileset>
  <layer name="Tile Layer 1" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJy1lOEKAjEMg9vbfP9XFsGDkiVpFf0R8M6jX5N2y4jIP2kbvf6/in7JvQbc/ILN+sVaip2E1fm/hBSXsTsu4yufSt18Xb9Ynz1/ykXexEOnFNxluIqtcnAzqSyXs8qv60HNfXJ+3e6yd3cNxkbuijNnd2bdrjzeYuypX/ady7hyK5vVc/NNqOfOtuLuOPNCnsqZcdl+I5ep+l3w293f3d21G34WzgL+9P53O67YGadP9NvdxWrPHVNxXZaqD2QzbmWyjCd+u/yRm4KLnqeMiSZ+bz0BEBUFPw==
+   eJzl1d0KgCAMBeDNn/d/5QgMTofNnJEFXRwI0j6cS1VEdEFSywoLTf2Bm+Rc31k3Mi+94LLJfqRGe0rL/pwh3ngNeNbY1LwKyfD+8K26RteIc9hEN8u5FjM19XzLrWAVWv9oP3hmr86VvLtub38xCm523FHb6wdrvwu53vdneplt/n/YtOo2Yl719cyYiNvb85Gzb8WdZ/XBkx67K+/W6Jn/hWwvXANu
   </data>
  </layer>
 </map>

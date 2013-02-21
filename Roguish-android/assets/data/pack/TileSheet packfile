@@ -3,7 +3,7 @@ TileSheet.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-level
+TileSheet
   rotate: false
   xy: 0, 0
   size: 160, 32
