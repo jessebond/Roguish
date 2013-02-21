@@ -1,5 +1,5 @@
 package com.me.Roguish.Model;
-
+/*
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -18,7 +18,7 @@ import com.badlogic.gdx.math.Vector3;
 //import com.badlogic.gdx.tests.utils.GdxTest;
 //import com.badlogic.gdx.tests.utils.OrthoCamController;
 
-/** @author David Fraska */
+/** @author David Fraska */ /*
 public class Level {
 
 	private static final boolean automove = false;
@@ -141,6 +141,7 @@ public class Level {
 		return false;
 	}
 }
+*/
 
 
 
@@ -159,7 +160,6 @@ public class Level {
 
 
 
-/*
 import com.me.Roguish.Model.Entity;
 
 import com.badlogic.gdx.Gdx;
@@ -189,4 +189,4 @@ public class Level{
 	    System.out.println("atlas made");
 	}
 
-}*/
+}
