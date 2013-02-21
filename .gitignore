@@ -1,2 +1,7 @@
 .metadata/
 .gwt-log/
+/Roguish/libs
+/Roguish-android/libs
+/Roguish-desktop/libs
+/Roguish-html/libs
+/Roguish-ios/libs
