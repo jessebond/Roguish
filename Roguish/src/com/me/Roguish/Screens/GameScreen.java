@@ -32,6 +32,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		Gdx.input.setInputProcessor(this);
 	}
 
+
 	@Override
 	public void hide() {
 		Gdx.input.setInputProcessor(null);
@@ -121,7 +122,11 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
+		Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+
+		controller.update(delta);
+		renderer.render();
 
 	}
 

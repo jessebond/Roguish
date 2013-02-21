@@ -26,7 +26,7 @@ public class LevelController {
 	}
 	
 	// Main update method
-	public void update(){
+	public void update(float delta){
 		// process
 		processInput();
 		// do something

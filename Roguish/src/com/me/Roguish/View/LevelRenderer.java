@@ -15,8 +15,8 @@ import com.badlogic.gdx.math.Vector3;
 
 public class LevelRenderer {
 
-	private static final float CAMERA_WIDTH = 10f;
-	private static final float CAMERA_HEIGHT = 7f;
+	private static final float CAMERA_WIDTH = 320f;
+	private static final float CAMERA_HEIGHT = 480f;
 	private static final float RUNNING_FRAME_DURATION = 0.06f;
 	
 	private Level level;
@@ -34,9 +34,13 @@ public class LevelRenderer {
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		this.cam.position.set(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f, 0);
 		this.cam.update();
-		//tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32);
+		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32);
 		spriteBatch = new SpriteBatch();
-		//loadTextures();
+		loadTextures();
+	}
+	
+	public void loadTextures(){
+		// Load Textures or something?
 	}
 	
 	public void setSize (int width, int height) {
