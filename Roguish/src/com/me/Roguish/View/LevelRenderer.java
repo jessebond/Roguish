@@ -85,10 +85,10 @@ public class LevelRenderer {
 	}
 	
 	private void renderHud(){
-		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_1.png"))),0,0);
-		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_2.png"))),0,0);
-		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_3.png"))),0,0);
-		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_4.png"))),0,0);
+		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_1_256x256.png"))),0,0);
+		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_2_256x256.png"))),0,0);
+		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_3_256x256.png"))),0,0);
+		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_4_256x32.png"))),0,0);
 		
 	}
 	
