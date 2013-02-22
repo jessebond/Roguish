@@ -10,15 +10,14 @@ import com.badlogic.gdx.graphics.g2d.tiled.TileAtlas;
 public class Level{
 	private static int maxEntity = 16;
 	private Array<Entity> entities = new Array<Entity>();
+
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
     
 	public Level(){
 		create();
-	
 	}
-	
 	
 	public void create(){
 		System.out.println("In create");
@@ -26,6 +25,29 @@ public class Level{
 		System.out.println("Tiles loaded");
 	    atlas = new SimpleTileAtlas(map, Gdx.files.internal("data/"));
 	    System.out.println("atlas made");
+	    populate();
+	    
 	}
 
+	
+	private void addEntity(Entity ent){
+		entities.add(ent);
+	}
+	
+	private boolean removeEntity(Entity ent){
+		return entities.removeValue(ent, true);
+	}
+	
+	
+	// Populates entity list
+	private void populate(){
+		addEntity(new Entity(1,1)); // temporary entity gen
+		addEntity(new Entity(1,2));
+		addEntity(new Entity(2,1));
+		addEntity(new Entity(2,2));	
+	}
+	
+	public Array<Entity> getEntities(){
+		return this.entities;
+	}
 }

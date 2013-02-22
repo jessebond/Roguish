@@ -1,12 +1,14 @@
 package com.me.Roguish.View;
 
 import com.me.Roguish.Model.Level;
+import com.me.Roguish.Model.Entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.tiled.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,6 +20,7 @@ public class LevelRenderer {
 	private static final float CAMERA_WIDTH = 320f;
 	private static final float CAMERA_HEIGHT = 480f;
 	private static final float RUNNING_FRAME_DURATION = 0.06f;
+	private static final float TILE_WIDTH = 32f;
 	
 	private Level level;
 	private OrthographicCamera cam;
@@ -48,7 +51,14 @@ public class LevelRenderer {
 		this.height = height;
 	}
 	
-	public void render() {
+	public void render(){
+		spriteBatch.begin();
+			renderTiles();
+			renderEntities();
+		spriteBatch.end();
+		
+	}
+	public void renderTiles() {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
 		tileMapRenderer.getProjectionMatrix().set(cam.combined);
@@ -65,6 +75,12 @@ public class LevelRenderer {
 
 		if (debug)
 			drawDebug();
+	}
+
+	private void renderEntities(){
+		for (Entity ent : level.getEntities()) {
+			spriteBatch.draw(new Texture(Gdx.files.internal("data/Hero.png")), ent.getX() * TILE_WIDTH, ent.getY() * TILE_WIDTH);
+		}
 	}
 	
 	private void drawDebug(){
