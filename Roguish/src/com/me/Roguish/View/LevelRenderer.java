@@ -53,9 +53,9 @@ public class LevelRenderer {
 	
 	public void render(){
 		spriteBatch.begin();
-			renderTiles();
-			renderEntities();
-			renderHud();
+		renderTiles();
+		renderEntities();
+		renderHud();
 		spriteBatch.end();
 		
 	}
@@ -85,6 +85,10 @@ public class LevelRenderer {
 	}
 	
 	private void renderHud(){
+		spriteBatch.draw(new Texture(Gdx.files.internal("data/Hud_1.png")),0,0);
+		spriteBatch.draw(new Texture(Gdx.files.internal("data/Hud_2.png")),0,0);
+		spriteBatch.draw(new Texture(Gdx.files.internal("data/Hud_3.png")),0,0);
+		spriteBatch.draw(new Texture(Gdx.files.internal("data/Hud_4.png")),0,0);
 		
 	}
 	
