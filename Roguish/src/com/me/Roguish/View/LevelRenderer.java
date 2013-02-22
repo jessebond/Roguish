@@ -54,8 +54,8 @@ public class LevelRenderer {
 	public void render(){
 		spriteBatch.begin();
 		renderTiles();
-		renderEntities();
-		renderHud();
+		//renderEntities();
+		//renderHud();
 		spriteBatch.end();
 		
 	}
@@ -69,7 +69,7 @@ public class LevelRenderer {
 		cam.unproject(tmp);
  
 		tileMapRenderer.render((int) tmp.x, (int) tmp.y,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        cam.zoom = 0.9f;
+        cam.zoom = 1.0f;
         cam.update();
         
         tileMapRenderer.render(cam);

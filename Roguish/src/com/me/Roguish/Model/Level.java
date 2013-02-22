@@ -21,7 +21,7 @@ public class Level{
 	
 	public void create(){
 		System.out.println("In create");
-		map = TiledLoader.createMap(Gdx.files.internal("data/level/test.tmx"));
+		map = TiledLoader.createMap(Gdx.files.internal("data/level/test2.tmx"));
 		System.out.println("Tiles loaded");
 	    atlas = new SimpleTileAtlas(map, Gdx.files.internal("data/"));
 	    System.out.println("atlas made");
