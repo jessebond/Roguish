@@ -41,10 +41,10 @@ public class Level{
 	
 	// Populates entity list
 	private void populate(){
-		addEntity(new Entity(1,1)); // temporary entity gen
-		addEntity(new Entity(1,2));
-		addEntity(new Entity(2,1));
-		addEntity(new Entity(2,2));	
+		addEntity(new Entity(1, 1, "data/Hero.png")); // temporary entity gen
+		addEntity(new Entity(1, 2, "data/Enemy.png"));
+		addEntity(new Entity(2, 1, "data/Enemy.png"));
+		addEntity(new Entity(2, 2, "data/Hero.png"));	
 	}
 	
 	public Array<Entity> getEntities(){
