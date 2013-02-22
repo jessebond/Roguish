@@ -27,7 +27,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 	@Override
 	public void show() {
 		level = new Level();
-		renderer = new LevelRenderer(level, false);
+		renderer = new LevelRenderer(level, true);
 		controller = new LevelController(level);
 		Gdx.input.setInputProcessor(this);
 	}

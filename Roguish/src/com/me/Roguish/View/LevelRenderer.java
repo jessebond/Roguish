@@ -30,6 +30,7 @@ public class LevelRenderer {
 	private int height;
 	private TileMapRenderer tileMapRenderer;
 	private SpriteBatch spriteBatch;
+	private BitmapFont font;
 	
 	public LevelRenderer(Level level, boolean debug) {
 		this.level = level;	
@@ -39,6 +40,9 @@ public class LevelRenderer {
 		this.cam.update();
 		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32);
 		spriteBatch = new SpriteBatch();
+		font = new BitmapFont();
+		font.setColor(Color.RED);
+		
 		loadTextures();
 	}
 	
@@ -93,6 +97,6 @@ public class LevelRenderer {
 	}
 	
 	private void drawDebug(){
-		
+		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 20, 20);
 	}
 }
