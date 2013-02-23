@@ -58,7 +58,8 @@ public class LevelController {
 	
 	public void leftReleased() {
 		keys.get(keys.put(Keys.LEFT, false));
-		hero.movePosition(-1, 0);
+		if(hero.getX() > 0)
+			hero.movePosition(-1, 0);
 	}
 	
 	public void rightPressed() {
@@ -67,7 +68,8 @@ public class LevelController {
 	
 	public void rightReleased() {
 		keys.get(keys.put(Keys.RIGHT, false));
-		hero.movePosition(1 , 0);
+		if(hero.getX() < 10)
+			hero.movePosition(1 , 0);
 	}
 	
 	public void upPressed() {
@@ -76,7 +78,8 @@ public class LevelController {
 	
 	public void upReleased() {
 		keys.get(keys.put(Keys.UP, false));
-		hero.movePosition(0, 1);
+		if(hero.getY() < 15)
+			hero.movePosition(0, 1);
 	}
 	
 	public void downPressed() {
@@ -85,7 +88,8 @@ public class LevelController {
 	
 	public void downReleased() {
 		keys.get(keys.put(Keys.DOWN, false));
-		hero.movePosition(0, -1);
+		if(hero.getY() > 0)
+			hero.movePosition(0, -1);
 	}
 	
 	
