@@ -39,17 +39,14 @@ public class LevelController {
 	
 	private void processInput(){
 		if (keys.get(Keys.LEFT)){
-			System.out.println("Left captured");
-			hero.movePosition(-1, 0);
+			
 		}
 		if (keys.get(Keys.RIGHT)){
-			hero.movePosition(1 , 0);
 		}
 		if (keys.get(Keys.DOWN)){
-			hero.movePosition(0, -1);
+			
 		}
 		if (keys.get(Keys.UP)){
-			hero.movePosition(0,  1);
 		}
 	}
 	
@@ -57,11 +54,11 @@ public class LevelController {
 	// Keypresses
 	public void leftPressed() {
 		keys.get(keys.put(Keys.LEFT, true));
-		
 	}
 	
 	public void leftReleased() {
 		keys.get(keys.put(Keys.LEFT, false));
+		hero.movePosition(-1, 0);
 	}
 	
 	public void rightPressed() {
@@ -70,6 +67,7 @@ public class LevelController {
 	
 	public void rightReleased() {
 		keys.get(keys.put(Keys.RIGHT, false));
+		hero.movePosition(1 , 0);
 	}
 	
 	public void upPressed() {
@@ -78,6 +76,7 @@ public class LevelController {
 	
 	public void upReleased() {
 		keys.get(keys.put(Keys.UP, false));
+		hero.movePosition(0, 1);
 	}
 	
 	public void downPressed() {
@@ -86,6 +85,7 @@ public class LevelController {
 	
 	public void downReleased() {
 		keys.get(keys.put(Keys.DOWN, false));
+		hero.movePosition(0, -1);
 	}
 	
 	
