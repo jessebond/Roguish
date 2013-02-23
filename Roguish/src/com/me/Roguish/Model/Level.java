@@ -14,12 +14,8 @@ public class Level{
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
-<<<<<<< HEAD
-    Hero hero = new Hero(5, 5, "Hero");
-=======
     private Hero hero = new Hero(5, 5, "Hero");
 
->>>>>>> levelrenderer and level modifications
     
 	public Level(){
 		create();
