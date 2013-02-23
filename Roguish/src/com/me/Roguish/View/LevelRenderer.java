@@ -56,15 +56,15 @@ public class LevelRenderer {
 	}
 	
 	public void loadTextures(){
-<<<<<<< HEAD
+
 		TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/entity.atlas"));
 		heroTexture = atlas.findRegion("Hero");
-=======
+
 		hud1 = new Texture(Gdx.files.internal("data/Hud_1_256x256.png"));
 		hud2 = new Texture(Gdx.files.internal("data/Hud_2_256x256.png"));
 		hud3 = new Texture(Gdx.files.internal("data/Hud_3_256x256.png"));
 		hud4 = new Texture(Gdx.files.internal("data/Hud_4_256x32.png"));
->>>>>>> working on hud positioning
+
 		
 	}
 	
