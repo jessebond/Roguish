@@ -46,11 +46,7 @@ public class Level{
 	// Populates entity list
 	private void populate(){
 
-<<<<<<< HEAD
 		addEntity(hero); 
-=======
-		addEntity(hero); // temporary entity gen
->>>>>>> Unitized Hero Movement
 		addEntity(new Entity(1, 2, "Enemy"));
 		addEntity(new Entity(2, 1, "Enemy"));
 		addEntity(new Entity(2, 2, "Enemy"));	
