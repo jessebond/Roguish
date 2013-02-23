@@ -39,6 +39,7 @@ public class LevelRenderer {
 	private Texture hud2;
 	private Texture hud3;
 	private Texture hud4;
+	private TextureAtlas atlas;
 	
 	public LevelRenderer(Level level, boolean debug) {
 		this.level = level;	
@@ -56,9 +57,8 @@ public class LevelRenderer {
 	}
 	
 	public void loadTextures(){
-
-		TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/entity.atlas"));
-		heroTexture = atlas.findRegion("Hero");
+		atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/entity.atlas"));
+		//heroTexture = atlas.findRegion("Hero");
 
 		hud1 = new Texture(Gdx.files.internal("data/Hud_1_256x256.png"));
 		hud2 = new Texture(Gdx.files.internal("data/Hud_2_256x256.png"));
@@ -82,7 +82,7 @@ public class LevelRenderer {
 		
 		spriteBatch.enableBlending();
 		spriteBatch.begin();
-		//renderEntities();
+		renderEntities();
 		renderHud();
 				
 		if (debug)
@@ -97,9 +97,9 @@ public class LevelRenderer {
 		tmp.set(0, 0, 0);
 		cam.unproject(tmp);
 		
-		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_WIDTH, CAMERA_WIDTH);
-        //cam.zoom = 1.0f;
+		tileMapRenderer.render((int) tmp.x, (int) tmp.y,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_HEIGHT, CAMERA_HEIGHT);
+        cam.zoom = 1.0f;
         cam.update();
         
         tileMapRenderer.render(cam);
@@ -108,7 +108,7 @@ public class LevelRenderer {
 
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
-			spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal(ent.getTexture()))), ent.getX() * TILE_WIDTH, ent.getY() * TILE_WIDTH);
+			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * TILE_WIDTH, ent.getY() * TILE_WIDTH);
 		}
 	}
 	
