@@ -134,8 +134,8 @@ public class LevelRenderer {
 		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);
 		font.draw(spriteBatch, "Width: " + Gdx.graphics.getWidth(), 10, 40);
 		font.draw(spriteBatch, "Height: " + Gdx.graphics.getHeight(), 10, 60);
-		font.draw(spriteBatch, "ppuX: " + ppuX, 10, 80);
-		font.draw(spriteBatch, "ppuY: " + ppuY, 10, 100);
+		font.draw(spriteBatch, "HeroX: " + level.getHero().getX(), 10, 80);
+		font.draw(spriteBatch, "HeroY: " + level.getHero().getY(), 10, 100);
 		
 		//font.draw(spriteBatch, "TEST - + ? TEST", 20, 40);
 	}
