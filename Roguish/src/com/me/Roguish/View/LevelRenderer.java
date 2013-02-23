@@ -25,6 +25,9 @@ public class LevelRenderer {
 	private Level level;
 	private OrthographicCamera cam;
 	
+	//Texture Regions
+	private TextureRegion heroTexture;
+	
 	private boolean debug = false;
 	private int width;
 	private int height;
@@ -48,7 +51,9 @@ public class LevelRenderer {
 	}
 	
 	public void loadTextures(){
-		// Load Textures or something?
+		TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/entity.atlas"));
+		heroTexture = atlas.findRegion("Hero");
+		
 	}
 	
 	public void setSize (int width, int height) {
