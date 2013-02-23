@@ -82,7 +82,7 @@ public class LevelRenderer {
 		
 		spriteBatch.enableBlending();
 		spriteBatch.begin();
-		//renderEntities();
+		renderEntities();
 		renderHud();
 				
 		if (debug)
