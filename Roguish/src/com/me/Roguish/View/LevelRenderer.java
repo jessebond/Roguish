@@ -20,7 +20,7 @@ public class LevelRenderer {
 	private static final float CAMERA_WIDTH = 320f;
 	private static final float CAMERA_HEIGHT = 480f;
 	private static final float RUNNING_FRAME_DURATION = 0.06f;
-	private static final float TILE_WIDTH = 32f;
+	//private static final float TILE_WIDTH = 32f;
 	
 	private Level level;
 	private OrthographicCamera cam;
@@ -31,6 +31,8 @@ public class LevelRenderer {
 	private boolean debug = false;
 	private int width;
 	private int height;
+	private float ppuX;	// pixels per unit on the X axis
+	private float ppuY;	// pixels per unit on the Y axis
 	private TileMapRenderer tileMapRenderer;
 	private SpriteBatch spriteBatch;
 	private BitmapFont font;
@@ -53,7 +55,16 @@ public class LevelRenderer {
                 Gdx.files.internal("data/font/Arial16_0.png"), false);
 		font.setColor(Color.RED);
 		
+		setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		loadTextures();
+	}
+	
+
+	public void setSize (int w, int h) {
+		this.width = w;
+		this.height = h;
+		ppuX = (float)width / CAMERA_WIDTH;
+		ppuY = (float)height / CAMERA_HEIGHT;
 	}
 	
 	public void loadTextures(){
@@ -63,15 +74,9 @@ public class LevelRenderer {
 		hud1 = new Texture(Gdx.files.internal("data/Hud_1_256x256.png"));
 		hud2 = new Texture(Gdx.files.internal("data/Hud_2_256x256.png"));
 		hud3 = new Texture(Gdx.files.internal("data/Hud_3_256x256.png"));
-		hud4 = new Texture(Gdx.files.internal("data/Hud_4_256x32.png"));
-
-		
+		hud4 = new Texture(Gdx.files.internal("data/Hud_4_256x32.png"));	
 	}
 	
-	public void setSize (int width, int height) {
-		this.width = width;
-		this.height = height;
-	}
 	
 	public void render(){
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
@@ -97,7 +102,7 @@ public class LevelRenderer {
 		tmp.set(0, 0, 0);
 		cam.unproject(tmp);
 		
-		tileMapRenderer.render((int) tmp.x, (int) tmp.y,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tileMapRenderer.render((int) tmp.x, (int) tmp.y, width, height);
 		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_HEIGHT, CAMERA_HEIGHT);
         cam.zoom = 1.0f;
         cam.update();
@@ -108,7 +113,7 @@ public class LevelRenderer {
 
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
-			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * TILE_WIDTH, ent.getY() * TILE_WIDTH);
+			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * ppuX, ent.getY() * ppuY);
 		}
 	}
 	
@@ -124,6 +129,8 @@ public class LevelRenderer {
 		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);
 		font.draw(spriteBatch, "Width: " + Gdx.graphics.getWidth(), 10, 40);
 		font.draw(spriteBatch, "Height: " + Gdx.graphics.getHeight(), 10, 60);
+		font.draw(spriteBatch, "ppuX: " + ppuX, 10, 80);
+		font.draw(spriteBatch, "ppuY: " + ppuY, 10, 100);
 		
 		//font.draw(spriteBatch, "TEST - + ? TEST", 20, 40);
 	}

@@ -14,10 +14,16 @@ public class Level{
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
+<<<<<<< HEAD
     Hero hero = new Hero(5, 5, "Hero");
+=======
+    private Hero hero = new Hero(5, 5, "Hero");
+
+>>>>>>> levelrenderer and level modifications
     
 	public Level(){
 		create();
+		populate();
 	}
 	
 	public void create(){
@@ -25,9 +31,7 @@ public class Level{
 		map = TiledLoader.createMap(Gdx.files.internal("data/level/test2.tmx"));
 		System.out.println("Tiles loaded");
 	    atlas = new SimpleTileAtlas(map, Gdx.files.internal("data/"));
-	    System.out.println("atlas made");
-	    populate();
-	    
+	    System.out.println("atlas made");  
 	}
 
 	
