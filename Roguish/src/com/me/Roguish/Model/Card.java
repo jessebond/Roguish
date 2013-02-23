@@ -3,12 +3,13 @@ package com.me.Roguish.Model;
 import com.badlogic.gdx.utils.Json;
 
 public abstract class Card {
-	//Json 
+	private Json json; 
 	
 	private String name;		// Unique flavor based card name
 	private int rarity;			// Rarity 
 
 	public void loadData(String cardName){
+		json = new Json();
 		
 	}
 	
