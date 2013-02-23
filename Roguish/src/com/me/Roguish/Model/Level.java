@@ -14,7 +14,7 @@ public class Level{
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
-    private Hero hero = new Hero(5, 5, "Hero");
+    private HeroUnit hero = new HeroUnit(5, 5, "Hero");
 
     
 	public Level(){

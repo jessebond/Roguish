@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.me.Roguish.Model.Entity;
-import com.me.Roguish.Model.Hero;
+import com.me.Roguish.Model.HeroUnit;
 import com.me.Roguish.Model.Level;
 
 public class LevelController {

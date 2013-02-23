@@ -1,6 +1,6 @@
 package com.me.Roguish.Model;
 
-public abstract class Unit{
+public class HeroUnit extends Entity {
 	private static int baseHP;		// Determined by Class/Race combo
   	private int maxHP;				// Calculated
 	private int currentHP;
@@ -8,7 +8,7 @@ public abstract class Unit{
 	private int maxMana;
 	private int currentMana;
 	private boolean alive;			// Should be True is currentHealth <= 0
-	private boolean finalMonster;	// If dead && finalMonster load next level. (used on bosses only?)
+//	private boolean finalMonster;	// If dead && finalMonster load next level. (used on bosses only?)
 	private int[] status;			// Most likely an array with status effects
 	private int def;				// ??? not sure yet - like AC in DCSS/NetHack (Could be based on
 									// dex levels?)
@@ -18,6 +18,11 @@ public abstract class Unit{
 	private static int baseDex;		// Base stats
 	private static int baseStr;		// Base stats
 
+	
+	public HeroUnit(int x, int y, String texture){
+		super(x, y, texture);
+	}
+	
 	public void setHP(int HP){
 		this.currentHP = HP;
 	}
@@ -73,5 +78,6 @@ public abstract class Unit{
 	public int getInt(){
 		return this.baseStr;
 	}
+
 
 }

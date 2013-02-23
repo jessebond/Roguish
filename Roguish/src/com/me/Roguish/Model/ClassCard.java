@@ -1,6 +1,6 @@
 package com.me.Roguish.Model;
 
-public class HeroCard extends Card {
+public class ClassCard extends Card {
 	
 	// Hero attribute modifiers for the various cards.
 	
