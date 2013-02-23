@@ -3,12 +3,13 @@ package com.me.Roguish.Controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.me.Roguish.Model.Entity;
 import com.me.Roguish.Model.Hero;
 import com.me.Roguish.Model.Level;
 
 public class LevelController {
 	private Level level;
-	private Hero hero;
+	private Entity hero;
 	
 	enum Keys {
 		LEFT, RIGHT, UP, DOWN
@@ -38,16 +39,17 @@ public class LevelController {
 	
 	private void processInput(){
 		if (keys.get(Keys.LEFT)){
-			hero.setPosition(hero.getX() - 32, hero.getY());
+			System.out.println("Left captured");
+			hero.movePosition(-1, 0);
 		}
 		if (keys.get(Keys.RIGHT)){
-			hero.setPosition(hero.getX() + 32 , hero.getY());
+			hero.movePosition(1 , 0);
 		}
 		if (keys.get(Keys.DOWN)){
-			hero.setPosition(hero.getX(), hero.getY() - 32);
+			hero.movePosition(0, -1);
 		}
 		if (keys.get(Keys.UP)){
-			hero.setPosition(hero.getX(), hero.getY() + 32);
+			hero.movePosition(0,  1);
 		}
 	}
 	
@@ -55,6 +57,7 @@ public class LevelController {
 	// Keypresses
 	public void leftPressed() {
 		keys.get(keys.put(Keys.LEFT, true));
+		
 	}
 	
 	public void leftReleased() {

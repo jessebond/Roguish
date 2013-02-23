@@ -14,7 +14,7 @@ public class Level{
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
-    Hero hero;
+    Hero hero = new Hero(5, 5, "Hero");
     
 	public Level(){
 		create();
@@ -39,14 +39,15 @@ public class Level{
 		return entities.removeValue(ent, true);
 	}
 	
-	public Hero getHero(){
+	public Entity getHero(){
 		return hero;
 	}
 	
 	// Populates entity list
 	private void populate(){
 
-		addEntity(new Hero(1, 1, "Hero")); // temporary entity gen
+		addEntity(hero); // temporary entity gen
+		//System.out.println(hero.getX());
 		addEntity(new Entity(1, 2, "Enemy"));
 		addEntity(new Entity(2, 1, "Enemy"));
 		addEntity(new Entity(2, 2, "Hero"));	

@@ -31,8 +31,11 @@ public class Entity {
 	}
 	
 	public void setPosition(int x, int y){
+		System.out.println("Enter setposition function");
 		this.x = x;
 		this.y = y;
+		System.out.println("Exit setposition function");
+
 	}
 	
 	public void movePosition(int dx, int dy){
