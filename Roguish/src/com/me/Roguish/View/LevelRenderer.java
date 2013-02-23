@@ -117,7 +117,7 @@ public class LevelRenderer {
 
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
-			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * centerX + centerX/2 - 16, ent.getY() * centerY);
+			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * centerX + centerX/2 - 16,(14 - ent.getY()) * centerY);
 			
 		}
 	}

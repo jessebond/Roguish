@@ -1,0 +1,37 @@
+{
+classes: [
+	{
+    	"className": "Warrior",
+ 	   	"str": 5,
+ 	   	"dex": 3,
+ 	   	"int": 1,
+	   	"abilities": {
+        	"ability1": "longsword",
+        	"ability2": "shield"
+    	},
+    	"rarity":"common"
+	},
+	{
+    	"className": "Mage",
+ 	   	"str": 1,
+ 	   	"dex": 2,
+ 	   	"int": 6,
+	   	"abilities": {
+        	"ability1": "staff"
+    	},
+    	"rarity":"common"
+	},
+		{
+    	"className": "Ninja",
+ 	   	"str": 2,
+ 	   	"dex": 5,
+ 	   	"int": 2,
+	   	"abilities": {
+        	"ability1": "katana",
+        	"ability2": "star"
+    	},
+    	"rarity":"common"
+	}
+		
+]
+}
