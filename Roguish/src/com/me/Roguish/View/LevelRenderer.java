@@ -75,9 +75,13 @@ public class LevelRenderer {
 	
 	public void render(){
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
+		spriteBatch.disableBlending();
 		spriteBatch.begin();
-		//renderTiles();
+		renderTiles();
+		spriteBatch.end();
+		
+		spriteBatch.enableBlending();
+		spriteBatch.begin();
 		//renderEntities();
 		renderHud();
 				
