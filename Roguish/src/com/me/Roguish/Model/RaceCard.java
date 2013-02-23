@@ -1,6 +1,6 @@
 package com.me.Roguish.Model;
 
-public class ClassCard extends Card {
+public class RaceCard extends Card {
 	
 	// Hero attribute modifiers for the various cards.
 	
@@ -9,7 +9,7 @@ public class ClassCard extends Card {
 	private static int strMod;
 	private Ability[] abilities;
 	
-	public ClassCard (String type){
+	public RaceCard (String type){
 		intMod = 3;
 		dexMod = 3;
 		strMod = 3;

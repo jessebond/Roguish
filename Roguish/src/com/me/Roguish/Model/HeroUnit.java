@@ -1,5 +1,8 @@
 package com.me.Roguish.Model;
 
+import com.me.Roguish.Model.ClassCard;
+import com.me.Roguish.Model.RaceCard;
+
 public class HeroUnit extends Entity {
 	private static int baseHP;		// Determined by Class/Race combo
   	private int maxHP;				// Calculated
@@ -18,6 +21,9 @@ public class HeroUnit extends Entity {
 	private static int baseDex;		// Base stats
 	private static int baseStr;		// Base stats
 
+	private ClassCard cCard;
+	private RaceCard rCard;
+	
 	
 	public HeroUnit(int x, int y, String texture){
 		super(x, y, texture);
