@@ -40,7 +40,8 @@ public class LevelRenderer {
 		this.cam.update();
 		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32);
 		spriteBatch = new SpriteBatch();
-		font = new BitmapFont();
+		font = new BitmapFont(Gdx.files.internal("data/font/Arial16.fnt"),
+                Gdx.files.internal("data/font/Arial16_0.png"), false);
 		font.setColor(Color.RED);
 		
 		loadTextures();
@@ -60,8 +61,11 @@ public class LevelRenderer {
 		renderTiles();
 		//renderEntities();
 		//renderHud();
-		spriteBatch.end();
+				
+		if (debug)
+			drawDebug();
 		
+		spriteBatch.end();
 	}
 	public void renderTiles() {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
@@ -78,8 +82,6 @@ public class LevelRenderer {
         
         tileMapRenderer.render(cam);
 
-		if (debug)
-			drawDebug();
 	}
 
 	private void renderEntities(){
@@ -97,6 +99,7 @@ public class LevelRenderer {
 	}
 	
 	private void drawDebug(){
-		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 20, 20);
+		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);
+		font.draw(spriteBatch, "TEST - + ? TEST", 20, 40);
 	}
 }
