@@ -82,7 +82,7 @@ public class LevelRenderer {
 		
 		spriteBatch.enableBlending();
 		spriteBatch.begin();
-		renderEntities();
+		//renderEntities();
 		renderHud();
 				
 		if (debug)
@@ -96,9 +96,10 @@ public class LevelRenderer {
 		Vector3 tmp = new Vector3();
 		tmp.set(0, 0, 0);
 		cam.unproject(tmp);
- 
-		tileMapRenderer.render((int) tmp.x, (int) tmp.y,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        cam.zoom = 1.0f;
+		
+		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_WIDTH, CAMERA_WIDTH);
+        //cam.zoom = 1.0f;
         cam.update();
         
         tileMapRenderer.render(cam);
@@ -121,6 +122,9 @@ public class LevelRenderer {
 	
 	private void drawDebug(){
 		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);
+		font.draw(spriteBatch, "Width: " + Gdx.graphics.getWidth(), 10, 40);
+		font.draw(spriteBatch, "Height: " + Gdx.graphics.getHeight(), 10, 60);
+		
 		//font.draw(spriteBatch, "TEST - + ? TEST", 20, 40);
 	}
 }
