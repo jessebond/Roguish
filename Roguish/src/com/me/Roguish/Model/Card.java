@@ -8,7 +8,7 @@ public abstract class Card {
 	private String name;		// Unique flavor based card name
 	private int rarity;			// Rarity 
 
-	public void loadData(String cardName){
+	private void loadData(String cardName){
 		json = new Json();
 		
 	}

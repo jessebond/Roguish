@@ -1,6 +1,9 @@
 package com.me.Roguish.Model;
 
+import com.badlogic.gdx.utils.Json;
+
 public class ClassCard extends Card {
+	Json json;
 	
 	// Hero attribute modifiers for the various cards.
 	
@@ -9,15 +12,22 @@ public class ClassCard extends Card {
 	private static int strMod;
 	private Ability[] abilities;
 	
-	public ClassCard (String type){
+	public ClassCard (String cardName){
+		json = new Json();
+		
+		loadData(cardName);
 		intMod = 3;
 		dexMod = 3;
 		strMod = 3;
 		
 	}
 	
-	// Getter and setter methods for HeroCard attributes
+	private void loadData(String cardName){
 	
+		
+	}
+	
+	// Getter and setter methods for HeroCard attributes
 	public int getIntMod(){
 		return this.intMod;
 	}
@@ -28,18 +38,6 @@ public class ClassCard extends Card {
 	
 	public int getStrMod(){
 		return this.strMod;
-	}
-	
-	public void setIntMod(int x){
-		this.intMod = x;
-	}
-	
-	public void setDexMod(int x){
-		this.dexMod = x;
-	}
-	
-	public void setStrMod(int x){
-		this.strMod = x;
 	}
 	
 	public Ability[] getAbilities(){
