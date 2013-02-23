@@ -3,10 +3,12 @@ package com.me.Roguish.Controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.me.Roguish.Model.Hero;
 import com.me.Roguish.Model.Level;
 
 public class LevelController {
 	private Level level;
+	private Hero hero;
 	
 	enum Keys {
 		LEFT, RIGHT, UP, DOWN
@@ -22,6 +24,7 @@ public class LevelController {
 	
 	public LevelController(Level level){
 		this.level = level;
+		this.hero = level.getHero();
 		
 	}
 	
@@ -34,7 +37,18 @@ public class LevelController {
 	
 	
 	private void processInput(){
-		// TODO
+		if (keys.get(Keys.LEFT)){
+			hero.setPosition(hero.getX() - 32, hero.getY());
+		}
+		if (keys.get(Keys.RIGHT)){
+			hero.setPosition(hero.getX() + 32 , hero.getY());
+		}
+		if (keys.get(Keys.DOWN)){
+			hero.setPosition(hero.getX(), hero.getY() - 32);
+		}
+		if (keys.get(Keys.UP)){
+			hero.setPosition(hero.getX(), hero.getY() + 32);
+		}
 	}
 	
 	

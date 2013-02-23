@@ -14,6 +14,7 @@ public class Level{
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
+    Hero hero;
     
 	public Level(){
 		create();
@@ -38,10 +39,13 @@ public class Level{
 		return entities.removeValue(ent, true);
 	}
 	
+	public Hero getHero(){
+		return hero;
+	}
 	
 	// Populates entity list
 	private void populate(){
-		addEntity(new Entity(1, 1, "data/entity/Hero.png")); // temporary entity gen
+		addEntity(new Hero(1, 1, "data/entity/Hero.png")); // temporary entity gen
 		addEntity(new Entity(1, 2, "data/entity/Enemy.png"));
 		addEntity(new Entity(2, 1, "data/entity/Enemy.png"));
 		addEntity(new Entity(2, 2, "data/entity/Hero.png"));	
