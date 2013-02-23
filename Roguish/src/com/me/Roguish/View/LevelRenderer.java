@@ -35,6 +35,11 @@ public class LevelRenderer {
 	private SpriteBatch spriteBatch;
 	private BitmapFont font;
 	
+	private Texture hud1;
+	private Texture hud2;
+	private Texture hud3;
+	private Texture hud4;
+	
 	public LevelRenderer(Level level, boolean debug) {
 		this.level = level;	
 		this.debug = debug;
@@ -51,8 +56,15 @@ public class LevelRenderer {
 	}
 	
 	public void loadTextures(){
+<<<<<<< HEAD
 		TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/entity.atlas"));
 		heroTexture = atlas.findRegion("Hero");
+=======
+		hud1 = new Texture(Gdx.files.internal("data/Hud_1_256x256.png"));
+		hud2 = new Texture(Gdx.files.internal("data/Hud_2_256x256.png"));
+		hud3 = new Texture(Gdx.files.internal("data/Hud_3_256x256.png"));
+		hud4 = new Texture(Gdx.files.internal("data/Hud_4_256x32.png"));
+>>>>>>> working on hud positioning
 		
 	}
 	
@@ -62,10 +74,12 @@ public class LevelRenderer {
 	}
 	
 	public void render(){
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
 		spriteBatch.begin();
-		renderTiles();
+		//renderTiles();
 		//renderEntities();
-		//renderHud();
+		renderHud();
 				
 		if (debug)
 			drawDebug();
@@ -73,9 +87,7 @@ public class LevelRenderer {
 		spriteBatch.end();
 	}
 	public void renderTiles() {
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
-		tileMapRenderer.getProjectionMatrix().set(cam.combined);
+        tileMapRenderer.getProjectionMatrix().set(cam.combined);
 		 
 		Vector3 tmp = new Vector3();
 		tmp.set(0, 0, 0);
@@ -96,15 +108,15 @@ public class LevelRenderer {
 	}
 	
 	private void renderHud(){
-		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_1_256x256.png"))),0,0);
-		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_2_256x256.png"))),0,0);
-		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_3_256x256.png"))),0,0);
-		spriteBatch.draw(new TextureRegion(new Texture(Gdx.files.internal("data/Hud_4_256x32.png"))),0,0);
+		spriteBatch.draw(new TextureRegion(hud1),width-200,260);
+		spriteBatch.draw(new TextureRegion(hud2),width-200,55);
+		spriteBatch.draw(new TextureRegion(hud3),width-200,-75);
+		spriteBatch.draw(new TextureRegion(hud4),width-200,0);
 		
 	}
 	
 	private void drawDebug(){
 		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);
-		font.draw(spriteBatch, "TEST - + ? TEST", 20, 40);
+		//font.draw(spriteBatch, "TEST - + ? TEST", 20, 40);
 	}
 }
