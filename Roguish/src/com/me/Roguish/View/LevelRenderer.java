@@ -112,10 +112,10 @@ public class LevelRenderer {
 	}
 	
 	private void renderHud(){
-		spriteBatch.draw(new TextureRegion(hud1),width-200,223);
-		spriteBatch.draw(new TextureRegion(hud2),width-200,75);
-		spriteBatch.draw(new TextureRegion(hud3),width-200,-74);
-		spriteBatch.draw(new TextureRegion(hud4),width-200,0);
+		spriteBatch.draw(new TextureRegion(hud1),width-199,223);
+		spriteBatch.draw(new TextureRegion(hud2),width-199,75);
+		spriteBatch.draw(new TextureRegion(hud3),width-199,-74);
+		spriteBatch.draw(new TextureRegion(hud4),width-199,0);
 		
 	}
 	
