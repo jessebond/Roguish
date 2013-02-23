@@ -60,6 +60,7 @@ public class LevelController {
 		keys.get(keys.put(Keys.LEFT, false));
 		if(hero.getX() > 0)
 			hero.movePosition(-1, 0);
+		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
 	
 	public void rightPressed() {
@@ -70,6 +71,7 @@ public class LevelController {
 		keys.get(keys.put(Keys.RIGHT, false));
 		if(hero.getX() < 10)
 			hero.movePosition(1 , 0);
+		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
 	
 	public void upPressed() {
@@ -80,6 +82,7 @@ public class LevelController {
 		keys.get(keys.put(Keys.UP, false));
 		if(hero.getY() < 15)
 			hero.movePosition(0, 1);
+		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
 	
 	public void downPressed() {
@@ -90,6 +93,7 @@ public class LevelController {
 		keys.get(keys.put(Keys.DOWN, false));
 		if(hero.getY() > 0)
 			hero.movePosition(0, -1);
+		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
 	
 	
