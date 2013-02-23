@@ -33,6 +33,8 @@ public class LevelRenderer {
 	private int height;
 	private float ppuX;	// pixels per unit on the X axis
 	private float ppuY;	// pixels per unit on the Y axis
+	private float centerX; // centered tile x
+	private float centerY; // centered tile y
 	private TileMapRenderer tileMapRenderer;
 	private SpriteBatch spriteBatch;
 	private BitmapFont font;
@@ -65,6 +67,8 @@ public class LevelRenderer {
 		this.height = h;
 		ppuX = (float)width / CAMERA_WIDTH;
 		ppuY = (float)height / CAMERA_HEIGHT;
+		centerX = ppuX * 32;
+		centerY = ppuY * 32;
 	}
 	
 	public void loadTextures(){
@@ -113,7 +117,8 @@ public class LevelRenderer {
 
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
-			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * ppuX, ent.getY() * ppuY);
+			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * centerX + centerX/2 - 16, ent.getY() * centerY);
+			
 		}
 	}
 	
