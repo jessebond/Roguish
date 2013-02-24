@@ -9,13 +9,11 @@ public class ClassCard extends Card {
 	private int intMod;
 	private int dexMod;
 	private int strMod;
-	private Ability[] abilities;
+	private String[] abilities;
 	
 	public ClassCard (String cardName){
 		this.name = cardName;
-		//intMod = 3;
-		//dexMod = 3;
-		//strMod = 3;
+		setStats(cardName);
 		
 	}
 	
@@ -32,8 +30,13 @@ public class ClassCard extends Card {
 		return this.strMod;
 	}
 	
-	public Ability[] getAbilities(){
+	public String[] getAbilities(){
 		return this.abilities;
 	}
 
+	private void setStats(String name){
+		//switch(name){
+		//case
+		//}
+	}
 }
