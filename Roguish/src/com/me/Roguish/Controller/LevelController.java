@@ -59,7 +59,7 @@ public class LevelController {
 	
 	public void leftReleased() {
 		keys.get(keys.put(Keys.LEFT, false));
-		if(hero.getX() > 0 && tileOpen(hero.getX() + 1, hero.getY()))
+		if(hero.getX() > 0 && tileOpen(hero.getX() - 1, hero.getY()))
 			hero.movePosition(-1, 0);
 		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
