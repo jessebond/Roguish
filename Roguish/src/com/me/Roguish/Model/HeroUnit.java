@@ -14,10 +14,16 @@ public class HeroUnit extends Unit {
 	
 	public HeroUnit(int x, int y, String texture){
 		super(x, y, texture);
-		getCards("warrior", "abc");
+		cCard = new ClassCard(0);
+		rCard = new RaceCard(0);
+		setStats();
 	}
-	
-	private void getCards(String ccard, String rcard){
- 
+
+	private void setStats(){
+		baseStr = cCard.getStrMod() + rCard.getStrMod();
+		baseDex = cCard.getDexMod() + rCard.getDexMod();
+		baseInt = cCard.getIntMod() + rCard.getIntMod();
+		
+		
 	}
 }

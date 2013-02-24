@@ -1,23 +1,24 @@
 package com.me.Roguish.Model;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.Array;
+
 public class RaceCard extends Card {
+	// Hero attribute modifiers for the various cards.	
+	private int intMod;
+	private int dexMod;
+	private int strMod;
+	private Array<String> abilities;
 	
-	// Hero attribute modifiers for the various cards.
-	
-	private static int intMod;
-	private static int dexMod;
-	private static int strMod;
-	private Ability[] abilities;
-	
-	public RaceCard (String type){
-		intMod = 3;
-		dexMod = 3;
-		strMod = 3;
+	public RaceCard (int cardNo){
+		this.cardNo = cardNo;
+		setStats(cardNo);
 		
 	}
 	
 	// Getter and setter methods for HeroCard attributes
-	
 	public int getIntMod(){
 		return this.intMod;
 	}
@@ -30,20 +31,19 @@ public class RaceCard extends Card {
 		return this.strMod;
 	}
 	
-	public void setIntMod(int x){
-		this.intMod = x;
-	}
-	
-	public void setDexMod(int x){
-		this.dexMod = x;
-	}
-	
-	public void setStrMod(int x){
-		this.strMod = x;
-	}
-	
-	public Ability[] getAbilities(){
+	public Array<String> getAbilities(){
 		return this.abilities;
 	}
 
+	private void setStats(int cardNo){
+		switch(cardNo){
+		case 0:
+			strMod = 3;
+			dexMod = 3;
+			intMod = 3; 
+			break;
+		default:
+			break;
+		}
+	}
 }
