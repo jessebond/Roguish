@@ -14,7 +14,7 @@ public class Level{
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
-    private HeroUnit hero = new HeroUnit(5, 5, "Hero");
+    private Entity hero = new Entity(5, 5, "Hero");
 
     
 	public Level(){
@@ -58,7 +58,7 @@ public class Level{
 	}
 	
 	public boolean tilePropCheck(int x, int y, String property){
-		return ("1".equals(map.getTileProperty(getTile(x,y), property)));
+		return ("true".equals(map.getTileProperty(getTile(x,y), property)));
 	}
 	public int getTile(int x, int y, int layer){
 		return map.layers.get(layer).tiles[y][x];

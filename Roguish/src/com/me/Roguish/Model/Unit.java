@@ -1,9 +1,10 @@
 package com.me.Roguish.Model;
 
 public abstract class Unit extends Entity{
+	
+	
 	public Unit(int x, int y, String texture) {
 		super(x, y, texture);
-		// TODO Auto-generated constructor stub
 	}
 
 	private static int baseHP;		// Determined by Class/Race combo
