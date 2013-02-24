@@ -57,6 +57,9 @@ public class Level{
 		return this.entities;
 	}
 	
+	/*public int getTileProperties(int x, int y, int layer){
+		
+	}*/
 	public int getTile(int x, int y, int layer){
 		return map.layers.get(layer).tiles[y][x];
 	}
