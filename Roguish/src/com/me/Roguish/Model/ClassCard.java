@@ -13,9 +13,9 @@ public class ClassCard extends Card {
 	
 	public ClassCard (String cardName){
 		this.name = cardName;
-		intMod = 3;
-		dexMod = 3;
-		strMod = 3;
+		//intMod = 3;
+		//dexMod = 3;
+		//strMod = 3;
 		
 	}
 	
