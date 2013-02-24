@@ -3,17 +3,18 @@ package com.me.Roguish.Model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.Array;
 
 public class ClassCard extends Card {
 	// Hero attribute modifiers for the various cards.	
 	private int intMod;
 	private int dexMod;
 	private int strMod;
-	private String[] abilities;
+	private Array<String> abilities;
 	
-	public ClassCard (String cardName){
-		this.name = cardName;
-		setStats(cardName);
+	public ClassCard (int cardNo){
+		this.cardNo = cardNo;
+		setStats(cardNo);
 		
 	}
 	
@@ -30,13 +31,21 @@ public class ClassCard extends Card {
 		return this.strMod;
 	}
 	
-	public String[] getAbilities(){
+	public Array<String> getAbilities(){
 		return this.abilities;
 	}
 
-	private void setStats(String name){
-		//switch(name){
-		//case
-		//}
+	private void setStats(int cardNo){
+		switch(cardNo){
+		case 0:
+			strMod = 5;
+			dexMod = 3;
+			intMod = 1; 
+			abilities.add("longsword");
+			abilities.add("shield");
+			break;
+		default:
+			break;
+		}
 	}
 }
