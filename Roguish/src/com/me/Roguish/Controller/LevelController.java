@@ -101,7 +101,7 @@ public class LevelController {
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
-		if(level.getTile(x,y) == 13) return false;
+		if(level.tilePropCheck(x,y,"wall")) return false;
 		else return true;
 	}
 	

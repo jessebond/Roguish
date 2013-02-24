@@ -57,9 +57,9 @@ public class Level{
 		return this.entities;
 	}
 	
-	/*public int getTileProperties(int x, int y, int layer){
-		
-	}*/
+	public boolean tilePropCheck(int x, int y, String property){
+		return ("1".equals(map.getTileProperty(getTile(x,y), property)));
+	}
 	public int getTile(int x, int y, int layer){
 		return map.layers.get(layer).tiles[y][x];
 	}
