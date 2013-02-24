@@ -3,6 +3,7 @@ package com.me.Roguish.Controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.me.Roguish.Model.Entity;
 import com.me.Roguish.Model.HeroUnit;
 import com.me.Roguish.Model.Level;
@@ -58,7 +59,7 @@ public class LevelController {
 	
 	public void leftReleased() {
 		keys.get(keys.put(Keys.LEFT, false));
-		if(hero.getX() > 0)
+		if(hero.getX() > 0 && tileOpen(hero.getX() + 1, hero.getY()))
 			hero.movePosition(-1, 0);
 		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
@@ -69,7 +70,7 @@ public class LevelController {
 	
 	public void rightReleased() {
 		keys.get(keys.put(Keys.RIGHT, false));
-		if(hero.getX() < 9)
+		if(hero.getX() < 9 && tileOpen(hero.getX() + 1, hero.getY()))
 			hero.movePosition(1 , 0);
 		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
@@ -80,7 +81,7 @@ public class LevelController {
 	
 	public void upReleased() {
 		keys.get(keys.put(Keys.UP, false));
-		if(hero.getY() > 0)
+		if(hero.getY() > 0 && tileOpen(hero.getX(), hero.getY() - 1))
 			hero.movePosition(0, -1);
 		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
@@ -91,9 +92,17 @@ public class LevelController {
 	
 	public void downReleased() {
 		keys.get(keys.put(Keys.DOWN, false));
-		if(hero.getY() < 14)
+		if(hero.getY() < 14 && tileOpen(hero.getX(), hero.getY() + 1))
 			hero.movePosition(0, 1);
 		System.out.println(level.getTile(hero.getX(), hero.getY()));
+	}
+	
+	public boolean tileOpen(int x, int y){
+		for (Entity ent : level.getEntities()) {
+			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
+		}
+		if(level.getTile(x,y) == 13) return false;
+		else return true;
 	}
 	
 	
