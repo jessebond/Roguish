@@ -1,29 +1,21 @@
 package com.me.Roguish.Model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonReader;
 
 public class ClassCard extends Card {
-	Json json;
-	
-	// Hero attribute modifiers for the various cards.
-	
-	private static int intMod;
-	private static int dexMod;
-	private static int strMod;
+	// Hero attribute modifiers for the various cards.	
+	private int intMod;
+	private int dexMod;
+	private int strMod;
 	private Ability[] abilities;
 	
 	public ClassCard (String cardName){
-		json = new Json();
-		
-		loadData(cardName);
+		this.name = cardName;
 		intMod = 3;
 		dexMod = 3;
 		strMod = 3;
-		
-	}
-	
-	private void loadData(String cardName){
-	
 		
 	}
 	
