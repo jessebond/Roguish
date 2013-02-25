@@ -8,10 +8,8 @@ public abstract class Unit extends Entity{
 	}
 
 	protected static int baseHP;		// Determined by Class/Race combo
-	protected int maxHP;				// Calculated
 	protected int currentHP;
 	protected static int baseMana;
-	protected int maxMana;
 	protected int currentMana;
 	protected boolean alive;			// Should be True is currentHealth <= 0
 	protected int[] status;			// Most likely an array with status effects
@@ -31,7 +29,7 @@ public abstract class Unit extends Entity{
 		this.currentMana = mana;
 	}
 	
-	public void updateDead(boolean a){
+	public void updateAlive(boolean a){
 		this.alive = a;
 	}
 	
@@ -43,16 +41,12 @@ public abstract class Unit extends Entity{
 		return this.currentHP;
 	}
 	
-	public int getMaxHP(){
-		return this.maxHP;
-	}
-	
 	public int getMana(){
 		return this.currentMana;
 	}
 	
-	public int getMaxMana(){
-		return this.maxMana;
+	public int getBaseMana(){
+		return this.baseMana;
 	}
 	
 	public boolean isAlive(){
