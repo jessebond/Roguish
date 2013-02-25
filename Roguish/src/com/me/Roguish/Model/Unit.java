@@ -5,6 +5,7 @@ public abstract class Unit extends Entity{
 	
 	public Unit(int x, int y, String texture) {
 		super(x, y, texture);
+		this.setMovement(this.getDex());
 	}
 
 	protected static int baseHP;		// Determined by Class/Race combo

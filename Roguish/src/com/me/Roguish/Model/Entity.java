@@ -2,9 +2,10 @@ package com.me.Roguish.Model;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class Entity {
+public class Entity implements Comparable<Entity> {
 	private int x;
 	private int y;
+	private int movement;
 	private boolean alive = true;
 	private String texture;
 
@@ -30,6 +31,14 @@ public class Entity {
 		return this.texture;
 	}
 	
+	public int getMovement(){
+		return this.movement;
+	}
+	
+	public void setMovement(int mov){
+		this.movement = mov;
+	}
+	
 	public void setPosition(int x, int y){
 		System.out.println("Enter setposition function");
 		this.x = x;
@@ -45,5 +54,10 @@ public class Entity {
 	
 	public void setAlive(boolean alive){
 		this.alive = alive;
+	}
+
+	
+	public int compareTo(Entity ent) {
+		return this.movement - ent.movement;
 	}
 }

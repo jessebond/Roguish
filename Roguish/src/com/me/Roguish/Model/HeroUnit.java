@@ -17,6 +17,7 @@ public class HeroUnit extends Unit {
 		cCard = new ClassCard(0);
 		rCard = new RaceCard(0);
 		setStats();
+		this.setMovement(this.getDex());
 	}
 
 	private void setStats(){
