@@ -6,13 +6,13 @@ import com.badlogic.gdx.utils.Base64Coder;
 import com.badlogic.gdx.utils.Json;
 import com.me.Roguish.Model.Library;
 
-public class LibraryService {
+public class LibraryManager {
 	private static final String CLASS_DATA_FILE = ".roguish/class.json";
 	private Library classLibrary;
 	private static final String RACE_DATA_FILE = ".roguish/race.json";
 	private Library raceLibrary;
 	
-	public LibraryService(){
+	public LibraryManager(){
 		
 	}
 	
