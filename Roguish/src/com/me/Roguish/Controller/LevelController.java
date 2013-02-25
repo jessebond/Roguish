@@ -105,5 +105,8 @@ public class LevelController {
 		else return true;
 	}
 	
+	public void takeMonsterTurns(){
+		
+	}
 	
 }
