@@ -1,0 +1,5 @@
+CLASSPATH=$LIB_DIR/gdx-tools.jar:$LIB_DIR/gdx.jar
+CLASSNAME=com.badlogic.gdx.tools.imagepacker.TexturePacker2
+INPUTDIR=uiskin_elements
+OUTPUTDIR=.
+java -classpath $CLASSPATH $CLASSNAME $INPUTDIR $OUTPUTDIR uiskin.atlas

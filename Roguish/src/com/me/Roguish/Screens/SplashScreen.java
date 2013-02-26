@@ -22,7 +22,7 @@ public class SplashScreen extends AbstractScreen {
 
     @Override
 	public void show () {
-		intro = new TextureRegion(new Texture(Gdx.files.internal("data/Splash_512x512.png")), 0, 200, 480, 320);
+		intro = new TextureRegion(new Texture(Gdx.files.internal("data/gui/Splash_512x512.png")), 0, 200, 480, 320);
 		batch = new SpriteBatch();
 		batch.getProjectionMatrix().setToOrtho2D(0, 0, 480, 320);
 	}
