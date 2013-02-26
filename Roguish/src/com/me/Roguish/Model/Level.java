@@ -9,17 +9,21 @@ import com.badlogic.gdx.graphics.g2d.tiled.TileAtlas;
 
 public class Level{
 	private static int maxEntity = 16;
-	private Array<Entity> entities = new Array<Entity>();
-
+	public Array<Entity> entities = new Array<Entity>();
+	public TurnQueue queue;
+	public AbilityController ability;
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
-    private Entity hero = new Entity(5, 5, "Hero");
-
+    public HeroUnit hero = new HeroUnit(5, 5, "Hero");
+    public MonsterUnit rat1 = new MonsterUnit(1, 2, "Enemy");
+    public MonsterUnit rat2 = new MonsterUnit(2, 1, "Enemy");
+    public MonsterUnit rat3 = new MonsterUnit(2, 2, "Enemy");
     
 	public Level(){
 		create();
 		populate();
+		queue = new TurnQueue(getEntities());
 	}
 	
 	public void create(){
@@ -28,6 +32,14 @@ public class Level{
 		System.out.println("Tiles loaded");
 	    atlas = new SimpleTileAtlas(map, Gdx.files.internal("data/"));
 	    System.out.println("atlas made");  
+	    hero.setMovement(0);
+	    hero.setId(0);
+	    rat1.setMovement(1);
+	    rat1.setId(1);
+	    rat2.setMovement(2);
+	    rat2.setId(2);
+	    rat3.setMovement(3);
+	    rat3.setId(3);
 	}
 
 	
@@ -47,9 +59,9 @@ public class Level{
 	private void populate(){
 
 		addEntity(hero); 
-		addEntity(new Entity(1, 2, "Enemy"));
-		addEntity(new Entity(2, 1, "Enemy"));
-		addEntity(new Entity(2, 2, "Enemy"));	
+		addEntity(rat1);
+		addEntity(rat2);
+		addEntity(rat3);	
 
 	}
 	

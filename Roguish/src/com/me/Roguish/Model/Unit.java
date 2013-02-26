@@ -1,5 +1,7 @@
 package com.me.Roguish.Model;
 
+import com.badlogic.gdx.utils.Array;
+
 public abstract class Unit extends Entity{
 	
 	
@@ -20,7 +22,7 @@ public abstract class Unit extends Entity{
 	//Attributes
 	protected static int baseInt;		// Base stats
 	protected static int baseDex;		// Base stats
-	protected static int baseStr;		// Base stats
+	protected static int baseStr;		// Base stats 
 
 	public void setHP(int HP){
 		this.currentHP = HP;

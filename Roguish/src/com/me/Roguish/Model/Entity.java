@@ -1,18 +1,33 @@
 package com.me.Roguish.Model;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Array;
 
 public class Entity implements Comparable<Entity> {
 	private int x;
 	private int y;
+	private int id;
 	private int movement;
 	private boolean alive = true;
 	private String texture;
+	protected Array<Integer> abilities;
 
 	public Entity(int x, int y, String texture){
 		this.x = x;
 		this.y = y;
 		this.texture = texture;
+	}
+	
+	public Array<Integer> getAbilities(){
+		return this.abilities;
+	}
+	
+	public void setId(int x){
+		this.id = x;
+	}
+	
+	public int getId(){
+		return this.id;
 	}
 	
 	public int getX(){

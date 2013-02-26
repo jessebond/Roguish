@@ -41,8 +41,8 @@ public class ClassCard extends Card {
 			strMod = 5;
 			dexMod = 3;
 			intMod = 1; 
-			abilities.add(Ability.LONGSWORD);
-			abilities.add(Ability.SHIELD);
+			//abilities.add(AbilityController.LONGSWORD);
+			//abilities.add(AbilityController.SHIELD);
 			break;
 		default:
 			break;
