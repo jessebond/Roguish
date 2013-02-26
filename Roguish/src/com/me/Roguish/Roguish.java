@@ -1,6 +1,7 @@
 package com.me.Roguish;
 
 import com.me.Roguish.Screens.*;
+import com.me.Roguish.Controller.LibraryManager;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
@@ -10,8 +11,22 @@ public class Roguish extends Game {
 	boolean firstTimeCreate = true;
 	FPSLogger fps;
 	
+	// Managers
+	private LibraryManager libraryManager;
+	
+    public LibraryManager getProfileManager(){
+        return libraryManager;
+    }
+
+	
 	@Override
 	public void create() {	
+		// Load card libraries
+		libraryManager = new LibraryManager();
+		libraryManager.retrieveClassLibrary();
+		libraryManager.retrieveRaceLibrary();
+		
+		// Set current Screen to SplashScreen
 		setScreen(new SplashScreen(this));
 		fps = new FPSLogger();
 	}
@@ -28,6 +43,11 @@ public class Roguish extends Game {
 		fps.log();
 	}
 	
+	 @Override
+	 public void pause()
+	 {
+		 libraryManager.persist();  // don't know if player is coming back so save library
+	 }	
 	
 
 }
