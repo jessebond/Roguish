@@ -6,15 +6,13 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.utils.Scaling;
 import com.me.Roguish.Roguish;
 
 public class MenuScreen extends AbstractScreen{
-	TextureAtlas atlas;
+	TextureAtlas guiAtlas;
 	
 	public MenuScreen(Roguish game){
 		super(game);
@@ -24,11 +22,11 @@ public class MenuScreen extends AbstractScreen{
     public void show(){
 		Gdx.input.setInputProcessor(stage);
 		
-		atlas = new TextureAtlas(Gdx.files.internal("data/gui/pack/Gui.pack"));
+		guiAtlas = new TextureAtlas(Gdx.files.internal("data/gui/pack/Gui.pack"));
 		
-		TextureRegion ngUp = atlas.findRegion("Btn_New");
-		TextureRegion ngDown = atlas.findRegion("Btn_New_Click");
-		TextureRegion bg = atlas.findRegion("MainMenu");
+		TextureRegion ngUp = guiAtlas.findRegion("Btn_New");
+		TextureRegion ngDown = guiAtlas.findRegion("Btn_New_Click");
+		TextureRegion bg = guiAtlas.findRegion("MainMenu");
 		
 		ButtonStyle style = new ButtonStyle();
 		style.up = new TextureRegionDrawable(ngUp);
@@ -66,7 +64,7 @@ public class MenuScreen extends AbstractScreen{
 	
 	@Override
 	public void dispose(){
-		atlas.dispose();
+		guiAtlas.dispose();
 		stage.dispose();
 		
 	}
