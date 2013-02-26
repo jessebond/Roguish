@@ -3,178 +3,251 @@ Gui.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Splash_512x512
+Choose
   rotate: false
-  xy: 1, 508
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: -1
-Splash
-  rotate: false
-  xy: 1, 186
+  xy: 1, 701
   size: 480, 320
   orig: 480, 320
   offset: 0, 0
   index: -1
-PopUpMenu
+ChooseClass
   rotate: false
-  xy: 515, 710
-  size: 467, 310
-  orig: 467, 310
+  xy: 483, 701
+  size: 480, 320
+  orig: 480, 320
   offset: 0, 0
   index: -1
-Hud_1_256x256
+MenuRing
   rotate: false
-  xy: 515, 452
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-Hud_2_256x256
-  rotate: false
-  xy: 483, 194
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-Hud
-  rotate: false
-  xy: 1, 35
-  size: 199, 149
-  orig: 199, 149
-  offset: 0, 0
-  index: 1
-Hud
-  rotate: false
-  xy: 773, 559
-  size: 199, 149
-  orig: 199, 149
-  offset: 0, 0
-  index: 2
-Hud
-  rotate: false
-  xy: 202, 35
-  size: 199, 149
-  orig: 199, 149
-  offset: 0, 0
-  index: 3
-Hud_4_256x32
-  rotate: false
-  xy: 1, 1
-  size: 256, 32
-  orig: 256, 32
-  offset: 0, 0
-  index: -1
-Hud_3_256x256
-  rotate: false
-  xy: 741, 194
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-Hud
-  rotate: false
-  xy: 773, 524
-  size: 199, 33
-  orig: 199, 33
-  offset: 0, 0
-  index: 4
-Btn_Back
-  rotate: false
-  xy: 773, 458
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-Btn_Add
-  rotate: false
-  xy: 403, 120
-  size: 96, 64
-  orig: 96, 64
-  offset: 0, 0
-  index: -1
-Btn_Back_Click
-  rotate: false
-  xy: 501, 128
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-Btn_Next
-  rotate: false
-  xy: 631, 128
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-Btn_Next_Click
-  rotate: false
-  xy: 761, 128
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-Btn_Start
-  rotate: false
-  xy: 891, 128
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-Btn_Add_Click
-  rotate: false
-  xy: 403, 54
-  size: 96, 64
-  orig: 96, 64
-  offset: 0, 0
-  index: -1
-Btn_Start_Click
-  rotate: false
-  xy: 501, 62
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-Btn_Remove
-  rotate: false
-  xy: 631, 62
-  size: 96, 64
-  orig: 96, 64
-  offset: 0, 0
-  index: -1
-Btn_Remove_Click
-  rotate: false
-  xy: 729, 62
-  size: 96, 64
-  orig: 96, 64
+  xy: 965, 985
+  size: 36, 36
+  orig: 36, 36
   offset: 0, 0
   index: -1
 Btn_Left
   rotate: false
-  xy: 259, 1
+  xy: 965, 951
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+CardRing
+  rotate: false
+  xy: 999, 952
+  size: 22, 31
+  orig: 22, 31
+  offset: 0, 0
+  index: -1
 Btn_Left_Click
   rotate: false
-  xy: 984, 988
+  xy: 965, 917
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Btn_Right
   rotate: false
-  xy: 903, 490
+  xy: 965, 883
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Btn_Right_Click
   rotate: false
-  xy: 827, 94
+  xy: 965, 849
   size: 32, 32
   orig: 32, 32
+  offset: 0, 0
+  index: -1
+MainMenu
+  rotate: false
+  xy: 1, 379
+  size: 480, 320
+  orig: 480, 320
+  offset: 0, 0
+  index: -1
+Splash
+  rotate: false
+  xy: 483, 379
+  size: 480, 320
+  orig: 480, 320
+  offset: 0, 0
+  index: -1
+PopUpMenu
+  rotate: false
+  xy: 1, 67
+  size: 467, 310
+  orig: 467, 310
+  offset: 0, 0
+  index: -1
+Btn_Exit
+  rotate: false
+  xy: 1, 1
+  size: 192, 64
+  orig: 192, 64
+  offset: 0, 0
+  index: -1
+Btn_Exit_Click
+  rotate: false
+  xy: 195, 1
+  size: 192, 64
+  orig: 192, 64
+  offset: 0, 0
+  index: -1
+Btn_New
+  rotate: false
+  xy: 389, 1
+  size: 192, 64
+  orig: 192, 64
+  offset: 0, 0
+  index: -1
+Hud
+  rotate: false
+  xy: 583, 228
+  size: 199, 149
+  orig: 199, 149
+  offset: 0, 0
+  index: 1
+Btn_Add
+  rotate: false
+  xy: 470, 313
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
+Btn_Add_Click
+  rotate: false
+  xy: 470, 247
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
+Btn_Remove
+  rotate: false
+  xy: 470, 181
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
+Hud
+  rotate: false
+  xy: 568, 77
+  size: 199, 149
+  orig: 199, 149
+  offset: 0, 0
+  index: 2
+Btn_Remove_Click
+  rotate: false
+  xy: 470, 115
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
+Btn_New_Click
+  rotate: false
+  xy: 583, 11
+  size: 192, 64
+  orig: 192, 64
+  offset: 0, 0
+  index: -1
+Hud
+  rotate: false
+  xy: 769, 77
+  size: 199, 149
+  orig: 199, 149
+  offset: 0, 0
+  index: 3
+Btn_Back
+  rotate: false
+  xy: 777, 11
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Back_Click
+  rotate: false
+  xy: 784, 313
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Next
+  rotate: false
+  xy: 784, 247
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+
+Gui2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Hud
+  rotate: false
+  xy: 1, 67
+  size: 199, 33
+  orig: 199, 33
+  offset: 0, 0
+  index: 4
+Btn_Next_Click
+  rotate: false
+  xy: 1, 1
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Start
+  rotate: false
+  xy: 202, 36
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Start_Click
+  rotate: false
+  xy: 332, 36
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+
+Gui3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+old/Splash_512x512
+  rotate: false
+  xy: 1, 293
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+old/Hud_1_256x256
+  rotate: false
+  xy: 1, 35
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+old/Hud_2_256x256
+  rotate: false
+  xy: 515, 549
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+old/Hud_3_256x256
+  rotate: false
+  xy: 259, 35
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+old/Hud_4_256x32
+  rotate: false
+  xy: 1, 1
+  size: 256, 32
+  orig: 256, 32
   offset: 0, 0
   index: -1
