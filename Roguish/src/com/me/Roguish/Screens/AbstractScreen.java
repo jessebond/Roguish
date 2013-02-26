@@ -19,13 +19,14 @@ public abstract class AbstractScreen implements Screen {
 		this.stage = new Stage(0,0,true);
 	}
 	
+	/*
 	protected Skin getSkin(){
 		if(skin == null ) {
             FileHandle skinFile = Gdx.files.internal( "data/gui/pack/Gui.json" );
             skin = new Skin( skinFile );
         }
         return skin;
-    }
+    }*/
 	
 	@Override
 	public void resize (int width, int height) {

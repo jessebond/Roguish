@@ -80,3 +80,101 @@ Hud
   orig: 199, 33
   offset: 0, 0
   index: 4
+Btn_Back
+  rotate: false
+  xy: 773, 458
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Add
+  rotate: false
+  xy: 403, 120
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
+Btn_Back_Click
+  rotate: false
+  xy: 501, 128
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Next
+  rotate: false
+  xy: 631, 128
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Next_Click
+  rotate: false
+  xy: 761, 128
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Start
+  rotate: false
+  xy: 891, 128
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Add_Click
+  rotate: false
+  xy: 403, 54
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
+Btn_Start_Click
+  rotate: false
+  xy: 501, 62
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Remove
+  rotate: false
+  xy: 631, 62
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
+Btn_Remove_Click
+  rotate: false
+  xy: 729, 62
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
+Btn_Left
+  rotate: false
+  xy: 259, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Btn_Left_Click
+  rotate: false
+  xy: 984, 988
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Btn_Right
+  rotate: false
+  xy: 903, 490
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Btn_Right_Click
+  rotate: false
+  xy: 827, 94
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
