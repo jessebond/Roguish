@@ -29,10 +29,10 @@ public class MenuScreen extends AbstractScreen{
     public void show(){
 		Gdx.input.setInputProcessor(stage);
 		
-		atlas = new TextureAtlas(Gdx.files.internal("data/gui/pack/Gui.atlas"));
+		atlas = new TextureAtlas(Gdx.files.internal("data/gui/pack/Gui.pack"));
 		
-		TextureRegion ngUp = atlas.findRegion("Btn_Start.png");
-		TextureRegion ngDown = atlas.findRegion("Btn_Start_Click.png");
+		TextureRegion ngUp = atlas.findRegion("Btn_Start");
+		TextureRegion ngDown = atlas.findRegion("Btn_Start_Click");
 		
 		ButtonStyle style = new ButtonStyle();
 		style.up = new TextureRegionDrawable(ngUp);
@@ -43,8 +43,8 @@ public class MenuScreen extends AbstractScreen{
 		Table table = new Table();
 		table.setFillParent(true);
 		stage.addActor(table);
-		table.setSize(260, 195);
-		table.setPosition(190, 142);
+		
+		table.debug();
 		
 		startButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -53,10 +53,7 @@ public class MenuScreen extends AbstractScreen{
 			}
 		});
 		table.add(startButton);
-        
-		
-        
-		
+        	
 	}
 
 	@Override
@@ -66,7 +63,8 @@ public class MenuScreen extends AbstractScreen{
 
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
-	
+
+		Table.drawDebug(stage);
 	}
 	
 	@Override
@@ -76,5 +74,12 @@ public class MenuScreen extends AbstractScreen{
 		
 	}
 	
+	public void resize (int width, int height) {
+		stage.setViewport(width, height, true);
+	}
+	
+	public boolean needsGL20 () {
+		return true;
+	}
 	
 }
