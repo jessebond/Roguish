@@ -10,9 +10,7 @@ public class ClassCard extends Card {
 	private int intMod;
 	private int dexMod;
 	private int strMod;
-	private Array<Ability> abilities;
-	private Ability longsword;
-	private Ability shield;
+	private Array<Integer> abilities;
 	
 	public ClassCard (int cardNo){
 		this.cardNo = cardNo;
@@ -33,7 +31,7 @@ public class ClassCard extends Card {
 		return this.strMod;
 	}
 	
-	public Array<Ability> getAbilities(){
+	public Array<Integer> getAbilities(){
 		return this.abilities;
 	}
 
@@ -43,8 +41,8 @@ public class ClassCard extends Card {
 			strMod = 5;
 			dexMod = 3;
 			intMod = 1; 
-			abilities.add(longsword);
-			abilities.add(shield);
+			abilities.add(Ability.LONGSWORD);
+			abilities.add(Ability.SHIELD);
 			break;
 		default:
 			break;

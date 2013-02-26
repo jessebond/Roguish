@@ -6,7 +6,6 @@ public class MonsterUnit extends Unit {
 
 	public MonsterUnit(int x, int y, String texture) {
 		super(x, y, texture);
-		// TODO Auto-generated constructor stub
 	}
 	
 	

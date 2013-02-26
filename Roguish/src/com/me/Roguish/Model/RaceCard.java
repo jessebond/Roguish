@@ -10,7 +10,7 @@ public class RaceCard extends Card {
 	private int intMod;
 	private int dexMod;
 	private int strMod;
-	private Array<String> abilities;
+	private Array<Integer> abilities;
 	
 	public RaceCard (int cardNo){
 		this.cardNo = cardNo;
@@ -31,7 +31,7 @@ public class RaceCard extends Card {
 		return this.strMod;
 	}
 	
-	public Array<String> getAbilities(){
+	public Array<Integer> getAbilities(){
 		return this.abilities;
 	}
 

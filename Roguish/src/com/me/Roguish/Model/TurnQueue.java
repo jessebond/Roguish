@@ -7,15 +7,8 @@ import java.util.Queue;
 import com.badlogic.gdx.utils.Array;
 
 public class TurnQueue implements Queue<Entity> {
-	// First sort the array of entities based on the unit's base dexterity.
-	// Then add the entities to the queue based on that order.
-	// Create a getNext() method that will return the next entity in the loop,
-	// remove it from the list and then add it to the back. If the entity removed
-	// was a HeroUnit increase the turn count by 1. This method should also ensure
-	// that the entity is alive before returning it.
-	// Create a peek() method that returns the next entity in the loop without 
-	// removing it from the front.
-	// Create the necessary add() methods
+	// Possible issue is state of entities not being updated after their turn...
+	// Fix this by moving the check alive logic into the Controller
 	
 	public int turnCount;
 	Array<Entity> entities;
@@ -32,8 +25,11 @@ public class TurnQueue implements Queue<Entity> {
 		if (peek() instanceof HeroUnit){
 			turnCount++;
 		}
+		// This logic should be added to the level controller rather than here.
+		/*
 		if (peek() instanceof HeroUnit || peek() instanceof MonsterUnit && peek().getAlive()) 
 			add(peek());
+		*/
 		return remove();
 	}
 	
