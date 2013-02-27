@@ -10,12 +10,16 @@ public class Entity implements Comparable<Entity> {
 	private int movement;
 	private boolean alive = true;
 	private String texture;
-	protected Array<Integer> abilities;
+	private Array<Integer> abilities = new Array<Integer>();
 
 	public Entity(int x, int y, String texture){
 		this.x = x;
 		this.y = y;
 		this.texture = texture;
+	}
+	
+	public void addAbility(int x){
+		abilities.add(x);
 	}
 	
 	public Array<Integer> getAbilities(){

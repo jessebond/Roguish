@@ -1,9 +1,10 @@
 package com.me.Roguish.Model;
 
-public abstract class AbilityController {
+public class AbilityController {
 	public static final int LONGSWORD = 0;
 	public static final int SHIELD = 1;
 	public static final int FIREBALL = 2;
+	public static final int BITE = 3;
 	
 	public AbilityController(){
 	}
@@ -18,6 +19,9 @@ public abstract class AbilityController {
 			}
 			case(FIREBALL):{
 				
+			}
+			case(BITE):{
+				System.out.println("You've been bitten!");
 			}
 		}
 		

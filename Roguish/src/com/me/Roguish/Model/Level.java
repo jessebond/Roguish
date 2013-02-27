@@ -1,5 +1,6 @@
 package com.me.Roguish.Model;
 import com.me.Roguish.Model.Entity;
+import com.me.Roguish.Model.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g2d.tiled.SimpleTileAtlas;
@@ -11,7 +12,7 @@ public class Level{
 	private static int maxEntity = 16;
 	public Array<Entity> entities = new Array<Entity>();
 	public TurnQueue queue;
-	public AbilityController ability;
+	public AbilityController ability = new AbilityController();
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
@@ -19,27 +20,37 @@ public class Level{
     public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", MonsterUnit.RAT);
     public MonsterUnit rat2 = new MonsterUnit(2, 1, "E_Rat", MonsterUnit.RAT);
     public MonsterUnit rat3 = new MonsterUnit(2, 2, "E_Rat", MonsterUnit.RAT);
+
     
 	public Level(){
 		create();
+		setStats();
 		populate();
 		queue = new TurnQueue(getEntities());
 	}
 	
+	private void setStats() {
+		 hero.setMovement(0);
+		 hero.setId(0);
+		 rat1.setMovement(1);
+		 rat1.setId(1);
+		 rat2.setMovement(2);
+		 rat2.setId(2);
+		 rat3.setMovement(3);
+		 rat3.setId(3);
+		 rat1.addAbility(AbilityController.BITE);
+		 rat2.addAbility(AbilityController.BITE);
+		 rat3.addAbility(AbilityController.BITE);
+		
+	}
+
 	public void create(){
 		System.out.println("In create");
 		map = TiledLoader.createMap(Gdx.files.internal("data/level/test3.tmx"));
 		System.out.println("Tiles loaded");
 	    atlas = new SimpleTileAtlas(map, Gdx.files.internal("data/"));
 	    System.out.println("atlas made");  
-	    hero.setMovement(0);
-	    hero.setId(0);
-	    rat1.setMovement(1);
-	    rat1.setId(1);
-	    rat2.setMovement(2);
-	    rat2.setId(2);
-	    rat3.setMovement(3);
-	    rat3.setId(3);
+	   
 	}
 
 	
@@ -54,14 +65,13 @@ public class Level{
 	public Entity getHero(){
 		return hero;
 	}
-	
-	// Populates entity list
+		// Populates entity list
 	private void populate(){
 
 		addEntity(hero); 
 		addEntity(rat1);
 		addEntity(rat2);
-		addEntity(rat3);	
+		addEntity(rat3);
 
 	}
 	

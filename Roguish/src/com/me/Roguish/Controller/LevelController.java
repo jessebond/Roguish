@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.me.Roguish.Model.AbilityController;
 import com.me.Roguish.Model.Entity;
 import com.me.Roguish.Model.HeroUnit;
 import com.me.Roguish.Model.MonsterUnit;
@@ -132,8 +133,10 @@ public class LevelController {
 	public void doMonsterTurns(){
 		if (level.entities.get(index) instanceof MonsterUnit){
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getX())){
-				int n = Dice.nextInt(level.entities.get(index).getAbilities().size);
-				level.ability.activate(level.entities.get(index), level.getHero(), n);
+				switch( ((MonsterUnit)level.entities.get(index)).getType()){
+					case MonsterUnit.RAT: doRatAttack();
+				}
+				
 			}
 			else{
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
@@ -146,6 +149,10 @@ public class LevelController {
 			
 	}
 	
+	private void doRatAttack() {
+		level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.BITE);	
+	}
+
 	//Iterates over NPCs and performs their turns until it is the Hero's turn
 	public void checkHeroTurn(){
 		System.out.println(level.queue.turnCount);
