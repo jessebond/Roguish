@@ -15,7 +15,7 @@ public class Level{
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
-    public HeroUnit hero = new HeroUnit(5, 5, "Hero");
+    public HeroUnit hero = new HeroUnit(5, 5, "Warrior");
     public MonsterUnit rat1 = new MonsterUnit(1, 2, "Enemy", MonsterUnit.RAT);
     public MonsterUnit rat2 = new MonsterUnit(2, 1, "Enemy", MonsterUnit.RAT);
     public MonsterUnit rat3 = new MonsterUnit(2, 2, "Enemy", MonsterUnit.RAT);
