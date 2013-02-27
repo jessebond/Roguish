@@ -37,19 +37,35 @@ public class ClassCard extends Card {
 
 	private void setStats(int cardNo){
 		switch(cardNo){
-		case 0:
+		case 0: // Archer
+			strMod = 3;
+			dexMod = 5;
+			intMod = 1; 
+			break;
+		case 1: // Mage
+			strMod = 1;
+			dexMod = 3;
+			intMod = 5; 
+			break;
+		case 2: // Ninja
+			strMod = 2;
+			dexMod = 4;
+			intMod = 3; 
+			break;
+		case 3: // Warrior
 			strMod = 5;
 			dexMod = 3;
 			intMod = 1; 
-			//abilities.add(AbilityController.LONGSWORD);
-			//abilities.add(AbilityController.SHIELD);
 			break;
-		default:
+		default: // error
+			strMod = -1;
+			dexMod = -1;
+			intMod = -1;
 			break;
 		}
 	}
 	
-	public String getImageClass(int cardNo){
+	public String getClassName(int cardNo){
 		switch(cardNo){
 		case 0:
 			return "Archer";
@@ -60,19 +76,19 @@ public class ClassCard extends Card {
 		case 3:
 			return "Warrior";	
 		default:
-			return "Warrior";
+			return "BadCardNo";
 		}
 	}
 	
-	public String getImageFace(int cardNo){
-		return "F_" + getImageClass(cardNo);
+	public String getFaceName(int cardNo){
+		return "F_" + getClassName(cardNo);
 	}
 	
-	public String getImageDeck(int cardNo){
-		return "D_" + getImageClass(cardNo);
+	public String getDeckName(int cardNo){
+		return "D_" + getClassName(cardNo);
 	}
 
-	public String getImageCard(int cardNo){
-		return "C_" + getImageClass(cardNo);
+	public String getCardName(int cardNo){
+		return "C_" + getClassName(cardNo);
 	}
 }
