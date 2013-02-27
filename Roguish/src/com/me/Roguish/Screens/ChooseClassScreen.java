@@ -1,11 +1,9 @@
 package com.me.Roguish.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
@@ -13,13 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.me.Roguish.Roguish;
 
 public class ChooseClassScreen extends AbstractScreen{
 	private static final int MAX_CARDS = 4;
-	private int cardNo = 2;
+	private int cardNo = 0;
 	
 	private TextureAtlas guiAtlas;
 	private TextureAtlas entAtlas;
@@ -51,8 +48,15 @@ public class ChooseClassScreen extends AbstractScreen{
 	private TextureRegion d_ninja;
 	private TextureRegion d_warrior;
 	
-	private Image c_ent;
-	private Image d_ent;
+	private Image c_ent0;
+	private Image d_ent0;
+	private Image c_ent1;
+	private Image d_ent1;
+	private Image c_ent2;
+	private Image d_ent2;
+	private Image c_ent3;
+	private Image d_ent3;
+	
 	private Image cRing;
 	
 	public ChooseClassScreen(Roguish game){
@@ -70,15 +74,13 @@ public class ChooseClassScreen extends AbstractScreen{
 		loadStyles(); // load button styles
 		
 		// get images based on the correct CardNo
-		getCImage();
-		getDImage();
+		getEntImages();
 		cRing = new Image(cardRing);
 		cRing.setScaling(Scaling.fill);
 		cRing.addAction(Actions.moveTo(90 + cardNo*23, 96));
-
+		updateAlphasOff(-1);
+		updateAlphasOn(cardNo);
 		
-		c_ent.setPosition(269, 43);
-		d_ent.setPosition(118, 165);
 		cRing.setPosition(88 + cardNo*24, 96);
 		System.out.println("FFF");
 		Button leftButton = new Button(leftStyle);
@@ -92,8 +94,14 @@ public class ChooseClassScreen extends AbstractScreen{
 		table.setBackground(new TextureRegionDrawable(bg));
 		
 		stage.addActor(table);
-		stage.addActor(c_ent);
-		stage.addActor(d_ent);
+		stage.addActor(c_ent0);
+		stage.addActor(d_ent0);
+		stage.addActor(c_ent1);
+		stage.addActor(d_ent1);
+		stage.addActor(c_ent2);
+		stage.addActor(d_ent2);
+		stage.addActor(c_ent3);
+		stage.addActor(d_ent3);
 		stage.addActor(cRing);
 		
 		
@@ -114,10 +122,10 @@ public class ChooseClassScreen extends AbstractScreen{
 		System.out.println("ChooseClassScreen:Show():Action Listeners");
 		leftButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-				addCardNo(-1);
-				getCImage();
-				getDImage();
-				cRing.addAction(Actions.moveTo(90 + cardNo*24, 96));
+				updateAlphasOff(cardNo);
+				updateCardNo(-1);
+				updateAlphasOn(cardNo);
+				cRing.addAction(Actions.moveTo(88 + cardNo*24, 96));
 				System.out.println("Left Button Down, CardNo: " + cardNo);
 				return false;
 			}
@@ -126,10 +134,10 @@ public class ChooseClassScreen extends AbstractScreen{
 		
 		rightButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-				addCardNo(1);
-				getCImage();
-				getDImage();
-				cRing.addAction(Actions.moveTo(90 + cardNo*24, 96));
+				updateAlphasOff(cardNo);
+				updateCardNo(1);
+				updateAlphasOn(cardNo);
+				cRing.addAction(Actions.moveTo(88 + cardNo*24, 96));
 				System.out.println("Left Button Down, CardNo: " + cardNo);
 				return false;
 			}
@@ -204,11 +212,66 @@ public class ChooseClassScreen extends AbstractScreen{
 	
 	
 	// adds the delta to the cardNo while keeping it in bounds - 0 < cardNo < MAX_CARDS
-	private void addCardNo(int delta){
+	private void updateCardNo(int delta){
 		cardNo += delta;
 		if(cardNo < 0) cardNo = 0;
 		if(cardNo >= MAX_CARDS) cardNo = MAX_CARDS - 1;
-		
+	}
+	
+	// sets alphas to 100 of the EntImages based on cardNo
+	private void updateAlphasOn(int i){
+		switch(i){
+			case 0:
+				c_ent0.addAction(Actions.alpha(1));
+				d_ent0.addAction(Actions.alpha(1));
+				break;
+			case 1:
+				c_ent1.addAction(Actions.alpha(1));
+				d_ent1.addAction(Actions.alpha(1));
+				break;
+			case 2:
+				c_ent2.addAction(Actions.alpha(1));
+				d_ent2.addAction(Actions.alpha(1));
+				break;
+			case 3:
+				c_ent3.addAction(Actions.alpha(1));
+				d_ent3.addAction(Actions.alpha(1));
+				break;
+			default:
+				break;
+		}
+	}
+	
+	// sets alphas to 100 of the EntImages based on cardNo
+	private void updateAlphasOff(int i){
+		switch(i){
+			case 0:
+				c_ent0.addAction(Actions.alpha(0));
+				d_ent0.addAction(Actions.alpha(0));
+				break;
+			case 1:
+				c_ent1.addAction(Actions.alpha(0));
+				d_ent1.addAction(Actions.alpha(0));
+				break;
+			case 2:
+				c_ent2.addAction(Actions.alpha(0));
+				d_ent2.addAction(Actions.alpha(0));
+				break;
+			case 3:
+				c_ent3.addAction(Actions.alpha(0));
+				d_ent3.addAction(Actions.alpha(0));
+				break;
+			default:
+				c_ent0.addAction(Actions.alpha(0));
+				d_ent0.addAction(Actions.alpha(0));
+				c_ent1.addAction(Actions.alpha(0));
+				d_ent1.addAction(Actions.alpha(0));
+				c_ent2.addAction(Actions.alpha(0));
+				d_ent2.addAction(Actions.alpha(0));
+				c_ent3.addAction(Actions.alpha(0));
+				d_ent3.addAction(Actions.alpha(0));
+				break;
+		}
 	}
 	
 	@Override
@@ -222,49 +285,35 @@ public class ChooseClassScreen extends AbstractScreen{
 		//Table.drawDebug(stage);
 	}
 		
-	private void getCImage(){
-		switch(cardNo){
-		case 0:
-			c_ent = new Image(c_archer);
-			break; 
-		case 1:
-			c_ent = new Image(c_mage);
-			break;
-		case 2:
-			c_ent = new Image(c_ninja);
-			break;
-		case 3:
-			c_ent = new Image(c_warrior);
-			break;
-		default:
-			c_ent = new Image(c_warrior);
-			break;
-		}
-		c_ent.setScaling(Scaling.fill);
+	private void getEntImages(){
+		// cards
+		c_ent0 = new Image(c_archer);
+		c_ent1 = new Image(c_mage);
+		c_ent2 = new Image(c_ninja);
+		c_ent3 = new Image(c_warrior);
+		c_ent0.setScaling(Scaling.fill);
+		c_ent1.setScaling(Scaling.fill);
+		c_ent2.setScaling(Scaling.fill);
+		c_ent3.setScaling(Scaling.fill);
+		c_ent0.setPosition(269, 43);
+		c_ent1.setPosition(269, 43);
+		c_ent2.setPosition(269, 43);
+		c_ent3.setPosition(269, 43);
+		
+		// decks
+		d_ent0 = new Image(d_archer);
+		d_ent1 = new Image(d_mage);
+		d_ent2 = new Image(d_ninja);
+		d_ent3 = new Image(d_warrior);
+		d_ent0.setScaling(Scaling.fill);
+		d_ent1.setScaling(Scaling.fill);
+		d_ent2.setScaling(Scaling.fill);
+		d_ent3.setScaling(Scaling.fill);
+		d_ent0.setPosition(118, 165);
+		d_ent1.setPosition(118, 165);
+		d_ent2.setPosition(118, 165);
+		d_ent3.setPosition(118, 165);
 	}
-	
-	private void getDImage(){
-		switch(cardNo){
-		case 0:
-			d_ent = new Image(d_archer);
-			break; 
-		case 1:
-			d_ent = new Image(d_mage);
-			break;
-		case 2:
-			d_ent = new Image(d_ninja);
-			break;
-		case 3:
-			d_ent = new Image(d_warrior);
-			break;
-		default:
-			d_ent = new Image(d_warrior);
-			break;
-		}
-		d_ent.setScaling(Scaling.fill);
-	}
-	
-
 	
 	@Override
 	public void dispose(){
