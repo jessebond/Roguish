@@ -16,8 +16,8 @@ public class LevelController {
 	private Entity hero;
 	public Random Dice = new Random();
 	public boolean gameOver = false;
-	
-	// Index is the index of the current Unit whose turn it is in the level entity array
+	public boolean gameWon = false;
+	// Index is the index in the level entity array of the current Unit whose turn it is 
 	private int index = 0;
 	
 	enum Keys {
@@ -156,12 +156,28 @@ public class LevelController {
 
 	//Iterates over NPCs and performs their turns until it is the Hero's turn
 	public void checkHeroTurn(){
-		if(level.getHero().getHP() == 0) gameOver = true;
+		checkLoseConditions();
+		checkWinConditions();
+		
 		System.out.println(level.queue.turnCount);
 		while (!(level.queue.getEnt() instanceof HeroUnit)){
 			doMonsterTurns();
 			index = findId(level.queue.getNext());
 		}
+	}
+	
+	public void checkLoseConditions(){
+		if(level.getHero().getHP() == 0) gameOver = true;
+	}
+	
+	public void checkWinConditions(){
+		for (Entity ent : level.getEntities()) {
+			if(ent.getId() == 1337 && heroOn(ent.getX(), ent.getY())) gameWon = true; 
+		}
+	}
+	
+	public boolean heroOn(int x, int y){
+		return(hero.getX() == x && hero.getY() == y );
 	}
 	
 	// Returns true if the hero is adjacent to the inputted x,y coordinates

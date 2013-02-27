@@ -18,13 +18,13 @@ public class Level{
     public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
     public MonsterUnit rat2 = new MonsterUnit(2, 1, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
     public MonsterUnit rat3 = new MonsterUnit(2, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
-
+    public Entity winChest = new Entity(4,13,"D_Plus_B", new Array<Integer>());
     
 	public Level(ClassCard cCard){
+		hero =  new HeroUnit(5, 5, cCard.getClassName(), new Array<Integer>(), cCard);
 		create();
 		setStats();
 		populate();
-		hero =  new HeroUnit(5, 5, cCard.getClassName(), new Array<Integer>(), cCard);
 		queue = new TurnQueue(getEntities());
 	}
 	
@@ -41,6 +41,8 @@ public class Level{
 		 rat1.addAbility(AbilityController.BITE);
 		 rat2.addAbility(AbilityController.BITE);
 		 rat3.addAbility(AbilityController.BITE);
+		 winChest.setId(1337);
+		 winChest.setAlive(false);
 		
 	}
 
@@ -72,6 +74,7 @@ public class Level{
 		addEntity(rat1);
 		addEntity(rat2);
 		addEntity(rat3);
+		addEntity(winChest);
 
 	}
 	

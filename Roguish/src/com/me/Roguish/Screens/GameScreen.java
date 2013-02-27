@@ -129,6 +129,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		controller.update(delta);
 		renderer.render();
 		if(controller.gameOver) game.setScreen(new GameOverScreen(game));
+		if(controller.gameWon) game.setScreen(new GameWonScreen(game));
 
 	}
 
