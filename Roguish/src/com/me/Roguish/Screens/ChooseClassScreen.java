@@ -77,7 +77,7 @@ public class ChooseClassScreen extends AbstractScreen{
 		getEntImages();
 		cRing = new Image(cardRing);
 		cRing.setScaling(Scaling.fill);
-		cRing.addAction(Actions.moveTo(90 + cardNo*23, 96));
+		cRing.addAction(Actions.moveTo(88 + cardNo*24, 96));
 		updateAlphasOff(-1);
 		updateAlphasOn(cardNo);
 		
