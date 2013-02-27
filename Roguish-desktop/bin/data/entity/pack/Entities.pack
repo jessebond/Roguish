@@ -5,357 +5,343 @@ filter: Nearest,Nearest
 repeat: none
 C_Archer
   rotate: false
-  xy: 1, 308
+  xy: 1, 306
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
 C_Mage
   rotate: false
-  xy: 1, 103
+  xy: 1, 101
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
 C_Ninja
   rotate: false
-  xy: 166, 308
+  xy: 166, 306
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
 C_Warrior
   rotate: false
-  xy: 166, 103
+  xy: 166, 101
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
 F_Archer
   rotate: false
-  xy: 331, 398
+  xy: 331, 396
   size: 149, 113
   orig: 149, 113
   offset: 0, 0
   index: -1
 F_Mage
   rotate: false
-  xy: 331, 283
+  xy: 331, 281
   size: 149, 113
   orig: 149, 113
   offset: 0, 0
   index: -1
 F_Ninja
   rotate: false
-  xy: 482, 398
+  xy: 482, 396
   size: 149, 113
   orig: 149, 113
   offset: 0, 0
   index: -1
 F_Warrior
   rotate: false
-  xy: 331, 168
+  xy: 331, 166
   size: 149, 113
   orig: 149, 113
   offset: 0, 0
   index: -1
-Enemy
-  rotate: false
-  xy: 1, 69
-  size: 192, 32
-  orig: 192, 32
-  offset: 0, 0
-  index: -1
 Weapon
   rotate: false
-  xy: 482, 332
+  xy: 1, 35
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
-Hero
-  rotate: false
-  xy: 633, 479
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
 D_Archer
   rotate: false
-  xy: 331, 117
+  xy: 482, 345
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Boots
   rotate: false
-  xy: 1, 18
+  xy: 633, 460
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Bow
   rotate: false
-  xy: 482, 281
+  xy: 331, 115
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Glove
   rotate: false
-  xy: 633, 428
+  xy: 131, 50
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Mage
   rotate: false
-  xy: 364, 117
+  xy: 482, 294
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Ninja
   rotate: false
-  xy: 34, 18
+  xy: 515, 345
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Plus_B
   rotate: false
-  xy: 482, 230
+  xy: 633, 409
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Plus_R
   rotate: false
-  xy: 515, 281
+  xy: 666, 460
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_PlusPlus_B
   rotate: false
-  xy: 666, 428
+  xy: 364, 115
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_PlusPlus_R
   rotate: false
-  xy: 397, 117
+  xy: 164, 50
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Staff
   rotate: false
-  xy: 67, 18
+  xy: 482, 243
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Stars
   rotate: false
-  xy: 482, 179
+  xy: 515, 294
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Sword
   rotate: false
-  xy: 515, 230
+  xy: 548, 345
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 D_Warrior
   rotate: false
-  xy: 548, 281
+  xy: 666, 409
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 Archer
   rotate: false
-  xy: 195, 69
+  xy: 1, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 E_Bat
   rotate: false
-  xy: 763, 479
+  xy: 699, 477
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 E_Bear
   rotate: false
-  xy: 699, 445
+  xy: 397, 132
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 E_Golem
   rotate: false
-  xy: 430, 134
+  xy: 197, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 E_Rat
   rotate: false
-  xy: 100, 35
+  xy: 581, 362
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 E_Shadow
   rotate: false
-  xy: 100, 1
+  xy: 35, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 E_Spider
   rotate: false
-  xy: 229, 69
+  xy: 699, 443
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Mage
   rotate: false
-  xy: 797, 479
+  xy: 733, 477
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Ninja
   rotate: false
-  xy: 733, 445
+  xy: 431, 132
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Axe
   rotate: false
-  xy: 134, 35
+  xy: 231, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Axe2
   rotate: false
-  xy: 134, 1
+  xy: 69, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Bow
   rotate: false
-  xy: 263, 69
+  xy: 699, 409
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Bow2
   rotate: false
-  xy: 831, 479
+  xy: 733, 443
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Crossbow
   rotate: false
-  xy: 767, 445
+  xy: 767, 477
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Crossbow2
   rotate: false
-  xy: 168, 35
+  xy: 265, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Dagger
   rotate: false
-  xy: 168, 1
+  xy: 733, 409
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Dagger2
   rotate: false
-  xy: 297, 69
+  xy: 767, 443
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Staff
   rotate: false
-  xy: 331, 83
+  xy: 801, 477
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Staff2
   rotate: false
-  xy: 865, 479
+  xy: 767, 409
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Stars
   rotate: false
-  xy: 801, 445
+  xy: 801, 443
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Stars2
   rotate: false
-  xy: 202, 35
+  xy: 835, 477
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Sword
   rotate: false
-  xy: 202, 1
+  xy: 801, 409
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Sword2
   rotate: false
-  xy: 365, 83
+  xy: 835, 443
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Wand
   rotate: false
-  xy: 899, 479
+  xy: 869, 477
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Wand2
   rotate: false
-  xy: 835, 445
+  xy: 835, 409
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Warrior
   rotate: false
-  xy: 236, 35
+  xy: 869, 443
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

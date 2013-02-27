@@ -24,10 +24,11 @@ public class Roguish extends Game {
 		// Load card libraries
 		libraryManager = new LibraryManager();
 		libraryManager.retrieveClassLibrary();
-		libraryManager.retrieveRaceLibrary();
+		//libraryManager.retrieveRaceLibrary();
+		// Races are disabled for original release
 		
 		// Set current Screen to SplashScreen
-		setScreen(new GameScreen(this));
+		setScreen(new SplashScreen(this));
 		fps = new FPSLogger();
 	}
 
