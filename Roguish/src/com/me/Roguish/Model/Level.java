@@ -6,20 +6,18 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g2d.tiled.SimpleTileAtlas;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledLoader;
-import com.badlogic.gdx.graphics.g2d.tiled.TileAtlas;
 
 public class Level{
-	private static int maxEntity = 16;
 	public Array<Entity> entities = new Array<Entity>();
 	public TurnQueue queue;
 	public AbilityController ability = new AbilityController();
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
-    public HeroUnit hero = new HeroUnit(5, 5, "Warrior");
-    public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", MonsterUnit.RAT);
-    public MonsterUnit rat2 = new MonsterUnit(2, 1, "E_Rat", MonsterUnit.RAT);
-    public MonsterUnit rat3 = new MonsterUnit(2, 2, "E_Rat", MonsterUnit.RAT);
+    public HeroUnit hero = new HeroUnit(5, 5, "Warrior", new Array<Integer>());
+    public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
+    public MonsterUnit rat2 = new MonsterUnit(2, 1, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
+    public MonsterUnit rat3 = new MonsterUnit(2, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
 
     
 	public Level(){
