@@ -72,7 +72,7 @@ public class LevelRenderer {
 	}
 	
 	public void loadTextures(){
-		atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entity.pack"));
+		atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));
 		//heroTexture = atlas.findRegion("Hero");
 
 		hud1 = new Texture(Gdx.files.internal("data/gui/old/Hud_1_256x256.png"));
