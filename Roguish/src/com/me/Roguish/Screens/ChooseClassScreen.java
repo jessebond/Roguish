@@ -1,23 +1,30 @@
 package com.me.Roguish.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Scaling;
 import com.me.Roguish.Roguish;
 
 public class ChooseClassScreen extends AbstractScreen{
 	private static final int MAX_CARDS = 4;
-	private int cardNo = 0;
+	private int cardNo = 2;
 	
 	private TextureAtlas guiAtlas;
 	private TextureAtlas entAtlas;
 	
+	// Gui TextureRegions
 	private TextureRegion leftUp;
 	private TextureRegion leftDown;
 	private TextureRegion rightUp;
@@ -27,11 +34,26 @@ public class ChooseClassScreen extends AbstractScreen{
 	private TextureRegion backUp;
 	private TextureRegion backDown;
 	private TextureRegion bg;
+	private TextureRegion cardRing;
 	
 	private ButtonStyle leftStyle;
 	private ButtonStyle rightStyle;
 	private ButtonStyle nextStyle;
 	private ButtonStyle backStyle;
+	
+	// Entity TextureRegions
+	private TextureRegion c_archer;
+	private TextureRegion c_mage;
+	private TextureRegion c_ninja;
+	private TextureRegion c_warrior;
+	private TextureRegion d_archer;
+	private TextureRegion d_mage;
+	private TextureRegion d_ninja;
+	private TextureRegion d_warrior;
+	
+	private Image c_ent;
+	private Image d_ent;
+	private Image cRing;
 	
 	public ChooseClassScreen(Roguish game){
 		super(game);
@@ -43,20 +65,38 @@ public class ChooseClassScreen extends AbstractScreen{
 		System.out.println("ChooseClassScreen:Show()");
 		Gdx.input.setInputProcessor(stage);
 		
-		loadGui();    // load atlas and button textures
+		loadGui();    // load guiAtlas and button textures
+		loadEnt();    // load entAtlas and ent textures
 		loadStyles(); // load button styles
-			
-		System.out.println("ChooseClassScreen:Show():New Buttons");
+		
+		// get images based on the correct CardNo
+		getCImage();
+		getDImage();
+		cRing = new Image(cardRing);
+		cRing.setScaling(Scaling.fill);
+		cRing.addAction(Actions.moveTo(90 + cardNo*23, 96));
+
+		
+		c_ent.setPosition(269, 43);
+		d_ent.setPosition(118, 165);
+		cRing.setPosition(88 + cardNo*24, 96);
+		System.out.println("FFF");
 		Button leftButton = new Button(leftStyle);
 		Button rightButton = new Button(rightStyle);
 		Button nextButton = new Button(nextStyle);
 		Button backButton = new Button(backStyle);
 		
-		System.out.println("ChooseClassScreen:Show():Table");
+		
 		Table table = new Table();
 		table.setSize(480, 320);
 		table.setBackground(new TextureRegionDrawable(bg));
+		
 		stage.addActor(table);
+		stage.addActor(c_ent);
+		stage.addActor(d_ent);
+		stage.addActor(cRing);
+		
+		
 		table.columnDefaults(1);
 		table.left().padLeft(52);
 		table.debug();
@@ -75,6 +115,9 @@ public class ChooseClassScreen extends AbstractScreen{
 		leftButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				addCardNo(-1);
+				getCImage();
+				getDImage();
+				cRing.addAction(Actions.moveTo(90 + cardNo*24, 96));
 				System.out.println("Left Button Down, CardNo: " + cardNo);
 				return false;
 			}
@@ -84,6 +127,9 @@ public class ChooseClassScreen extends AbstractScreen{
 		rightButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				addCardNo(1);
+				getCImage();
+				getDImage();
+				cRing.addAction(Actions.moveTo(90 + cardNo*24, 96));
 				System.out.println("Left Button Down, CardNo: " + cardNo);
 				return false;
 			}
@@ -91,8 +137,6 @@ public class ChooseClassScreen extends AbstractScreen{
 		table.add(rightButton).padLeft(50);
 		table.row();
 
-
-		
 		nextButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				System.out.println("Next Button Down, Class cardNo: " + cardNo);
@@ -101,13 +145,11 @@ public class ChooseClassScreen extends AbstractScreen{
 			}
 		});
 		table.add(nextButton).colspan(2).padTop(95);
-		
 	}
 
 	private void loadGui(){
 		System.out.println("ChooseClassScreen:LoadGui()");
 		guiAtlas = new TextureAtlas(Gdx.files.internal("data/gui/pack/Gui.pack"));
-		entAtlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));
 		
 		leftUp = guiAtlas.findRegion("Btn_Left");
 		leftDown = guiAtlas.findRegion("Btn_Left_Click");
@@ -119,6 +161,21 @@ public class ChooseClassScreen extends AbstractScreen{
 		backDown = guiAtlas.findRegion("Btn_Back_Click");
 		
 		bg = guiAtlas.findRegion("ChooseClass");
+		cardRing = guiAtlas.findRegion("CardRing");
+	}
+	
+	private void loadEnt(){
+		System.out.println("ChooseClassScreen:LoadEnt()");
+		entAtlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));
+		
+		c_archer = entAtlas.findRegion("C_Archer");
+		d_archer = entAtlas.findRegion("D_Archer");
+		c_mage = entAtlas.findRegion("C_Mage");
+		d_mage = entAtlas.findRegion("D_Mage");
+		c_ninja = entAtlas.findRegion("C_Ninja");
+		d_ninja = entAtlas.findRegion("D_Ninja");
+		c_warrior = entAtlas.findRegion("C_Warrior");
+		d_warrior = entAtlas.findRegion("D_Warrior");
 	}
 	
 	private void loadStyles(){
@@ -142,13 +199,16 @@ public class ChooseClassScreen extends AbstractScreen{
 		backStyle = new ButtonStyle();
 		backStyle.up = new TextureRegionDrawable(backUp);
 		backStyle.down = new TextureRegionDrawable(backDown);
+		System.out.println("ChooseClassScreen:LoadStyle():done");
 	}
+	
 	
 	// adds the delta to the cardNo while keeping it in bounds - 0 < cardNo < MAX_CARDS
 	private void addCardNo(int delta){
 		cardNo += delta;
 		if(cardNo < 0) cardNo = 0;
 		if(cardNo >= MAX_CARDS) cardNo = MAX_CARDS - 1;
+		
 	}
 	
 	@Override
@@ -159,8 +219,52 @@ public class ChooseClassScreen extends AbstractScreen{
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
 
-		Table.drawDebug(stage);
+		//Table.drawDebug(stage);
 	}
+		
+	private void getCImage(){
+		switch(cardNo){
+		case 0:
+			c_ent = new Image(c_archer);
+			break; 
+		case 1:
+			c_ent = new Image(c_mage);
+			break;
+		case 2:
+			c_ent = new Image(c_ninja);
+			break;
+		case 3:
+			c_ent = new Image(c_warrior);
+			break;
+		default:
+			c_ent = new Image(c_warrior);
+			break;
+		}
+		c_ent.setScaling(Scaling.fill);
+	}
+	
+	private void getDImage(){
+		switch(cardNo){
+		case 0:
+			d_ent = new Image(d_archer);
+			break; 
+		case 1:
+			d_ent = new Image(d_mage);
+			break;
+		case 2:
+			d_ent = new Image(d_ninja);
+			break;
+		case 3:
+			d_ent = new Image(d_warrior);
+			break;
+		default:
+			d_ent = new Image(d_warrior);
+			break;
+		}
+		d_ent.setScaling(Scaling.fill);
+	}
+	
+
 	
 	@Override
 	public void dispose(){
