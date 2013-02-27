@@ -48,4 +48,31 @@ public class ClassCard extends Card {
 			break;
 		}
 	}
+	
+	public String getImageClass(int cardNo){
+		switch(cardNo){
+		case 0:
+			return "Archer";
+		case 1:
+			return "Mage";
+		case 2:
+			return "Ninja";
+		case 3:
+			return "Warrior";	
+		default:
+			return "Warrior";
+		}
+	}
+	
+	public String getImageFace(int cardNo){
+		return "F_" + getImageClass(cardNo);
+	}
+	
+	public String getImageDeck(int cardNo){
+		return "D_" + getImageClass(cardNo);
+	}
+
+	public String getImageCard(int cardNo){
+		return "C_" + getImageClass(cardNo);
+	}
 }

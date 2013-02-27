@@ -3,56 +3,56 @@ Entities.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Card_Archer
+C_Archer
   rotate: false
   xy: 1, 308
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-Card_Mage
+C_Mage
   rotate: false
   xy: 1, 103
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-Card_Ninja
+C_Ninja
   rotate: false
   xy: 166, 308
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-Card_Warrior
+C_Warrior
   rotate: false
   xy: 166, 103
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-Archer_Face
+F_Archer
   rotate: false
   xy: 331, 398
   size: 149, 113
   orig: 149, 113
   offset: 0, 0
   index: -1
-Mage_Face
+F_Mage
   rotate: false
   xy: 331, 283
   size: 149, 113
   orig: 149, 113
   offset: 0, 0
   index: -1
-Ninja_Face
+F_Ninja
   rotate: false
   xy: 482, 398
   size: 149, 113
   orig: 149, 113
   offset: 0, 0
   index: -1
-Warrior_Face
+F_Warrior
   rotate: false
   xy: 331, 168
   size: 149, 113
@@ -358,17 +358,5 @@ Warrior
   xy: 236, 35
   size: 32, 32
   orig: 32, 32
-  offset: 0, 0
-  index: -1
-
-Entities2.png
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
-pack/entity
-  rotate: false
-  xy: 1, 1
-  size: 128, 64
-  orig: 128, 64
   offset: 0, 0
   index: -1
