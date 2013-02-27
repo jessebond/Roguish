@@ -27,7 +27,7 @@ public class Roguish extends Game {
 		libraryManager.retrieveRaceLibrary();
 		
 		// Set current Screen to SplashScreen
-		setScreen(new SplashScreen(this));
+		setScreen(new GameScreen(this));
 		fps = new FPSLogger();
 	}
 

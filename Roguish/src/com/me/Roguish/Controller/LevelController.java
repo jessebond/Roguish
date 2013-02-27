@@ -14,6 +14,10 @@ import com.me.Roguish.Model.TurnQueue;
 public class LevelController {
 	private Level level;
 	private Entity hero;
+	public Random Dice = new Random();
+	
+	// Index is the index of the current Unit whose turn it is in the level entity array
+	private int index = 0;
 	
 	enum Keys {
 		LEFT, RIGHT, UP, DOWN
@@ -116,6 +120,7 @@ public class LevelController {
 		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
 	
+	//Returns true if the tile at the x, y is open
 	public boolean tileOpen(int x, int y){
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
@@ -125,33 +130,26 @@ public class LevelController {
 	}
 	
 	public void doMonsterTurns(){
-		Random Dice = new Random();
+		
 		if (level.queue.getEnt() instanceof MonsterUnit){
 			int index = findId(level.queue.getNext());
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getX())){
-				int n = Dice.nextInt(level.entities.get(index).getAbilities().size);
+				int n = Dice.nextInt(level.entities.get(index).getAbilities().size - 1);
 				level.ability.activate(level.entities.get(index), level.getHero(), n);
 			}
 			else{
-				System.out.println("THere");
-				level.entities.get(index).movePosition(Dice.nextInt(2), Dice.nextInt(2));
+				switch( ((MonsterUnit)level.entities.get(index)).getType()){
+					case MonsterUnit.RAT: doRatMovement();
+				
+				}
 				if(level.entities.get(index).getAlive()) level.queue.add(level.entities.get(index));
 			}
 		}
 			
-			/*if(adjacentHero(level.queue..getX(), temp.getY())){
-				int n = Dice.nextInt(temp.getAbilities().size);
-				level.ability.activate(temp, hero, n);
-				if(temp.getAlive()) level.queue.add(temp);
-			}
-			else{
-				temp.movePosition(Dice.nextInt(1), Dice.nextInt(1));
-				if(temp.getAlive()) level.queue.add(temp);
-			}
-			*/
+			
 	}
 	
-	
+	//Iterates over NPCs and performs their turns until it is the Hero's turn
 	public void checkHeroTurn(){
 		System.out.println(level.queue.turnCount);
 		while (!(level.queue.getEnt() instanceof HeroUnit)){
@@ -160,6 +158,7 @@ public class LevelController {
 		}
 	}
 	
+	// Returns true if the hero is adjacent to the inputted x,y coordinates
 	public boolean adjacentHero(int x, int y){
 		if ( (hero.getX() == x + 1 || hero.getX() == x -1)  && (hero.getY() == y))
 			return true;
@@ -173,6 +172,49 @@ public class LevelController {
 			if(x == level.entities.get(i).getId()) return i;
 		}
 		return -1;	
+	}
+	
+	//Returns an integer array of current open tiles adjacent to the inputted x,y
+	//  index   tile         open value = 1  taken value = 0
+	//    0      up
+	//    1      down
+	//    2      left 
+	//    3      right
+	public int[] findOpen(int x, int y){
+		int count[] = new int[4];
+		for(int i = 0; i < count.length; i++)
+			count[i] = 0;
+		if (tileOpen(x+1, y)) count[3] = 1;
+		if (tileOpen(x-1, y)) count[2] = 1;
+		if (tileOpen(x, y-1)) count[1] = 1;
+		if (tileOpen(x, y+1)) count[0] = 1;
+		return count;
+	}
+	
+	public void doRatMovement(){
+		System.out.println("THere");
+		int[] tiles = findOpen(level.entities.get(index).getX(), level.entities.get(index).getY());
+		int[] x = new int[4];
+		int[] y = new int[4];
+		x[0] = 0;
+		x[1] = 0;
+		x[2] = -1;
+		x[3] = 1;
+		y[0] = 1;
+		y[1] = -1;
+		y[2] = 0;
+		y[3] = 0;
+		int count = 0;
+		boolean done = false;
+		do{
+			int rand = Dice.nextInt(4);
+			if(tiles[rand] == 1){
+				level.entities.get(index).movePosition(x[rand], y[rand]);
+				done = true;
+			}
+			count++;
+			if(count > 5) done = true;
+		}while(!done);
 	}
 	
 }
