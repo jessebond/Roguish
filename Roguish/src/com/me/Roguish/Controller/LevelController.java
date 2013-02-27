@@ -16,6 +16,7 @@ public class LevelController {
 	private Level level;
 	private Entity hero;
 	public Random Dice = new Random();
+	public boolean gameOver = false;
 	
 	// Index is the index of the current Unit whose turn it is in the level entity array
 	private int index = 0;
@@ -156,6 +157,7 @@ public class LevelController {
 
 	//Iterates over NPCs and performs their turns until it is the Hero's turn
 	public void checkHeroTurn(){
+		if(level.getHero().getHP() == 0) gameOver = true;
 		System.out.println(level.queue.turnCount);
 		while (!(level.queue.getEnt() instanceof HeroUnit)){
 			doMonsterTurns();
