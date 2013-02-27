@@ -136,6 +136,7 @@ public class LevelRenderer {
 		font.draw(spriteBatch, "Height: " + Gdx.graphics.getHeight(), 10, 60);
 		font.draw(spriteBatch, "HeroX: " + level.getHero().getX(), 10, 80);
 		font.draw(spriteBatch, "HeroY: " + level.getHero().getY(), 10, 100);
+		font.draw(spriteBatch, "HeroHP: " + level.getHero().getHP(), 10, 120);
 		
 		//font.draw(spriteBatch, "TEST - + ? TEST", 20, 40);
 	}
