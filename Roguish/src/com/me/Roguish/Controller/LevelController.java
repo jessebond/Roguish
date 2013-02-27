@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.me.Roguish.Model.AbilityController;
 import com.me.Roguish.Model.Entity;
 import com.me.Roguish.Model.HeroUnit;
 import com.me.Roguish.Model.MonsterUnit;

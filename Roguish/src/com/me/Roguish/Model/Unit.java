@@ -5,8 +5,8 @@ import com.badlogic.gdx.utils.Array;
 public abstract class Unit extends Entity{
 	
 	
-	public Unit(int x, int y, String texture) {
-		super(x, y, texture);
+	public Unit(int x, int y, String texture, Array<Integer> a) {
+		super(x, y, texture, a);
 		this.setMovement(this.getDex());
 	}
 

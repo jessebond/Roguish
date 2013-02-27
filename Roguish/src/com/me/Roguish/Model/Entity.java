@@ -12,10 +12,11 @@ public class Entity implements Comparable<Entity> {
 	private String texture;
 	private Array<Integer> abilities = new Array<Integer>();
 
-	public Entity(int x, int y, String texture){
+	public Entity(int x, int y, String texture, Array<Integer> a){
 		this.x = x;
 		this.y = y;
 		this.texture = texture;
+		this.abilities = a;
 	}
 	
 	public void addAbility(int x){

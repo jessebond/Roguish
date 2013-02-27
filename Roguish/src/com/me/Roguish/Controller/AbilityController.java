@@ -1,11 +1,13 @@
-package com.me.Roguish.Model;
+package com.me.Roguish.Controller;
+
+import com.me.Roguish.Model.Entity;
+import com.me.Roguish.Model.Unit;
 
 public class AbilityController {
 	public static final int LONGSWORD = 0;
 	public static final int SHIELD = 1;
 	public static final int FIREBALL = 2;
 	public static final int BITE = 3;
-	private Entity[] actors = new Entity[2];
 	
 	public AbilityController(){
 	}

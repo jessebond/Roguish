@@ -1,5 +1,5 @@
 package com.me.Roguish.Model;
-import com.me.Roguish.Model.Entity;
+import com.me.Roguish.Controller.AbilityController;
 import com.me.Roguish.Model.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
