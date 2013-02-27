@@ -5,6 +5,7 @@ public class AbilityController {
 	public static final int SHIELD = 1;
 	public static final int FIREBALL = 2;
 	public static final int BITE = 3;
+	private Entity[] actors = new Entity[2];
 	
 	public AbilityController(){
 	}
@@ -12,19 +13,17 @@ public class AbilityController {
 	public void activate(Entity origin, Entity target, int ability ){
 		switch(ability){
 			case (LONGSWORD):{
-				
 			}
 			case (SHIELD):{
-				
 			}
 			case(FIREBALL):{
-				
 			}
 			case(BITE):{
-				System.out.println("You've been bitten!");
+				if(target instanceof Unit){
+					((Unit)target).changeHP(-1);
+				}
 			}
 		}
-		
 	}
 
 	

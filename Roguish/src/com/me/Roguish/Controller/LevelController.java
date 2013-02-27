@@ -151,6 +151,7 @@ public class LevelController {
 	
 	private void doRatAttack() {
 		level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.BITE);	
+		System.out.println(level.getHero().getHP());
 	}
 
 	//Iterates over NPCs and performs their turns until it is the Hero's turn
@@ -196,7 +197,6 @@ public class LevelController {
 	}
 	
 	public void doRatMovement(){
-		System.out.println("THere");
 		int[] tiles = findOpen(level.entities.get(index).getX(), level.entities.get(index).getY());
 		int[] x = new int[4];
 		int[] y = new int[4];
@@ -213,7 +213,6 @@ public class LevelController {
 		do{
 			int rand = Dice.nextInt(4);
 			if(tiles[rand] == 1){
-				System.out.println("Here");
 				level.entities.get(index).movePosition(x[rand], y[rand]);
 				done = true;
 			}

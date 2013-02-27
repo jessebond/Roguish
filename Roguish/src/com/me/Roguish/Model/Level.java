@@ -32,6 +32,7 @@ public class Level{
 	private void setStats() {
 		 hero.setMovement(0);
 		 hero.setId(0);
+		 hero.setHP(200);
 		 rat1.setMovement(1);
 		 rat1.setId(1);
 		 rat2.setMovement(2);
@@ -62,7 +63,7 @@ public class Level{
 		return entities.removeValue(ent, true);
 	}
 	
-	public Entity getHero(){
+	public HeroUnit getHero(){
 		return hero;
 	}
 		// Populates entity list

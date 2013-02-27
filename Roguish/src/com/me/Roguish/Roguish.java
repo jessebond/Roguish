@@ -28,7 +28,7 @@ public class Roguish extends Game {
 		// Races are disabled for original release
 		
 		// Set current Screen to SplashScreen
-		setScreen(new ChooseClassScreen(this));
+		setScreen(new GameScreen(this));
 		fps = new FPSLogger();
 	}
 
