@@ -26,10 +26,6 @@ public class Entity implements Comparable<Entity> {
 		this.id = x;
 	}
 	
-	public int getId(){
-		return this.id;
-	}
-	
 	public int getX(){
 		return this.x;
 	}
@@ -74,5 +70,11 @@ public class Entity implements Comparable<Entity> {
 	
 	public int compareTo(Entity ent) {
 		return this.movement - ent.movement;
+	}
+
+
+	public int getId() {
+		// TODO Auto-generated method stub
+		return this.id;
 	}
 }

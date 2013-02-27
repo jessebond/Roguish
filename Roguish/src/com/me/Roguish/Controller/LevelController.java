@@ -130,22 +130,19 @@ public class LevelController {
 	}
 	
 	public void doMonsterTurns(){
-		
-		if (level.queue.getEnt() instanceof MonsterUnit){
-			int index = findId(level.queue.getNext());
+		if (level.entities.get(index) instanceof MonsterUnit){
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getX())){
-				int n = Dice.nextInt(level.entities.get(index).getAbilities().size - 1);
+				int n = Dice.nextInt(level.entities.get(index).getAbilities().size);
 				level.ability.activate(level.entities.get(index), level.getHero(), n);
 			}
 			else{
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
 					case MonsterUnit.RAT: doRatMovement();
-				
-				}
-				if(level.entities.get(index).getAlive()) level.queue.add(level.entities.get(index));
+				}	
 			}
+			if(level.entities.get(index).getAlive()) level.queue.add(level.entities.get(index));
 		}
-			
+		
 			
 	}
 	
@@ -153,8 +150,8 @@ public class LevelController {
 	public void checkHeroTurn(){
 		System.out.println(level.queue.turnCount);
 		while (!(level.queue.getEnt() instanceof HeroUnit)){
-			System.out.println("Here");
 			doMonsterTurns();
+			index = findId(level.queue.getNext());
 		}
 	}
 	
@@ -209,6 +206,7 @@ public class LevelController {
 		do{
 			int rand = Dice.nextInt(4);
 			if(tiles[rand] == 1){
+				System.out.println("Here");
 				level.entities.get(index).movePosition(x[rand], y[rand]);
 				done = true;
 			}
