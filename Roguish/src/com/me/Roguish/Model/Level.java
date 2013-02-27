@@ -14,16 +14,17 @@ public class Level{
 	
     public TiledMap map;
     public SimpleTileAtlas atlas;
-    public HeroUnit hero = new HeroUnit(5, 5, "Warrior", new Array<Integer>());
+    public HeroUnit hero;
     public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
     public MonsterUnit rat2 = new MonsterUnit(2, 1, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
     public MonsterUnit rat3 = new MonsterUnit(2, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
 
     
-	public Level(){
+	public Level(ClassCard cCard){
 		create();
 		setStats();
 		populate();
+		hero =  new HeroUnit(5, 5, cCard.getClassName(), new Array<Integer>(), cCard);
 		queue = new TurnQueue(getEntities());
 	}
 	

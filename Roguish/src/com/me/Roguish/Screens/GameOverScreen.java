@@ -1,4 +1,5 @@
 package com.me.Roguish.Screens;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -9,7 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+
 import com.me.Roguish.Roguish;
+
+
 public class GameOverScreen extends AbstractScreen {
 
 TextureAtlas guiAtlas;

@@ -1,32 +1,33 @@
 package com.me.Roguish.Screens;
 
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.GL10;
+
 import com.me.Roguish.Roguish;
 import com.me.Roguish.Model.Level;
 import com.me.Roguish.View.LevelRenderer;
 import com.me.Roguish.Controller.LevelController;
-
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Application.ApplicationType;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.GL10;
+import com.me.Roguish.Model.ClassCard;
 
 public class GameScreen extends AbstractScreen implements InputProcessor {
 	
 	private Level level;
 	private LevelRenderer renderer;
 	private LevelController controller;
-
+	private ClassCard cCard;
+	
 	private int width, height;
  
-	public GameScreen(Roguish game){
+	public GameScreen(Roguish game, ClassCard cCard){
         super(game);
+        this.cCard = cCard;
     }
 	
 	@Override
 	public void show() {
-		level = new Level();
+		level = new Level(cCard);
 		renderer = new LevelRenderer(level, true);
 		controller = new LevelController(level);
 		Gdx.input.setInputProcessor(this);

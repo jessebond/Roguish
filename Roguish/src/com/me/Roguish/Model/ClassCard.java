@@ -80,6 +80,10 @@ public class ClassCard extends Card {
 		}
 	}
 	
+	public String getClassName(){
+		return getClassName(this.cardNo);
+	}
+	
 	// Used for the TextureRegion name for the respective uses
 	public String getFaceName(int cardNo){
 		return "F_" + getClassName(cardNo);

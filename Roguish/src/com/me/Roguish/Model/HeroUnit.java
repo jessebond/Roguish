@@ -10,9 +10,9 @@ public class HeroUnit extends Unit {
 	private RaceCard rCard;
 	
 	
-	public HeroUnit(int x, int y, String texture, Array<Integer> a){
+	public HeroUnit(int x, int y, String texture, Array<Integer> a, ClassCard cCard){
 		super(x, y, texture, a);
-		cCard = new ClassCard(0);
+		this.cCard = cCard;
 		rCard = new RaceCard(0);
 		setStats();
 	}

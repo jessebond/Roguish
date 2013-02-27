@@ -12,7 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Scaling;
+
 import com.me.Roguish.Roguish;
+import com.me.Roguish.Model.ClassCard;
 
 public class ChooseClassScreen extends AbstractScreen{
 	private static final int MAX_CARDS = 4;
@@ -148,7 +150,7 @@ public class ChooseClassScreen extends AbstractScreen{
 		nextButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				System.out.println("Next Button Down, Class cardNo: " + cardNo);
-				game.setScreen(new GameScreen(game));
+				game.setScreen(new GameScreen(game, new ClassCard(cardNo)));
 				return false;
 			}
 		});
@@ -319,8 +321,7 @@ public class ChooseClassScreen extends AbstractScreen{
 	public void dispose(){
 		guiAtlas.dispose();
 		entAtlas.dispose();
-		stage.dispose();
-		
+		stage.dispose();	
 	}
 	
 	public void resize (int width, int height) {
