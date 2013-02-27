@@ -5,177 +5,170 @@ filter: Nearest,Nearest
 repeat: none
 Choose
   rotate: false
-  xy: 1, 701
+  xy: 1, 703
   size: 480, 320
   orig: 480, 320
   offset: 0, 0
   index: -1
 ChooseClass
   rotate: false
-  xy: 483, 701
+  xy: 1, 381
   size: 480, 320
   orig: 480, 320
   offset: 0, 0
   index: -1
-MenuRing
-  rotate: false
-  xy: 965, 985
-  size: 36, 36
-  orig: 36, 36
-  offset: 0, 0
-  index: -1
-Btn_Left
-  rotate: false
-  xy: 965, 951
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-CardRing
-  rotate: false
-  xy: 999, 952
-  size: 22, 31
-  orig: 22, 31
-  offset: 0, 0
-  index: -1
-Btn_Left_Click
-  rotate: false
-  xy: 965, 917
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Btn_Right
-  rotate: false
-  xy: 965, 883
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Btn_Right_Click
-  rotate: false
-  xy: 965, 849
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
 MainMenu
   rotate: false
-  xy: 1, 379
+  xy: 483, 703
   size: 480, 320
   orig: 480, 320
   offset: 0, 0
   index: -1
 Splash
   rotate: false
-  xy: 483, 379
+  xy: 1, 59
   size: 480, 320
   orig: 480, 320
   offset: 0, 0
   index: -1
 PopUpMenu
   rotate: false
-  xy: 1, 67
+  xy: 483, 391
   size: 467, 310
   orig: 467, 310
   offset: 0, 0
   index: -1
+Hud
+  rotate: false
+  xy: 483, 119
+  size: 200, 270
+  orig: 200, 270
+  offset: 0, 0
+  index: -1
+Hud
+  rotate: false
+  xy: 685, 240
+  size: 199, 149
+  orig: 199, 149
+  offset: 0, 0
+  index: 1
+Hud
+  rotate: false
+  xy: 685, 89
+  size: 199, 149
+  orig: 199, 149
+  offset: 0, 0
+  index: 2
+Btn_Menu
+  rotate: false
+  xy: 483, 67
+  size: 200, 50
+  orig: 200, 50
+  offset: 0, 0
+  index: -1
 Btn_Exit
   rotate: false
-  xy: 1, 1
+  xy: 483, 1
   size: 192, 64
   orig: 192, 64
   offset: 0, 0
   index: -1
 Btn_Exit_Click
   rotate: false
-  xy: 195, 1
+  xy: 677, 1
   size: 192, 64
   orig: 192, 64
   offset: 0, 0
   index: -1
-Btn_New
+Btn_Menu_Click
   rotate: false
-  xy: 389, 1
-  size: 192, 64
-  orig: 192, 64
+  xy: 1, 7
+  size: 200, 50
+  orig: 200, 50
   offset: 0, 0
   index: -1
 Hud
   rotate: false
-  xy: 583, 228
-  size: 199, 149
-  orig: 199, 149
+  xy: 203, 24
+  size: 199, 33
+  orig: 199, 33
   offset: 0, 0
-  index: 1
+  index: 4
 Btn_Add
   rotate: false
-  xy: 470, 313
+  xy: 886, 325
   size: 96, 64
   orig: 96, 64
   offset: 0, 0
   index: -1
 Btn_Add_Click
   rotate: false
-  xy: 470, 247
+  xy: 886, 259
   size: 96, 64
   orig: 96, 64
   offset: 0, 0
   index: -1
-Btn_Remove
-  rotate: false
-  xy: 470, 181
-  size: 96, 64
-  orig: 96, 64
-  offset: 0, 0
-  index: -1
-Hud
-  rotate: false
-  xy: 568, 77
-  size: 199, 149
-  orig: 199, 149
-  offset: 0, 0
-  index: 2
-Btn_Remove_Click
-  rotate: false
-  xy: 470, 115
-  size: 96, 64
-  orig: 96, 64
-  offset: 0, 0
-  index: -1
-Btn_New_Click
-  rotate: false
-  xy: 583, 11
-  size: 192, 64
-  orig: 192, 64
-  offset: 0, 0
-  index: -1
-Hud
-  rotate: false
-  xy: 769, 77
-  size: 199, 149
-  orig: 199, 149
-  offset: 0, 0
-  index: 3
 Btn_Back
   rotate: false
-  xy: 777, 11
+  xy: 886, 193
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
 Btn_Back_Click
   rotate: false
-  xy: 784, 313
+  xy: 886, 127
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
 Btn_Next
   rotate: false
-  xy: 784, 247
+  xy: 886, 61
   size: 128, 64
   orig: 128, 64
+  offset: 0, 0
+  index: -1
+MenuRing
+  rotate: false
+  xy: 965, 987
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+Btn_Left
+  rotate: false
+  xy: 404, 25
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Btn_Left_Click
+  rotate: false
+  xy: 965, 953
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Btn_Right
+  rotate: false
+  xy: 438, 25
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Btn_Right_Click
+  rotate: false
+  xy: 965, 919
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+CardRing
+  rotate: false
+  xy: 965, 886
+  size: 22, 31
+  orig: 22, 31
   offset: 0, 0
   index: -1
 
@@ -186,29 +179,57 @@ repeat: none
 Hud
   rotate: false
   xy: 1, 67
-  size: 199, 33
-  orig: 199, 33
+  size: 199, 149
+  orig: 199, 149
   offset: 0, 0
-  index: 4
-Btn_Next_Click
+  index: 3
+Btn_New
   rotate: false
   xy: 1, 1
+  size: 192, 64
+  orig: 192, 64
+  offset: 0, 0
+  index: -1
+Btn_New_Click
+  rotate: false
+  xy: 202, 152
+  size: 192, 64
+  orig: 192, 64
+  offset: 0, 0
+  index: -1
+Btn_Next_Click
+  rotate: false
+  xy: 202, 86
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
+Btn_Remove
+  rotate: false
+  xy: 396, 152
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: -1
 Btn_Start
   rotate: false
-  xy: 202, 36
+  xy: 332, 86
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
 Btn_Start_Click
   rotate: false
-  xy: 332, 36
+  xy: 202, 20
   size: 128, 64
   orig: 128, 64
+  offset: 0, 0
+  index: -1
+Btn_Remove_Click
+  rotate: false
+  xy: 332, 20
+  size: 96, 64
+  orig: 96, 64
   offset: 0, 0
   index: -1
 

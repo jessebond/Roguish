@@ -1,0 +1,374 @@
+
+Entities.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Card_Archer
+  rotate: false
+  xy: 1, 308
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+Card_Mage
+  rotate: false
+  xy: 1, 103
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+Card_Ninja
+  rotate: false
+  xy: 166, 308
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+Card_Warrior
+  rotate: false
+  xy: 166, 103
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+Archer_Face
+  rotate: false
+  xy: 331, 398
+  size: 149, 113
+  orig: 149, 113
+  offset: 0, 0
+  index: -1
+Mage_Face
+  rotate: false
+  xy: 331, 283
+  size: 149, 113
+  orig: 149, 113
+  offset: 0, 0
+  index: -1
+Ninja_Face
+  rotate: false
+  xy: 482, 398
+  size: 149, 113
+  orig: 149, 113
+  offset: 0, 0
+  index: -1
+Warrior_Face
+  rotate: false
+  xy: 331, 168
+  size: 149, 113
+  orig: 149, 113
+  offset: 0, 0
+  index: -1
+Enemy
+  rotate: false
+  xy: 1, 69
+  size: 192, 32
+  orig: 192, 32
+  offset: 0, 0
+  index: -1
+Weapon
+  rotate: false
+  xy: 482, 332
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+Hero
+  rotate: false
+  xy: 633, 479
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+D_Archer
+  rotate: false
+  xy: 331, 117
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Boots
+  rotate: false
+  xy: 1, 18
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Bow
+  rotate: false
+  xy: 482, 281
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Glove
+  rotate: false
+  xy: 633, 428
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Mage
+  rotate: false
+  xy: 364, 117
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Ninja
+  rotate: false
+  xy: 34, 18
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Plus_B
+  rotate: false
+  xy: 482, 230
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Plus_R
+  rotate: false
+  xy: 515, 281
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_PlusPlus_B
+  rotate: false
+  xy: 666, 428
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_PlusPlus_R
+  rotate: false
+  xy: 397, 117
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Staff
+  rotate: false
+  xy: 67, 18
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Stars
+  rotate: false
+  xy: 482, 179
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Sword
+  rotate: false
+  xy: 515, 230
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Warrior
+  rotate: false
+  xy: 548, 281
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+Archer
+  rotate: false
+  xy: 195, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+E_Bat
+  rotate: false
+  xy: 763, 479
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+E_Bear
+  rotate: false
+  xy: 699, 445
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+E_Golem
+  rotate: false
+  xy: 430, 134
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+E_Rat
+  rotate: false
+  xy: 100, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+E_Shadow
+  rotate: false
+  xy: 100, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+E_Spider
+  rotate: false
+  xy: 229, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Mage
+  rotate: false
+  xy: 797, 479
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Ninja
+  rotate: false
+  xy: 733, 445
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Axe
+  rotate: false
+  xy: 134, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Axe2
+  rotate: false
+  xy: 134, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Bow
+  rotate: false
+  xy: 263, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Bow2
+  rotate: false
+  xy: 831, 479
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Crossbow
+  rotate: false
+  xy: 767, 445
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Crossbow2
+  rotate: false
+  xy: 168, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Dagger
+  rotate: false
+  xy: 168, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Dagger2
+  rotate: false
+  xy: 297, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Staff
+  rotate: false
+  xy: 331, 83
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Staff2
+  rotate: false
+  xy: 865, 479
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Stars
+  rotate: false
+  xy: 801, 445
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Stars2
+  rotate: false
+  xy: 202, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Sword
+  rotate: false
+  xy: 202, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Sword2
+  rotate: false
+  xy: 365, 83
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Wand
+  rotate: false
+  xy: 899, 479
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Wand2
+  rotate: false
+  xy: 835, 445
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Warrior
+  rotate: false
+  xy: 236, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+
+Entities2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+pack/entity
+  rotate: false
+  xy: 1, 1
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
