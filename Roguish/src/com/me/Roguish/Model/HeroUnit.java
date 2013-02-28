@@ -23,6 +23,7 @@ public class HeroUnit extends Unit {
 		baseInt = cCard.getIntMod() + rCard.getIntMod();
 		baseHP = 2 * baseDex;
 		baseMana = 2 * baseInt;
+		this.setAlive(true);
 		
 		
 	}

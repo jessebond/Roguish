@@ -126,19 +126,9 @@ public class LevelController {
 		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
 	
-	//Returns true if the tile at the x, y is open
-	public boolean tileOpen(int x, int y){
-		if(x < 0 || y < 0) return false;
-		for (Entity ent : level.getEntities()) {
-			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
-		}
-		if(level.tilePropCheck(x,y,"wall")) return false;
-		else return true;
-	}
-	
 	public void doMonsterTurns(){
 		if (level.entities.get(index) instanceof MonsterUnit){
-			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getX())){
+			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY())){
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
 					case MonsterUnit.RAT: doRatAttack();
 					case MonsterUnit.BAT: doBatAttack();
@@ -152,16 +142,8 @@ public class LevelController {
 				}	
 			}
 			if(level.entities.get(index).getAlive()) level.queue.add(level.entities.get(index));
-		}
-		
-			
+		}		
 	}
-	
-	public void doRatAttack() {
-		level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.BITE);	
-		System.out.println(level.getHero().getHP());
-	}
-
 	//Iterates over NPCs and performs their turns until it is the Hero's turn
 	public void checkHeroTurn(){
 		checkLoseConditions();
@@ -171,16 +153,6 @@ public class LevelController {
 		while (!(level.queue.getEnt() instanceof HeroUnit)){
 			doMonsterTurns();
 			index = findId(level.queue.getNext());
-		}
-	}
-	
-	public void checkLoseConditions(){
-		if(level.getHero().getHP() <= 0) gameOver = true;
-	}
-	
-	public void checkWinConditions(){
-		for (Entity ent : level.getEntities()) {
-			if(ent.getId() == 1337 && heroOn(ent.getX(), ent.getY())) gameWon = true; 
 		}
 	}
 	
@@ -196,6 +168,17 @@ public class LevelController {
 			return true;
 		else return false;
 	}
+	
+	public void checkLoseConditions(){
+		if(level.getHero().getHP() <= 0) gameOver = true;
+	}
+	
+	public void checkWinConditions(){
+		for (Entity ent : level.getEntities()) {
+			if(ent.getId() == 1337 && heroOn(ent.getX(), ent.getY())) gameWon = true; 
+		}
+	}
+	
 	
 	public int findId(int x){
 		for(int i = 0; i < level.entities.size; i++ ){
@@ -216,34 +199,31 @@ public class LevelController {
 			count[i] = 0;
 		if (tileOpen(x+1, y)) count[3] = 1; // right
 		if (tileOpen(x-1, y)) count[2] = 1; // left
-		if (tileOpen(x, y-1)) count[1] = 1; // up
-		if (tileOpen(x, y+1)) count[0] = 1; // down
+		if (tileOpen(x, y+1)) count[1] = 1; // down
+		if (tileOpen(x, y-1)) count[0] = 1; // up
+		for(int i = 0; i < count.length; i++){
+			System.out.println(count[i]);
+		}
 		return count;
 	}
 	
+	//Returns true if the tile at the x, y is open
+	public boolean tileOpen(int x, int y){
+		if(x < 0 || y < 0) return false;
+		for (Entity ent : level.getEntities()) {
+			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
+		}
+		if(level.tilePropCheck(x,y,"wall")) return false;
+		else return true;
+	}
+	
 	public void doRatMovement(){
-		int[] tiles = findOpen(level.entities.get(index).getX(), level.entities.get(index).getY());
-		int[] x = new int[4];
-		int[] y = new int[4];
-		x[0] = 0;
-		x[1] = 0;
-		x[2] = -1;
-		x[3] = 1;
-		y[0] = 1;
-		y[1] = -1;
-		y[2] = 0;
-		y[3] = 0;
-		int count = 0;
-		boolean done = false;
-		do{
-			int rand = Dice.nextInt(4);
-			if(tiles[rand] == 1){
-				level.entities.get(index).movePosition(x[rand], y[rand]);
-				done = true;
-			}
-			count++;
-			if(count > 5) done = true;
-		}while(!done);
+		moveRandom(level.entities.get(index));
+	}
+	
+	public void doRatAttack() {
+		level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.BITE);	
+		System.out.println(level.getHero().getHP());
 	}
 	
 	public void doBatMovement(){
@@ -268,12 +248,12 @@ public class LevelController {
 			// Mover is to the left of the hero in the same y.
 		}
 		else if (deltaY > 0 && deltaX == 0){
-			if(tileOpen(mover.getX(), mover.getY() + 1))
-				mover.movePosition(0, 1);
+			if(tileOpen(mover.getX(), mover.getY() - 1))
+				mover.movePosition(0, -1);
 			// Mover is below the hero.
 		}
 		else if (deltaY < 0 && deltaX == 0){
-			if(tileOpen(mover.getX(), mover.getY() - 1))
+			if(tileOpen(mover.getX(), mover.getY() + 1))
 				mover.movePosition(0, 1);
 			// Mover is above the hero.
 		}
@@ -305,6 +285,43 @@ public class LevelController {
 				mover.movePosition(-1, 0);
 			//mover is Right and Above
 		}
+		
+	}
+	
+	public void moveRandom(Entity mover){
+		boolean moved = false;
+		int count = 0;
+		do{
+			switch(Dice.nextInt(4)){
+				case 0:{
+					if(tileOpen(mover.getX(), mover.getY() - 1)){
+						mover.movePosition(0, -1);
+						moved = true;
+					}
+				}
+				case 1:{
+					if(tileOpen(mover.getX(), mover.getY() + 1)){
+						mover.movePosition(0, 1);
+						moved = true;
+					}
+				}
+				case 2:{
+					if(tileOpen(mover.getX() - 1, mover.getY())){
+						mover.movePosition(-1, 0);
+						moved = true;
+					}
+				}
+				case 3:{
+					if(tileOpen(mover.getX() + 1, mover.getY())){
+						mover.movePosition(1, 0);
+						moved = true;
+					}
+					
+				}
+			}
+			count++;
+			
+		}while(!moved && count < 20);
 		
 	}
 	
