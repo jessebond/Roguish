@@ -18,7 +18,7 @@ import com.me.Roguish.Roguish;
 import com.me.Roguish.Model.ClassCard;
 
 public class ChooseAbilitiesScreen extends AbstractScreen{
-	private static final int MAX_CARDS = 4;
+	private static final int MAX_CARDS = 20;
 	private int cardNo = 0;
 	private ClassCard cCard;
 	
@@ -129,7 +129,7 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		nextButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				System.out.println("Next Button Down, Class cardNo: " + cardNo);
-				game.setScreen(new GameScreen(game, new ClassCard(cardNo)));
+				game.setScreen(new GameScreen(game, cCard));
 				return false;
 			}
 		});
@@ -328,7 +328,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	}
 	
 	private Action ringAction( ){
-		return Actions.moveTo(214 + (cardNo % 10)*24, 99);
+		if (cardNo < 10) 
+			return Actions.moveTo(214 + (cardNo % 10)*24, 99);
+		else
+			return Actions.moveTo(214 + (cardNo % 10)*24, 99 - 33);
 	}
 	
 	@Override
