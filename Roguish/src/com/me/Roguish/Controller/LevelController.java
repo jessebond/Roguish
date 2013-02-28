@@ -135,12 +135,14 @@ public class LevelController {
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getX())){
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
 					case MonsterUnit.RAT: doRatAttack();
+					case MonsterUnit.BAT: doBatAttack();
 				}
 				
 			}
 			else{
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
 					case MonsterUnit.RAT: doRatMovement();
+					case MonsterUnit.BAT: doBatMovement();
 				}	
 			}
 			if(level.entities.get(index).getAlive()) level.queue.add(level.entities.get(index));
@@ -236,6 +238,20 @@ public class LevelController {
 			count++;
 			if(count > 5) done = true;
 		}while(!done);
+	}
+	
+	public void doBatMovement(){
+		
+	}
+	
+	public void doBatAttack(){
+		
+	}
+	
+	public void moveEntityTowardHero(Entity mover){
+		int deltaX = mover.getX() - level.getHero().getX();
+		int deltaY = mover.getY() - level.getHero().getY();
+		
 	}
 	
 }

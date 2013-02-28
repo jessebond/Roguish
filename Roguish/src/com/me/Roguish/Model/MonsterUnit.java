@@ -5,6 +5,11 @@ import com.badlogic.gdx.utils.Array;
 
 public class MonsterUnit extends Unit {
 	public static final int RAT = 0;
+	public static final int BAT = 1;
+	public static final int SPIDER = 2;
+	public static final int BEAR = 3;
+	public static final int SHADOW = 4;
+	public static final int GOLEM = 5;
 	
 	private boolean finalMonster;	// If dead && finalMonster load next level. (used on bosses only?)
 	private int monsterType;
