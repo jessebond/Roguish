@@ -11,14 +11,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.utils.Scaling;
 
 import com.me.Roguish.Roguish;
 import com.me.Roguish.Model.ClassCard;
 
-public class ChooseClassScreen extends AbstractScreen{
+public class ChooseAbilitiesScreen extends AbstractScreen{
 	private static final int MAX_CARDS = 4;
 	private int cardNo = 0;
+	private ClassCard cCard;
 	
 	private TextureAtlas guiAtlas;
 	private TextureAtlas entAtlas;
@@ -61,8 +63,9 @@ public class ChooseClassScreen extends AbstractScreen{
 	
 	private Image cRing;
 	
-	public ChooseClassScreen(Roguish game){
+	public ChooseAbilitiesScreen(Roguish game, ClassCard cCard){
 		super(game);
+		this.cCard = cCard;
 		System.out.println("Entered ChooseClassScreen");
 	}
 	
@@ -79,23 +82,26 @@ public class ChooseClassScreen extends AbstractScreen{
 		getEntImages();
 		cRing = new Image(cardRing);
 		cRing.setScaling(Scaling.fill);
-		cRing.addAction(Actions.moveTo(88 + cardNo*24, 96));
+		cRing.addAction(ringAction());
 		updateAlphasOff(-1);
 		updateAlphasOn(cardNo);
 		
-		cRing.setPosition(88 + cardNo*24, 96);
-		System.out.println("FFF");
+		
+		//System.out.println("FFF");
 		Button leftButton = new Button(leftStyle);
 		Button rightButton = new Button(rightStyle);
 		Button nextButton = new Button(nextStyle);
 		Button backButton = new Button(backStyle);
 		
 		
-		Table table = new Table();
-		table.setSize(480, 320);
-		table.setBackground(new TextureRegionDrawable(bg));
+		Table table1 = new Table();
+		Table table2 = new Table();
+		table1.setSize(480, 320);
+		table2.setSize(480, 320);
+		table1.setBackground(new TextureRegionDrawable(bg));
 		
-		stage.addActor(table);
+		stage.addActor(table1);
+		stage.addActor(table2);
 		stage.addActor(c_ent0);
 		stage.addActor(d_ent0);
 		stage.addActor(c_ent1);
@@ -106,20 +112,28 @@ public class ChooseClassScreen extends AbstractScreen{
 		stage.addActor(d_ent3);
 		stage.addActor(cRing);
 		
-		
-		table.columnDefaults(1);
-		table.left().padLeft(52);
-		table.debug();
+		table1.left().padLeft(38).padTop(4);
+		table1.debug();
+		table2.right().top().padRight(75).padTop(55);
 
 		backButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				System.out.println("Back Button Down");
-				game.setScreen(new MenuScreen(game));
+				game.setScreen(new ChooseClassScreen(game));
 				return false;
 			}
 		});
-		table.add(backButton).colspan(2).padBottom(25);
-		table.row();
+		table1.add(backButton).padBottom(195);
+		table1.row();
+		
+		nextButton.addListener(new InputListener() {
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Next Button Down, Class cardNo: " + cardNo);
+				game.setScreen(new GameScreen(game, new ClassCard(cardNo)));
+				return false;
+			}
+		});
+		table1.add(nextButton);
 		
 		System.out.println("ChooseClassScreen:Show():Action Listeners");
 		leftButton.addListener(new InputListener() {
@@ -127,34 +141,26 @@ public class ChooseClassScreen extends AbstractScreen{
 				updateAlphasOff(cardNo);
 				updateCardNo(-1);
 				updateAlphasOn(cardNo);
-				cRing.addAction(Actions.moveTo(88 + cardNo*24, 96));
+				cRing.addAction(ringAction());
 				System.out.println("Left Button Down, CardNo: " + cardNo);
 				return false;
 			}
 		});
-		table.add(leftButton).padRight(50);
+		table2.add(leftButton).padRight(85);
 		
 		rightButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				updateAlphasOff(cardNo);
 				updateCardNo(1);
 				updateAlphasOn(cardNo);
-				cRing.addAction(Actions.moveTo(88 + cardNo*24, 96));
+				cRing.addAction(ringAction());
 				System.out.println("Left Button Down, CardNo: " + cardNo);
 				return false;
 			}
 		});
-		table.add(rightButton).padLeft(50);
-		table.row();
+		table2.add(rightButton);
 
-		nextButton.addListener(new InputListener() {
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-				System.out.println("Next Button Down, Class cardNo: " + cardNo);
-				game.setScreen(new ChooseAbilitiesScreen(game, new ClassCard(cardNo)));
-				return false;
-			}
-		});
-		table.add(nextButton).colspan(2).padTop(95);
+		
 	}
 
 	private void loadGui(){
@@ -170,7 +176,7 @@ public class ChooseClassScreen extends AbstractScreen{
 		backUp = guiAtlas.findRegion("Btn_Back");
 		backDown = guiAtlas.findRegion("Btn_Back_Click");
 		
-		bg = guiAtlas.findRegion("ChooseClass");
+		bg = guiAtlas.findRegion("Choose");
 		cardRing = guiAtlas.findRegion("CardRing");
 	}
 	
@@ -288,7 +294,11 @@ public class ChooseClassScreen extends AbstractScreen{
 	}
 		
 	private void getEntImages(){
-		// cards
+		int cx = 20;
+		int cy = 55;
+		int dx = 316;
+		int dy = 225;
+				
 		c_ent0 = new Image(c_archer);
 		c_ent1 = new Image(c_mage);
 		c_ent2 = new Image(c_ninja);
@@ -297,10 +307,10 @@ public class ChooseClassScreen extends AbstractScreen{
 		c_ent1.setScaling(Scaling.fill);
 		c_ent2.setScaling(Scaling.fill);
 		c_ent3.setScaling(Scaling.fill);
-		c_ent0.setPosition(269, 43);
-		c_ent1.setPosition(269, 43);
-		c_ent2.setPosition(269, 43);
-		c_ent3.setPosition(269, 43);
+		c_ent0.setPosition(cx, cy);
+		c_ent1.setPosition(cx, cy);
+		c_ent2.setPosition(cx, cy);
+		c_ent3.setPosition(cx, cy);
 		
 		// decks
 		d_ent0 = new Image(d_archer);
@@ -311,10 +321,14 @@ public class ChooseClassScreen extends AbstractScreen{
 		d_ent1.setScaling(Scaling.fill);
 		d_ent2.setScaling(Scaling.fill);
 		d_ent3.setScaling(Scaling.fill);
-		d_ent0.setPosition(118, 165);
-		d_ent1.setPosition(118, 165);
-		d_ent2.setPosition(118, 165);
-		d_ent3.setPosition(118, 165);
+		d_ent0.setPosition(dx, dy);
+		d_ent1.setPosition(dx, dy);
+		d_ent2.setPosition(dx, dy);
+		d_ent3.setPosition(dx, dy);
+	}
+	
+	private Action ringAction( ){
+		return Actions.moveTo(214 + (cardNo % 10)*24, 99);
 	}
 	
 	@Override
