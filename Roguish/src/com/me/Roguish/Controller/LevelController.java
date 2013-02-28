@@ -17,6 +17,11 @@ public class LevelController {
 	public Random Dice = new Random();
 	public boolean gameOver = false;
 	public boolean gameWon = false;
+	private boolean ability1 = false;
+	private boolean ability2 = false;
+	private boolean ability3 = false;
+	private boolean ability4 = false;
+	private boolean ability5 = false;
 	// Index is the index in the level entity array of the current Unit whose turn it is 
 	private int index = 0;
 	
@@ -123,6 +128,7 @@ public class LevelController {
 	
 	//Returns true if the tile at the x, y is open
 	public boolean tileOpen(int x, int y){
+		if(x < 0 || y < 0) return false;
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
@@ -151,7 +157,7 @@ public class LevelController {
 			
 	}
 	
-	private void doRatAttack() {
+	public void doRatAttack() {
 		level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.BITE);	
 		System.out.println(level.getHero().getHP());
 	}
@@ -241,16 +247,64 @@ public class LevelController {
 	}
 	
 	public void doBatMovement(){
-		
+		moveEntityTowardHero(level.entities.get(index));
 	}
 	
 	public void doBatAttack(){
-		
+		level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.STRONGBITE);
 	}
 	
 	public void moveEntityTowardHero(Entity mover){
 		int deltaX = mover.getX() - level.getHero().getX();
 		int deltaY = mover.getY() - level.getHero().getY();
+		if (deltaX > 0  && deltaY == 0){
+			if(tileOpen(mover.getX() - 1, mover.getY()))
+				mover.movePosition(-1, 0);
+			// Mover is to the right of the hero in the same y.
+		}
+		else if (deltaX < 0  && deltaY == 0){
+			if(tileOpen(mover.getX() + 1, mover.getY()))
+				mover.movePosition(1, 0);
+			// Mover is to the left of the hero in the same y.
+		}
+		else if (deltaY > 0 && deltaX == 0){
+			if(tileOpen(mover.getX(), mover.getY() + 1))
+				mover.movePosition(0, 1);
+			// Mover is below the hero.
+		}
+		else if (deltaY < 0 && deltaX == 0){
+			if(tileOpen(mover.getX(), mover.getY() - 1))
+				mover.movePosition(0, 1);
+			// Mover is above the hero.
+		}
+		else if (deltaX > 0 && deltaY > 0){
+			if(tileOpen(mover.getX(), mover.getY() + 1))
+				mover.movePosition(0, 1);
+			else if(tileOpen(mover.getX() - 1, mover.getY()));
+				mover.movePosition(-1, 0);
+			//mover is Right && Below
+		}
+		else if (deltaX < 0 && deltaY > 0){
+			if(tileOpen(mover.getX(), mover.getY() + 1))
+				mover.movePosition(0, 1);
+			else if(tileOpen(mover.getX() + 1, mover.getY()));
+				mover.movePosition(1, 0);
+			//mover is Left && below
+		}
+		else if (deltaX < 0 && deltaY < 0){
+			if(tileOpen(mover.getX(), mover.getY() - 1))
+				mover.movePosition(0, -1);
+			else if(tileOpen(mover.getX() - 1, mover.getY()));
+				mover.movePosition(-1, 0);
+			//mover is Left and Above
+		}
+		else if (deltaX > 0 && deltaY < 0){
+			if(tileOpen(mover.getX(), mover.getY() - 1))
+				mover.movePosition(0, -1);
+			else if(tileOpen(mover.getX() -1, mover.getY()));
+				mover.movePosition(-1, 0);
+			//mover is Right and Above
+		}
 		
 	}
 	

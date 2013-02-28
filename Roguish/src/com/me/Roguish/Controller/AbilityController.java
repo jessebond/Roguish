@@ -8,6 +8,7 @@ public class AbilityController {
 	public static final int SHIELD = 1;
 	public static final int FIREBALL = 2;
 	public static final int BITE = 3;
+	public static final int STRONGBITE = 4;
 	
 	public AbilityController(){
 	}
@@ -25,9 +26,12 @@ public class AbilityController {
 					((Unit)target).changeHP(-1);
 				}
 			}
+			case(STRONGBITE):{
+				if(target instanceof Unit){
+					((Unit)target).changeHP(2 * ((Unit)origin).getStr());
+				}
+			}
 		}
 	}
-
-	
 }
 
