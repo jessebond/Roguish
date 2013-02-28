@@ -40,6 +40,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 	private TextureRegion hud;
 	private ButtonStyle menuStyle;
 	private Image ihud;
+	private Image ic_hero;
 
  
 	public GameScreen(Roguish game, ClassCard cCard){
@@ -58,12 +59,19 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		loadGui();
 		
 		Button menuButton = new Button(menuStyle);
+		System.out.println("delta: " + (Gdx.graphics.getWidth() - stage.getWidth()));
+		System.out.println("screen: " + Gdx.graphics.getWidth());
+		System.out.println("stage: " + stage.getWidth());
+		
 		
 		Table table = new Table();
 		table.setSize(480, 320);
+		table.setPosition(90, 0);
 		table.right();
+		table.debug();
 		
 		stage.addActor(table);
+		stage.addActor(ic_hero);
 		
 		table.add(ihud);
 		table.row();
@@ -90,11 +98,15 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		menuStyle = new ButtonStyle();
 		menuStyle.up = new TextureRegionDrawable(menuUp);
 		menuStyle.down = new TextureRegionDrawable(menuDown);
-		
-		c_hero = entAtlas.findRegion(cCard.getClassName());
-		
+	
 		ihud = new Image(hud);
 		ihud.setScaling(Scaling.fill);
+		
+		c_hero = entAtlas.findRegion(cCard.getFaceName());
+		ic_hero = new Image(c_hero);
+		ic_hero.setScaling(Scaling.fill);
+		ic_hero.setPosition(394, 197);
+		
 	}
 	
 	
@@ -200,7 +212,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
-
+		//Table.drawDebug(stage);
 	}
 
 	@Override
@@ -211,7 +223,4 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		this.height = height;
 
 	}
-
-
-
 }

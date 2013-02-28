@@ -38,7 +38,7 @@ public class MenuScreen extends AbstractScreen{
 		table.setBackground(new TextureRegionDrawable(bg));
 		stage.addActor(table);
 		table.bottom();
-		table.debug();
+		//table.debug();
 				
 		startButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

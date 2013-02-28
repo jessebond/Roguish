@@ -89,11 +89,23 @@ public class ClassCard extends Card {
 		return "F_" + getClassName(cardNo);
 	}
 	
+	public String getFaceName(){
+		return getFaceName(this.cardNo);
+	}
+	
 	public String getDeckName(int cardNo){
 		return "D_" + getClassName(cardNo);
 	}
 
+	public String getDeckName(){
+		return getDeckName(this.cardNo);
+	}
+	
 	public String getCardName(int cardNo){
 		return "C_" + getClassName(cardNo);
+	}
+	
+	public String getCardName(){
+		return getCardName(this.cardNo);
 	}
 }
