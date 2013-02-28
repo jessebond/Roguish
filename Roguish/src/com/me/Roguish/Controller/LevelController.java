@@ -167,7 +167,7 @@ public class LevelController {
 	}
 	
 	public void checkLoseConditions(){
-		if(level.getHero().getHP() == 0) gameOver = true;
+		if(level.getHero().getHP() <= 0) gameOver = true;
 	}
 	
 	public void checkWinConditions(){
