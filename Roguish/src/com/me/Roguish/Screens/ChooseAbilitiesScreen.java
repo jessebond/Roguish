@@ -12,7 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.Array;
 
 import com.me.Roguish.Roguish;
 import com.me.Roguish.Model.ClassCard;
@@ -20,6 +22,9 @@ import com.me.Roguish.Model.ClassCard;
 public class ChooseAbilitiesScreen extends AbstractScreen{
 	private static final int MAX_CARDS = 20;
 	private int cardNo = 0;
+	private int abilNo = 0;
+	private Array<Integer> abilities = new Array<Integer>();
+	
 	private ClassCard cCard;
 	
 	private TextureAtlas guiAtlas;
@@ -34,6 +39,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	private TextureRegion nextDown;
 	private TextureRegion backUp;
 	private TextureRegion backDown;
+	private TextureRegion addUp;
+	private TextureRegion addDown;
+	private TextureRegion delUp;
+	private TextureRegion delDown;
 	private TextureRegion bg;
 	private TextureRegion cardRing;
 	
@@ -41,6 +50,8 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	private ButtonStyle rightStyle;
 	private ButtonStyle nextStyle;
 	private ButtonStyle backStyle;
+	private ButtonStyle addStyle;
+	private ButtonStyle delStyle;
 	
 	// Entity TextureRegions
 	private TextureRegion c_archer;
@@ -61,12 +72,21 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	private Image c_ent3;
 	private Image d_ent3;
 	
+	// CardRing images
 	private Image cRing;
+	private Image cRing0;
+	private Image cRing1;
+	private Image cRing2;
+	private Image cRing3;
+	private Image cRing4;
 	
 	public ChooseAbilitiesScreen(Roguish game, ClassCard cCard){
 		super(game);
 		this.cCard = cCard;
 		System.out.println("Entered ChooseClassScreen");
+		
+		//for(int i = 0; i < abilities.size; i++)
+		//	abilities.set(i,-1);
 	}
 	
 	@Override
@@ -78,30 +98,34 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		loadEnt();    // load entAtlas and ent textures
 		loadStyles(); // load button styles
 		
-		// get images based on the correct CardNo
+		// Create Images
 		getEntImages();
-		cRing = new Image(cardRing);
-		cRing.setScaling(Scaling.fill);
-		cRing.addAction(ringAction());
+		getRingImages();
+		ringMove(cRing, cardNo);
+		updateAlphasRing(0);
 		updateAlphasOff(-1);
 		updateAlphasOn(cardNo);
-		
-		
-		//System.out.println("FFF");
+				
+		// Create Buttons
 		Button leftButton = new Button(leftStyle);
 		Button rightButton = new Button(rightStyle);
 		Button nextButton = new Button(nextStyle);
 		Button backButton = new Button(backStyle);
+		Button addButton = new Button(addStyle);
+		Button delButton = new Button(delStyle);
 		
-		
-		Table table1 = new Table();
-		Table table2 = new Table();
+		// Create Tables
+		Table table1 = new Table();  // Back and Next
+		Table table2 = new Table();  // Left and Right
+		Table table3 = new Table();  // Add  and Remove
 		table1.setSize(480, 320);
 		table2.setSize(480, 320);
+		table3.setSize(480, 320);
 		table1.setBackground(new TextureRegionDrawable(bg));
 		
 		stage.addActor(table1);
 		stage.addActor(table2);
+		stage.addActor(table3);
 		stage.addActor(c_ent0);
 		stage.addActor(d_ent0);
 		stage.addActor(c_ent1);
@@ -111,10 +135,16 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		stage.addActor(c_ent3);
 		stage.addActor(d_ent3);
 		stage.addActor(cRing);
+		stage.addActor(cRing0);
+		stage.addActor(cRing1);
+		stage.addActor(cRing2);
+		stage.addActor(cRing3);
+		stage.addActor(cRing4);
 		
 		table1.left().padLeft(38).padTop(4);
 		table1.debug();
 		table2.right().top().padRight(75).padTop(55);
+		table3.bottom().right().padRight(32).padBottom(2);
 
 		backButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -141,7 +171,7 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				updateAlphasOff(cardNo);
 				updateCardNo(-1);
 				updateAlphasOn(cardNo);
-				cRing.addAction(ringAction());
+				ringMove(cRing, cardNo);
 				System.out.println("Left Button Down, CardNo: " + cardNo);
 				return false;
 			}
@@ -153,13 +183,30 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				updateAlphasOff(cardNo);
 				updateCardNo(1);
 				updateAlphasOn(cardNo);
-				cRing.addAction(ringAction());
+				ringMove(cRing, cardNo);
 				System.out.println("Left Button Down, CardNo: " + cardNo);
 				return false;
 			}
 		});
 		table2.add(rightButton);
 
+		addButton.addListener(new InputListener() {
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Add Down, cardNo: " + cardNo);
+				addAbility(cardNo);
+				return false;
+			}
+		});
+		table3.add(addButton).padRight(35);
+		
+		delButton.addListener(new InputListener() {
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Remove Down, cardNo: " + cardNo);
+				delAbility(cardNo);
+				return false;
+			}
+		});
+		table3.add(delButton);
 		
 	}
 
@@ -175,6 +222,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		nextDown = guiAtlas.findRegion("Btn_Next_Click");
 		backUp = guiAtlas.findRegion("Btn_Back");
 		backDown = guiAtlas.findRegion("Btn_Back_Click");
+		addUp = guiAtlas.findRegion("Btn_Add");
+		addDown = guiAtlas.findRegion("Btn_Add_Click");
+		delUp = guiAtlas.findRegion("Btn_Remove");
+		delDown = guiAtlas.findRegion("Btn_Remove_Click");
 		
 		bg = guiAtlas.findRegion("Choose");
 		cardRing = guiAtlas.findRegion("CardRing");
@@ -195,15 +246,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	}
 	
 	private void loadStyles(){
-		System.out.println("ChooseClassScreen:LoadStyles()");
-		System.out.println("1a");
 		leftStyle = new ButtonStyle();
-		System.out.println("1b:");
 		leftStyle.up = new TextureRegionDrawable(leftUp);
-		System.out.println("1c");
 		leftStyle.down = new TextureRegionDrawable(leftDown);
-		System.out.println("1d");
-		
+				
 		rightStyle = new ButtonStyle();
 		rightStyle.up = new TextureRegionDrawable(rightUp);
 		rightStyle.down = new TextureRegionDrawable(rightDown);
@@ -215,7 +261,14 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		backStyle = new ButtonStyle();
 		backStyle.up = new TextureRegionDrawable(backUp);
 		backStyle.down = new TextureRegionDrawable(backDown);
-		System.out.println("ChooseClassScreen:LoadStyle():done");
+		
+		addStyle = new ButtonStyle();
+		addStyle.up = new TextureRegionDrawable(addUp);
+		addStyle.down = new TextureRegionDrawable(addDown);
+		
+		delStyle = new ButtonStyle();
+		delStyle.up = new TextureRegionDrawable(delUp);
+		delStyle.down = new TextureRegionDrawable(delDown);
 	}
 	
 	
@@ -282,6 +335,42 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		}
 	}
 	
+	public Actor getRing(int ringNo){
+		switch(ringNo){
+		case 0:
+			return cRing0;
+		case 1:
+			return cRing1;
+		case 2:
+			return cRing2;
+		case 3:
+			return cRing3;
+		case 4:
+			return cRing4;
+		default:
+			return cRing0;
+		}
+	}
+	
+	public void updateAlphasRing(Actor a, int al){
+		a.addAction(Actions.alpha(al));
+	}
+
+	public void updateAlphasRing(int al){
+		cRing0.addAction(Actions.alpha(al));
+		cRing1.addAction(Actions.alpha(al));
+		cRing2.addAction(Actions.alpha(al));
+		cRing3.addAction(Actions.alpha(al));
+		cRing4.addAction(Actions.alpha(al));
+	}
+	
+	private void ringMove(Actor a, int pos){
+		if (pos < 10) 
+			a.addAction(Actions.moveTo(214 + (pos % 10)*24, 99));
+		else
+			a.addAction(Actions.moveTo(214 + (pos % 10)*24, 99 - 33));
+	}
+	
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
@@ -327,11 +416,54 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		d_ent3.setPosition(dx, dy);
 	}
 	
-	private Action ringAction( ){
-		if (cardNo < 10) 
-			return Actions.moveTo(214 + (cardNo % 10)*24, 99);
-		else
-			return Actions.moveTo(214 + (cardNo % 10)*24, 99 - 33);
+	private void getRingImages(){
+		cRing = new Image(cardRing);
+		cRing0 = new Image(cardRing);
+		cRing1 = new Image(cardRing);
+		cRing2 = new Image(cardRing);
+		cRing3 = new Image(cardRing);
+		cRing4 = new Image(cardRing);
+		cRing.setScaling(Scaling.fill);
+		cRing0.setScaling(Scaling.fill);
+		cRing1.setScaling(Scaling.fill);
+		cRing2.setScaling(Scaling.fill);
+		cRing3.setScaling(Scaling.fill);
+		cRing4.setScaling(Scaling.fill);
+	}
+	
+	
+	// Adds an ability value cardNo to abilities
+	private void addAbility(int cardNo){
+		System.out.println("Size: " + abilities.size);
+		if(!abilities.contains(cardNo, true) && (abilNo < 5)){
+			System.out.println("adding");
+			abilities.add(cardNo);
+			System.out.println("added");
+			abilNo++;
+			updateRings();
+		}
+	}
+	
+	// Deletes an ability value cardNo to abilities
+	private void delAbility(int cardNo){
+		System.out.println("Size: " + abilities.size);
+		if(abilities.contains(cardNo, true) && abilNo > 0){
+			abilities.removeValue(cardNo, true);
+			abilNo--;
+			updateRings();
+		}
+	}
+	
+	private void updateRings(){
+		for(int i = 0; i < 5; i++){
+			if(i < abilNo){
+				ringMove(getRing(i), abilities.get(i));
+				updateAlphasRing(getRing(i),100);
+			}
+			else{
+				updateAlphasRing(getRing(i),0);
+			}
+		}
 	}
 	
 	@Override

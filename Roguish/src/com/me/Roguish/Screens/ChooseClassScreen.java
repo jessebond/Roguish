@@ -211,8 +211,6 @@ public class ChooseClassScreen extends AbstractScreen{
 		backStyle.down = new TextureRegionDrawable(backDown);
 		System.out.println("ChooseClassScreen:LoadStyle():done");
 	}
-	
-	
 	// adds the delta to the cardNo while keeping it in bounds - 0 < cardNo < MAX_CARDS
 	private void updateCardNo(int delta){
 		cardNo += delta;
