@@ -214,10 +214,10 @@ public class LevelController {
 		int count[] = new int[4];
 		for(int i = 0; i < count.length; i++)
 			count[i] = 0;
-		if (tileOpen(x+1, y)) count[3] = 1;
-		if (tileOpen(x-1, y)) count[2] = 1;
-		if (tileOpen(x, y-1)) count[1] = 1;
-		if (tileOpen(x, y+1)) count[0] = 1;
+		if (tileOpen(x+1, y)) count[3] = 1; // right
+		if (tileOpen(x-1, y)) count[2] = 1; // left
+		if (tileOpen(x, y-1)) count[1] = 1; // up
+		if (tileOpen(x, y+1)) count[0] = 1; // down
 		return count;
 	}
 	
