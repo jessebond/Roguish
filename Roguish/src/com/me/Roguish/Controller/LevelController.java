@@ -130,18 +130,19 @@ public class LevelController {
 		if (level.entities.get(index) instanceof MonsterUnit){
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY())){
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
-					case MonsterUnit.RAT: doRatAttack();
-					case MonsterUnit.BAT: doBatAttack();
+					case MonsterUnit.RAT: doRatAttack(); break;
+					case MonsterUnit.BAT: doBatAttack(); break;
 				}
 				
 			}
 			else{
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
-					case MonsterUnit.RAT: doRatMovement();
-					case MonsterUnit.BAT: doBatMovement();
+					case MonsterUnit.RAT: doRatMovement(); break;
+					case MonsterUnit.BAT: doBatMovement(); break;
 				}	
 			}
-			if(level.entities.get(index).getAlive()) level.queue.add(level.entities.get(index));
+			if(level.entities.get(index).getAlive())
+				level.queue.add(level.entities.get(index));
 		}		
 	}
 	//Iterates over NPCs and performs their turns until it is the Hero's turn
@@ -187,29 +188,9 @@ public class LevelController {
 		return -1;	
 	}
 	
-	//Returns an integer array of current open tiles adjacent to the inputted x,y
-	//  index   tile         open value = 1  taken value = 0
-	//    0      up
-	//    1      down
-	//    2      left 
-	//    3      right
-	public int[] findOpen(int x, int y){
-		int count[] = new int[4];
-		for(int i = 0; i < count.length; i++)
-			count[i] = 0;
-		if (tileOpen(x+1, y)) count[3] = 1; // right
-		if (tileOpen(x-1, y)) count[2] = 1; // left
-		if (tileOpen(x, y+1)) count[1] = 1; // down
-		if (tileOpen(x, y-1)) count[0] = 1; // up
-		for(int i = 0; i < count.length; i++){
-			System.out.println(count[i]);
-		}
-		return count;
-	}
 	
 	//Returns true if the tile at the x, y is open
 	public boolean tileOpen(int x, int y){
-		if(x < 0 || y < 0) return false;
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
@@ -298,26 +279,30 @@ public class LevelController {
 						mover.movePosition(0, -1);
 						moved = true;
 					}
+					break;
 				}
 				case 1:{
 					if(tileOpen(mover.getX(), mover.getY() + 1)){
 						mover.movePosition(0, 1);
 						moved = true;
 					}
+					break;
 				}
 				case 2:{
 					if(tileOpen(mover.getX() - 1, mover.getY())){
 						mover.movePosition(-1, 0);
 						moved = true;
 					}
+					break;
 				}
 				case 3:{
 					if(tileOpen(mover.getX() + 1, mover.getY())){
 						mover.movePosition(1, 0);
 						moved = true;
 					}
-					
+					break;
 				}
+				default: break;
 			}
 			count++;
 			

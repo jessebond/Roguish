@@ -42,6 +42,9 @@ public class Level{
 		 rat1.addAbility(AbilityController.BITE);
 		 rat2.addAbility(AbilityController.BITE);
 		 rat3.addAbility(AbilityController.BITE);
+		 rat1.setAlive(true);
+		 rat2.setAlive(true);
+		 rat3.setAlive(true);
 		 /*
 		 bat1.setMovement(4);
 		 bat1.setId(4);
