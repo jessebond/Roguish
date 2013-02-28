@@ -211,6 +211,8 @@ public class ChooseClassScreen extends AbstractScreen{
 		backStyle.down = new TextureRegionDrawable(backDown);
 		System.out.println("ChooseClassScreen:LoadStyle():done");
 	}
+	
+	
 	// adds the delta to the cardNo while keeping it in bounds - 0 < cardNo < MAX_CARDS
 	private void updateCardNo(int delta){
 		cardNo += delta;
@@ -273,17 +275,6 @@ public class ChooseClassScreen extends AbstractScreen{
 				break;
 		}
 	}
-	
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
-		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-		stage.draw();
-
-		//Table.drawDebug(stage);
-	}
 		
 	private void getEntImages(){
 		// cards
@@ -313,6 +304,17 @@ public class ChooseClassScreen extends AbstractScreen{
 		d_ent1.setPosition(118, 165);
 		d_ent2.setPosition(118, 165);
 		d_ent3.setPosition(118, 165);
+	}
+	
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+
+		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+		stage.draw();
+
+		//Table.drawDebug(stage);
 	}
 	
 	@Override

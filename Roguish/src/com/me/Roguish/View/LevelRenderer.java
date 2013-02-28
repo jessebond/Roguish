@@ -39,10 +39,6 @@ public class LevelRenderer {
 	private SpriteBatch spriteBatch;
 	private BitmapFont font;
 	
-	private Texture hud1;
-	private Texture hud2;
-	private Texture hud3;
-	private Texture hud4;
 	private TextureAtlas atlas;
 	
 	public LevelRenderer(Level level, boolean debug) {
@@ -72,13 +68,7 @@ public class LevelRenderer {
 	}
 	
 	public void loadTextures(){
-		atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));
-		//heroTexture = atlas.findRegion("Hero");
-
-		hud1 = new Texture(Gdx.files.internal("data/gui/old/Hud_1_256x256.png"));
-		hud2 = new Texture(Gdx.files.internal("data/gui/old/Hud_2_256x256.png"));
-		hud3 = new Texture(Gdx.files.internal("data/gui/old/Hud_3_256x256.png"));
-		hud4 = new Texture(Gdx.files.internal("data/gui/old/Hud_4_256x32.png"));	
+		atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));	
 	}
 	
 	
@@ -92,7 +82,6 @@ public class LevelRenderer {
 		spriteBatch.enableBlending();
 		spriteBatch.begin();
 		renderEntities();
-		renderHud();
 				
 		if (debug)
 			drawDebug();
@@ -122,13 +111,6 @@ public class LevelRenderer {
 		}
 	}
 	
-	private void renderHud(){
-		spriteBatch.draw(new TextureRegion(hud1),width-199,223);
-		spriteBatch.draw(new TextureRegion(hud2),width-199,75);
-		spriteBatch.draw(new TextureRegion(hud3),width-199,-74);
-		spriteBatch.draw(new TextureRegion(hud4),width-199,0);
-		
-	}
 	
 	private void drawDebug(){
 		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);

@@ -4,6 +4,18 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.utils.Scaling;
+
 
 import com.me.Roguish.Roguish;
 import com.me.Roguish.Model.Level;
@@ -12,27 +24,80 @@ import com.me.Roguish.Controller.LevelController;
 import com.me.Roguish.Model.ClassCard;
 
 public class GameScreen extends AbstractScreen implements InputProcessor {
-	
 	private Level level;
 	private LevelRenderer renderer;
 	private LevelController controller;
 	private ClassCard cCard;
 	
 	private int width, height;
+	
+	private TextureAtlas guiAtlas;
+	private TextureAtlas entAtlas;
+	
+	private TextureRegion menuUp;
+	private TextureRegion menuDown;
+	private TextureRegion c_hero;
+	private TextureRegion hud;
+	private ButtonStyle menuStyle;
+	private Image ihud;
+
  
 	public GameScreen(Roguish game, ClassCard cCard){
         super(game);
         this.cCard = cCard;
+        
+		level = new Level(cCard);
+		renderer = new LevelRenderer(level, true);
+		controller = new LevelController(level);
     }
 	
 	@Override
 	public void show() {
-		level = new Level(cCard);
-		renderer = new LevelRenderer(level, true);
-		controller = new LevelController(level);
 		Gdx.input.setInputProcessor(this);
+		
+		loadGui();
+		
+		Button menuButton = new Button(menuStyle);
+		
+		Table table = new Table();
+		table.setSize(480, 320);
+		table.right();
+		
+		stage.addActor(table);
+		
+		table.add(ihud);
+		table.row();
+		
+		menuButton.addListener(new InputListener() {
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Back Button Down");
+				game.setScreen(new MenuScreen(game));
+				return false;
+			}
+		});
+		table.add(menuButton);
 	}
 
+	private void loadGui(){
+		System.out.println("ChooseClassScreen:LoadGui()");
+		guiAtlas = new TextureAtlas(Gdx.files.internal("data/gui/pack/Gui.pack"));
+		entAtlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));
+		
+		menuUp = guiAtlas.findRegion("Btn_Menu");
+		menuDown = guiAtlas.findRegion("Btn_Menu_Click");
+		hud = guiAtlas.findRegion("Hud");
+		
+		menuStyle = new ButtonStyle();
+		menuStyle.up = new TextureRegionDrawable(menuUp);
+		menuStyle.down = new TextureRegionDrawable(menuDown);
+		
+		c_hero = entAtlas.findRegion(cCard.getClassName());
+		
+		ihud = new Image(hud);
+		ihud.setScaling(Scaling.fill);
+	}
+	
+	
 
 	@Override
 	public void hide() {
@@ -54,8 +119,10 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 
 	@Override
 	public void dispose() {
-		Gdx.input.setInputProcessor(null);
-
+		//Gdx.input.setInputProcessor(null);
+		guiAtlas.dispose();
+		entAtlas.dispose();
+		stage.dispose();
 	}
 	
 	
@@ -131,10 +198,14 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		if(controller.gameOver) game.setScreen(new GameOverScreen(game));
 		if(controller.gameWon) game.setScreen(new GameWonScreen(game));
 
+		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+		stage.draw();
+
 	}
 
 	@Override
 	public void resize(int width, int height) {
+		stage.setViewport(480, 320, true);
 		renderer.setSize(width, height);
 		this.width = width;
 		this.height = height;
