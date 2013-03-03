@@ -246,22 +246,22 @@ public class LevelController {
 			//mover is Right && Below
 		}
 		else if (deltaX < 0 && deltaY > 0){
-			if(tileOpen(mover.getX(), mover.getY() + 1))
-				mover.movePosition(0, 1);
+			if(tileOpen(mover.getX(), mover.getY() - 1))
+				mover.movePosition(0, -1);
 			else if(tileOpen(mover.getX() + 1, mover.getY()));
 				mover.movePosition(1, 0);
 			//mover is Left && below
 		}
 		else if (deltaX < 0 && deltaY < 0){
-			if(tileOpen(mover.getX(), mover.getY() - 1))
-				mover.movePosition(0, -1);
-			else if(tileOpen(mover.getX() - 1, mover.getY()));
-				mover.movePosition(-1, 0);
+			if(tileOpen(mover.getX(), mover.getY() + 1))
+				mover.movePosition(0, 1);
+			else if(tileOpen(mover.getX() + 1, mover.getY()));
+				mover.movePosition(1, 0);
 			//mover is Left and Above
 		}
 		else if (deltaX > 0 && deltaY < 0){
-			if(tileOpen(mover.getX(), mover.getY() - 1))
-				mover.movePosition(0, -1);
+			if(tileOpen(mover.getX(), mover.getY() + 1))
+				mover.movePosition(0, 1);
 			else if(tileOpen(mover.getX() -1, mover.getY()));
 				mover.movePosition(-1, 0);
 			//mover is Right and Above

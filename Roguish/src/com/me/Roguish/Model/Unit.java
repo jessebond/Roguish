@@ -79,5 +79,11 @@ public abstract class Unit extends Entity{
 	public void changeHP(int delta){
 		this.setHP(this.getHP() + delta);
 	}
+	
+	public void setAtts(int str, int inte, int dex){
+		this.baseStr = str;
+		this.baseInt = inte;
+		this.baseDex = dex;
+	}
 
 }

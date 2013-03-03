@@ -18,7 +18,7 @@ public class Level{
     public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
     public MonsterUnit rat2 = new MonsterUnit(2, 1, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
     public MonsterUnit rat3 = new MonsterUnit(2, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
-    //public MonsterUnit bat1 = new MonsterUnit(1, 4, "E_Bat", new Array<Integer>(), MonsterUnit.BAT);
+    public MonsterUnit bat1 = new MonsterUnit(1, 4, "E_Bat", new Array<Integer>(), MonsterUnit.BAT);
     public Entity winChest = new Entity(4,13,"D_Plus_B", new Array<Integer>());
     
 	public Level(ClassCard cCard){
@@ -45,11 +45,10 @@ public class Level{
 		 rat1.setAlive(true);
 		 rat2.setAlive(true);
 		 rat3.setAlive(true);
-		 /*
 		 bat1.setMovement(4);
 		 bat1.setId(4);
 		 bat1.addAbility(AbilityController.STRONGBITE);
-		 */
+		 bat1.setAtts(1, 0, 0);
 		 winChest.setId(1337);
 		 winChest.setAlive(false);
 		
@@ -83,7 +82,7 @@ public class Level{
 		addEntity(rat1);
 		addEntity(rat2);
 		addEntity(rat3);
-		//addEntity(bat1);
+		addEntity(bat1);
 		addEntity(winChest);
 
 	}
