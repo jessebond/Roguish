@@ -26,7 +26,7 @@ public class LevelController {
 	private int index = 0;
 	
 	enum Keys {
-		LEFT, RIGHT, UP, DOWN
+		LEFT, RIGHT, UP, DOWN, ONE, TWO, THREE, FOUR, FIVE
 	}
 	
 	static Map<Keys, Boolean> keys = new HashMap<LevelController.Keys, Boolean>();
@@ -35,6 +35,11 @@ public class LevelController {
 		keys.put(Keys.RIGHT, false);
 		keys.put(Keys.UP, false);
 		keys.put(Keys.DOWN, false);
+		keys.put(Keys.ONE, false);
+		keys.put(Keys.TWO, false);
+		keys.put(Keys.THREE, false);
+		keys.put(Keys.FOUR, false);
+		keys.put(Keys.FIVE, false);
 	};
 	
 	public LevelController(Level level){
@@ -62,17 +67,6 @@ public class LevelController {
 		}
 		if (keys.get(Keys.UP)){
 		}
-	}
-	
-	
-	// Keypresses
-	public void leftPressed() {
-		keys.get(keys.put(Keys.LEFT, true));
-	}
-	
-	public void leftReleased() {
-		keys.get(keys.put(Keys.LEFT, false));
-		doHeroTurn(Keys.LEFT);
 	}
 	
 	private void doHeroTurn(Keys direction) {
@@ -112,33 +106,6 @@ public class LevelController {
 		}
 		}
 		
-	}
-
-	public void rightPressed() {
-		keys.get(keys.put(Keys.RIGHT, true));
-	}
-	
-	public void rightReleased() {
-		keys.get(keys.put(Keys.RIGHT, false));
-		doHeroTurn(Keys.RIGHT);
-	}
-	
-	public void upPressed() {
-		keys.get(keys.put(Keys.UP, true));
-	}
-	
-	public void upReleased() {
-		keys.get(keys.put(Keys.UP, false));
-		doHeroTurn(Keys.UP);
-	}
-	
-	public void downPressed() {
-		keys.get(keys.put(Keys.DOWN, true));
-	}
-	
-	public void downReleased() {
-		keys.get(keys.put(Keys.DOWN, false));
-		doHeroTurn(Keys.DOWN);
 	}
 	
 	public void doMonsterTurns(){
@@ -323,6 +290,85 @@ public class LevelController {
 			
 		}while(!moved && count < 20);
 		
+	}
+	
+	// Keypresses
+	public void leftPressed() {
+		keys.get(keys.put(Keys.LEFT, true));
+	}
+	
+	public void leftReleased() {
+		keys.get(keys.put(Keys.LEFT, false));
+		doHeroTurn(Keys.LEFT);
+	}
+
+	public void rightPressed() {
+		keys.get(keys.put(Keys.RIGHT, true));
+	}
+	
+	public void rightReleased() {
+		keys.get(keys.put(Keys.RIGHT, false));
+		doHeroTurn(Keys.RIGHT);
+	}
+	
+	public void upPressed() {
+		keys.get(keys.put(Keys.UP, true));
+	}
+	
+	public void upReleased() {
+		keys.get(keys.put(Keys.UP, false));
+		doHeroTurn(Keys.UP);
+	}
+	
+	public void downPressed() {
+		keys.get(keys.put(Keys.DOWN, true));
+	}
+	
+	public void downReleased() {
+		keys.get(keys.put(Keys.DOWN, false));
+		doHeroTurn(Keys.DOWN);
+	}
+	
+	public void onePressed(){
+		keys.get(keys.put(Keys.ONE, true));
+	}
+	public void oneReleased() {
+		keys.get(keys.put(Keys.ONE, false));
+		ability1 = true;
+		System.out.println("Num 1 released");
+	}
+	public void twoPressed(){
+		keys.get(keys.put(Keys.TWO, true));
+	}
+	public void twoReleased() {
+		keys.get(keys.put(Keys.TWO, false));
+		ability2 = true;
+		System.out.println("Num 2 released");
+	}
+	public void threePressed(){
+		keys.get(keys.put(Keys.THREE, true));
+	}
+	public void threeReleased() {
+		keys.get(keys.put(Keys.THREE, false));
+		ability3 = true;
+		System.out.println("Num 3 released");
+	}
+	public void fourPressed(){
+		keys.get(keys.put(Keys.FOUR, true));
+	}
+	public void fourReleased() {
+		keys.get(keys.put(Keys.FOUR, false));
+		ability4 = true;
+		System.out.println("Num 4 released");
+	}
+	
+	public void fivePressed(){
+		keys.get(keys.put(Keys.FIVE, true));
+	}
+	public void fiveReleased() {
+		keys.get(keys.put(Keys.FIVE, false));
+		ability5 = true;
+		System.out.println("Num 5 released");
 	}
 	
 }
