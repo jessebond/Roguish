@@ -73,13 +73,6 @@ public class LevelController {
 	public void leftReleased() {
 		keys.get(keys.put(Keys.LEFT, false));
 		doHeroTurn(Keys.LEFT);
-		checkHeroTurn();
-		if(hero.getX() > 0 && tileOpen(hero.getX() - 1, hero.getY())){
-			level.queue.getNext();
-			hero.movePosition(-1, 0);
-			level.queue.add(hero);
-		}
-		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
 	
 	private void doHeroTurn(Keys direction) {
