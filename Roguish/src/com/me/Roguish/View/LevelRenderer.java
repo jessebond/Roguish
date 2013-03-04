@@ -31,6 +31,7 @@ public class LevelRenderer {
 	private int height;
 	private float ppuX;	// pixels per unit on the X axis
 	private float ppuY;	// pixels per unit on the Y axis
+	private float ratioS;
 	private float ratio;
 	private float centerX; // centered tile x
 	private float centerY; // centered tile y
@@ -47,10 +48,11 @@ public class LevelRenderer {
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		this.cam.position.set(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f, 0);
 		this.cam.update();
+		ratioS = CAMERA_WIDTH/CAMERA_HEIGHT;
 		ratio = (float) Gdx.graphics.getHeight()/Gdx.graphics.getWidth();
 		System.out.println("ratio: " + ratio);
 		//tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, centerX, centerY);
-		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, 32*ratio*2/3, 32);
+		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, 32*ratio*ratioS, 32);
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont(Gdx.files.internal("data/font/Arial16.fnt"),
                 Gdx.files.internal("data/font/Arial16_0.png"), false);
