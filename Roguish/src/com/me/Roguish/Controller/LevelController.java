@@ -67,6 +67,8 @@ public class LevelController {
 		}
 	}
 	
+	// Turn Mechanics
+	
 	private void doHeroTurn(Keys direction) {
 		checkHeroTurn();
 		if(!doHeroAbility()){
@@ -147,6 +149,9 @@ public class LevelController {
 		}
 	}
 	
+	
+	//Location Utilities:
+	
 	public boolean heroOn(int x, int y){
 		return(hero.getX() == x && hero.getY() == y );
 	}
@@ -186,6 +191,12 @@ public class LevelController {
 		}
 		if(level.tilePropCheck(x,y,"wall")) return false;
 		else return true;
+	}
+	
+	
+	//Unit AI
+	public void inRange(Entity source, Entity target, int ability ){
+		
 	}
 	
 	public void doRatMovement(){
