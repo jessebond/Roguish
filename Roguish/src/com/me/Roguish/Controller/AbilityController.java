@@ -38,5 +38,26 @@ public class AbilityController {
 			}
 		}
 	}
+	
+	public int getRange(int ability){
+		switch(ability){
+			case (LONGSWORD):{
+				return 1;
+			}
+			case (SHIELD):{
+				return 1;
+			}
+			case (BITE):{
+				return 1;
+			}
+			case (STRONGBITE):{
+				return 1;
+			}
+			case(FIREBALL):{
+				return 8;
+			}
+			default: return 0;
+		}
+	}
 }
 

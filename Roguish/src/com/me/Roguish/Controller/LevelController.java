@@ -69,6 +69,7 @@ public class LevelController {
 	
 	private void doHeroTurn(Keys direction) {
 		checkHeroTurn();
+		if(!doHeroAbility()){
 		switch(direction){
 		case UP:{
 			if(hero.getY() > 0 && tileOpen(hero.getX(), hero.getY() - 1)){
@@ -103,9 +104,18 @@ public class LevelController {
 			break;
 		}
 		}
+		}
 		
 	}
 	
+	private boolean doHeroAbility() {
+		if(!ability1 && !ability2 && !ability3 && !ability4 && !ability5) return false;
+		else{
+			// Check & call the abilities here.
+			return true;
+		}
+	}
+
 	public void doMonsterTurns(){
 		if (level.entities.get(index) instanceof MonsterUnit){
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY())){
@@ -333,7 +343,6 @@ public class LevelController {
 	public void oneReleased() {
 		keys.get(keys.put(Keys.ONE, false));
 		ability1 = true;
-		System.out.println("Num 1 released");
 	}
 	public void twoPressed(){
 		keys.get(keys.put(Keys.TWO, true));
@@ -341,7 +350,6 @@ public class LevelController {
 	public void twoReleased() {
 		keys.get(keys.put(Keys.TWO, false));
 		ability2 = true;
-		System.out.println("Num 2 released");
 	}
 	public void threePressed(){
 		keys.get(keys.put(Keys.THREE, true));
@@ -349,7 +357,6 @@ public class LevelController {
 	public void threeReleased() {
 		keys.get(keys.put(Keys.THREE, false));
 		ability3 = true;
-		System.out.println("Num 3 released");
 	}
 	public void fourPressed(){
 		keys.get(keys.put(Keys.FOUR, true));
@@ -357,7 +364,6 @@ public class LevelController {
 	public void fourReleased() {
 		keys.get(keys.put(Keys.FOUR, false));
 		ability4 = true;
-		System.out.println("Num 4 released");
 	}
 	
 	public void fivePressed(){
@@ -366,7 +372,6 @@ public class LevelController {
 	public void fiveReleased() {
 		keys.get(keys.put(Keys.FIVE, false));
 		ability5 = true;
-		System.out.println("Num 5 released");
 	}
 	
 }
