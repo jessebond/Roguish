@@ -15,7 +15,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector3;
 
 public class LevelRenderer {
-
 	private static final float CAMERA_WIDTH = 320f;
 	private static final float CAMERA_HEIGHT = 480f;
 	private static final float RUNNING_FRAME_DURATION = 0.06f;
@@ -41,12 +40,14 @@ public class LevelRenderer {
 	private TextureAtlas atlas;
 	
 	public LevelRenderer(Level level, boolean debug) {
+		setSize(480, 320);
 		this.level = level;	
 		this.debug = debug;
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		this.cam.position.set(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f, 0);
 		this.cam.update();
-		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32);
+		//tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, centerX, centerY);
+		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, 32*0.562f, 32);
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont(Gdx.files.internal("data/font/Arial16.fnt"),
                 Gdx.files.internal("data/font/Arial16_0.png"), false);
@@ -87,6 +88,7 @@ public class LevelRenderer {
 		
 		spriteBatch.end();
 	}
+	
 	public void renderTiles() {
         tileMapRenderer.getProjectionMatrix().set(cam.combined);
 		 
@@ -100,16 +102,13 @@ public class LevelRenderer {
         cam.update();
         
         tileMapRenderer.render(cam);
-
 	}
 
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
-			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * centerX + centerX/2 - 16,(14 - ent.getY()) * centerY);
-			
+			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * centerX + centerX/2 - 16,(14 - ent.getY()) * centerY);		
 		}
 	}
-	
 	
 	private void drawDebug(){
 		font.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);

@@ -15,8 +15,7 @@ import com.me.Roguish.Roguish;
 
 
 public class GameOverScreen extends AbstractScreen {
-
-TextureAtlas guiAtlas;
+	TextureAtlas guiAtlas;
 	
 	public GameOverScreen(Roguish game){
 		super(game);
@@ -28,9 +27,9 @@ TextureAtlas guiAtlas;
 		
 		guiAtlas = new TextureAtlas(Gdx.files.internal("data/gui/pack/Gui.pack"));
 		
-		TextureRegion ngUp = guiAtlas.findRegion("Btn_New");
-		TextureRegion ngDown = guiAtlas.findRegion("Btn_New_Click");
-		TextureRegion bg = guiAtlas.findRegion("MainMenu");
+		TextureRegion ngUp = guiAtlas.findRegion("Btn_Next");
+		TextureRegion ngDown = guiAtlas.findRegion("Btn_Next_Click");
+		TextureRegion bg = guiAtlas.findRegion("GameOver");
 		
 		ButtonStyle style = new ButtonStyle();
 		style.up = new TextureRegionDrawable(ngUp);

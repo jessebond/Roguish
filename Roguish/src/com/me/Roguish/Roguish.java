@@ -4,7 +4,6 @@ import com.me.Roguish.Screens.*;
 import com.me.Roguish.Controller.LibraryManager;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.FPSLogger;
 
 public class Roguish extends Game {
