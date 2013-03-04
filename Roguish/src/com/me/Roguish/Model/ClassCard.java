@@ -1,8 +1,5 @@
 package com.me.Roguish.Model;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.Array;
 
 public class ClassCard extends Card {

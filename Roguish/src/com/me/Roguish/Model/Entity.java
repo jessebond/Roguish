@@ -1,6 +1,5 @@
 package com.me.Roguish.Model;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
 
 public class Entity implements Comparable<Entity> {
