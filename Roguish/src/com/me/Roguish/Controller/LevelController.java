@@ -117,6 +117,7 @@ public class LevelController {
 			return true;
 		}
 	}
+	
 
 	public void doMonsterTurns(){
 		if (level.entities.get(index) instanceof MonsterUnit){
@@ -193,11 +194,18 @@ public class LevelController {
 		else return true;
 	}
 	
-	
-	//Unit AI
-	public void inRange(Entity source, Entity target, int ability ){
-		
+	public boolean inRange(Entity source, Entity target, int ability ){
+		if( distance(source.getX(), source.getY(), target.getX(), target.getY())  <= level.ability.getRange(ability) ) return true;
+		else return false;
 	}
+	
+	//Returns Manhattan distance between two points.
+	private int distance(int x, int y, int x2, int y2) {
+		return Math.abs(x-x2) + Math.abs(y-y2);
+	}
+
+	//Unit AI
+	
 	
 	public void doRatMovement(){
 		moveRandom(level.entities.get(index));
@@ -242,28 +250,28 @@ public class LevelController {
 		else if (deltaX > 0 && deltaY > 0){
 			if(tileOpen(mover.getX(), mover.getY() + 1))
 				mover.movePosition(0, 1);
-			else if(tileOpen(mover.getX() - 1, mover.getY()));
+			else if(tileOpen(mover.getX() - 1, mover.getY()))
 				mover.movePosition(-1, 0);
 			//mover is Right && Below
 		}
 		else if (deltaX < 0 && deltaY > 0){
 			if(tileOpen(mover.getX(), mover.getY() - 1))
 				mover.movePosition(0, -1);
-			else if(tileOpen(mover.getX() + 1, mover.getY()));
+			else if(tileOpen(mover.getX() + 1, mover.getY()))
 				mover.movePosition(1, 0);
 			//mover is Left && below
 		}
 		else if (deltaX < 0 && deltaY < 0){
 			if(tileOpen(mover.getX(), mover.getY() + 1))
 				mover.movePosition(0, 1);
-			else if(tileOpen(mover.getX() + 1, mover.getY()));
+			else if(tileOpen(mover.getX() + 1, mover.getY()))
 				mover.movePosition(1, 0);
 			//mover is Left and Above
 		}
 		else if (deltaX > 0 && deltaY < 0){
 			if(tileOpen(mover.getX(), mover.getY() + 1))
 				mover.movePosition(0, 1);
-			else if(tileOpen(mover.getX() -1, mover.getY()));
+			else if(tileOpen(mover.getX() -1, mover.getY()))
 				mover.movePosition(-1, 0);
 			//mover is Right and Above
 		}
