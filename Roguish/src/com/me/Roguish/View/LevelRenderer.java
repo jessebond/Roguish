@@ -31,6 +31,7 @@ public class LevelRenderer {
 	private int height;
 	private float ppuX;	// pixels per unit on the X axis
 	private float ppuY;	// pixels per unit on the Y axis
+	private float ratio;
 	private float centerX; // centered tile x
 	private float centerY; // centered tile y
 	private TileMapRenderer tileMapRenderer;
@@ -46,8 +47,10 @@ public class LevelRenderer {
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		this.cam.position.set(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f, 0);
 		this.cam.update();
+		ratio = (float) Gdx.graphics.getHeight()/Gdx.graphics.getWidth();
+		System.out.println("ratio: " + ratio);
 		//tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, centerX, centerY);
-		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, 32*0.562f, 32);
+		tileMapRenderer = new TileMapRenderer(this.level.map, this.level.atlas, 32, 32, 32*ratio*2/3, 32);
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont(Gdx.files.internal("data/font/Arial16.fnt"),
                 Gdx.files.internal("data/font/Arial16_0.png"), false);
@@ -106,7 +109,7 @@ public class LevelRenderer {
 
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
-			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * centerX + centerX/2 - 16,(14 - ent.getY()) * centerY);		
+			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * 32,(14 - ent.getY()) * centerY);		
 		}
 	}
 	
