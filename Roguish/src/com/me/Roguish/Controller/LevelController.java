@@ -72,6 +72,7 @@ public class LevelController {
 	
 	public void leftReleased() {
 		keys.get(keys.put(Keys.LEFT, false));
+		doHeroTurn(Keys.LEFT);
 		checkHeroTurn();
 		if(hero.getX() > 0 && tileOpen(hero.getX() - 1, hero.getY())){
 			level.queue.getNext();
@@ -81,19 +82,52 @@ public class LevelController {
 		System.out.println(level.getTile(hero.getX(), hero.getY()));
 	}
 	
+	private void doHeroTurn(Keys direction) {
+		checkHeroTurn();
+		switch(direction){
+		case UP:{
+			if(hero.getY() > 0 && tileOpen(hero.getX(), hero.getY() - 1)){
+				level.queue.getNext();
+				hero.movePosition(0, -1);
+				level.queue.add(hero);
+			}
+			break;
+		}
+		case DOWN:{
+			if(hero.getY() < 14 && tileOpen(hero.getX(), hero.getY() + 1)){
+				level.queue.getNext();
+				hero.movePosition(0, 1);
+				level.queue.add(hero);
+			}
+			break;
+		}
+		case LEFT:{
+			if(hero.getX() > 0 && tileOpen(hero.getX() - 1, hero.getY())){
+				level.queue.getNext();
+				hero.movePosition(-1, 0);
+				level.queue.add(hero);
+			}
+			break;
+		}
+		case RIGHT:{
+			if(hero.getX() < 9 && tileOpen(hero.getX() + 1, hero.getY())){
+				level.queue.getNext();
+				hero.movePosition(1 , 0);
+				level.queue.add(hero);
+			}
+			break;
+		}
+		}
+		
+	}
+
 	public void rightPressed() {
 		keys.get(keys.put(Keys.RIGHT, true));
 	}
 	
 	public void rightReleased() {
 		keys.get(keys.put(Keys.RIGHT, false));
-		checkHeroTurn();
-		if(hero.getX() < 9 && tileOpen(hero.getX() + 1, hero.getY())){
-			level.queue.getNext();
-			hero.movePosition(1 , 0);
-			level.queue.add(hero);
-		}
-		System.out.println(level.getTile(hero.getX(), hero.getY()));
+		doHeroTurn(Keys.RIGHT);
 	}
 	
 	public void upPressed() {
@@ -102,13 +136,7 @@ public class LevelController {
 	
 	public void upReleased() {
 		keys.get(keys.put(Keys.UP, false));
-		checkHeroTurn();
-		if(hero.getY() > 0 && tileOpen(hero.getX(), hero.getY() - 1)){
-			level.queue.getNext();
-			hero.movePosition(0, -1);
-			level.queue.add(hero);
-		}
-		System.out.println(level.getTile(hero.getX(), hero.getY()));
+		doHeroTurn(Keys.UP);
 	}
 	
 	public void downPressed() {
@@ -117,13 +145,7 @@ public class LevelController {
 	
 	public void downReleased() {
 		keys.get(keys.put(Keys.DOWN, false));
-		checkHeroTurn();
-		if(hero.getY() < 14 && tileOpen(hero.getX(), hero.getY() + 1)){
-			level.queue.getNext();
-			hero.movePosition(0, 1);
-			level.queue.add(hero);
-		}
-		System.out.println(level.getTile(hero.getX(), hero.getY()));
+		doHeroTurn(Keys.DOWN);
 	}
 	
 	public void doMonsterTurns(){
