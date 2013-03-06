@@ -78,6 +78,7 @@ public abstract class Unit extends Entity{
 	
 	public void changeHP(int delta){
 		this.setHP(this.getHP() + delta);
+		if(this.getHP() <= 0) this.setAlive(false);
 	}
 	
 	public void setAtts(int str, int inte, int dex){

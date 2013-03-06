@@ -33,6 +33,7 @@ public class Level{
 		 hero.setMovement(0);
 		 hero.setId(0);
 		 hero.setHP(1111);
+		 hero.setAtts(12, 12, 12);
 		 hero.addAbility(AbilityController.LONGSWORD);
 		 hero.addAbility(AbilityController.LONGSWORD);
 		 hero.addAbility(AbilityController.LONGSWORD);
@@ -48,6 +49,9 @@ public class Level{
 		 rat1.addAbility(AbilityController.BITE);
 		 rat2.addAbility(AbilityController.BITE);
 		 rat3.addAbility(AbilityController.BITE);
+		 rat1.setHP(2);
+		 rat2.setHP(2);
+		 rat3.setHP(2);
 		 rat1.setAlive(true);
 		 rat2.setAlive(true);
 		 rat3.setAlive(true);

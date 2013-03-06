@@ -120,7 +120,7 @@ public class LevelController {
 		if(!ability1 && !ability2 && !ability3 && !ability4 && !ability5) return false;
 		else{
 			if(ability1){
-				 System.out.println(getDirection() + " " + hero.getAbilities().peek());
+				level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().peek()))), hero.getAbilities().peek());
 				ability1 = false;
 			}
 			else if(ability2){
@@ -146,38 +146,41 @@ public class LevelController {
 	}
 	
 	private int closestToHero(int direction, int ability){
+		boolean found = false;
 		switch(direction){
 		//Up
 		case 0:{
 			for(Entity ent : level.getEntities()){
-				if(inRange(hero, ent, ability) && ent.getY() <= hero.getY()) return ent.getId();
-				else return -1;
+				if(inRange(hero, ent, ability) && ent.getY() <= hero.getY() && !ent.equals(hero)){
+					return ent.getId();
+				}
 			}
 			break;
 		}
 		//Down
 		case 1:{
 			for(Entity ent : level.getEntities()){
-				if(inRange(hero, ent, ability) && ent.getY() >= hero.getY()) return ent.getId();
-				else return -1;
+				if(inRange(hero, ent, ability) && ent.getY() >= hero.getY() && !ent.equals(hero)) return ent.getId();
 			}
 			break;
 		}
 		//Left
 		case 2:{
 			for(Entity ent : level.getEntities()){
-				if(inRange(hero, ent, ability) && ent.getX() <= hero.getX()) return ent.getId();
-				else return -1;
+				if(inRange(hero, ent, ability) && ent.getX() <= hero.getX() && !ent.equals(hero)) return ent.getId();
 			}
 			break;
 		}
 		//Right
 		case 3:{
 			for(Entity ent : level.getEntities()){
-				if(inRange(hero, ent, ability) && ent.getX() >= hero.getX()) return ent.getId();
-				else return -1;
+				if(inRange(hero, ent, ability) && ent.getX() >= hero.getX() && !ent.equals(hero)) return ent.getId();
 			}
 			break;
+		}
+		default:{
+			System.out.println("closestToHero params error");
+			return -1;
 		}
 		}
 	return -1;

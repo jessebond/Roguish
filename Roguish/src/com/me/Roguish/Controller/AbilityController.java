@@ -1,6 +1,7 @@
 package com.me.Roguish.Controller;
 
 import com.me.Roguish.Model.Entity;
+import com.me.Roguish.Model.MonsterUnit;
 import com.me.Roguish.Model.Unit;
 
 public class AbilityController {
@@ -39,6 +40,7 @@ public class AbilityController {
 		switch(ability){
 			case (LONGSWORD):{
 				((Unit)target).changeHP(-2 * ((Unit)origin).getStr());
+				System.out.println(((MonsterUnit)target).getHP());
 				break;
 			}
 			case (SHIELD):{
