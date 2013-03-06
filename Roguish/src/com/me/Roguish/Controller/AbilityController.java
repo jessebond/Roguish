@@ -38,6 +38,7 @@ public class AbilityController {
 	public void activate(Entity origin, Entity target, int ability ){
 		switch(ability){
 			case (LONGSWORD):{
+				((Unit)target).changeHP(-2 * ((Unit)origin).getStr());
 				break;
 			}
 			case (SHIELD):{
@@ -54,7 +55,7 @@ public class AbilityController {
 			}
 			case(STRONGBITE):{
 				if(target instanceof Unit){
-					((Unit)target).changeHP(-2 * ((Unit)origin).getStr());
+					((Unit)target).changeHP(((Unit)origin).getStr());
 				}
 				break;
 			}
