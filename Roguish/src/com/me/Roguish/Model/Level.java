@@ -35,11 +35,11 @@ public class Level{
 		 hero.setHP(1111);
 		 hero.setAtts(12, 12, 12);
 		 hero.addAbility(AbilityController.LONGSWORD);
-		 hero.addAbility(AbilityController.LONGSWORD);
-		 hero.addAbility(AbilityController.LONGSWORD);
-		 hero.addAbility(AbilityController.LONGSWORD);
-		 hero.addAbility(AbilityController.LONGSWORD);
-		 hero.addAbility(AbilityController.LONGSWORD);
+		 hero.addAbility(AbilityController.A_SHURIKEN);
+		 //hero.addAbility(AbilityController.A_SHURIKEN);
+		 //hero.addAbility(AbilityController.A_SHURIKEN);
+		 //hero.addAbility(AbilityController.A_SHURIKEN);
+		 //hero.addAbility(AbilityController.A_SHURIKEN);
 		 rat1.setMovement(1);
 		 rat1.setId(1);
 		 rat2.setMovement(2);

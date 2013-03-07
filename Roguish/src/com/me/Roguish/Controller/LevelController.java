@@ -120,23 +120,33 @@ public class LevelController {
 		if(!ability1 && !ability2 && !ability3 && !ability4 && !ability5) return false;
 		else{
 			if(ability1){
-				level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().peek()))), hero.getAbilities().peek());
+				try {
+					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().peek()))), hero.getAbilities().peek());
+				}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability1 = false;
 			}
 			else if(ability2){
-				level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(1)))), hero.getAbilities().get(1));
+				try{
+					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(1)))), hero.getAbilities().get(4));
+					}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability2 = false;
 			}
 			else if(ability3){
-				level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(2)))), hero.getAbilities().get(2));
+				try{
+					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(2)))), hero.getAbilities().get(4));
+					}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability3 = false;
 			}
 			else if(ability4){
-				level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(3)))), hero.getAbilities().get(3));
+				try{
+					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(3)))), hero.getAbilities().get(3));
+					}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability4 = false;
 			}
 			else if(ability5){
+				try{
 				level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(4)))), hero.getAbilities().get(4));
+				}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability5 = false;
 			}
 			level.queue.getNext();
@@ -183,6 +193,7 @@ public class LevelController {
 			return -1;
 		}
 		}
+		System.out.println("closestToHero params error");
 	return -1;
 	}
 	
@@ -203,7 +214,10 @@ public class LevelController {
 			tarRight = false;
 			return 3;
 		}
-		else return -1;
+		else{
+			System.out.println("getDirection error");
+			return -1;
+		}
 	}
 	
 
@@ -269,6 +283,7 @@ public class LevelController {
 		for(int i = 0; i < level.entities.size; i++ ){
 			if(x == level.entities.get(i).getId()) return i;
 		}
+		System.out.println("findId error");
 		return -1;	
 	}
 	

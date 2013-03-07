@@ -61,6 +61,10 @@ public class AbilityController {
 				}
 				break;
 			}
+			case(A_SHURIKEN):{
+				((Unit)target).changeHP(-2 * ((Unit)origin).getDex());
+				break;
+			}
 			default:
 				break;
 		}
@@ -83,6 +87,7 @@ public class AbilityController {
 			case(FIREBALL):{
 				return 8;
 			}
+			case(A_SHURIKEN): return 2;
 			default: 
 				return 0;
 		}
