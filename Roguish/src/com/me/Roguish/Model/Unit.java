@@ -85,6 +85,7 @@ public abstract class Unit extends Entity{
 		this.baseStr = str;
 		this.baseInt = inte;
 		this.baseDex = dex;
+		this.setMovement(dex);
 	}
 
 }

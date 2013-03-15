@@ -6,7 +6,8 @@ public class Entity implements Comparable<Entity> {
 	private int x;
 	private int y;
 	private int id;
-	private int movement;
+	private int baseMovement;
+	private int currentMovement;
 	private boolean alive = true;
 	private String texture;
 	private Array<Integer> abilities = new Array<Integer>();
@@ -47,11 +48,15 @@ public class Entity implements Comparable<Entity> {
 	}
 	
 	public int getMovement(){
-		return this.movement;
+		return this.baseMovement;
 	}
 	
 	public void setMovement(int mov){
-		this.movement = mov;
+		this.baseMovement = mov;
+	}
+	
+	public void updateMovement(int delta){
+		this.baseMovement += delta;
 	}
 	
 	public void setPosition(int x, int y){
@@ -73,7 +78,7 @@ public class Entity implements Comparable<Entity> {
 
 	
 	public int compareTo(Entity ent) {
-		return this.movement - ent.movement;
+		return this.currentMovement - ent.currentMovement;
 	}
 
 

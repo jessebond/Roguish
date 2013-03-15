@@ -13,7 +13,7 @@ import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
 public class LevelController {
 	private Level level;
-	private Entity hero;
+	private HeroUnit hero;
 	public Random Dice = new Random();
 	public boolean gameOver = false;
 	public boolean gameWon = false;
@@ -81,33 +81,34 @@ public class LevelController {
 		switch(direction){
 		case UP:{
 			if(hero.getY() > 0 && tileOpen(hero.getX(), hero.getY() - 1)){
-				level.queue.getNext();
 				hero.movePosition(0, -1);
-				level.queue.add(hero);
+				nextTurn(hero);
+
 			}
 			break;
 		}
 		case DOWN:{
 			if(hero.getY() < 14 && tileOpen(hero.getX(), hero.getY() + 1)){
-				level.queue.getNext();
 				hero.movePosition(0, 1);
-				level.queue.add(hero);
+				nextTurn(hero);
+
+				
 			}
 			break;
 		}
 		case LEFT:{
 			if(hero.getX() > 0 && tileOpen(hero.getX() - 1, hero.getY())){
-				level.queue.getNext();
 				hero.movePosition(-1, 0);
-				level.queue.add(hero);
+				nextTurn(hero);
+
 			}
 			break;
 		}
 		case RIGHT:{
 			if(hero.getX() < 9 && tileOpen(hero.getX() + 1, hero.getY())){
-				level.queue.getNext();
 				hero.movePosition(1 , 0);
-				level.queue.add(hero);
+				nextTurn(hero);
+
 			}
 			break;
 		}
@@ -127,13 +128,13 @@ public class LevelController {
 			}
 			else if(ability2){
 				try{
-					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(1)))), hero.getAbilities().get(4));
+					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(1)))), hero.getAbilities().get(1));
 					}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability2 = false;
 			}
 			else if(ability3){
 				try{
-					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(2)))), hero.getAbilities().get(4));
+					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(2)))), hero.getAbilities().get(2));
 					}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability3 = false;
 			}
@@ -149,9 +150,22 @@ public class LevelController {
 				}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability5 = false;
 			}
-			level.queue.getNext();
-			level.queue.add(hero);
+			nextTurn(hero);
 			return true;
+		}
+	}
+	
+	private void nextTurn(HeroUnit hero){
+		level.queue.getNext();
+		level.queue.add(hero);
+		doMonsterTurn();
+	}
+	private void nextTurn(){
+		if(level.entities.get(index).getAlive())
+			level.queue.add(level.entities.get(index));
+		index = findId(level.queue.getNext());
+		for(Entity ent : level.entities){
+			System.out.println(ent.getId());
 		}
 	}
 	
@@ -221,7 +235,7 @@ public class LevelController {
 	}
 	
 
-	public void doMonsterTurns(){
+	public void doMonsterTurn(){
 		if (level.entities.get(index) instanceof MonsterUnit){
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY())){
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
@@ -236,8 +250,7 @@ public class LevelController {
 					case MonsterUnit.BAT: doBatMovement(); break;
 				}	
 			}
-			if(level.entities.get(index).getAlive())
-				level.queue.add(level.entities.get(index));
+			
 		}		
 	}
 	//Iterates over NPCs and performs their turns until it is the Hero's turn
@@ -247,11 +260,12 @@ public class LevelController {
 		
 		//System.out.println(level.queue.turnCount);
 		while (!(level.queue.getEnt() instanceof HeroUnit)){
-			doMonsterTurns();
-			index = findId(level.queue.getNext());
+			doMonsterTurn();
+			nextTurn();
 		}
 	}
 	
+
 	
 	//Location Utilities:
 	

@@ -27,6 +27,7 @@ public class TurnQueue{
 	public int getNext(){
 		if (queue.peek() instanceof HeroUnit){
 			turnCount++;
+			System.out.println(turnCount);
 		}
 		return queue.remove().getId();
 	}
