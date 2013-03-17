@@ -6,7 +6,9 @@ public class Entity implements Comparable<Entity> {
 	private int x;
 	private int y;
 	private int id;
+	// Base movement is the entities movement dictated by their dexterity stat. After each turn currentMovement gets reset to this value.
 	private int baseMovement;
+	// Current movement is the entities movement after various modifications by skills & traps . This is the value that turns are determined by.
 	private int currentMovement;
 	private boolean alive = true;
 	private String texture;
@@ -51,12 +53,16 @@ public class Entity implements Comparable<Entity> {
 		return this.baseMovement;
 	}
 	
+	public void resetMovement(){
+		this.currentMovement = this.baseMovement;
+	}
+	
 	public void setMovement(int mov){
 		this.baseMovement = mov;
 	}
 	
 	public void updateMovement(int delta){
-		this.baseMovement += delta;
+		this.currentMovement += delta;
 	}
 	
 	public void setPosition(int x, int y){

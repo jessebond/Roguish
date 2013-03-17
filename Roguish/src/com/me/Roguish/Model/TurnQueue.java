@@ -1,14 +1,12 @@
 package com.me.Roguish.Model;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
+import java.util.PriorityQueue;
 import com.badlogic.gdx.utils.Array;
 
 public class TurnQueue{
 	
 	public int turnCount;
-	Queue<Entity> queue = new LinkedList<Entity>();
+	PriorityQueue<Entity> queue = new PriorityQueue<Entity>();
 	Array<Entity> entities;
 	public Level level;
 	public TurnQueue(){
@@ -28,6 +26,9 @@ public class TurnQueue{
 		if (queue.peek() instanceof HeroUnit){
 			turnCount++;
 			System.out.println(turnCount);
+		}
+		for (Entity enti : entities) {
+			enti.updateMovement(-1);
 		}
 		return queue.remove().getId();
 	}

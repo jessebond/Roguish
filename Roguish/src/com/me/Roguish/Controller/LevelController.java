@@ -157,12 +157,15 @@ public class LevelController {
 	
 	private void nextTurn(HeroUnit hero){
 		level.queue.getNext();
+		hero.resetMovement();
 		level.queue.add(hero);
-		doMonsterTurn();
+		doMonsterTurn();   // Doesn't belong here but seems to make things work...?
 	}
 	private void nextTurn(){
-		if(level.entities.get(index).getAlive())
+		if(level.entities.get(index).getAlive()){
+			level.entities.get(index).resetMovement();
 			level.queue.add(level.entities.get(index));
+		}
 		index = findId(level.queue.getNext());
 		for(Entity ent : level.entities){
 			System.out.println(ent.getId());
