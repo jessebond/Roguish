@@ -47,7 +47,7 @@ public class Level{
 
 	public void create(){
 		System.out.println("In create");
-		map = TiledLoader.createMap(Gdx.files.internal("data/level/test3.tmx"));
+		map = TiledLoader.createMap(Gdx.files.internal("data/level/test_FoV.tmx"));
 		System.out.println("Tiles loaded");
 	    atlas = new SimpleTileAtlas(map, Gdx.files.internal("data/"));
 	    System.out.println("atlas made");  
@@ -94,4 +94,5 @@ public class Level{
 			return map.layers.get(0).tiles[y][x];
 		else return 0;
 	}
+	
 }
