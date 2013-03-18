@@ -21,6 +21,7 @@ public class LevelRenderer {
 	private static final float CAMERA_WIDTH = 320f;
 	private static final float CAMERA_HEIGHT = 480f;
 	private static final float RUNNING_FRAME_DURATION = 0.06f;
+	private static final int VIEW_RANGE = 5;
 	//private static final float TILE_WIDTH = 32f;
 	
 	private Level level;
@@ -36,6 +37,8 @@ public class LevelRenderer {
 	private int height;
 	private float ppuX;	// pixels per unit on the X axis
 	private float ppuY;	// pixels per unit on the Y axis
+	private float offsetX;
+	private float offsetY;
 	private float ratioS;
 	private float ratio;
 	private float centerX; // centered tile x
@@ -47,11 +50,12 @@ public class LevelRenderer {
 	private TextureAtlas atlas;
 	
 	public LevelRenderer(Level level, boolean debug) {
-		setSize(480, 320);
+		setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		this.level = level;	
 		this.debug = debug;
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		this.cam.position.set(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f, 0);
+		
 		this.cam.update();
 		ratioS = CAMERA_WIDTH/CAMERA_HEIGHT;
 		ratio = (float) Gdx.graphics.getHeight()/Gdx.graphics.getWidth();
@@ -62,8 +66,10 @@ public class LevelRenderer {
 		font = new BitmapFont(Gdx.files.internal("data/font/Arial16.fnt"),
                 Gdx.files.internal("data/font/Arial16_0.png"), false);
 		font.setColor(Color.RED);
-		setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-		
+		//System.out.println("wtf: " + 32*ratio*ratioS);
+		offsetX = -CAMERA_WIDTH/3f+level.getHero().getX()*32*ratio*ratioS;
+		offsetY = -CAMERA_HEIGHT/2f+(14-level.getHero().getY())*centerY;
+		this.cam.translate(offsetX, offsetY);
 		loadTextures();
 	}
 	
@@ -114,18 +120,36 @@ public class LevelRenderer {
 
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
-			
-			//Renders Unit Health Bars
-			if(ent instanceof MonsterUnit){
-			shapeRenderer.begin(ShapeType.FilledRectangle);
-			shapeRenderer.setColor(Color.RED);
-			if(((MonsterUnit) ent).getHP() > 0)
-				shapeRenderer.filledRect(ent.getX() * 32,(14 - ent.getY()) * centerY, ((MonsterUnit) ent).getHP(), 4);
-			shapeRenderer.end();
+			if(ent == level.getHero())
+				spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), Gdx.graphics.getWidth()*1/3, Gdx.graphics. getHeight()/2);
+			else{
+				offsetX = -CAMERA_WIDTH/3f+level.getHero().getX()*32*ratio*ratioS;
+				offsetY = -CAMERA_HEIGHT/2f+(14-level.getHero().getY())*centerY;
+				//Renders Unit Health Bars
+				if(ent instanceof MonsterUnit){
+					shapeRenderer.begin(ShapeType.FilledRectangle);
+					shapeRenderer.setColor(Color.RED);
+				if(((MonsterUnit) ent).getHP() > 0)
+					shapeRenderer.filledRect(-offsetX*2.667f + ent.getX() * 32,-offsetY +(14 - ent.getY()) * centerY, ((MonsterUnit) ent).getHP(), 4);
+					shapeRenderer.end();
+				}
+				spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), -offsetX*2.667f + ent.getX() * 32, -offsetY + (14 - ent.getY()) * centerY);		
 			}
-			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * 32,(14 - ent.getY()) * centerY);
-			
 		}
+	}
+	
+	private boolean inRange(Entity ent){
+		if(ent == level.getHero())
+			return true;
+		if(ent.getX()+ent.getY()-(level.getHero().getX()+level.getHero().getY()) <= VIEW_RANGE &&
+				ent.getX()+ent.getY()-(level.getHero().getX()+level.getHero().getY()) >= -VIEW_RANGE)
+			return true;
+		else
+			return false;
+	}
+	
+	public void updateCam(float x, float y){
+		cam.translate(x*32*ratio*ratioS, y*centerY);
 	}
 	
 	private void drawDebug(){

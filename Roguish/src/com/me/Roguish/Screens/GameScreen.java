@@ -47,7 +47,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
         
 		level = new Level(cCard);
 		renderer = new LevelRenderer(level, true);
-		controller = new LevelController(level);
+		controller = new LevelController(level, renderer);
     }
 	
 	@Override

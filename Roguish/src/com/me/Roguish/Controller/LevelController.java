@@ -9,11 +9,14 @@ import com.me.Roguish.Model.Entity;
 import com.me.Roguish.Model.HeroUnit;
 import com.me.Roguish.Model.MonsterUnit;
 import com.me.Roguish.Model.Level;
+import com.me.Roguish.View.LevelRenderer;
 import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
 public class LevelController {
 	private Level level;
+	private LevelRenderer renderer;
 	private HeroUnit hero;
+
 	public Random Dice = new Random();
 	public boolean gameOver = false;
 	public boolean gameWon = false;
@@ -46,8 +49,9 @@ public class LevelController {
 		keys.put(Keys.FIVE, false);
 	};
 	
-	public LevelController(Level level){
+	public LevelController(Level level, LevelRenderer renderer){
 		this.level = level;
+		this.renderer = renderer;
 		this.hero = level.getHero();
 		
 	}
@@ -83,7 +87,7 @@ public class LevelController {
 			if(hero.getY() > 0 && tileOpen(hero.getX(), hero.getY() - 1)){
 				hero.movePosition(0, -1);
 				nextTurn(hero);
-
+				renderer.updateCam(0,1);
 			}
 			break;
 		}
@@ -91,8 +95,7 @@ public class LevelController {
 			if(hero.getY() < 14 && tileOpen(hero.getX(), hero.getY() + 1)){
 				hero.movePosition(0, 1);
 				nextTurn(hero);
-
-				
+				renderer.updateCam(0,-1);
 			}
 			break;
 		}
@@ -100,7 +103,7 @@ public class LevelController {
 			if(hero.getX() > 0 && tileOpen(hero.getX() - 1, hero.getY())){
 				hero.movePosition(-1, 0);
 				nextTurn(hero);
-
+				renderer.updateCam(-1,0);
 			}
 			break;
 		}
@@ -108,11 +111,11 @@ public class LevelController {
 			if(hero.getX() < 9 && tileOpen(hero.getX() + 1, hero.getY())){
 				hero.movePosition(1 , 0);
 				nextTurn(hero);
-
+				renderer.updateCam(1, 0);
 			}
 			break;
 		}
-		}
+			}
 		}
 		
 	}
@@ -498,7 +501,7 @@ public class LevelController {
 			tarDown = true;
 			doHeroTurn(Keys.DOWN);
 		}
-			
+	
 	}
 	
 	public void onePressed(){
