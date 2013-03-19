@@ -84,7 +84,7 @@ public class LevelController {
 		if(!doHeroAbility()){
 		switch(direction){
 		case UP:{
-			if(hero.getY() > 0 && tileOpen(hero.getX(), hero.getY() - 1)){
+			if(tileOpen(hero.getX(), hero.getY() - 1)){
 				hero.movePosition(0, -1);
 				nextTurn(hero);
 				renderer.updateCam(0,1);
@@ -92,7 +92,7 @@ public class LevelController {
 			break;
 		}
 		case DOWN:{
-			if(hero.getY() < 14 && tileOpen(hero.getX(), hero.getY() + 1)){
+			if(tileOpen(hero.getX(), hero.getY() + 1)){
 				hero.movePosition(0, 1);
 				nextTurn(hero);
 				renderer.updateCam(0,-1);
@@ -100,7 +100,7 @@ public class LevelController {
 			break;
 		}
 		case LEFT:{
-			if(hero.getX() > 0 && tileOpen(hero.getX() - 1, hero.getY())){
+			if(tileOpen(hero.getX() - 1, hero.getY())){
 				hero.movePosition(-1, 0);
 				nextTurn(hero);
 				renderer.updateCam(-1,0);
@@ -108,7 +108,7 @@ public class LevelController {
 			break;
 		}
 		case RIGHT:{
-			if(hero.getX() < 9 && tileOpen(hero.getX() + 1, hero.getY())){
+			if(tileOpen(hero.getX() + 1, hero.getY())){
 				hero.movePosition(1 , 0);
 				nextTurn(hero);
 				renderer.updateCam(1, 0);
