@@ -75,7 +75,6 @@ public class Level{
 		addEntity(rat3);
 		addEntity(bat1);
 		addEntity(winChest);
-
 	}
 	
 	public Array<Entity> getEntities(){

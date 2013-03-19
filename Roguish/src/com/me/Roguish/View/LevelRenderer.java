@@ -4,6 +4,8 @@ import com.me.Roguish.Model.Level;
 import com.me.Roguish.Model.Entity;
 import com.me.Roguish.Model.MonsterUnit;
 
+import java.lang.Math;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.tiled.*;
 import com.badlogic.gdx.graphics.Color;
@@ -21,7 +23,9 @@ public class LevelRenderer {
 	private static final float CAMERA_WIDTH = 320f;
 	private static final float CAMERA_HEIGHT = 480f;
 	private static final float RUNNING_FRAME_DURATION = 0.06f;
-	private static final int VIEW_RANGE = 5;
+	private static final int VIEW_RADIUS = 6;
+	private static final int TILE_BLACK = 0;
+	private static final int TILE_CLEAR = 1;
 	//private static final float TILE_WIDTH = 32f;
 	
 	private Level level;
@@ -111,6 +115,8 @@ public class LevelRenderer {
 		tmp.set(0, 0, 0);
 		cam.unproject(tmp);
 		
+		updateFoV(); // updates the Field of View
+		
 		tileMapRenderer.render((int) tmp.x, (int) tmp.y, width, height);
 		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_HEIGHT, CAMERA_HEIGHT);
         cam.zoom = 1.0f;
@@ -118,6 +124,41 @@ public class LevelRenderer {
         tileMapRenderer.render(cam);
 	}
 
+	// updates the field of view
+	private void updateFoV(){
+		int i,j;
+		float x,y,l;
+		for(i=0;i<level.map.width;i++)for(j=0;j<level.map.height;j++){
+			level.map.layers.get(1).tiles[j][i] = TILE_BLACK; // tile not visible
+		    x = i-level.getHero().getX();
+		    y = j-level.getHero().getY();
+		    l = (float) Math.sqrt((x*x)+(y*y));
+		    if(l<VIEW_RADIUS)
+		    	if(calcFoV(i,j) == true)
+		    		level.map.layers.get(1).tiles[j][i] = TILE_CLEAR; // tile visible
+		};
+	}
+	
+	// checks visible tiles in a circle
+	private boolean calcFoV(int x, int y){
+		float vx,vy,ox,oy,l;
+		int i;
+		vx = x-level.getHero().getX();
+		vy = y-level.getHero().getY();
+		ox = (float)x+0.5f;
+		oy= (float)y+0.5f;
+		l=(float) Math.sqrt((vx*vx)+(vy*vy));
+		vx/=l;
+		vy/=l;
+		for(i=0;i<(int)l;i++){
+		    if(level.tilePropCheck((int)ox, (int)oy, "wall"))
+		    	return false;
+		    ox+=vx;
+		    oy+=vy;
+		};
+		return true;
+	}
+	
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
 			if(ent == level.getHero())
@@ -139,13 +180,7 @@ public class LevelRenderer {
 	}
 	
 	private boolean inRange(Entity ent){
-		if(ent == level.getHero())
-			return true;
-		if(ent.getX()+ent.getY()-(level.getHero().getX()+level.getHero().getY()) <= VIEW_RANGE &&
-				ent.getX()+ent.getY()-(level.getHero().getX()+level.getHero().getY()) >= -VIEW_RANGE)
-			return true;
-		else
-			return false;
+		return true;
 	}
 	
 	public void updateCam(float x, float y){
