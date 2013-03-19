@@ -2,6 +2,7 @@ package com.me.Roguish.View;
 
 import com.me.Roguish.Model.Level;
 import com.me.Roguish.Model.Entity;
+import com.me.Roguish.Model.MonsterUnit;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.tiled.*;
@@ -12,6 +13,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector3;
 
 public class LevelRenderer {
@@ -22,6 +25,8 @@ public class LevelRenderer {
 	
 	private Level level;
 	private OrthographicCamera cam;
+	
+	private ShapeRenderer shapeRenderer = new ShapeRenderer();
 	
 	//Texture Regions
 	private TextureRegion heroTexture;
@@ -57,8 +62,8 @@ public class LevelRenderer {
 		font = new BitmapFont(Gdx.files.internal("data/font/Arial16.fnt"),
                 Gdx.files.internal("data/font/Arial16_0.png"), false);
 		font.setColor(Color.RED);
-		
 		setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		
 		loadTextures();
 	}
 	
@@ -96,7 +101,6 @@ public class LevelRenderer {
 	
 	public void renderTiles() {
         tileMapRenderer.getProjectionMatrix().set(cam.combined);
-		 
 		Vector3 tmp = new Vector3();
 		tmp.set(0, 0, 0);
 		cam.unproject(tmp);
@@ -105,13 +109,22 @@ public class LevelRenderer {
 		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_HEIGHT, CAMERA_HEIGHT);
         cam.zoom = 1.0f;
         cam.update();
-        
         tileMapRenderer.render(cam);
 	}
 
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
-			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * 32,(14 - ent.getY()) * centerY);		
+			
+			//Renders Unit Health Bars
+			if(ent instanceof MonsterUnit){
+			shapeRenderer.begin(ShapeType.FilledRectangle);
+			shapeRenderer.setColor(Color.RED);
+			if(((MonsterUnit) ent).getHP() > 0)
+				shapeRenderer.filledRect(ent.getX() * 32,(14 - ent.getY()) * centerY, ((MonsterUnit) ent).getHP(), 4);
+			shapeRenderer.end();
+			}
+			spriteBatch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * 32,(14 - ent.getY()) * centerY);
+			
 		}
 	}
 	

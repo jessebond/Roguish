@@ -84,7 +84,7 @@ public class Entity implements Comparable<Entity> {
 
 	
 	public int compareTo(Entity ent) {
-		return this.currentMovement - ent.currentMovement;
+		return this.currentMovement - ent.currentMovement ;
 	}
 
 
