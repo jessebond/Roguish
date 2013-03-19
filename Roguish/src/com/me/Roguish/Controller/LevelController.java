@@ -242,7 +242,7 @@ public class LevelController {
 	
 
 	public void doMonsterTurn(){
-		if (level.entities.get(index) instanceof MonsterUnit){
+		if (level.entities.get(index) instanceof MonsterUnit && level.entities.get(index).getAlive()){
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY())){
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
 					case MonsterUnit.RAT: doRatAttack(); break;
@@ -310,6 +310,7 @@ public class LevelController {
 	
 	//Returns true if the tile at the x, y is open
 	public boolean tileOpen(int x, int y){
+		if(x < 0 || x > level.map.width || y < 0 || y > level.map.height) return false;
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
