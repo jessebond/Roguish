@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="TileSheet" tilewidth="32" tileheight="32">
-  <image source="TileSheet.png" width="96" height="160"/>
+  <image source="TileSheet.png" width="96" height="192"/>
   <tile id="9">
    <properties>
     <property name="wall" value="true"/>
@@ -18,9 +18,14 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="50" height="50">
+ <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztmMESwyAIRD3nUP//b3vpoeMgLLCoyeTAtGlVeKwQk6u1dj3EPje3l+MseypH/xk6T6ozaY1MrpCYJD1QDuu3boyP8Kzg0NbIcuzQQ5p/Df4iPd+jR2++/ajVB7KvEJ5ofVSY5SMbw66+O/p8Oeo5tJq+E4dHD1bOVsc/69vRWKy5zPP9/xrIeYDFYe3pjA/pehVHNHfI2Oo6lzTx5q76HijF2YfPMfaIT6/eUR8WB9tmOWH3K/SsWMHGns9+fqhk0NZg3jc0fS3/DA5tjnQ9m5PZnyiPh8Maq3Fk6w3p3R4OzYfli8khPW8iuUfGaT0j2/ukewO6/7Ral/6L9gZkzsgh9dPKnhrZM5ZpZ46Ib6YeXg62Hkh9sDmsOLL7ghmPV9sTOJ6ixykcrBgqzrsvx95c7I5Ds8z79kjv02KInrH65PtqPcY4vCxZjjGPmfMqGguiaVaPLAc7HxEOxnuTf4boers5Rh12cLC0YKx5Csfu+mBwVL+fnJ3372hf9LWDLg==
+  </data>
+ </layer>
+ <layer name="Visability" width="50" height="50" opacity="0.34">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKGr8P3LLsdAwVVTVVVVVVVVVVXV5w+vTKYF
   </data>
  </layer>
 </map>

@@ -60,7 +60,6 @@ public class LevelRenderer {
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		this.cam.position.set(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f, 0);
 		
-		this.cam.update();
 		ratioS = CAMERA_WIDTH/CAMERA_HEIGHT;
 		ratio = (float) Gdx.graphics.getHeight()/Gdx.graphics.getWidth();
 		System.out.println("ratio: " + ratio);
@@ -74,6 +73,8 @@ public class LevelRenderer {
 		offsetX = -CAMERA_WIDTH/3f+level.getHero().getX()*32*ratio*ratioS;
 		offsetY = -CAMERA_HEIGHT/2f+(level.map.height -1 -level.getHero().getY())*centerY;
 		this.cam.translate(offsetX, offsetY);
+		this.cam.update();
+
 		loadTextures();
 	}
 	
@@ -117,7 +118,10 @@ public class LevelRenderer {
 		
 		updateFoV(); // updates the Field of View
 		
-		tileMapRenderer.render((int) tmp.x, (int) tmp.y, width, height);
+		int[] layers = new int[2];  // layers to be rendered
+		layers[0] = 0;
+		layers[1] = 1;
+		tileMapRenderer.render((int) tmp.x, (int) tmp.y, width, height, layers);
 		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_HEIGHT, CAMERA_HEIGHT);
         cam.zoom = 1f;
         cam.update();
