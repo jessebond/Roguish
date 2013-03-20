@@ -1,7 +1,3 @@
 .metadata/
 .gwt-log/
 *.class
-Roguish-html/.gwt/.gwt-log
-Roguish-android/bin/*
-Roguish/bin/*
-Roguish-desktop/bin/*
