@@ -18,13 +18,6 @@ public class HeroUnit extends Unit {
 	}
 
 	private void setStats(){
-		baseStr = cCard.getStrMod() + rCard.getStrMod();
-		baseDex = cCard.getDexMod() + rCard.getDexMod();
-		baseInt = cCard.getIntMod() + rCard.getIntMod();
-		baseHP = 2 * baseDex;
-		baseMana = 2 * baseInt;
-		this.setAlive(true);
-		
-		
+		this.setAtts(cCard.getStrMod() + rCard.getStrMod(), cCard.getIntMod() + rCard.getIntMod(),  cCard.getDexMod() + rCard.getDexMod());
 	}
 }

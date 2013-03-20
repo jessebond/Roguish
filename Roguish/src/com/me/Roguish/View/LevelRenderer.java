@@ -119,7 +119,7 @@ public class LevelRenderer {
 		
 		tileMapRenderer.render((int) tmp.x, (int) tmp.y, width, height);
 		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_HEIGHT, CAMERA_HEIGHT);
-        cam.zoom = 1.0f;
+        cam.zoom = 1f;
         cam.update();
         tileMapRenderer.render(cam);
 	}
@@ -194,7 +194,9 @@ public class LevelRenderer {
 		font.draw(spriteBatch, "HeroX: " + level.getHero().getX(), 10, 80);
 		font.draw(spriteBatch, "HeroY: " + level.getHero().getY(), 10, 100);
 		font.draw(spriteBatch, "HeroHP: " + level.getHero().getHP(), 10, 120);
-		
+		font.draw(spriteBatch, "HeroStr: " + level.getHero().getStr(), 10, 140);
+		font.draw(spriteBatch, "HeroInt: " + level.getHero().getInt(), 10, 160);
+		font.draw(spriteBatch, "HeroDex: " + level.getHero().getDex(), 10, 180);
 		//font.draw(spriteBatch, "TEST - + ? TEST", 20, 40);
 	}
 }

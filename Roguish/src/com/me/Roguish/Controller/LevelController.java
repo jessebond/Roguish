@@ -125,7 +125,7 @@ public class LevelController {
 		else{
 			if(ability1){
 				try {
-					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().peek()))), hero.getAbilities().peek());
+					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().peek()))), hero.getAbilities().get(0));
 				}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability1 = false;
 			}
