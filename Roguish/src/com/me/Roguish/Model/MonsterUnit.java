@@ -35,7 +35,7 @@ public class MonsterUnit extends Unit {
 			this.setAlive(true);
 		}
 		case SPIDER:{
-			this.setAtts(Dice.nextInt(4), Dice.nextInt(4), Dice.nextInt(4));
+			this.setAtts(Dice.nextInt(4), 5, Dice.nextInt(4));
 			this.setHP(6);
 		}
 		case BEAR:{

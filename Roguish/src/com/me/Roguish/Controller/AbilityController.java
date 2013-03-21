@@ -12,8 +12,11 @@ public class AbilityController {
 	public static final int LONGSWORD = 20;
 	public static final int SHIELD = 21;
 	public static final int FIREBALL = 22;
+	
+	// Negative numbers used to designate monster abilities. (These cannot be selected by the CHAOS skill)
 	public static final int BITE = -2;
 	public static final int STRONGBITE = -3;
+	public static final int WEB = -4;
 
 	// B for Basic versions of Abilities
 	// A for Advanced versions of Abilities
@@ -38,6 +41,10 @@ public class AbilityController {
 	public static final int GAUNTLET = 17;
 	public static final int HEALTHBOOST = 18;
 	public static final int MANABOOST = 19;
+	public static final int CHAOS = 23;
+	public static final int TELEPORT = 24;
+	public static final int DRAIN = 25;
+	public static final int TOUCHDRAIN = 26;
 	
 	public AbilityController(){
 	}
@@ -45,48 +52,64 @@ public class AbilityController {
 	public void activate(Entity origin, Entity target, int ability ){
 		switch(ability){
 			case (B_AXE):{
-				((Unit)target).changeHP(-2 * Dice.nextInt(4));
+				((Unit)target).changeHP(-1 * Dice.nextInt(12));
+				((Unit)origin).updateMovement(2);
 				System.out.println("You swing your axe with great force");
 				break;
 			}
 			case (B_BOW):{
+				((Unit) target).changeHP( -1 * (Dice.nextInt(8))); 
 				break;
 			}
 			case(B_XBOW):{
+				((Unit) target).changeHP( -1 * (Dice.nextInt(9))); 
 				break;
 			}
 			
 			case(B_SHURIKEN):{
+				((Unit) target).changeHP( -1 * Dice.nextInt(5) * Dice.nextInt(5));
 				break;
 			}
 			case (B_STAFF):{
+				((Unit)target).changeHP(-2 * (int) Math.round(.5 * ((Unit)origin).getInt()));
 				break;
 			}
 			case (B_WAND):{
+				((Unit)target).changeHP(-1 * (int) Math.round(.5 * ((Unit)origin).getInt()));
 				break;
 			}
 			case (B_SWORD):{
+				((Unit)target).changeHP(-1 * Dice.nextInt(10));
+				((Unit)origin).updateMovement(2);
 				break;
 			}
 			case (A_AXE):{
+				((Unit)target).changeHP(-1 * Dice.nextInt(14));
 				break;
 			}
 			case (A_BOW):{
+				((Unit) target).changeHP( -1 * (Dice.nextInt(9)));
 				break;
 			}
 			case (A_XBOW):{
+				((Unit)target).changeHP(-1 * Dice.nextInt(10));
 				break;
 			}
 			case (A_SHURIKEN):{
+				((Unit) target).changeHP( -1 * Dice.nextInt(5) * Dice.nextInt(5) + 4);
 				break;
 			}
 			case (A_STAFF):{
+				((Unit)target).changeHP(-2 * (int) Math.round(.9 * ((Unit)origin).getInt()) + 2);
 				break;
 			}
 			case (A_SWORD):{
+				((Unit)target).changeHP(-1 * Dice.nextInt(12));
+				((Unit)origin).updateMovement(2);
 				break;
 			}
 			case (A_WAND):{
+				((Unit)target).changeHP(-1 * (int) Math.round(.5 * ((Unit)origin).getInt()));
 				break;
 			}
 			case (GALOSHES):{
@@ -106,9 +129,49 @@ public class AbilityController {
 			}
 			case(STRONGBITE):{
 				if(target instanceof Unit){
-					((Unit)target).changeHP(-Dice.nextInt(2));
+					((Unit)target).changeHP(-1 * Dice.nextInt(2));
 				}
 				break;
+			}
+			case(CHAOS):{
+				if(((Unit)origin).getMana() >= 5){
+					activate(origin, target,  Dice.nextInt(24) );
+					((Unit)origin).updateMana(-5);
+				}
+			}
+			case(TELEPORT):{
+				if(((Unit)origin).getMana() >= 7){
+					origin.movePosition(Dice.nextInt(10), Dice.nextInt(10));
+					((Unit)origin).updateMana(-7);
+				}
+			}
+			case(FIREBALL):{
+				if(((Unit)origin).getMana() >= 7){
+					((Unit)target).changeHP(-15 + (int) Math.round(.5 * ((Unit)origin).getInt()));
+				}
+			}
+			case(DRAIN):{
+				if(((Unit)origin).getMana() >= 5){
+					int x = Dice.nextInt(4);
+					((Unit)target).changeHP(-1 * x);
+					((Unit)origin).changeHP(x);
+					((Unit)origin).updateMana(-5);
+				}
+			}
+			case(TOUCHDRAIN):{
+				if(((Unit)origin).getMana() >= 5){
+					int x = Dice.nextInt(6);
+					((Unit)target).changeHP(-1 * x);
+					((Unit)origin).changeHP(x);
+					((Unit)origin).updateMana(-5);
+				}
+				
+			}
+			case(WEB):{
+				if(((Unit)origin).getMana() >= 10){
+					((Unit)target).updateMovement(10);
+					((Unit)origin).updateMana(-5);
+				}
 			}
 			default:
 				break;
@@ -180,6 +243,21 @@ public int getRange(int ability){
 			}
 			case(FIREBALL):{
 				return 8;
+			}
+			case(CHAOS):{
+				return 10;
+			}
+			case(TELEPORT):{
+				return 9999999;
+			}
+			case(DRAIN):{
+				return 4;
+			}
+			case(TOUCHDRAIN):{
+				return 1;
+			}
+			case(WEB):{
+				return 2;
 			}
 			default: 
 				return 0;

@@ -23,10 +23,7 @@ public class TurnQueue{
 	}
 	
 	public int getNext(){
-		if (queue.peek() instanceof HeroUnit){
-			turnCount++;
-			System.out.println(turnCount);
-		}
+		turnCount++;
 		for (Entity enti : entities) {
 			enti.updateMovement(-1);
 		}

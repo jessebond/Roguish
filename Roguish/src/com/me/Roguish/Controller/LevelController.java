@@ -125,7 +125,7 @@ public class LevelController {
 		else{
 			if(ability1){
 				try {
-					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().peek()))), hero.getAbilities().get(0));
+					level.ability.activate(hero, level.entities.get(findId(closestToHero(getDirection(), hero.getAbilities().get(0)))), hero.getAbilities().get(0));
 				}catch(ArrayIndexOutOfBoundsException e){ System.out.println("No target");}
 				ability1 = false;
 			}
@@ -240,13 +240,20 @@ public class LevelController {
 		}
 	}
 	
-
+	// Change logic so that range is checked in the overall monster AI method.
 	public void doMonsterTurn(){
 		if (level.entities.get(index) instanceof MonsterUnit && level.entities.get(index).getAlive()){
+			switch( ((MonsterUnit)level.entities.get(index)).getType()){
+				case MonsterUnit.RAT: doRatTurn(); break;
+				case MonsterUnit.BAT: doBatTurn(); break;
+				case MonsterUnit.SPIDER: doSpiderTurn(); break;
+			}
+			/*
 			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY())){
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
 					case MonsterUnit.RAT: doRatAttack(); break;
 					case MonsterUnit.BAT: doBatAttack(); break;
+					case MonsterUnit.SPIDER: doSpiderAttack(); break;
 				}
 				
 			}
@@ -254,11 +261,51 @@ public class LevelController {
 				switch( ((MonsterUnit)level.entities.get(index)).getType()){
 					case MonsterUnit.RAT: doRatMovement(); break;
 					case MonsterUnit.BAT: doBatMovement(); break;
+					case MonsterUnit.SPIDER: doSpiderMovement(); break;
 				}	
 			}
+			*/
 			
 		}		
 	}
+	
+	private void doBatTurn() {
+		if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY()))
+			doBatAttack();
+		else doBatMovement();
+		
+	}
+
+	private void doRatTurn() {
+		if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY()))
+			doRatAttack();
+		else doRatMovement();
+		
+	}
+
+	private void doSpiderMovement() {
+		if(inRadius(level.entities.get(index), level.getHero(), 5)){
+			moveEntityTowardHero(level.entities.get(index));
+		}
+		else moveRandom(level.entities.get(index));
+		
+	}
+
+	
+
+	private void doSpiderTurn() {
+		
+		// Check if hero in range of WEB && has mana for spell
+		if (((MonsterUnit) level.entities.get(index) ).getMana() >= 10 && inRange(level.entities.get(index), level.getHero(), AbilityController.WEB))
+			level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.WEB);
+		//Check if in melee range
+		else if(inRadius(level.entities.get(index), level.getHero(), 1)){
+			level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.BITE);
+		}
+		else doSpiderMovement();
+		
+	}
+
 	//Iterates over NPCs and performs their turns until it is the Hero's turn
 	public void checkHeroTurn(){
 		checkLoseConditions();
@@ -323,6 +370,11 @@ public class LevelController {
 		else return false;
 	}
 	
+	private boolean inRadius(Entity source, Entity target, int radius){
+		if( distance(source.getX(), source.getY(), target.getX(), target.getY())  <= radius) return true;
+		else return false;
+	}
+	
 	//Returns Manhattan distance between two points.
 	private int distance(int x, int y, int x2, int y2) {
 		return Math.abs(x-x2) + Math.abs(y-y2);
@@ -345,7 +397,10 @@ public class LevelController {
 	}
 	
 	public void doBatAttack(){
-		level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.STRONGBITE);
+		if(((MonsterUnit)level.entities.get(index)).getHP() < 4 ){
+			level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.TOUCHDRAIN);
+		}
+		else level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.STRONGBITE);
 	}
 	
 	public void moveEntityTowardHero(Entity mover){

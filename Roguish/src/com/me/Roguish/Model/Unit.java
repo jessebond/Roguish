@@ -48,6 +48,10 @@ public abstract class Unit extends Entity{
 		return this.currentMana;
 	}
 	
+	public void updateMana(int delta){
+		this.setMana(this.getMana() + delta);
+	}
+	
 	public int getBaseMana(){
 		return this.baseMana;
 	}
@@ -85,7 +89,7 @@ public abstract class Unit extends Entity{
 		this.baseStr = str;
 		this.baseInt = inte;
 		this.baseDex = dex;
-		this.setMovement(1+dex);
+		this.setMovement(50 - dex);
 		this.setMana(2*inte);
 		this.setHP(2*str);
 		this.setAlive(true);
