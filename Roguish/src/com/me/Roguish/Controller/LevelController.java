@@ -178,10 +178,37 @@ public class LevelController {
 				case MonsterUnit.RAT: doRatTurn(); break;
 				case MonsterUnit.BAT: doBatTurn(); break;
 				case MonsterUnit.SPIDER: doSpiderTurn(); break;
+				case MonsterUnit.SHADOW: doShadowTurn(); break;
 			}
 		}		
 	}
 	
+	private void doShadowTurn() {
+		if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY() )){
+			doShadowAttack();
+		}
+		else if(inRadius(level.entities.get(index), level.getHero(), 4)){
+			if(tileOpen(level.getHero().getX()-1, level.getHero().getY()))
+				level.entities.get(index).setPosition(level.getHero().getX()-1, level.getHero().getY());
+			else if(tileOpen(level.getHero().getX(), level.getHero().getY()-1))
+				level.entities.get(index).setPosition(level.getHero().getX(), level.getHero().getY()-1);
+			else if(tileOpen(level.getHero().getX()+1, level.getHero().getY()))
+				level.entities.get(index).setPosition(level.getHero().getX()+1, level.getHero().getY());
+			else if(tileOpen(level.getHero().getX(), level.getHero().getY()+1))
+				level.entities.get(index).setPosition(level.getHero().getX(), level.getHero().getY()+1);
+		}
+		else{
+			int x = Dice.nextInt(4) * (-1 * Dice.nextInt(2));
+			if(tileOpen(level.entities.get(index).getX() + x, level.entities.get(index).getY() + x))
+				level.entities.get(index).setPosition(level.getHero().getX()+x, level.getHero().getY()+x);	
+		}
+		
+	}
+
+	private void doShadowAttack() {
+		level.ability.activate(level.entities.get(index), level.getHero(), AbilityController.SHADOWSTRIKE);
+	}
+
 	private void nextTurn(HeroUnit hero){
 		level.queue.getNext();
 		hero.resetMovement();

@@ -17,6 +17,7 @@ public class AbilityController {
 	public static final int BITE = -2;
 	public static final int STRONGBITE = -3;
 	public static final int WEB = -4;
+	public static final int SHADOWSTRIKE = -5;
 
 	// B for Basic versions of Abilities
 	// A for Advanced versions of Abilities
@@ -172,6 +173,10 @@ public class AbilityController {
 					((Unit)origin).updateMana(-5);
 				}
 			}
+			case(SHADOWSTRIKE):{
+				((Unit)target).changeHP(-1* (int) Math.round(((Unit)target).getHP()/10));
+				
+			}
 			default:
 				break;
 		}
@@ -260,6 +265,9 @@ public int getRange(int ability){
 			}
 			case(WEB):{
 				return 2;
+			}
+			case(SHADOWSTRIKE):{
+				return 1;
 			}
 			default: 
 				return 0;
