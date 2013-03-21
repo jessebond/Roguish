@@ -1,7 +1,11 @@
 package com.me.Roguish.Model;
 import com.me.Roguish.Controller.AbilityController;
 import com.badlogic.gdx.utils.Array;
+<<<<<<< HEAD
 import java.util.Random;
+=======
+import com.badlogic.gdx.maps.MapProperties;
+>>>>>>> Additional changes to the Map stuff
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -134,11 +138,18 @@ public class Level{
 	}
 	
 	public boolean tilePropCheck(int x, int y, String property){
-		return getTile(x, y).getProperties().get(property, Boolean.class);
+		MapProperties temp = getTile(x,y).getProperties();
+		if(temp.containsKey(property)){
+			return !Boolean.parseBoolean(temp.get(property, String.class));
+		}
+		else return true;
 	}
 
 	public boolean tilePropCheck(int x, int y, int layer, String property){
-		return getTile(x, y, layer).getProperties().get(property, Boolean.class);
+		MapProperties temp = getTile(x,y,layer).getProperties();
+		if(temp.containsKey(property))
+			return !Boolean.parseBoolean(temp.get(property, String.class));
+		else return true;
 	}
 	
 	public boolean tileExists(int x, int y, int layer){

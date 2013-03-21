@@ -4,14 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import com.badlogic.gdx.Gdx;
 import com.me.Roguish.Model.Entity;
 import com.me.Roguish.Model.HeroUnit;
 import com.me.Roguish.Model.MonsterUnit;
 import com.me.Roguish.Model.Level;
 import com.me.Roguish.View.LevelRenderer;
-import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
 public class LevelController {
 	private Level level;
@@ -32,8 +29,6 @@ public class LevelController {
 	private boolean tarDown = false;
 	// Index is the index in the level entity array of the current Unit whose turn it is 
 	private int index = 0;
-	
-	private TiledMapTileLayer backgroundLayer;
 	
 	enum Keys {
 		LEFT, RIGHT, UP, DOWN, ONE, TWO, THREE, FOUR, FIVE
@@ -56,8 +51,7 @@ public class LevelController {
 		this.level = level;
 		this.renderer = renderer;
 		this.hero = level.getHero();
-		backgroundLayer = (TiledMapTileLayer)level.map.getLayers().get(0);
-		
+				
 	}
 	
 	// Main update method
@@ -88,8 +82,8 @@ public class LevelController {
 		if(!doHeroAbility()){
 		switch(direction){
 		case UP:{
-			if(tileOpen(hero.getX(), hero.getY() - 1)){
-				hero.movePosition(0, -1);
+			if(tileOpen(hero.getX(), hero.getY() + 1)){
+				hero.movePosition(0, 1);
 				nextTurn(hero);
 				renderer.updateCam(0,1);
 				checkWinConditions();
@@ -97,8 +91,8 @@ public class LevelController {
 			break;
 		}
 		case DOWN:{
-			if(tileOpen(hero.getX(), hero.getY() + 1)){
-				hero.movePosition(0, 1);
+			if(tileOpen(hero.getX(), hero.getY() - 1)){
+				hero.movePosition(0, -1);
 				nextTurn(hero);
 				renderer.updateCam(0,-1);
 				checkWinConditions();
@@ -228,7 +222,6 @@ public class LevelController {
 	}
 	
 	private int closestToHero(int direction, int ability){
-		boolean found = false;
 		switch(direction){
 		//Up
 		case 0:{
@@ -373,8 +366,7 @@ public class LevelController {
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
-		if(level.tilePropCheck(x,y,"wall")) return false;
-		else return true;
+		return level.tilePropCheck(x,y,"wall");
 	}
 	
 	public boolean inRange(Entity source, Entity target, int ability ){
