@@ -166,10 +166,10 @@ public class LevelController {
 	public void checkHeroTurn(){	
 		checkLoseConditions();
 		System.out.println(level.queue.turnCount);
-		while (!(level.queue.getEnt() instanceof HeroUnit)){
+		do{
 			doMonsterTurn();
 			nextTurn();
-		}
+		}while (!(level.queue.getEnt() instanceof HeroUnit));
 	}
 	
 	public void doMonsterTurn(){

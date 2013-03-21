@@ -63,8 +63,6 @@ public class Entity implements Comparable<Entity> {
 	
 	public void updateMovement(int delta){
 		this.currentMovement += delta;
-		if(this.currentMovement < 0)
-			this.currentMovement = 0;
 	}
 	
 	public void setPosition(int x, int y){
@@ -86,7 +84,7 @@ public class Entity implements Comparable<Entity> {
 
 	
 	public int compareTo(Entity ent) {
-		return this.currentMovement - ent.currentMovement;
+		return this.currentMovement- ent.currentMovement;
 	}
 
 

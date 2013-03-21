@@ -22,20 +22,20 @@ public class MonsterUnit extends Unit {
 		setType(type);
 		switch(type){
 		case RAT:{
-			this.setAtts(Dice.nextInt(2), Dice.nextInt(2), Dice.nextInt(2));
+			this.setAtts(Dice.nextInt(2), Dice.nextInt(2), 6);
 			this.setHP(2);
 			this.addAbility(AbilityController.BITE);
 			this.setAlive(true);
 			
 		}
 		case BAT:{
-			this.setAtts(Dice.nextInt(3), Dice.nextInt(3), 24);
+			this.setAtts(Dice.nextInt(3), Dice.nextInt(3), 20);
 			this.setHP(4);
 			this.addAbility(AbilityController.STRONGBITE);
 			this.setAlive(true);
 		}
 		case SPIDER:{
-			this.setAtts(Dice.nextInt(4), 5, Dice.nextInt(4));
+			this.setAtts(Dice.nextInt(4), 5, 20);
 			this.setHP(6);
 		}
 		case BEAR:{
