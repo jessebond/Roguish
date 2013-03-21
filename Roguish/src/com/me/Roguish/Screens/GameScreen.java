@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 
 import com.me.Roguish.Roguish;
@@ -50,6 +51,15 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		controller = new LevelController(level, renderer);
     }
 	
+	public GameScreen(Roguish game, ClassCard cCard, Array<Integer> abilities) {
+		super(game);
+        this.cCard = cCard;
+        
+		level = new Level(cCard, abilities);
+		renderer = new LevelRenderer(level, true);
+		controller = new LevelController(level, renderer);
+	}
+
 	@Override
 	public void show() {
 		Gdx.input.setInputProcessor(this);

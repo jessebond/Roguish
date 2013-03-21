@@ -7,6 +7,7 @@ public abstract class Unit extends Entity{
 	
 	public Unit(int x, int y, String texture, Array<Integer> a) {
 		super(x, y, texture, a);
+		System.out.println("Unit");
 		this.setMovement(this.getDex());
 	}
 
@@ -89,7 +90,7 @@ public abstract class Unit extends Entity{
 		this.baseStr = str;
 		this.baseInt = inte;
 		this.baseDex = dex;
-		this.setMovement(50 - dex);
+		this.setMovement(30 - dex);
 		this.setMana(2*inte);
 		this.setHP(2*str);
 		this.setAlive(true);

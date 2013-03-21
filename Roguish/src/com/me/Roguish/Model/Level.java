@@ -29,10 +29,22 @@ public class Level{
 		queue = new TurnQueue(getEntities());
 	}
 	
+	public Level(ClassCard cCard, Array<Integer> abilities) {
+		for(int i = 0; i < abilities.size; i++)
+			System.out.println(abilities.get(i));
+		hero =  new HeroUnit(5, 5, cCard.getClassName(),  new Array<Integer>(), cCard);
+		for(int i = 0; i < abilities.size; i++ )
+			hero.addAbility(abilities.get(i));
+		create();
+		setStats();
+		populate();
+		queue = new TurnQueue(getEntities());
+	}
+
 	private void setStats() {
 		 hero.setId(0);
-		 hero.addAbility(AbilityController.B_AXE);
-		 hero.addAbility(AbilityController.B_SHURIKEN);
+		 //hero.addAbility(AbilityController.B_AXE);
+		 //hero.addAbility(AbilityController.B_SHURIKEN);
 		 rat1.setId(1);
 		 rat2.setId(2);
 		 rat3.setId(3);

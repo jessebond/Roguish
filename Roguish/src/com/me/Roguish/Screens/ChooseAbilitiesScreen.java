@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.Array;
 
 import com.me.Roguish.Roguish;
 import com.me.Roguish.Model.ClassCard;
+import com.me.Roguish.Model.Level;
 
 public class ChooseAbilitiesScreen extends AbstractScreen{
 	private static final int MAX_CARDS = 20;
@@ -158,7 +159,7 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		nextButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				System.out.println("Next Button Down, Class cardNo: " + cardNo);
-				game.setScreen(new GameScreen(game, cCard));
+				game.setScreen(new GameScreen(game, cCard, abilities));
 				return false;
 			}
 		});
@@ -440,6 +441,9 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 			System.out.println("added");
 			abilNo++;
 			updateRings();
+			for(int i =0; i < abilities.size; i++){
+				System.out.println(abilities.get(i));
+			}
 		}
 	}
 	

@@ -12,6 +12,7 @@ public class HeroUnit extends Unit {
 	
 	public HeroUnit(int x, int y, String texture, Array<Integer> a, ClassCard cCard){
 		super(x, y, texture, a);
+		System.out.println("Hero");
 		this.cCard = cCard;
 		rCard = new RaceCard(0);
 		setStats();

@@ -18,7 +18,7 @@ public class Entity implements Comparable<Entity> {
 		this.x = x;
 		this.y = y;
 		this.texture = texture;
-		this.abilities = a;
+		this.abilities = new Array<Integer>(a);
 	}
 	
 	public void addAbility(int x){
