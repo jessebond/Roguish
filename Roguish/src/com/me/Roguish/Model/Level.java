@@ -85,6 +85,16 @@ public class Level{
 		return map.layers.get(layer).tiles[y][x];
 	}
 	
+	public boolean tileExists(int x, int y, int layer){
+		try{
+			int tmp = map.layers.get(layer).tiles[y][x];
+			return true;
+		}catch(ArrayIndexOutOfBoundsException e){
+			return false;
+		}
+	}
+	
+	
 	public int getTile(int x, int y){
 		if(x >= 0 && y>= 0)
 			return map.layers.get(0).tiles[y][x];

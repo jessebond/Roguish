@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="TileSheet" tilewidth="32" tileheight="32">
-  <image source="TileSheet.png" width="96" height="192"/>
+  <image source="TileSheet.png" width="352" height="192"/>
   <tile id="9">
    <properties>
     <property name="wall" value="true"/>
@@ -17,15 +17,15 @@
     <property name="wall" value="false"/>
    </properties>
   </tile>
+  <tile id="33">
+   <properties>
+    <property name="wall" value="true"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmMESwyAIRD3nUP//b3vpoeMgLLCoyeTAtGlVeKwQk6u1dj3EPje3l+MseypH/xk6T6ozaY1MrpCYJD1QDuu3boyP8Kzg0NbIcuzQQ5p/Df4iPd+jR2++/ajVB7KvEJ5ofVSY5SMbw66+O/p8Oeo5tJq+E4dHD1bOVsc/69vRWKy5zPP9/xrIeYDFYe3pjA/pehVHNHfI2Oo6lzTx5q76HijF2YfPMfaIT6/eUR8WB9tmOWH3K/SsWMHGns9+fqhk0NZg3jc0fS3/DA5tjnQ9m5PZnyiPh8Maq3Fk6w3p3R4OzYfli8khPW8iuUfGaT0j2/ukewO6/7Ral/6L9gZkzsgh9dPKnhrZM5ZpZ46Ib6YeXg62Hkh9sDmsOLL7ghmPV9sTOJ6ixykcrBgqzrsvx95c7I5Ds8z79kjv02KInrH65PtqPcY4vCxZjjGPmfMqGguiaVaPLAc7HxEOxnuTf4boers5Rh12cLC0YKx5Csfu+mBwVL+fnJ3372hf9LWDLg==
-  </data>
- </layer>
- <layer name="Visability" width="50" height="50" opacity="0.34">
-  <data encoding="base64" compression="zlib">
-   eJztwwEJAAAMBKGr8P3LLsdAwVVTVVVVVVVVVVXV5w+vTKYF
+   eJztmEuOwjAMhnOWlgUzGpEDcP970UWRIuP3o8mMZmFBaRL7y2+7oVtrbSPsydzzjKu2x2k7sNtp1Dw4bh/WutJGDorhHR+MnRo3k4OL7aa4P45ZlWNvnznE5dkqHD+HfR/2ddid4IO1/RzW6adBP94YsfU0HFjOQNuI33bgP4MDWy+bA+bjTviMcnj00LBwemA+N+AP6/kZejyMLFyd9/aZ01S8Gh5LfbyvsTyhOKg6x3qWtO/RvKP2wppnsFY0fq/g4PShnjErc2h4KAaupmdxaLisfiNxZ3FE/FEckVikud5eL/miOCr0kHI64gO7vorDu3easdV1jmli3bvqZyAWZwefMHaPT6veXh8SR7ZRe5Ldr7BzXrVV1Xn2/4dKBm6NzOcGp6/kP4ODm4NdU3Mi+anlsXBIYzmOaL1pereFg/Mh+crkwP5vavZeM47rGdHehz0btPnH1Tp2z9sbNHMgB9ZPK3uqJ2ck484cHt+Zelg5svXQ1Ec2hxRHNC8y47FquwLHX9FjFY6sGCrOu/8cc/didhyced63Y1pHWHuLnXc78f1qPWAcVpYoB9zHyHlVG4tG06geUY7s/fBwZLw3GRm8683mgDrM4MjSImPNVThm10cGR/X7Seq8/xvtBbzbp5M=
   </data>
  </layer>
 </map>

@@ -538,7 +538,8 @@ public class LevelController {
 			tarDown = true;
 			doHeroTurn(Keys.DOWN);
 		}
-	
+		renderer.TILE_BLACK++;
+		System.out.println("Black tile: " + renderer.TILE_BLACK);
 	}
 	
 	public void onePressed(){

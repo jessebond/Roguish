@@ -24,7 +24,7 @@ public class LevelRenderer {
 	private static final float CAMERA_HEIGHT = 480f;
 	private static final float RUNNING_FRAME_DURATION = 0.06f;
 	private static final int VIEW_RADIUS = 6;
-	private static final int TILE_BLACK = 0;
+	public int TILE_BLACK = 0;
 	private static final int TILE_CLEAR = 1;
 	//private static final float TILE_WIDTH = 32f;
 	
@@ -116,13 +116,13 @@ public class LevelRenderer {
 		tmp.set(0, 0, 0);
 		cam.unproject(tmp);
 		
-		updateFoV(); // updates the Field of View
+		//updateFoV(); // updates the Field of View
 		
 		int[] layers = new int[2];  // layers to be rendered
-		layers[0] = 0;
+		layers[0] = 1;
 		layers[1] = 1;
-		tileMapRenderer.render((int) tmp.x, (int) tmp.y, width, height, layers);
-		//tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_HEIGHT, CAMERA_HEIGHT);
+		//tileMapRenderer.render((int) tmp.x, (int) tmp.y, width, height, layers);
+		tileMapRenderer.render((int) tmp.x, (int) tmp.y,CAMERA_HEIGHT, CAMERA_HEIGHT);
         cam.zoom = 1f;
         cam.update();
         tileMapRenderer.render(cam);
@@ -132,13 +132,14 @@ public class LevelRenderer {
 	private void updateFoV(){
 		int i,j;
 		float x,y,l;
-		for(i=0;i<level.map.width;i++)for(j=0;j<level.map.height;j++){
+		for(i=0;i<level.map.width;i++)
+			for(j=0;j<level.map.height;j++){
 			level.map.layers.get(1).tiles[j][i] = TILE_BLACK; // tile not visible
 		    x = i-level.getHero().getX();
 		    y = j-level.getHero().getY();
 		    l = (float) Math.sqrt((x*x)+(y*y));
 		    if(l<VIEW_RADIUS)
-		    	if(calcFoV(i,j) == true)
+		    	if(calcFoV(i,j) == true);
 		    		level.map.layers.get(1).tiles[j][i] = TILE_CLEAR; // tile visible
 		};
 	}
@@ -155,7 +156,7 @@ public class LevelRenderer {
 		vx/=l;
 		vy/=l;
 		for(i=0;i<(int)l;i++){
-		    if(level.tilePropCheck((int)ox, (int)oy, "wall"))
+		    if(level.tileExists((int)ox, (int)oy, 0) || level.tilePropCheck((int)ox, (int)oy, "wall"))
 		    	return false;
 		    ox+=vx;
 		    oy+=vy;
