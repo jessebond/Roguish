@@ -88,6 +88,7 @@ public class LevelController {
 				hero.movePosition(0, -1);
 				nextTurn(hero);
 				renderer.updateCam(0,1);
+				checkWinConditions();
 			}
 			break;
 		}
@@ -96,6 +97,7 @@ public class LevelController {
 				hero.movePosition(0, 1);
 				nextTurn(hero);
 				renderer.updateCam(0,-1);
+				checkWinConditions();
 			}
 			break;
 		}
@@ -104,6 +106,7 @@ public class LevelController {
 				hero.movePosition(-1, 0);
 				nextTurn(hero);
 				renderer.updateCam(-1,0);
+				checkWinConditions();
 			}
 			break;
 		}
@@ -112,6 +115,7 @@ public class LevelController {
 				hero.movePosition(1 , 0);
 				nextTurn(hero);
 				renderer.updateCam(1, 0);
+				checkWinConditions();
 			}
 			break;
 		}
@@ -158,11 +162,31 @@ public class LevelController {
 		}
 	}
 	
+	//Iterates over NPCs and performs their turns until it is the Hero's turn
+	public void checkHeroTurn(){	
+		checkLoseConditions();
+		System.out.println(level.queue.turnCount);
+		while (!(level.queue.getEnt() instanceof HeroUnit)){
+			doMonsterTurn();
+			nextTurn();
+		}
+	}
+	
+	public void doMonsterTurn(){
+		if (level.entities.get(index) instanceof MonsterUnit && level.entities.get(index).getAlive()){
+			switch( ((MonsterUnit)level.entities.get(index)).getType()){
+				case MonsterUnit.RAT: doRatTurn(); break;
+				case MonsterUnit.BAT: doBatTurn(); break;
+				case MonsterUnit.SPIDER: doSpiderTurn(); break;
+			}
+		}		
+	}
+	
 	private void nextTurn(HeroUnit hero){
 		level.queue.getNext();
 		hero.resetMovement();
 		level.queue.add(hero);
-		doMonsterTurn();   // Doesn't belong here but seems to make things work...?
+		//doMonsterTurn();   // Doesn't belong here but seems to make things work...?
 	}
 	private void nextTurn(){
 		if(level.entities.get(index).getAlive()){
@@ -170,9 +194,6 @@ public class LevelController {
 			level.queue.add(level.entities.get(index));
 		}
 		index = findId(level.queue.getNext());
-		for(Entity ent : level.entities){
-			System.out.println(ent.getId());
-		}
 	}
 	
 	private int closestToHero(int direction, int ability){
@@ -240,34 +261,8 @@ public class LevelController {
 		}
 	}
 	
-	// Change logic so that range is checked in the overall monster AI method.
-	public void doMonsterTurn(){
-		if (level.entities.get(index) instanceof MonsterUnit && level.entities.get(index).getAlive()){
-			switch( ((MonsterUnit)level.entities.get(index)).getType()){
-				case MonsterUnit.RAT: doRatTurn(); break;
-				case MonsterUnit.BAT: doBatTurn(); break;
-				case MonsterUnit.SPIDER: doSpiderTurn(); break;
-			}
-			/*
-			if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY())){
-				switch( ((MonsterUnit)level.entities.get(index)).getType()){
-					case MonsterUnit.RAT: doRatAttack(); break;
-					case MonsterUnit.BAT: doBatAttack(); break;
-					case MonsterUnit.SPIDER: doSpiderAttack(); break;
-				}
-				
-			}
-			else{
-				switch( ((MonsterUnit)level.entities.get(index)).getType()){
-					case MonsterUnit.RAT: doRatMovement(); break;
-					case MonsterUnit.BAT: doBatMovement(); break;
-					case MonsterUnit.SPIDER: doSpiderMovement(); break;
-				}	
-			}
-			*/
-			
-		}		
-	}
+	
+	
 	
 	private void doBatTurn() {
 		if(adjacentHero(level.entities.get(index).getX(), level.entities.get(index).getY()))
@@ -306,20 +301,6 @@ public class LevelController {
 		
 	}
 
-	//Iterates over NPCs and performs their turns until it is the Hero's turn
-	public void checkHeroTurn(){
-		checkLoseConditions();
-		checkWinConditions();
-		
-		//System.out.println(level.queue.turnCount);
-		while (!(level.queue.getEnt() instanceof HeroUnit)){
-			doMonsterTurn();
-			nextTurn();
-		}
-	}
-	
-
-	
 	//Location Utilities:
 	
 	public boolean heroOn(int x, int y){

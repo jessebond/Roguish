@@ -29,7 +29,7 @@ public class MonsterUnit extends Unit {
 			
 		}
 		case BAT:{
-			this.setAtts(Dice.nextInt(3), Dice.nextInt(3), Dice.nextInt(3));
+			this.setAtts(Dice.nextInt(3), Dice.nextInt(3), 24);
 			this.setHP(4);
 			this.addAbility(AbilityController.STRONGBITE);
 			this.setAlive(true);

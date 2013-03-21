@@ -53,7 +53,6 @@ public class AbilityController {
 		switch(ability){
 			case (B_AXE):{
 				((Unit)target).changeHP(-1 * Dice.nextInt(12));
-				((Unit)origin).updateMovement(2);
 				System.out.println("You swing your axe with great force");
 				break;
 			}
@@ -180,6 +179,9 @@ public class AbilityController {
 	
 public int getRange(int ability){
 	switch(ability){
+		case (B_AXE):{
+			return 1;
+		}
 		case (B_BOW):{
 			return 8;
 		}
