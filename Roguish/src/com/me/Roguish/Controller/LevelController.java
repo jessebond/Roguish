@@ -11,6 +11,7 @@ import com.me.Roguish.Model.MonsterUnit;
 import com.me.Roguish.Model.Level;
 import com.me.Roguish.View.LevelRenderer;
 import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
 public class LevelController {
 	private Level level;
@@ -31,6 +32,8 @@ public class LevelController {
 	private boolean tarDown = false;
 	// Index is the index in the level entity array of the current Unit whose turn it is 
 	private int index = 0;
+	
+	private TiledMapTileLayer backgroundLayer;
 	
 	enum Keys {
 		LEFT, RIGHT, UP, DOWN, ONE, TWO, THREE, FOUR, FIVE
@@ -53,6 +56,7 @@ public class LevelController {
 		this.level = level;
 		this.renderer = renderer;
 		this.hero = level.getHero();
+		backgroundLayer = (TiledMapTileLayer)level.map.getLayers().get(0);
 		
 	}
 	
@@ -365,7 +369,7 @@ public class LevelController {
 	
 	//Returns true if the tile at the x, y is open
 	public boolean tileOpen(int x, int y){
-		if(x < 0 || x > level.map.width || y < 0 || y > level.map.height) return false;
+		if(x < 0 || x > level.columns || y < 0 || y > level.rows) return false;
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
@@ -565,8 +569,6 @@ public class LevelController {
 			tarDown = true;
 			doHeroTurn(Keys.DOWN);
 		}
-		renderer.TILE_BLACK++;
-		System.out.println("Black tile: " + renderer.TILE_BLACK);
 	}
 	
 	public void onePressed(){
