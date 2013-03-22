@@ -114,6 +114,7 @@ public class LevelController {
 				nextTurn(hero);
 				renderer.updateCam(1, 0);
 				checkWinConditions();
+				
 			}
 			break;
 		}
@@ -366,7 +367,6 @@ public class LevelController {
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
-		System.out.println("open?: " + level.tilePropCheck(x,y,"wall"));
 		return level.tilePropCheck(x,y,"wall");
 	}
 	

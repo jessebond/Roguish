@@ -31,8 +31,8 @@ public class LevelRenderer {
 	private static final int VIEW_RADIUS = 6;
 	private static final int VISION_LAYER = 2;
 	private static final int BACKGROUND_LAYER = 0;
-	private static final int CLEAR_TILE = 0;
-	private static final int BLACK_TILE = 5;
+	private static final int CLEAR_TILE = 64;
+	private static final int BLACK_TILE = 42;
 	private static final int ENT_DIM = 32;
 
 	private Level level;
@@ -86,6 +86,11 @@ public class LevelRenderer {
 	}
 	
 
+	public void updateTiles(){
+		clearTile = map.getTileSets().getTile(CLEAR_TILE);
+		blackTile = map.getTileSets().getTile(BLACK_TILE);
+	}
+	
 	public void setSize (int w, int h) {
 		this.w = w;
 		this.h = h;
@@ -101,7 +106,7 @@ public class LevelRenderer {
 		int[] foregroundLayers = { 2 };    // don't allocate every frame!
 		renderer.render(backgroundLayers);
 		
-		//updateFoV();
+		updateFoV();
 		
 		batch.enableBlending();
 		batch.begin();
@@ -110,7 +115,7 @@ public class LevelRenderer {
 		if (debug)
 			drawDebug();
 		batch.end();
-		//renderer.render(foregroundLayers);
+		renderer.render(foregroundLayers);
 	}
 
 	// updates the field of view
@@ -119,15 +124,17 @@ public class LevelRenderer {
 		float x,y,l;
 		for(i=0;i<level.columns;i++)
 			for(j=0;j<level.rows;j++){
-				System.out.println("tile id: " + visionLayer.getCell(i, j).getTile().getId());
-				visionLayer.getCell(i, j).getTile().setId(BLACK_TILE);
+				//System.out.println("x: " + i + " |y: " + j);
+				//System.out.println("tile id: " + visionLayer.getCell(i, j));
+				visionLayer.getCell(i, j).setTile(blackTile);
 				
 				x = i-level.getHero().getX();
 				y = j-level.getHero().getY();
 				l = (float) Math.sqrt((x*x)+(y*y));
 				if(l<VIEW_RADIUS)
 					if(calcFoV(i,j) == true)
-						visionLayer.getCell(i, j).getTile().setId(CLEAR_TILE);		
+						//System.out.println("CLEAR FOOL");
+						visionLayer.getCell(i, j).setTile(clearTile);		
 			};
 	}
 	

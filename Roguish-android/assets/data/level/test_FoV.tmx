@@ -7,20 +7,25 @@
     <property name="wall" value="true"/>
    </properties>
   </tile>
+  <tile id="33">
+   <properties>
+    <property name="wall" value="false"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="Tile Layer 1" width="50" height="50">
+ <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztmUEKwCAMBP2G9Nb/P7J3MRJjErdhDwMFaZsxqxbaW2u9CO/PoQcW9MCCHljQAwt6YEEPLOiBBT2w8PR4grjh4T3PFTyq9GPnefSQc2Bdt9Y1HuVxMm59d7aHV46iPayOaB5Svdaxm/3IPMczcvVMrsc6pbqRvkvGeqVeze6VnpnlMc6hNj9oHiufmdesdygekpumPygeq311lb+dudF6nPzX8tpzPfYr7/9zJ+ebFk2uNFnxyEakx+rc0u6v0Q47/bhZo5fHraxkeKBBDyzogQU9sKjmUYEPR5o+kg==
   </data>
  </layer>
- <layer name="Tile Layer 2" width="50" height="50">
+ <layer name="Accents" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztyCEBAAAIA7D3oX8/xBPgEJtcAgAAAAAAAFBzfAAA+GQBxRUAVw==
   </data>
  </layer>
- <layer name="Tile Layer 3" width="50" height="50">
+ <layer name="Vision" width="50" height="50" opacity="0.61">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztwwEJAAAMBKHr8f17LsdAwVVTVVVVVVVVVVXV5w87twe8
   </data>
  </layer>
 </map>

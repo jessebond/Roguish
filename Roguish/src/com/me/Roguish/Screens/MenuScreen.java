@@ -37,7 +37,7 @@ public class MenuScreen extends AbstractScreen{
 		table.setSize(480, 320);
 		table.setBackground(new TextureRegionDrawable(bg));
 		stage.addActor(table);
-		table.bottom();
+		table.padTop(19);
 		//table.debug();
 				
 		startButton.addListener(new InputListener() {

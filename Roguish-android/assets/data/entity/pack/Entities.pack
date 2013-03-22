@@ -381,135 +381,163 @@ D_Archer
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Boots
+D_Axe
   rotate: false
   xy: 131, 16
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Bow
+D_Boots
   rotate: false
   xy: 605, 80
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Fireball
+D_Bow
   rotate: false
   xy: 638, 131
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Glove
+D_Crossbow
   rotate: false
   xy: 164, 16
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_LifeSteal
+D_Dagger
   rotate: false
   xy: 638, 80
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_LifeStealTouch
+D_Fireball
   rotate: false
   xy: 671, 131
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Mage
+D_Glove
   rotate: false
   xy: 197, 16
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Ninja
+D_LifeSteal
   rotate: false
   xy: 671, 80
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Plus_B
+D_LifeStealTouch
   rotate: false
   xy: 704, 131
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Plus_R
+D_Mage
   rotate: false
   xy: 230, 16
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_PlusPlus_B
+D_Ninja
   rotate: false
   xy: 704, 80
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_PlusPlus_R
+D_Plus_B
   rotate: false
   xy: 737, 131
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_RandomChaos
+D_Plus_R
   rotate: false
   xy: 263, 16
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_SlowEnemy
+D_PlusPlus_B
   rotate: false
   xy: 737, 80
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Staff
+D_PlusPlus_R
   rotate: false
   xy: 770, 131
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Stars
+D_RandomChaos
   rotate: false
   xy: 296, 16
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Sword
+D_SlowEnemy
   rotate: false
   xy: 770, 80
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Teleport
+D_Staff
   rotate: false
   xy: 803, 131
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
-D_Warrior
+D_Stars
   rotate: false
   xy: 329, 16
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Sword
+  rotate: false
+  xy: 803, 80
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Teleport
+  rotate: false
+  xy: 836, 131
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Wand
+  rotate: false
+  xy: 362, 16
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+D_Warrior
+  rotate: false
+  xy: 836, 80
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
@@ -523,63 +551,63 @@ W_Staff
   index: -1
 W_Staff2
   rotate: false
-  xy: 362, 33
+  xy: 395, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Stars
   rotate: false
-  xy: 836, 148
+  xy: 869, 148
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Stars2
   rotate: false
-  xy: 396, 33
+  xy: 429, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Sword
   rotate: false
-  xy: 870, 148
+  xy: 869, 114
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Sword2
   rotate: false
-  xy: 430, 33
+  xy: 903, 148
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Wand
   rotate: false
-  xy: 904, 148
+  xy: 463, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 W_Wand2
   rotate: false
-  xy: 464, 33
+  xy: 869, 80
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Warrior
   rotate: false
-  xy: 938, 148
+  xy: 903, 114
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 CardRing
   rotate: false
-  xy: 803, 98
+  xy: 937, 149
   size: 22, 31
   orig: 22, 31
   offset: 0, 0
