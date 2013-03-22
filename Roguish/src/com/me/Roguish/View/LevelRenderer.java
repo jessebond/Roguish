@@ -206,20 +206,22 @@ public class LevelRenderer {
 			if(ent == level.getHero())
 				batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), 6*ENT_DIM, 5*ENT_DIM);
 			else{
-				//Renders Unit Health Bars
-				if(ent instanceof MonsterUnit){
-					shapeRenderer.begin(ShapeType.Filled);
-					shapeRenderer.setColor(Color.RED);
-					if(((MonsterUnit) ent).getHP() > 0){
-						shapeRenderer.rect((ent.getX() + offsetX) * ENT_DIM,(ent.getY() + offsetY) * ENT_DIM, ((MonsterUnit) ent).getHP(), 4);
+				if(visionLayer.getCell(ent.getX(),ent.getY()) != null && visionLayer.getCell(ent.getX(),ent.getY()).getTile().getId() == clearTile.getId()){
+					//Renders Unit Health Bars
+					if(ent instanceof MonsterUnit){
+						shapeRenderer.begin(ShapeType.Filled);
+						shapeRenderer.setColor(Color.RED);
+						if(((MonsterUnit) ent).getHP() > 0){
+							shapeRenderer.rect((ent.getX() + offsetX) * ENT_DIM,(ent.getY() + offsetY) * ENT_DIM, ((MonsterUnit) ent).getHP(), 4);
+						}
+						shapeRenderer.end();
+						if(((MonsterUnit) ent).getHP() <= 0)
+							batch.draw(new TextureRegion(atlas.findRegion("Grave")), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);
+						else batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);
 					}
-					shapeRenderer.end();
-					if(((MonsterUnit) ent).getHP() <= 0)
-						batch.draw(new TextureRegion(atlas.findRegion("Grave")), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);
-					else batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);
+					else
+						batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);
 				}
-				else
-					batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);		
 			}
 		}
 	}
