@@ -226,7 +226,7 @@ public class LevelController {
 		//Up
 		case 0:{
 			for(Entity ent : level.getEntities()){
-				if(inRange(hero, ent, ability) && ent.getY() <= hero.getY() && !ent.equals(hero) && ent.getAlive()){
+				if(inRange(hero, ent, ability) && ent.getY() > hero.getY() && !ent.equals(hero) && ent.getAlive()){
 					return ent.getId();
 				}
 			}
@@ -235,21 +235,21 @@ public class LevelController {
 		//Down
 		case 1:{
 			for(Entity ent : level.getEntities()){
-				if(inRange(hero, ent, ability) && ent.getY() >= hero.getY() && !ent.equals(hero) && ent.getAlive()) return ent.getId();
+				if(inRange(hero, ent, ability) && ent.getY() < hero.getY() && !ent.equals(hero) && ent.getAlive()) return ent.getId();
 			}
 			break;
 		}
 		//Left
 		case 2:{
 			for(Entity ent : level.getEntities()){
-				if(inRange(hero, ent, ability) && ent.getX() <= hero.getX() && !ent.equals(hero) && ent.getAlive()) return ent.getId();
+				if(inRange(hero, ent, ability) && ent.getX() < hero.getX() && !ent.equals(hero) && ent.getAlive()) return ent.getId();
 			}
 			break;
 		}
 		//Right
 		case 3:{
 			for(Entity ent : level.getEntities()){
-				if(inRange(hero, ent, ability) && ent.getX() >= hero.getX() && !ent.equals(hero) && ent.getAlive()) return ent.getId();
+				if(inRange(hero, ent, ability) && ent.getX() > hero.getX() && !ent.equals(hero) && ent.getAlive()) return ent.getId();
 			}
 			break;
 		}
