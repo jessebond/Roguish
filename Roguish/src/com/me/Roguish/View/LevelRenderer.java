@@ -104,18 +104,19 @@ public class LevelRenderer {
 		
 		int[] backgroundLayers = { 0, 1 }; // don't allocate every frame!
 		int[] foregroundLayers = { 2 };    // don't allocate every frame!
-		renderer.render(backgroundLayers);
+		
 		
 		updateFoV();
 		
 		batch.enableBlending();
 		batch.begin();
+
+		renderer.render(backgroundLayers);
 		renderEntities();
-				
+		renderer.render(foregroundLayers);
 		if (debug)
 			drawDebug();
 		batch.end();
-		renderer.render(foregroundLayers);
 	}
 
 	// updates the field of view
@@ -125,7 +126,7 @@ public class LevelRenderer {
 		for(i=0;i<level.columns;i++)
 			for(j=0;j<level.rows;j++){
 				//System.out.println("x: " + i + " |y: " + j);
-				//System.out.println("tile id: " + visionLayer.getCell(i, j));
+				System.out.println("tile id: " + visionLayer.getCell(i, j));
 				visionLayer.getCell(i, j).setTile(blackTile);
 				
 				x = i-level.getHero().getX();
