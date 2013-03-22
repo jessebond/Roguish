@@ -122,49 +122,49 @@ C_BasicWand
   orig: 163, 203
   offset: 0, 0
   index: -1
-C_Galoshes
+C_Earthquake
   rotate: false
   xy: 826, 797
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-C_Gauntlet
+C_Fireball
   rotate: false
   xy: 496, 182
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-C_HealthBoost
+C_Galoshes
   rotate: false
   xy: 661, 387
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-C_Mage
+C_Gauntlet
   rotate: false
   xy: 826, 592
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-C_ManaBoost
+C_HealthBoost
   rotate: false
   xy: 661, 182
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-C_Ninja
+C_IceBolt
   rotate: false
   xy: 826, 387
   size: 163, 203
   orig: 163, 203
   offset: 0, 0
   index: -1
-C_Warrior
+C_LifeSteal
   rotate: false
   xy: 826, 182
   size: 163, 203
@@ -248,126 +248,126 @@ ChestSpecial
   orig: 32, 32
   offset: 0, 0
   index: -1
-E_Bat
+Dragon1
   rotate: false
   xy: 991, 764
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-E_Bear
+Dragon2
   rotate: false
   xy: 991, 730
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-E_Golem
+Dragon3
   rotate: false
   xy: 991, 696
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-E_Rat
+Dragon4
   rotate: false
   xy: 991, 662
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-E_Shadow
+E_Bat
   rotate: false
   xy: 991, 628
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-E_Skeleton
+E_Bear
   rotate: false
   xy: 991, 594
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-E_Spider
+E_Golem
   rotate: false
   xy: 991, 560
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Grave
+E_Rat
   rotate: false
   xy: 991, 526
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Mage
+E_Shadow
   rotate: false
   xy: 991, 492
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Ninja
+E_Skeleton
   rotate: false
   xy: 991, 458
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Axe
+E_Spider
   rotate: false
   xy: 991, 424
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Axe2
+Grave
   rotate: false
   xy: 991, 390
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Bow
+Mage
   rotate: false
   xy: 991, 356
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Bow2
+Ninja
   rotate: false
   xy: 991, 322
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Crossbow
+W_Axe
   rotate: false
   xy: 991, 288
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Crossbow2
+W_Axe2
   rotate: false
   xy: 991, 254
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Dagger
+W_Bow
   rotate: false
   xy: 991, 220
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Dagger2
+W_Bow2
   rotate: false
   xy: 991, 186
   size: 32, 32
@@ -542,73 +542,162 @@ D_Warrior
   orig: 31, 49
   offset: 0, 0
   index: -1
-W_Staff
+W_Crossbow
   rotate: false
   xy: 991, 152
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Staff2
+W_Crossbow2
   rotate: false
   xy: 395, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Stars
+W_Dagger
   rotate: false
   xy: 869, 148
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Stars2
+W_Dagger2
   rotate: false
   xy: 429, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Sword
+W_Staff
   rotate: false
   xy: 869, 114
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Sword2
+W_Staff2
   rotate: false
   xy: 903, 148
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Wand
+W_Stars
   rotate: false
   xy: 463, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-W_Wand2
+W_Stars2
   rotate: false
   xy: 869, 80
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Warrior
+W_Sword
   rotate: false
   xy: 903, 114
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+W_Sword2
+  rotate: false
+  xy: 937, 148
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Wand
+  rotate: false
+  xy: 497, 33
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+W_Wand2
+  rotate: false
+  xy: 903, 80
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Warrior
+  rotate: false
+  xy: 937, 114
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
 CardRing
   rotate: false
-  xy: 937, 149
+  xy: 531, 34
   size: 22, 31
   orig: 22, 31
+  offset: 0, 0
+  index: -1
+
+Entities2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+C_LifeStealTouch
+  rotate: false
+  xy: 1, 206
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+C_Mage
+  rotate: false
+  xy: 1, 1
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+C_ManaBoost
+  rotate: false
+  xy: 166, 206
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+C_Ninja
+  rotate: false
+  xy: 166, 1
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+C_RandomChaos
+  rotate: false
+  xy: 331, 206
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+C_SlowEnemy
+  rotate: false
+  xy: 331, 1
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+C_Teleport
+  rotate: false
+  xy: 496, 206
+  size: 163, 203
+  orig: 163, 203
+  offset: 0, 0
+  index: -1
+C_Warrior
+  rotate: false
+  xy: 496, 1
+  size: 163, 203
+  orig: 163, 203
   offset: 0, 0
   index: -1
