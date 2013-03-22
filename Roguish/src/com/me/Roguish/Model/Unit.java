@@ -57,6 +57,10 @@ public abstract class Unit extends Entity{
 		return this.baseMana;
 	}
 	
+	public int getBaseHP(){
+		return this.baseHP;
+	}
+	
 	public boolean isAlive(){
 		return this.alive;
 	}
@@ -90,6 +94,8 @@ public abstract class Unit extends Entity{
 		this.baseStr = str;
 		this.baseInt = inte;
 		this.baseDex = dex;
+		this.baseHP = 2*str;
+		this.baseMana = 2*inte;
 		this.setMovement(50 - dex);
 		this.setMana(2*inte);
 		this.setHP(2*str);

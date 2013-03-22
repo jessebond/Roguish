@@ -119,7 +119,7 @@ public class LevelRenderer {
 		batch.enableBlending();
 		batch.begin();
 		renderEntities();
-		
+		drawHealth();
 		if (debug)
 			drawDebug();
 		batch.end();
@@ -202,6 +202,18 @@ public class LevelRenderer {
 		offsetX -= x;
 		offsetY -= y;
 		camera.translate(x, y);
+	}
+	
+	private void drawHealth(){
+		float hp, mana;
+		hp = level.getHero().getHP()/level.getHero().getBaseHP();
+		shapeRenderer.begin(ShapeType.Filled);
+		shapeRenderer.setColor(Color.RED);
+		shapeRenderer.rect(10, 80, 200, 20);
+		shapeRenderer.setColor(Color.GREEN);
+		shapeRenderer.rect(10, 80, hp, 20);
+		
+		shapeRenderer.end();
 	}
 	
 	private void drawDebug(){

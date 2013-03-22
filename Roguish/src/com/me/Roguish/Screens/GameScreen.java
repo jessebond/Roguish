@@ -90,14 +90,12 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(this);
-		
+		Gdx.input.setInputProcessor(this);	
 		
 		loadGui();
 		loadStyles();
 		
-		
-		Button menuButton = new Button(menuStyle);
+		//Button menuButton = new Button(menuStyle);
 		Button ability1Button = new Button(ability1Style);
 		Button ability2Button = new Button(ability2Style);
 		Button ability3Button = new Button(ability3Style);
@@ -108,29 +106,10 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		System.out.println("stage: " + stage.getWidth());
 		
 		
-		Table table = new Table();
-		table.setSize(480, 320);
-		table.setPosition(90, 0);
-		table.right();
-		table.debug();
-		
 		Table table2 = new Table();
 		table2.setSize(480, 320);
-		stage.addActor(table);
+		
 		stage.addActor(table2);
-		stage.addActor(ic_hero);
-		
-		table.add(ihud);
-		table.row();
-		
-		menuButton.addListener(new InputListener() {
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-				System.out.println("Back Button Down");
-				game.setScreen(new MenuScreen(game));
-				return false;
-			}
-		});
-		table.add(menuButton);
 		
 		ability1Button.addListener(new InputListener(){
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
