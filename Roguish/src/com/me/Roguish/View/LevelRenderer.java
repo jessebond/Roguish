@@ -29,10 +29,11 @@ public class LevelRenderer {
 	private static final float CAMERA_WIDTH = 320f;
 	private static final float CAMERA_HEIGHT = 480f;
 	private static final int VIEW_RADIUS = 6;
-	private static final int VISION_LAYER = 1;
+	private static final int VISION_LAYER = 2;
 	private static final int BACKGROUND_LAYER = 0;
 	private static final int CLEAR_TILE = 0;
-	private static final int BLACK_TILE = 1;
+	private static final int BLACK_TILE = 5;
+	private static final int ENT_DIM = 32;
 
 	private Level level;
 
@@ -44,6 +45,8 @@ public class LevelRenderer {
 	private boolean debug = false;
 	private int w;
 	private int h;
+	private float offsetX;
+	private float offsetY;
 	private OrthogonalTiledMapRenderer renderer;
 	private TiledMap map;
 	private OrthographicCamera camera;
@@ -64,7 +67,10 @@ public class LevelRenderer {
 		float h = Gdx.graphics.getHeight();
 		this.map = level.map;
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, (w / h) * 10, 10);
+		camera.setToOrtho(false, (w / h) * 15f, 15f);
+		offsetX = level.getHero().getX() - 4;
+		offsetY = level.getHero().getY() - 5;
+		camera.translate(-offsetX, -offsetY);
 		camera.update();
 		
 		atlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));
@@ -87,15 +93,15 @@ public class LevelRenderer {
 	
 		
 	public void render(){
-		Gdx.gl.glClearColor(0.55f, 0.55f, 0.55f, 1f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		camera.update();
 		renderer.setView(camera);
 		
-		int[] backgroundLayers = { 0 }; // don't allocate every frame!
-		//int[] foregroundLayers = { 1 };    // don't allocate every frame!
+		int[] backgroundLayers = { 0, 1 }; // don't allocate every frame!
+		int[] foregroundLayers = { 2 };    // don't allocate every frame!
 		renderer.render(backgroundLayers);
 		
+		//updateFoV();
 		
 		batch.enableBlending();
 		batch.begin();
@@ -103,8 +109,8 @@ public class LevelRenderer {
 				
 		if (debug)
 			drawDebug();
-		
 		batch.end();
+		//renderer.render(foregroundLayers);
 	}
 
 	// updates the field of view
@@ -113,14 +119,16 @@ public class LevelRenderer {
 		float x,y,l;
 		for(i=0;i<level.columns;i++)
 			for(j=0;j<level.rows;j++){
-				visionLayer.getCell(level.columns, level.rows).setTile(blackTile);
+				System.out.println("tile id: " + visionLayer.getCell(i, j).getTile().getId());
+				visionLayer.getCell(i, j).getTile().setId(BLACK_TILE);
+				
 				x = i-level.getHero().getX();
 				y = j-level.getHero().getY();
 				l = (float) Math.sqrt((x*x)+(y*y));
 				if(l<VIEW_RADIUS)
-					if(calcFoV(i,j) == true);
-						visionLayer.getCell(level.columns, level.rows).setTile(clearTile);
-		};
+					if(calcFoV(i,j) == true)
+						visionLayer.getCell(i, j).getTile().setId(CLEAR_TILE);		
+			};
 	}
 	
 	// checks visible tiles in a circle
@@ -136,7 +144,7 @@ public class LevelRenderer {
 		vx/=l;
 		vy/=l;
 		for(i=0;i<(int)l;i++){
-			if(level.getTile((int)ox, (int)y) != null && level.tilePropCheck((int)ox, (int)y, "wall"))
+			if(level.getTile((int)ox, (int)oy) != null && level.tilePropCheck((int)ox, (int)oy, "wall"))
 		    	return false;
 		    ox+=vx;
 		    oy+=vy;
@@ -147,23 +155,25 @@ public class LevelRenderer {
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {
 			if(ent == level.getHero())
-				batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), Gdx.graphics.getWidth()*1/3, Gdx.graphics. getHeight()/2);
+				batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), 6*ENT_DIM, 5*ENT_DIM);
 			else{
 				//Renders Unit Health Bars
 				if(ent instanceof MonsterUnit){
 					shapeRenderer.begin(ShapeType.Filled);
 					shapeRenderer.setColor(Color.RED);
 				if(((MonsterUnit) ent).getHP() > 0)
-					shapeRenderer.rect(ent.getX() * 32,ent.getY() * 32, ((MonsterUnit) ent).getHP(), 4);
+					shapeRenderer.rect((ent.getX() + offsetX) * ENT_DIM,(ent.getY() + offsetY) * ENT_DIM, ((MonsterUnit) ent).getHP(), 4);
 					shapeRenderer.end();
 				}
-				batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), ent.getX() * 32, ent.getY() * 32);		
+				batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);		
 			}
 		}
 	}
 	
 	public void updateCam(float x, float y){
-		//camera.translate(x*32*ratio*ratioS, y*centerY);
+		offsetX -= x;
+		offsetY -= y;
+		camera.translate(x, y);
 	}
 	
 	private void drawDebug(){

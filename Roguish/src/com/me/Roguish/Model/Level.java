@@ -1,11 +1,8 @@
 package com.me.Roguish.Model;
 import com.me.Roguish.Controller.AbilityController;
 import com.badlogic.gdx.utils.Array;
-<<<<<<< HEAD
 import java.util.Random;
-=======
 import com.badlogic.gdx.maps.MapProperties;
->>>>>>> Additional changes to the Map stuff
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -167,7 +164,12 @@ public class Level{
 	}
 	
 	public TiledMapTile getTile(int x, int y){
-		return backgroundLayer.getCell(x,y).getTile();
+		try{
+			return backgroundLayer.getCell(x,y).getTile();
+		}
+		catch(NullPointerException e){
+			return null;
+		}
 	}
 	
 }
