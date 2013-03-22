@@ -51,6 +51,9 @@ public class Level{
 		setStats();
 		populate();
 		queue = new TurnQueue(getEntities());
+		backgroundLayer = (TiledMapTileLayer)map.getLayers().get(0);
+		columns = backgroundLayer.getWidth();
+		rows = backgroundLayer.getHeight();
 	}
 	
 	
