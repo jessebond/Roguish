@@ -1,19 +1,19 @@
 package com.me.Roguish.Model;
 import com.me.Roguish.Controller.AbilityController;
-import com.me.Roguish.Model.*;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.graphics.g2d.tiled.SimpleTileAtlas;
-import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
-import com.badlogic.gdx.graphics.g2d.tiled.TiledLoader;
 import java.util.Random;
+import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 
 public class Level{
 	public Array<Entity> entities = new Array<Entity>();
 	public TurnQueue queue;
 	public AbilityController ability = new AbilityController();
     public TiledMap map;
-    public SimpleTileAtlas atlas;
+    //public SimpleTileAtlas atlas;
     public HeroUnit hero;
     private Random Dice = new Random();
     public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
@@ -25,12 +25,20 @@ public class Level{
     public Entity winChest = new Entity(4,13,"Chest", new Array<Integer>());
     private MonsterUnit mon;
     
+    private TiledMapTileLayer backgroundLayer;
+    public int columns;
+    public int rows;
+    
 	public Level(ClassCard cCard){
 		hero =  new HeroUnit(5, 5, cCard.getClassName(), new Array<Integer>(), cCard);
 		create();
 		setStats();
 		populate();
 		queue = new TurnQueue(getEntities());
+		
+		backgroundLayer = (TiledMapTileLayer)map.getLayers().get(0);
+		columns = backgroundLayer.getWidth();
+		rows = backgroundLayer.getHeight();
 	}
 	
 	public Level(ClassCard cCard, Array<Integer> abilities) {
@@ -92,10 +100,8 @@ public class Level{
 
 	public void create(){
 		System.out.println("In create");
-		map = TiledLoader.createMap(Gdx.files.internal("data/level/test_FoV.tmx"));
+		map = new TmxMapLoader().load("data/level/test_FoV.tmx");
 		System.out.println("Tiles loaded");
-	    atlas = new SimpleTileAtlas(map, Gdx.files.internal("data/"));
-	    System.out.println("atlas made");  
 	   
 	}
 
@@ -129,26 +135,41 @@ public class Level{
 	}
 	
 	public boolean tilePropCheck(int x, int y, String property){
-		return ("true".equals(map.getTileProperty(getTile(x,y), property)));
+		MapProperties temp = getTile(x,y).getProperties();
+		if(temp.containsKey(property)){
+			return !Boolean.parseBoolean(temp.get(property, String.class));
+		}
+		else return true;
 	}
-	public int getTile(int x, int y, int layer){
-		return map.layers.get(layer).tiles[y][x];
+
+	public boolean tilePropCheck(int x, int y, int layer, String property){
+		MapProperties temp = getTile(x,y,layer).getProperties();
+		if(temp.containsKey(property))
+			return !Boolean.parseBoolean(temp.get(property, String.class));
+		else return true;
 	}
 	
 	public boolean tileExists(int x, int y, int layer){
 		try{
-			int tmp = map.layers.get(layer).tiles[y][x];
+			backgroundLayer.getCell(x,y).getTile();
 			return true;
 		}catch(ArrayIndexOutOfBoundsException e){
 			return false;
 		}
 	}
 	
+	public TiledMapTile getTile(int x, int y, int layer){
+		TiledMapTileLayer temp = (TiledMapTileLayer)map.getLayers().get(layer);
+		return temp.getCell(x,y).getTile();
+	}
 	
-	public int getTile(int x, int y){
-		if(x >= 0 && y>= 0)
-			return map.layers.get(0).tiles[y][x];
-		else return 0;
+	public TiledMapTile getTile(int x, int y){
+		try{
+			return backgroundLayer.getCell(x,y).getTile();
+		}
+		catch(NullPointerException e){
+			return null;
+		}
 	}
 	
 }
