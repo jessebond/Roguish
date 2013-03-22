@@ -282,15 +282,15 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 			controller.upPressed();
 		if (keycode == Keys.DOWN)
 			controller.downPressed();
-		if (keycode == Keys.NUM_1)
+		if (keycode == Keys.NUM_1 || keycode == Keys.Q)
 			controller.onePressed();
-		if (keycode == Keys.NUM_2)
+		if (keycode == Keys.NUM_2 || keycode == Keys.W)
 			controller.twoPressed();
-		if (keycode == Keys.NUM_3)
+		if (keycode == Keys.NUM_3 || keycode == Keys.E)
 			controller.threePressed();
-		if (keycode == Keys.NUM_4);
+		if (keycode == Keys.NUM_4 || keycode == Keys.R);
 			controller.fourPressed();
-		if (keycode == Keys.NUM_5)
+		if (keycode == Keys.NUM_5 || keycode == Keys.T)
 			controller.fivePressed();
 		return true;
 	}
@@ -305,15 +305,15 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 			controller.upReleased();
 		if (keycode == Keys.DOWN)
 			controller.downReleased();
-		if (keycode == Keys.NUM_1)
+		if (keycode == Keys.NUM_1 || keycode == Keys.Q)
 			controller.oneReleased();
-		if (keycode == Keys.NUM_2)
+		if (keycode == Keys.NUM_2 || keycode == Keys.W)
 			controller.twoReleased();
-		if (keycode == Keys.NUM_3)
+		if (keycode == Keys.NUM_3 || keycode == Keys.E)
 			controller.threeReleased();
-		if (keycode == Keys.NUM_4)
+		if (keycode == Keys.NUM_4 || keycode == Keys.R)
 			controller.fourReleased();
-		if (keycode == Keys.NUM_5)
+		if (keycode == Keys.NUM_5 || keycode == Keys.T)
 			controller.fiveReleased();
 		return true;
 	}

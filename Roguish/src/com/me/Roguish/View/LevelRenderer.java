@@ -206,12 +206,12 @@ public class LevelRenderer {
 	
 	private void drawHealth(){
 		float hp, mana;
-		hp = level.getHero().getHP()/level.getHero().getBaseHP();
+		//hp = level.getHero().getHP()/level.getHero().getBaseHP();
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setColor(Color.RED);
-		shapeRenderer.rect(10, 80, 200, 20);
+		shapeRenderer.rect(10, 80, 50, 20);
 		shapeRenderer.setColor(Color.GREEN);
-		shapeRenderer.rect(10, 80, hp, 20);
+		shapeRenderer.rect(10, 80, level.getHero().getHP(), 20);
 		
 		shapeRenderer.end();
 	}
