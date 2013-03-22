@@ -193,16 +193,19 @@ public class Level{
 			for (Entity ent : getEntities()) {
 				if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 			}
-			System.out.println("open?: " + tilePropCheck(x,y,"wall"));
+			//System.out.println("open?: " + tilePropCheck(x,y,"wall"));
 			return tilePropCheck(x,y,"wall");
 		}
 	
 	public boolean tilePropCheck(int x, int y, String property){
-		MapProperties temp = getTile(x,y).getProperties();
+		TiledMapTile tile = getTile(x,y);
+		if(tile == null) 
+			return false;
+		MapProperties temp = tile.getProperties();
 		if(temp.containsKey(property)){
-			return !Boolean.parseBoolean(temp.get(property, String.class));
+			return Boolean.parseBoolean(temp.get(property, String.class));
 		}
-		else return true;
+		else return false;
 	}
 
 	public boolean tilePropCheck(int x, int y, int layer, String property){

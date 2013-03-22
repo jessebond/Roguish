@@ -120,6 +120,7 @@ public class LevelRenderer {
 		renderer.render(foregroundLayers);
 	}
 
+	/*
 	// updates the field of view
 	private void updateFoV(){
 		int i,j;
@@ -133,10 +134,12 @@ public class LevelRenderer {
 				x = i-level.getHero().getX();
 				y = j-level.getHero().getY();
 				l = (float) Math.sqrt((x*x)+(y*y));
-				if(l<VIEW_RADIUS)
-					//if(calcFoV(i,j) == true)
-						//System.out.println("CLEAR FOOL");
-						visionLayer.getCell(i, j).setTile(clearTile);		
+				if(l<VIEW_RADIUS){
+					if(calcFoV(i,j) == true)
+						visionLayer.getCell(i, j).setTile(clearTile);
+					//if(calcFoV(i,j) == false)
+					//	visionLayer.getCell(i, j).setTile(blackTile);
+				}
 			};
 	}
 	
@@ -153,13 +156,50 @@ public class LevelRenderer {
 		vx/=l;
 		vy/=l;
 		for(i=0;i<(int)l;i++){
-			if(level.getTile((int)ox, (int)oy) != null && level.tilePropCheck((int)ox, (int)oy, "wall"))
-		    	return false;
+			if(level.tilePropCheck((int)ox, (int)oy, "wall")){
+				if((int)ox == x && (int)oy == y)
+					return true;
+				else 
+					return false;
+			}
+		    	
 		    ox+=vx;
 		    oy+=vy;
 		};
+		System.out.println("true x:" + x + "  y: " + y);
 		return true;
-	}
+	}*/
+	
+	void updateFoV()
+	{
+	  float x,y;
+	  int i,j;
+	  for(i=0;i<level.columns;i++)
+			for(j=0;j<level.rows;j++)
+				visionLayer.getCell(i, j).setTile(blackTile);
+	  for(i=0;i<360;i++)
+	  {
+	    x=(float)Math.cos((double)i*0.01745f);
+	    y=(float)Math.sin((double)i*0.01745f);
+	    DoFov(x,y);
+	  };
+	};
+
+	void DoFov(float x,float y)
+	{
+	  int i;
+	  float ox,oy;
+	  ox = (float)level.getHero().getX()+0.5f;
+	  oy = (float)level.getHero().getY()+0.5f;
+	  for(i=0;i<VIEW_RADIUS;i++)
+	  {
+		visionLayer.getCell((int)ox, (int)oy).setTile(clearTile);
+		if(level.tilePropCheck((int)ox, (int)oy, "wall"))
+	      return;
+	    ox+=x;
+	    oy+=y;
+	  };
+	};
 	
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {

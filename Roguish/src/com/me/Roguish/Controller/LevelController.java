@@ -367,7 +367,7 @@ public class LevelController {
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
-		return level.tilePropCheck(x,y,"wall");
+		return !level.tilePropCheck(x,y,"wall");
 	}
 	
 	public boolean inRange(Entity source, Entity target, int ability ){
