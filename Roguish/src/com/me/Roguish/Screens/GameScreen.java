@@ -1,8 +1,11 @@
 package com.me.Roguish.Screens;
 
+import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -35,6 +38,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 	
 	private TextureAtlas guiAtlas;
 	private TextureAtlas entAtlas;
+	private Music music;
 	
 	
 	private TextureRegion ability1;
@@ -209,6 +213,9 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		ic_hero = new Image(c_hero);
 		ic_hero.setScaling(Scaling.fill);
 		ic_hero.setPosition(394, 197);
+		music = Gdx.audio.newMusic(Gdx.files.internal("data/music/Video_Dungeon_Crawl.mp3"));
+		music.setLooping(true);
+		music.play();
 		
 	}
 	

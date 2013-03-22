@@ -1,5 +1,6 @@
 package com.me.Roguish.Screens;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -29,6 +30,7 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	
 	private TextureAtlas guiAtlas;
 	private TextureAtlas entAtlas;
+	private Music music;
 	
 	// Gui TextureRegions
 	private TextureRegion leftUp;
@@ -300,6 +302,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		
 		bg = guiAtlas.findRegion("Choose");
 		cardRing = guiAtlas.findRegion("CardRing");
+		
+		music = Gdx.audio.newMusic(Gdx.files.internal("data/music/Dragon_Dungeon_Predator.mp3"));
+		music.setLooping(true);
+		music.play();
 	}
 	
 	private void loadEnt(){
