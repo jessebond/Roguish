@@ -1,5 +1,6 @@
 package com.me.Roguish.Model;
 import com.me.Roguish.Controller.AbilityController;
+import com.me.Roguish.Screens.GameScreen;
 import com.badlogic.gdx.utils.Array;
 import java.util.Random;
 import com.badlogic.gdx.maps.MapProperties;
@@ -16,7 +17,7 @@ public class Level{
     //public SimpleTileAtlas atlas;
     public HeroUnit hero;
     private Random Dice = new Random();
-   // public Entity winChest = new Entity(4,13,"Chest", new Array<Integer>());
+    public Entity winChest = new Entity(2,39,"Chest", new Array<Integer>());
     private MonsterUnit mon;
     
     private TiledMapTileLayer backgroundLayer;
@@ -24,7 +25,7 @@ public class Level{
     public int rows;
     
 	public Level(ClassCard cCard){
-		hero =  new HeroUnit(2, 37, cCard.getClassName(), new Array<Integer>(), cCard);
+		hero =  new HeroUnit(2, 38, cCard.getClassName(), new Array<Integer>(), cCard);
 		create();
 		setStats();
 		populate();
@@ -46,9 +47,17 @@ public class Level{
 		setStats();
 		populate();
 		queue = new TurnQueue(getEntities());
-		
-		
-		
+	}
+	
+	public Level(ClassCard cCard, HeroUnit hero) {
+		this.hero = hero;
+		create();
+		backgroundLayer = (TiledMapTileLayer)map.getLayers().get(0);
+		columns = backgroundLayer.getWidth();
+		rows = backgroundLayer.getHeight();
+		setStats();
+		populate();
+		queue = new TurnQueue(getEntities());
 	}
 	
 	
@@ -106,15 +115,23 @@ public class Level{
 		 bat1.setId(4);
 		 spider1.setId(5);
 		 shadow1.setId(6);
-		 winChest.setId(1337);
-		 winChest.setAlive(false);
+		 
 		 */
 		
 	}
 
 	public void create(){
+		boolean test;
 		System.out.println("In create");
+		if(GameScreen.level1){
+		map = new TmxMapLoader().load("data/level/test_FoV.tmx");
+		}
+		else if(GameScreen.level1 && GameScreen.level2){
+			map = new TmxMapLoader().load("data/level/test_FoV.tmx");
+			
+		}else{
 		map = new TmxMapLoader().load("data/level/test_FoV2.tmx");
+		}
 		System.out.println("Tiles loaded");
 	   
 	}
@@ -134,7 +151,22 @@ public class Level{
 		// Populates entity list
 	private void populate(){
 	
-		addEntity(hero); 
+		addEntity(hero);
+		
+		addEntity(winChest);
+		//Level specific monster && objective placement
+		if(GameScreen.level1 && GameScreen.level2){
+			
+		}
+		else if(GameScreen.level1){
+			
+		}
+		else{
+
+			winChest.setAlive(false);
+			winChest.setPosition(1, 48);
+			winChest.setId(1337);
+		}
 		
 		generateEntities();
 		/*

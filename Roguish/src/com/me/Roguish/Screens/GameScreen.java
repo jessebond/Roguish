@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 
 import com.me.Roguish.Roguish;
+import com.me.Roguish.Model.HeroUnit;
 import com.me.Roguish.Model.Level;
 import com.me.Roguish.View.LevelRenderer;
 import com.me.Roguish.Controller.LevelController;
@@ -40,6 +41,9 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 	private ButtonStyle menuStyle;
 	private Image ihud;
 	private Image ic_hero;
+	public static boolean level1 = false;
+	public static boolean level2 = false;
+	public static boolean level3 = false;
 
  
 	public GameScreen(Roguish game, ClassCard cCard){
@@ -56,6 +60,14 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
         this.cCard = cCard;
         
 		level = new Level(cCard, abilities);
+		renderer = new LevelRenderer(level, true);
+		controller = new LevelController(level, renderer);
+	}
+
+	public GameScreen(Roguish game, ClassCard cCard, HeroUnit hero) {
+		super(game);
+		this.cCard = cCard;
+		level = new Level(cCard, hero);
 		renderer = new LevelRenderer(level, true);
 		controller = new LevelController(level, renderer);
 	}
@@ -236,7 +248,18 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		controller.update(delta);
 		renderer.render();
 		if(controller.gameOver) game.setScreen(new GameOverScreen(game));
-		if(controller.gameWon) game.setScreen(new GameWonScreen(game));
+		
+		if(controller.gameWon && level1 && level2 && level3) game.setScreen(new GameWonScreen(game));
+		else if(controller.gameWon && level1){
+			level1 = true;
+			level2 = true;
+			game.setScreen(new GameScreen(this.game, this.cCard, this.level.getHero()));
+			
+		}
+		else if(controller.gameWon){
+			level1 = true;
+			game.setScreen(new GameScreen(this.game, this.cCard, this.level.getHero()));
+		}
 
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
