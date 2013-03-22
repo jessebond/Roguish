@@ -194,7 +194,7 @@ public class Level{
 				if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 			}
 			//System.out.println("open?: " + tilePropCheck(x,y,"wall"));
-			return tilePropCheck(x,y,"wall");
+			return (!tilePropCheck(x,y,"wall")  && !tilePropCheck(x, y, "water"));
 		}
 	
 	public boolean tilePropCheck(int x, int y, String property){
