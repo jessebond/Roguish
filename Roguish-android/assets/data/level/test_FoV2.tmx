@@ -103,17 +103,22 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="50" height="50">
+ <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJzdmEtv2zAQhKn6JPtkpxdHJ8f//z8WBkR0MZ3ZHUpy0PYwCMWX9uM+KOfeWrv/J/pa9QxtR7h+j7J9pkE7RjniHnt4qvVTwdLXP4P2nonjd5djah7LyDlWHHvPnI3jO/8GDuYzNv6dHFOiPf5RHBO81/WlY7PL7s7NbKnypIrJyg6HzeFQMaH2xX6HY0usjbKiDbPJ4sbVltzOYtCNyznZ1+Vw3pflucOezWUMVXw49091FnuVscxEcU3/69QrlQdHcuB+yiejHFt98Sw06pcjOdz3PYIqluysWBzF9hEcKqa6/bH9TLiyOoo2s3l3sAU5nBqlfJD5B5XVZPQFk8MxEk+RYVnbi5Di6eNTeHZYsrgavYujH6KtVb4+xH6Y0xVH9I/icOorclSxpjiYvcwn6lwjx0h9ZbYuYk61/tH8GqXyqvouyWzAfuRwfcP8UHGg/9z7vIotJpXnap8+b255rjscowwZy6hvou3MP9i3pe5mdwGep4q9bCxyMJsrNuf3uXOfsfzAu2WBMdcfjAWfK45or7qPo5S9S/vTX+jHPubeGw6HsjPqM0gxxXxnvyXYve/e5UdwfBZiTGg3PqsYy5h6f/W/lq0ciolxsNzC2vCa+4NoD0efF21kPugc6rtxlANZYt9IXFVzok3MZ5jTMVZYbCEfssT23v/Xq3dW9Uzl/ag/XI4RqTNFO1VuM57IewqKPKfA8Q6xs9/Td2qc5d0ceKZZ3cyeGYPiiGvZuTox5HAoO9n4PWGILCMcsRZhfPe2iim0t7rXIlPG8NJPwcG4VP1nTG7dGGF62Xk9gKOqsVhvnZxRPlBjV8Hy4jiL/SsOVV8dlqomVxyd5RI4LqY/0I7qW6LySdzL+aZFjvNq+zm0M47sPOOdFu3vcjncmIscl/Y7Jj5WOfWKiX0bHcHBzgs5rsH+ioNxzdDGb42qNmR7K78wDtzzJtZ+FD7GvFTzXS4VUzfCcVvlcqBt2Nf3Z3OP0G1QGYeroxm2sDj5+K/oF9IK9zo=
   </data>
  </layer>
- <layer name="Tile Layer 2" width="50" height="50">
+ <layer name="Accents" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJzt1bENwCAMBECGyBZ0pMz+e+GaBhJFQY7upC/s6l25lP+5dhd4SfY7WuSMHLuLAAAAAAAAsKze3APAU+Nvmc1fdADy62AbAfI=
   </data>
  </layer>
- <layer name="Tile Layer 3" width="50" height="50">
+ <layer name="Vision" width="50" height="50" opacity="0.49">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKHL8/0DLsdAwVVTVVVVVVVVVVXV5w8OUJo4
+  </data>
+ </layer>
+ <layer name="Seen" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztwwEJAAAMBKHL8/0DLsdAwVVTVVVVVVVVVVXV5w8OUJo4
   </data>

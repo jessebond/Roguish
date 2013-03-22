@@ -29,6 +29,7 @@ public class LevelRenderer {
 	private static final float CAMERA_WIDTH = 320f;
 	private static final float CAMERA_HEIGHT = 480f;
 	private static final int VIEW_RADIUS = 6;
+	private static final int SEEN_LAYER = 3;
 	private static final int VISION_LAYER = 2;
 	private static final int BACKGROUND_LAYER = 0;
 	private static final int CLEAR_TILE = 64;
@@ -55,6 +56,7 @@ public class LevelRenderer {
 	private SpriteBatch batch;
 	
 	private TextureAtlas atlas;
+	private TiledMapTileLayer seenLayer;
 	private TiledMapTileLayer visionLayer;
 	private TiledMapTileLayer backgroundLayer;
 	private TiledMapTile clearTile;
@@ -62,7 +64,7 @@ public class LevelRenderer {
 	
 	public LevelRenderer(Level level, boolean debug) {
 		this.level = level;	
-		this.debug = debug;
+		this.debug = false;
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		this.map = level.map;
@@ -78,11 +80,14 @@ public class LevelRenderer {
 		batch = new SpriteBatch();
 		
 		renderer = new OrthogonalTiledMapRenderer(this.map, 1f / 32f);
+		seenLayer = (TiledMapTileLayer)map.getLayers().get(SEEN_LAYER);
 		visionLayer = (TiledMapTileLayer)map.getLayers().get(VISION_LAYER);
 		backgroundLayer = (TiledMapTileLayer)map.getLayers().get(BACKGROUND_LAYER);
 
 		clearTile = map.getTileSets().getTile(CLEAR_TILE);
 		blackTile = map.getTileSets().getTile(BLACK_TILE);
+		
+		seenInit();
 	}
 	
 
@@ -103,10 +108,11 @@ public class LevelRenderer {
 		renderer.setView(camera);
 		
 		int[] backgroundLayers = { 0, 1 }; // don't allocate every frame!
-		int[] foregroundLayers = { 2 };    // don't allocate every frame!
+		int[] foregroundLayers = { 2, 3 };    // don't allocate every frame!
 		
 		
 		updateFoV();
+		updateSeen();
 		
 		renderer.render(backgroundLayers);
 		
@@ -120,55 +126,6 @@ public class LevelRenderer {
 		renderer.render(foregroundLayers);
 	}
 
-	/*
-	// updates the field of view
-	private void updateFoV(){
-		int i,j;
-		float x,y,l;
-		for(i=0;i<level.columns;i++)
-			for(j=0;j<level.rows;j++){
-				//System.out.println("x: " + i + " |y: " + j);
-				//System.out.println("tile id: " + visionLayer.getCell(i, j));
-				visionLayer.getCell(i, j).setTile(blackTile);
-				
-				x = i-level.getHero().getX();
-				y = j-level.getHero().getY();
-				l = (float) Math.sqrt((x*x)+(y*y));
-				if(l<VIEW_RADIUS){
-					if(calcFoV(i,j) == true)
-						visionLayer.getCell(i, j).setTile(clearTile);
-					//if(calcFoV(i,j) == false)
-					//	visionLayer.getCell(i, j).setTile(blackTile);
-				}
-			};
-	}
-	
-	// checks visible tiles in a circle
-	private boolean calcFoV(int x, int y){
-		float vx,vy,ox,oy,l;
-		int i;
-		TiledMapTile tile;
-		vx = x-level.getHero().getX();
-		vy = y-level.getHero().getY();
-		ox = (float)x+0.5f;
-		oy= (float)y+0.5f;
-		l=(float) Math.sqrt((vx*vx)+(vy*vy));
-		vx/=l;
-		vy/=l;
-		for(i=0;i<(int)l;i++){
-			if(level.tilePropCheck((int)ox, (int)oy, "wall")){
-				if((int)ox == x && (int)oy == y)
-					return true;
-				else 
-					return false;
-			}
-		    	
-		    ox+=vx;
-		    oy+=vy;
-		};
-		System.out.println("true x:" + x + "  y: " + y);
-		return true;
-	}*/
 	
 	void updateFoV()
 	{
@@ -200,6 +157,21 @@ public class LevelRenderer {
 	    oy+=y;
 	  };
 	};
+	
+	private void seenInit(){
+		int i,j;
+		for(i=0;i<level.columns;i++)
+			for(j=0;j<level.rows;j++)
+				seenLayer.getCell(i, j).setTile(blackTile);
+	}
+	
+	private void updateSeen(){
+		int i,j;
+		for(i=0;i<level.columns;i++)
+			for(j=0;j<level.rows;j++)
+				if(visionLayer.getCell(i,j) != null && visionLayer.getCell(i,j).getTile().getId() == clearTile.getId())
+					seenLayer.getCell(i, j).setTile(clearTile);
+	}
 	
 	private void renderEntities(){
 		for (Entity ent : level.getEntities()) {

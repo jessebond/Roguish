@@ -229,7 +229,8 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		nextButton.addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				System.out.println("Next Button Down, Class cardNo: " + cardNo);
-				game.setScreen(new GameScreen(game, cCard, abilities));
+				if(abilities.size == 5)
+					game.setScreen(new GameScreen(game, cCard, abilities));
 				return false;
 			}
 		});
