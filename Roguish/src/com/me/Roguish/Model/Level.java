@@ -16,12 +16,6 @@ public class Level{
     //public SimpleTileAtlas atlas;
     public HeroUnit hero;
     private Random Dice = new Random();
-    public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
-    public MonsterUnit rat2 = new MonsterUnit(2, 1, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
-    public MonsterUnit rat3 = new MonsterUnit(2, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
-    public MonsterUnit bat1 = new MonsterUnit(1, 4, "E_Bat", new Array<Integer>(), MonsterUnit.BAT);
-    public MonsterUnit spider1 = new MonsterUnit(1, 6, "E_Spider", new Array<Integer>(), MonsterUnit.SPIDER);
-    public MonsterUnit shadow1 = new MonsterUnit(1, 7, "E_Shadow", new Array<Integer>(), MonsterUnit.SHADOW);
     public Entity winChest = new Entity(4,13,"Chest", new Array<Integer>());
     private MonsterUnit mon;
     
@@ -42,54 +36,70 @@ public class Level{
 	}
 	
 	public Level(ClassCard cCard, Array<Integer> abilities) {
-		for(int i = 0; i < abilities.size; i++)
-			System.out.println(abilities.get(i));
 		hero =  new HeroUnit(5, 5, cCard.getClassName(),  new Array<Integer>(), cCard);
 		for(int i = 0; i < abilities.size; i++ )
 			hero.addAbility(abilities.get(i));
 		create();
-		setStats();
-		populate();
-		queue = new TurnQueue(getEntities());
 		backgroundLayer = (TiledMapTileLayer)map.getLayers().get(0);
 		columns = backgroundLayer.getWidth();
 		rows = backgroundLayer.getHeight();
+		setStats();
+		populate();
+		queue = new TurnQueue(getEntities());
+		
+		
+		
 	}
 	
 	
 	// The below will work once the tileOpen() method is added to level.
-	
-	/*
-	
 	private void generateEntities(){
 		// This can be scaled as the level difficulty
-		int area = map.height * map.width;
-		int totalMon = (int) area / 5;
+		int area = columns * rows;
+		System.out.println("Area:" + area);
+		int totalMon = Math.round( area / 50);
+		System.out.println("Total Monsters:" + totalMon);
 		
 		for(int i = 0; i < totalMon; i++){
-			
-			// Rewrite once level controller gets refactored
 			int[] x = findOpenXY();
 			
 			//Update as new units are created
-			int monType = Dice.nextInt(6);
+			int monType = Dice.nextInt(4);
 			switch(monType){
-			case MonsterUnit.RAT: mon = new MonsterUnit(x[0], x[1], "E_Rat", new Array<Integer>(), MonsterUnit.RAT); break;
-			case MonsterUnit.BAT: mon = new MonsterUnit(x[0], x[1], "E_Bat", new Array<Integer>(), MonsterUnit.BAT); break;
-			case MonsterUnit.SPIDER: mon = new MonsterUnit(x[0], x[1], "E_Spider", new Array<Integer>(), MonsterUnit.BAT); break;
-			case MonsterUnit.SHADOW: mon = new MonsterUnit(x[0], x[1], "E_Monster", new Array<Integer>(), MonsterUnit.SHADOW); break;
+			case MonsterUnit.RAT: mon = new MonsterUnit(x[0], x[1], "E_Rat", new Array<Integer>(), MonsterUnit.RAT); mon.setId(1 + i); break;
+			case MonsterUnit.BAT: mon = new MonsterUnit(x[0], x[1], "E_Bat", new Array<Integer>(), MonsterUnit.BAT); mon.setId(1 + i); break;
+			case MonsterUnit.SPIDER: mon = new MonsterUnit(x[0], x[1], "E_Spider", new Array<Integer>(), MonsterUnit.SPIDER);  mon.setId(1 + i); break;
+			case MonsterUnit.SHADOW: mon = new MonsterUnit(x[0], x[1], "E_Shadow", new Array<Integer>(), MonsterUnit.SHADOW); mon.setId(1 + i); break;
 			}
 			
-			mon.setId(1 + i);
-			addEntity(mon);
-		
 			
+			addEntity(mon);
 		}
 	}
-	*/
+
+	private int[] findOpenXY() {
+		int x;
+		int y;
+		int[] fin = new int[2];
+		boolean done = false;
+		do{
+			x = Dice.nextInt(columns);
+			y = Dice.nextInt(rows);
+			if(tileOpen(x,y)){
+				done = true;
+				fin[0] = x;
+				fin[1] = y;
+			}
+		}while(!done);
+		
+		return fin;
+	}
 
 	private void setStats() {
 		 hero.setId(0);
+		 hero.setHP(1000);
+		
+		 /*
 		 rat1.setId(1);
 		 rat2.setId(2);
 		 rat3.setId(3);
@@ -98,6 +108,7 @@ public class Level{
 		 shadow1.setId(6);
 		 winChest.setId(1337);
 		 winChest.setAlive(false);
+		 */
 		
 	}
 
@@ -122,20 +133,35 @@ public class Level{
 	}
 		// Populates entity list
 	private void populate(){
-
+	
 		addEntity(hero); 
+		addEntity(winChest);
+		generateEntities();
+		/*
 		addEntity(rat1);
 		addEntity(rat2);
 		addEntity(rat3);
 		addEntity(bat1);
 		addEntity(spider1);
 		addEntity(shadow1);
-		addEntity(winChest);
+		*/
+		
+		
 	}
 	
 	public Array<Entity> getEntities(){
 		return this.entities;
 	}
+	
+	//Returns true if the tile at the x, y is open
+		public boolean tileOpen(int x, int y){
+			if(x < 0 || x > columns || y < 0 || y > rows) return false;
+			for (Entity ent : getEntities()) {
+				if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
+			}
+			System.out.println("open?: " + tilePropCheck(x,y,"wall"));
+			return tilePropCheck(x,y,"wall");
+		}
 	
 	public boolean tilePropCheck(int x, int y, String property){
 		MapProperties temp = getTile(x,y).getProperties();

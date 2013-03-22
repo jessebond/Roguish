@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="TileSheet" tilewidth="32" tileheight="32">
+  <image source="../TileSheet.png" width="256" height="256"/>
+  <tile id="24">
+   <properties>
+    <property name="wall" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzdmEtu4zAQRKV4JXtlZ+Vo5fgIc/+7DQyImEZNVXdRVAaTLAqh+FM/9ody7tM03X+IPjc9Q9sRrh9Rts/caUcvR9xjhKdaPxcsbf0zaPRMHL+7HPPksfScY8UxeuZsHN/5P3Awn7Hxf8kxJxrxj+KY4b2uLx2bXXZ3bmZLlSdVTFZ2OGwOh4oJtS/2Oxx7Yq2XFW1YTBY3rvbkdhaDblwuyb4uh/O+LM8d9mwuY6jiw7l/qrMYVcayEMU17a9Tr1QeHMmB+ymf9HLs9cWzUK9fjuRw3/cIqliys2JxFNtHcKiYavbH9jPhyuoo2szm3cEW5HBqlPJB5h9UVpPRF0wOR088RYZ1a69CiqeNz+HZYcniqvcujn6Itlb5+hD7YU5XHNE/isOpr8hRxZriYPYyn6hzjRw99ZXZuoo51frH5NcolVfVd0lmA/Yjh+sb5oeKA/3n3udVbDGpPFf7tHnLlOe6w9HLkLH0+ibazvyDfXvqbnYX4Hmq2MvGIgezuWJzfp879xnLD7xbVhhz/cFY8LniiPaq+zhK2btOf/sL/djG3HvD4VB2Rn0EKaaY7+y3BLv33bv8CI6PQowJ7cZnFWMZU+uv/teyl0MxMQ6WW1gbXnPfiEY42rxoI/NB41Dfjb0cyBL7euKqmhNtYj7DnI6xwmIL+ZAltkf/X6/eWdUzlfe9/nA5eqTOFO1Uuc14Iu8pKPKcAsdXiJ39SN9p4ixfzYFnmtXN7JkxKI64lp2rE0MOh7KTjd8ThsjSwxFrEcZ3a6uYQnurey0yZQwv/RIcjEvVf8bk1o0epped1wM4qhqL9dbJGeUDNXYVLC+Os9i/4lD11WGpanLF0VgugeNi+gPtqL4lKp/EvZxvWuQ4b7afQzvjyM4z3mnR/iaXw425yHGZ/sTE+yanXjGxb6MjONh5Icc12F9xMK4F2vitUdWGbG/lF8aBe97E2vfCx5iXar7LpWLqRjhum1wOtA372v5s7hG6dSrjcHU0wx4WJx+/i34DcGb3tg==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1bENwCAMBECGyBZ0pMz+e+GaBhJFQY7upC/s6l25lP+5dhd4SfY7WuSMHLuLAAAAAAAAsKze3APAU+Nvmc1fdADy62AbAfI=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+  </data>
+ </layer>
+</map>

@@ -9,9 +9,7 @@ import java.util.Random;
 public class AbilityController {
 	
 	private Random Dice = new Random();
-	public static final int LONGSWORD = 20;
-	public static final int SHIELD = 21;
-	public static final int FIREBALL = 22;
+		
 	
 	// Negative numbers used to designate monster abilities. (These cannot be selected by the CHAOS skill)
 	public static final int BITE = -2;
@@ -27,18 +25,8 @@ public class AbilityController {
 	public static final int B_XBOW = 2;
 	public static final int B_SHURIKEN = 3;
 	public static final int B_STAFF = 4;
-	// 6
-	public static final int B_SWORD = 5;	
-	public static final int B_WAND = 16;   
-	public static final int A_AXE = 17;    
-	public static final int A_BOW = 18;    
-	public static final int A_XBOW = 19;  
-	public static final int A_SHURIKEN = 23;  
-	public static final int A_STAFF = 24;    
-											
-	public static final int A_SWORD = 26;  
-	public static final int A_WAND = 15;
-
+	public static final int B_SWORD = 5;
+	public static final int ICEBOLT = 6;
 	public static final int GALOSHES = 7;
 	public static final int GAUNTLET = 8;
 	public static final int HEALTHBOOST = 9;
@@ -47,6 +35,25 @@ public class AbilityController {
 	public static final int TELEPORT = 12;
 	public static final int DRAIN = 13;
 	public static final int TOUCHDRAIN = 14;
+	public static final int B_WAND = 16;
+	public static final int FIREBALL = 18;
+	public static final int EARTHQUAKE = 19;
+	
+	public static final int LONGSWORD = 20;
+	public static final int SHIELD = 21;
+
+	/*
+	public static final int A_AXE = 17;    
+	public static final int A_BOW = 18;    
+	public static final int A_XBOW = 19;  
+	public static final int A_SHURIKEN = 23;  
+	public static final int A_STAFF = 24;    
+											
+	public static final int A_SWORD = 26;  
+	public static final int A_WAND = 15;
+	*/
+
+	
 	
 	public AbilityController(){
 	}
@@ -84,35 +91,6 @@ public class AbilityController {
 				((Unit)origin).updateMovement(2);
 				break;
 			}
-			case (A_AXE):{
-				((Unit)target).changeHP(-1 * Dice.nextInt(14));
-				break;
-			}
-			case (A_BOW):{
-				((Unit) target).changeHP( -1 * (Dice.nextInt(9)));
-				break;
-			}
-			case (A_XBOW):{
-				((Unit)target).changeHP(-1 * Dice.nextInt(10));
-				break;
-			}
-			case (A_SHURIKEN):{
-				((Unit) target).changeHP( -1 * Dice.nextInt(5) * Dice.nextInt(5) + 4);
-				break;
-			}
-			case (A_STAFF):{
-				((Unit)target).changeHP(-2 * (int) Math.round(.9 * ((Unit)origin).getInt()) + 2);
-				break;
-			}
-			case (A_SWORD):{
-				((Unit)target).changeHP(-1 * Dice.nextInt(12));
-				((Unit)origin).updateMovement(2);
-				break;
-			}
-			case (A_WAND):{
-				((Unit)target).changeHP(-1 * (int) Math.round(.5 * ((Unit)origin).getInt()));
-				break;
-			}
 			case (GALOSHES):{
 				break;
 			}
@@ -139,17 +117,21 @@ public class AbilityController {
 					activate(origin, target,  Dice.nextInt(24) );
 					((Unit)origin).updateMana(-5);
 				}
+				break;
 			}
 			case(TELEPORT):{
 				if(((Unit)origin).getMana() >= 7){
 					origin.movePosition(Dice.nextInt(10), Dice.nextInt(10));
 					((Unit)origin).updateMana(-7);
 				}
+				break;
 			}
 			case(FIREBALL):{
 				if(((Unit)origin).getMana() >= 7){
-					((Unit)target).changeHP(-15 + (int) Math.round(.5 * ((Unit)origin).getInt()));
+					((Unit)target).changeHP(-8 + (int) Math.round(.5 * ((Unit)origin).getInt()));
+					((Unit)origin).updateMana(-7);
 				}
+				break;
 			}
 			case(DRAIN):{
 				if(((Unit)origin).getMana() >= 5){
@@ -158,6 +140,7 @@ public class AbilityController {
 					((Unit)origin).changeHP(x);
 					((Unit)origin).updateMana(-5);
 				}
+				break;
 			}
 			case(TOUCHDRAIN):{
 				if(((Unit)origin).getMana() >= 5){
@@ -166,16 +149,34 @@ public class AbilityController {
 					((Unit)origin).changeHP(x);
 					((Unit)origin).updateMana(-5);
 				}
-				
+				break;	
+			}
+			case(ICEBOLT):{
+				if(((Unit)origin).getMana() >= 7){
+					((Unit)target).changeHP(-6 + (int) Math.round(.5 * ((Unit)origin).getInt()));
+					((Unit)target).updateMovement(10);
+					((Unit)origin).updateMana(-7);
+				}
+				break;	
+			}
+			case(EARTHQUAKE):{
+				if(((Unit)origin).getMana() >= 5){
+					((Unit)target).changeHP(-5 + (int) Math.round(.4 * ((Unit)origin).getInt()));
+					((Unit)origin).updateMana(-5);
+					((Unit)target).movePosition(Dice.nextInt(2) * (-1 * Dice.nextInt(2)), Dice.nextInt(2) * (-1 * Dice.nextInt(2)));
+				}
+				break;	
 			}
 			case(WEB):{
 				if(((Unit)origin).getMana() >= 10){
 					((Unit)target).updateMovement(10);
 					((Unit)origin).updateMana(-5);
 				}
+				break;
 			}
 			case(SHADOWSTRIKE):{
-				((Unit)target).changeHP(-1* (int) Math.round(((Unit)target).getHP()/10) + 1 );
+				((Unit)target).changeHP(-1* (int) Math.round(((Unit)target).getHP()/6) + 1 );
+				break;
 				
 			}
 			default:
@@ -206,27 +207,6 @@ public int getRange(int ability){
 		}
 		case (B_SWORD):{
 			return 1;
-		}
-		case (A_AXE):{
-			return 1;
-		}
-		case (A_BOW):{
-			return 9;
-		}
-		case (A_XBOW):{
-			return 6;
-		}
-		case (A_SHURIKEN):{
-			return 3;
-		}
-		case (A_STAFF):{
-			return 1;
-		}
-		case (A_SWORD):{
-			return 1;
-		}
-		case (A_WAND):{
-			return 3;
 		}
 		case (GALOSHES):{
 			return 0;
@@ -260,6 +240,9 @@ public int getRange(int ability){
 			}
 			case(DRAIN):{
 				return 4;
+			}
+			case(ICEBOLT):{
+				return 8;
 			}
 			case(TOUCHDRAIN):{
 				return 1;
