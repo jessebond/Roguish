@@ -4,13 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import com.badlogic.gdx.Gdx;
 import com.me.Roguish.Model.Entity;
 import com.me.Roguish.Model.HeroUnit;
 import com.me.Roguish.Model.MonsterUnit;
 import com.me.Roguish.Model.Level;
 import com.me.Roguish.View.LevelRenderer;
-import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
 public class LevelController {
 	private Level level;
@@ -53,7 +51,7 @@ public class LevelController {
 		this.level = level;
 		this.renderer = renderer;
 		this.hero = level.getHero();
-		
+				
 	}
 	
 	// Main update method
@@ -84,8 +82,8 @@ public class LevelController {
 		if(!doHeroAbility()){
 		switch(direction){
 		case UP:{
-			if(tileOpen(hero.getX(), hero.getY() - 1)){
-				hero.movePosition(0, -1);
+			if(tileOpen(hero.getX(), hero.getY() + 1)){
+				hero.movePosition(0, 1);
 				nextTurn(hero);
 				renderer.updateCam(0,1);
 				checkWinConditions();
@@ -93,8 +91,8 @@ public class LevelController {
 			break;
 		}
 		case DOWN:{
-			if(tileOpen(hero.getX(), hero.getY() + 1)){
-				hero.movePosition(0, 1);
+			if(tileOpen(hero.getX(), hero.getY() - 1)){
+				hero.movePosition(0, -1);
 				nextTurn(hero);
 				renderer.updateCam(0,-1);
 				checkWinConditions();
@@ -224,7 +222,6 @@ public class LevelController {
 	}
 	
 	private int closestToHero(int direction, int ability){
-		boolean found = false;
 		switch(direction){
 		//Up
 		case 0:{
@@ -365,12 +362,11 @@ public class LevelController {
 	
 	//Returns true if the tile at the x, y is open
 	public boolean tileOpen(int x, int y){
-		if(x < 0 || x > level.map.width || y < 0 || y > level.map.height) return false;
+		if(x < 0 || x > level.columns || y < 0 || y > level.rows) return false;
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
-		if(level.tilePropCheck(x,y,"wall")) return false;
-		else return true;
+		return level.tilePropCheck(x,y,"wall");
 	}
 	
 	public boolean inRange(Entity source, Entity target, int ability ){
@@ -565,8 +561,6 @@ public class LevelController {
 			tarDown = true;
 			doHeroTurn(Keys.DOWN);
 		}
-		renderer.TILE_BLACK++;
-		System.out.println("Black tile: " + renderer.TILE_BLACK);
 	}
 	
 	public void onePressed(){
