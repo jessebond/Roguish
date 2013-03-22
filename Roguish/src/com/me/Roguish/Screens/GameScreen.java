@@ -346,8 +346,20 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
+		switch(getQuadrant(screenX, screenY)){
+		case 0: controller.upReleased(); break;
+		case 1: controller.downReleased(); break;
+		case 2: controller.leftReleased(); break;
+		case 3: controller.rightReleased(); break;
+		}
 		return false;
+	}
+
+	private int getQuadrant(int x, int y) {
+		if ( x > 427 ) return 3;
+		if ( x <= 427 ) return 2;
+		if (y < 240 ) return 1;
+		else return 0;
 	}
 
 	@Override
