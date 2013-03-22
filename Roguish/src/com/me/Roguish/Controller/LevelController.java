@@ -362,10 +362,13 @@ public class LevelController {
 	
 	//Returns true if the tile at the x, y is open
 	public boolean tileOpen(int x, int y){
+		//System.out.println("12321");
 		if(x < 0 || x > level.columns || y < 0 || y > level.rows) return false;
+		System.out.println("abc123");
 		for (Entity ent : level.getEntities()) {
 			if (ent.getX() == x && ent.getY() == y && ent.getAlive()) return false;
 		}
+		System.out.println("open?: " + level.tilePropCheck(x,y,"wall"));
 		return level.tilePropCheck(x,y,"wall");
 	}
 	

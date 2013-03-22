@@ -1,46 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="TileSheet" tilewidth="32" tileheight="32">
-  <image source="TileSheet.png" width="256" height="256"/>
-  <tile id="9">
-   <properties>
-    <property name="wall" value="true"/>
-   </properties>
-  </tile>
-  <tile id="13">
-   <properties>
-    <property name="wall" value="false"/>
-   </properties>
-  </tile>
-  <tile id="14">
-   <properties>
-    <property name="wall" value="false"/>
-   </properties>
-  </tile>
+  <image source="../TileSheet.png" width="256" height="256"/>
   <tile id="24">
    <properties>
     <property name="wall" value="true"/>
    </properties>
   </tile>
-  <tile id="33">
-   <properties>
-    <property name="wall" value="false"/>
-   </properties>
-  </tile>
  </tileset>
- <layer name="Background" width="50" height="50">
+ <layer name="Tile Layer 1" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmNEOwjAIRfsbm2/u///RmLhkQbhAubXV+ECcrgNOL7R1W2tt+zHbhd1e5o0/xz2v7xMswnDmFx03kwPldgvcv45ZlWNv7zWE6mwVDqRFpF+Ol8k4vTlq/no4NNuM33YRn8Gh+WNzyHrcjZhVjh49IixIDy3mJuJdjalHliXSH5G6ivBk+sNisXi8fdHSA+VRqbvsvo5M9kgm71EcSB9rj1mZ4xyHeCwG5G8WhzSUfzRuJW/EwfTr5a/Fq+ThPdu71nuxLA6G70zNVWNo32dwZGJGxjK1HqXJ6D1Q4zjEp8bSEyMzh70xPA62WXPCXq+0c95oG9Xn7P8PIxmQD+a+gfT14jM40DPad+uZSn1GeTIc3ljEUe23yNqd4UAxvFhMDu3/ZmTuI+PQmlFd+7S9IVp/qNe1e5X9PnKuQPPCWI+qlo2Pzhw9sZl6ZDnYekT6g83h5VGtC2Y+WW1X4PgVPVbhYOUw4rz755g7F7PzQJZ53460rrAerXbePYzrT+sh88iyVDnkPFbOq9FcIppW9ahysOejh4Px3uTK0OtvNofUYQYHSwuGz1U4ZvcHg2P0+0nrvP+N9gAbeTdE
+   eJztmUEKwCAMBP2G9Nb/P7J3MRJjErdhDwMFaZsxqxbaW2u9CO/PoQcW9MCCHljQAwt6YEEPLOiBBT2w8PR4grjh4T3PFTyq9GPnefSQc2Bdt9Y1HuVxMm59d7aHV46iPayOaB5Svdaxm/3IPMczcvVMrsc6pbqRvkvGeqVeze6VnpnlMc6hNj9oHiufmdesdygekpumPygeq311lb+dudF6nPzX8tpzPfYr7/9zJ+ebFk2uNFnxyEakx+rc0u6v0Q47/bhZo5fHraxkeKBBDyzogQU9sKjmUYEPR5o+kg==
   </data>
  </layer>
- <layer name="Accents" width="50" height="50">
+ <layer name="Tile Layer 2" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt08EJACAMA0AHcBMnUPffyy5g9SlyB4FC8m0puXbobzfAO2pkRGakJ7u2uYF/+HMAAAAAAAAAfrIA2HQBvQ==
+   eJztyCEBAAAIA7D3oX8/xBPgEJtcAgAAAAAAAFBzfAAA+GQBxRUAVw==
   </data>
  </layer>
- <layer name="Vision" width="50" height="50">
+ <layer name="Tile Layer 3" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztwwEJAAAMBKHL8/0DLsdAwVVTVVVVVVVVVVXV5w8OUJo4
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
   </data>
  </layer>
 </map>
