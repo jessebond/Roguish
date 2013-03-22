@@ -161,11 +161,16 @@ public class LevelRenderer {
 				if(ent instanceof MonsterUnit){
 					shapeRenderer.begin(ShapeType.Filled);
 					shapeRenderer.setColor(Color.RED);
-				if(((MonsterUnit) ent).getHP() > 0)
-					shapeRenderer.rect((ent.getX() + offsetX) * ENT_DIM,(ent.getY() + offsetY) * ENT_DIM, ((MonsterUnit) ent).getHP(), 4);
+					if(((MonsterUnit) ent).getHP() > 0){
+						shapeRenderer.rect((ent.getX() + offsetX) * ENT_DIM,(ent.getY() + offsetY) * ENT_DIM, ((MonsterUnit) ent).getHP(), 4);
+					}
 					shapeRenderer.end();
+					if(((MonsterUnit) ent).getHP() <= 0)
+						batch.draw(new TextureRegion(atlas.findRegion("Grave")), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);
+					else batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);
 				}
-				batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);		
+				else
+					batch.draw(new TextureRegion(atlas.findRegion(ent.getTexture())), (ent.getX() + offsetX) * ENT_DIM, (ent.getY() + offsetY) * ENT_DIM);		
 			}
 		}
 	}

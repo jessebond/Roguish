@@ -16,7 +16,7 @@ public class Level{
     //public SimpleTileAtlas atlas;
     public HeroUnit hero;
     private Random Dice = new Random();
-    public Entity winChest = new Entity(4,13,"Chest", new Array<Integer>());
+   // public Entity winChest = new Entity(4,13,"Chest", new Array<Integer>());
     private MonsterUnit mon;
     
     private TiledMapTileLayer backgroundLayer;
@@ -24,7 +24,7 @@ public class Level{
     public int rows;
     
 	public Level(ClassCard cCard){
-		hero =  new HeroUnit(5, 5, cCard.getClassName(), new Array<Integer>(), cCard);
+		hero =  new HeroUnit(2, 37, cCard.getClassName(), new Array<Integer>(), cCard);
 		create();
 		setStats();
 		populate();
@@ -114,7 +114,7 @@ public class Level{
 
 	public void create(){
 		System.out.println("In create");
-		map = new TmxMapLoader().load("data/level/test_FoV.tmx");
+		map = new TmxMapLoader().load("data/level/test_FoV2.tmx");
 		System.out.println("Tiles loaded");
 	   
 	}
@@ -135,10 +135,11 @@ public class Level{
 	private void populate(){
 	
 		addEntity(hero); 
-		addEntity(winChest);
+		
 		generateEntities();
 		/*
 		addEntity(rat1);
+		addEntity(winChest);
 		addEntity(rat2);
 		addEntity(rat3);
 		addEntity(bat1);
