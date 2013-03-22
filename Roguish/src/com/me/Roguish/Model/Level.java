@@ -153,16 +153,17 @@ public class Level{
 	
 		addEntity(hero);
 		
-		addEntity(winChest);
+		
 		//Level specific monster && objective placement
 		if(GameScreen.level1 && GameScreen.level2){
 			
 		}
 		else if(GameScreen.level1){
+			hero.setPosition(5, 5);
 			
 		}
 		else{
-
+			addEntity(winChest);
 			winChest.setAlive(false);
 			winChest.setPosition(1, 48);
 			winChest.setId(1337);
