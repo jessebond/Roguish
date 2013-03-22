@@ -10,11 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
+import com.esotericsoftware.tablelayout.Value;
 
 import com.me.Roguish.Roguish;
 import com.me.Roguish.Model.HeroUnit;
@@ -33,6 +35,20 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 	
 	private TextureAtlas guiAtlas;
 	private TextureAtlas entAtlas;
+	
+	
+	private TextureRegion ability1;
+	private TextureRegion ability2;
+	private TextureRegion ability3;
+	private TextureRegion ability4;
+	private TextureRegion ability5;
+	
+	private ButtonStyle ability1Style;
+	private ButtonStyle ability2Style;
+	private ButtonStyle ability3Style;
+	private ButtonStyle ability4Style;
+	private ButtonStyle ability5Style;
+	
 	
 	private TextureRegion menuUp;
 	private TextureRegion menuDown;
@@ -76,9 +92,17 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 	public void show() {
 		Gdx.input.setInputProcessor(this);
 		
+		
 		loadGui();
+		loadStyles();
+		
 		
 		Button menuButton = new Button(menuStyle);
+		Button ability1Button = new Button(ability1Style);
+		Button ability2Button = new Button(ability2Style);
+		Button ability3Button = new Button(ability3Style);
+		Button ability4Button = new Button(ability4Style);
+		Button ability5Button = new Button(ability5Style);
 		System.out.println("delta: " + (Gdx.graphics.getWidth() - stage.getWidth()));
 		System.out.println("screen: " + Gdx.graphics.getWidth());
 		System.out.println("stage: " + stage.getWidth());
@@ -90,7 +114,10 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		table.right();
 		table.debug();
 		
+		Table table2 = new Table();
+		table2.setSize(480, 320);
 		stage.addActor(table);
+		stage.addActor(table2);
 		stage.addActor(ic_hero);
 		
 		table.add(ihud);
@@ -104,6 +131,76 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 			}
 		});
 		table.add(menuButton);
+		
+		ability1Button.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Ability 1");
+				controller.oneReleased();
+				return false;
+			}
+		});
+		table2.add(ability1Button);
+		
+		ability2Button.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Ability 2");
+				controller.twoReleased();
+				return false;
+			}
+		});
+		table2.add(ability2Button);
+		
+		ability3Button.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Ability 3");
+				controller.threeReleased();
+				return false;
+			}
+		});
+		table2.add(ability3Button);
+		
+		ability4Button.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Ability 4");
+				controller.fourReleased();
+				return false;
+			}
+		});
+		table2.add(ability4Button);
+		
+		ability5Button.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				System.out.println("Ability 5");
+				controller.fourReleased();
+				return false;
+			}
+		});
+		table2.add(ability5Button);
+		
+		table2.setPosition(225, -125);
+	}
+
+	private void loadStyles() {
+		ability1Style = new ButtonStyle();
+		ability1Style.up = new TextureRegionDrawable(ability1);
+		ability1Style.down = new TextureRegionDrawable(ability1);
+		
+		ability2Style = new ButtonStyle();
+		ability2Style.up = new TextureRegionDrawable(ability2);
+		ability2Style.down = new TextureRegionDrawable(ability2);
+
+		ability3Style = new ButtonStyle();
+		ability3Style.up = new TextureRegionDrawable(ability3);
+		ability3Style.down = new TextureRegionDrawable(ability3);
+		
+		ability4Style = new ButtonStyle();
+		ability4Style.up = new TextureRegionDrawable(ability4);
+		ability4Style.down = new TextureRegionDrawable(ability4);
+		
+		ability5Style = new ButtonStyle();
+		ability5Style.up = new TextureRegionDrawable(ability5);
+		ability5Style.down = new TextureRegionDrawable(ability5);
+		
 	}
 
 	private void loadGui(){
@@ -118,6 +215,13 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		menuStyle = new ButtonStyle();
 		menuStyle.up = new TextureRegionDrawable(menuUp);
 		menuStyle.down = new TextureRegionDrawable(menuDown);
+		
+		
+		ability1 = entAtlas.findRegion(findAbilityName(level.hero.getAbilities().get(0)));
+		ability2 = entAtlas.findRegion(findAbilityName(level.hero.getAbilities().get(1)));
+		ability3 = entAtlas.findRegion(findAbilityName(level.hero.getAbilities().get(2)));
+		ability4 = entAtlas.findRegion(findAbilityName(level.hero.getAbilities().get(3)));
+		ability5 = entAtlas.findRegion(findAbilityName(level.hero.getAbilities().get(4)));
 	
 		ihud = new Image(hud);
 		ihud.setScaling(Scaling.fill);
@@ -130,6 +234,30 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 	}
 	
 	
+
+	private String findAbilityName(int i) {
+		switch(i){
+		case 0: return "D_Axe";
+		case 1: return "D_Bow";
+		case 2: return "D_Crossbow";
+		case 3: return "D_Stars";
+		case 4: return "D_Staff";
+		case 5: return "D_Sword";
+		case 6: return "D_Mage";    //need icebolt
+		case 7: return "D_Boots";
+		case 8: return "D_Glove";
+		case 9: return "D_Plus_R";
+		case 10: return "D_Plus_B";
+		case 11: return "D_RandomChaos";
+		case 12: return "D_Teleport";
+		case 13: return "D_LifeSteal";
+		case 14: return "D_LifeStealTouch";
+		case 16: return "D_Wand";
+		case 18: return "D_Fireball";
+		case 19: return "D_Mage";   // need earthquake;
+		default: return "D_Mage";
+		}
+	}
 
 	@Override
 	public void hide() {
