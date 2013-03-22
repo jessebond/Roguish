@@ -108,15 +108,16 @@ public class LevelRenderer {
 		
 		updateFoV();
 		
+		renderer.render(backgroundLayers);
+		
 		batch.enableBlending();
 		batch.begin();
-
-		renderer.render(backgroundLayers);
 		renderEntities();
-		renderer.render(foregroundLayers);
+		
 		if (debug)
 			drawDebug();
 		batch.end();
+		renderer.render(foregroundLayers);
 	}
 
 	// updates the field of view
@@ -126,14 +127,14 @@ public class LevelRenderer {
 		for(i=0;i<level.columns;i++)
 			for(j=0;j<level.rows;j++){
 				//System.out.println("x: " + i + " |y: " + j);
-				System.out.println("tile id: " + visionLayer.getCell(i, j));
+				//System.out.println("tile id: " + visionLayer.getCell(i, j));
 				visionLayer.getCell(i, j).setTile(blackTile);
 				
 				x = i-level.getHero().getX();
 				y = j-level.getHero().getY();
 				l = (float) Math.sqrt((x*x)+(y*y));
 				if(l<VIEW_RADIUS)
-					if(calcFoV(i,j) == true)
+					//if(calcFoV(i,j) == true)
 						//System.out.println("CLEAR FOOL");
 						visionLayer.getCell(i, j).setTile(clearTile);		
 			};
