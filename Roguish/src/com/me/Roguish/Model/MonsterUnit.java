@@ -23,36 +23,37 @@ public class MonsterUnit extends Unit {
 		switch(type){
 		case RAT:{
 			this.setAtts(Dice.nextInt(2), Dice.nextInt(2), 6);
-			this.setHP(2);
+			this.setHP(4);
 			this.addAbility(AbilityController.BITE);
 			this.setAlive(true);
 			
 		}
 		case BAT:{
 			this.setAtts(Dice.nextInt(3), Dice.nextInt(3), 20);
-			this.setHP(4);
+			this.setHP(8);
 			this.addAbility(AbilityController.STRONGBITE);
 			this.setAlive(true);
 		}
 		case SPIDER:{
 			this.setAtts(Dice.nextInt(4), 5, 20);
-			this.setHP(6);
+			this.setHP(12);
 		}
 		case BEAR:{
 			this.setAtts(Dice.nextInt(5), Dice.nextInt(5), Dice.nextInt(5));
-			this.setHP(7);
+			this.setHP(14);
 		}
 		case SHADOW:{
 			this.setAtts(Dice.nextInt(6), Dice.nextInt(6), Dice.nextInt(6));
-			this.setHP(8);
+			this.setHP(16);
 			
 		}
 		case GOLEM:{
 			this.setAtts(Dice.nextInt(7), Dice.nextInt(7), Dice.nextInt(7));
-			this.setHP(10);
+			this.setHP(20);
 			
 		}
 		}
+		
 	}
 	public MonsterUnit(int x, int y, String texture, Array<Integer> a){
 		super(x,y,texture,a);

@@ -6,15 +6,16 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g2d.tiled.SimpleTileAtlas;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledLoader;
+import java.util.Random;
 
 public class Level{
 	public Array<Entity> entities = new Array<Entity>();
 	public TurnQueue queue;
 	public AbilityController ability = new AbilityController();
-	
     public TiledMap map;
     public SimpleTileAtlas atlas;
     public HeroUnit hero;
+    private Random Dice = new Random();
     public MonsterUnit rat1 = new MonsterUnit(1, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
     public MonsterUnit rat2 = new MonsterUnit(2, 1, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
     public MonsterUnit rat3 = new MonsterUnit(2, 2, "E_Rat", new Array<Integer>(), MonsterUnit.RAT);
@@ -22,6 +23,7 @@ public class Level{
     public MonsterUnit spider1 = new MonsterUnit(1, 6, "E_Spider", new Array<Integer>(), MonsterUnit.SPIDER);
     public MonsterUnit shadow1 = new MonsterUnit(1, 7, "E_Shadow", new Array<Integer>(), MonsterUnit.SHADOW);
     public Entity winChest = new Entity(4,13,"Chest", new Array<Integer>());
+    private MonsterUnit mon;
     
 	public Level(ClassCard cCard){
 		hero =  new HeroUnit(5, 5, cCard.getClassName(), new Array<Integer>(), cCard);
@@ -42,6 +44,38 @@ public class Level{
 		populate();
 		queue = new TurnQueue(getEntities());
 	}
+	
+	
+	// The below will work once the tileOpen() method is added to level.
+	
+	/*
+	
+	private void generateEntities(){
+		// This can be scaled as the level difficulty
+		int area = map.height * map.width;
+		int totalMon = (int) area / 5;
+		
+		for(int i = 0; i < totalMon; i++){
+			
+			// Rewrite once level controller gets refactored
+			int[] x = findOpenXY();
+			
+			//Update as new units are created
+			int monType = Dice.nextInt(6);
+			switch(monType){
+			case MonsterUnit.RAT: mon = new MonsterUnit(x[0], x[1], "E_Rat", new Array<Integer>(), MonsterUnit.RAT); break;
+			case MonsterUnit.BAT: mon = new MonsterUnit(x[0], x[1], "E_Bat", new Array<Integer>(), MonsterUnit.BAT); break;
+			case MonsterUnit.SPIDER: mon = new MonsterUnit(x[0], x[1], "E_Spider", new Array<Integer>(), MonsterUnit.BAT); break;
+			case MonsterUnit.SHADOW: mon = new MonsterUnit(x[0], x[1], "E_Monster", new Array<Integer>(), MonsterUnit.SHADOW); break;
+			}
+			
+			mon.setId(1 + i);
+			addEntity(mon);
+		
+			
+		}
+	}
+	*/
 
 	private void setStats() {
 		 hero.setId(0);

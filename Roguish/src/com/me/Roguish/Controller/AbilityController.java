@@ -18,6 +18,7 @@ public class AbilityController {
 	public static final int STRONGBITE = -3;
 	public static final int WEB = -4;
 	public static final int SHADOWSTRIKE = -5;
+	public static final int MAUL = -6;
 
 	// B for Basic versions of Abilities
 	// A for Advanced versions of Abilities
@@ -26,26 +27,26 @@ public class AbilityController {
 	public static final int B_XBOW = 2;
 	public static final int B_SHURIKEN = 3;
 	public static final int B_STAFF = 4;
-	// 5
-	public static final int B_SWORD = 6;	
-	public static final int B_WAND = 7;
-	public static final int A_AXE = 8;
-	public static final int A_BOW = 9;
-	public static final int A_XBOW = 10;
-	public static final int A_SHURIKEN = 11;
-	public static final int A_STAFF = 12;
-	// 13
-	public static final int A_SWORD = 14;
+	// 6
+	public static final int B_SWORD = 5;	
+	public static final int B_WAND = 16;   
+	public static final int A_AXE = 17;    
+	public static final int A_BOW = 18;    
+	public static final int A_XBOW = 19;  
+	public static final int A_SHURIKEN = 23;  
+	public static final int A_STAFF = 24;    
+											
+	public static final int A_SWORD = 26;  
 	public static final int A_WAND = 15;
 
-	public static final int GALOSHES = 16;
-	public static final int GAUNTLET = 17;
-	public static final int HEALTHBOOST = 18;
-	public static final int MANABOOST = 19;
-	public static final int CHAOS = 23;
-	public static final int TELEPORT = 24;
-	public static final int DRAIN = 25;
-	public static final int TOUCHDRAIN = 26;
+	public static final int GALOSHES = 7;
+	public static final int GAUNTLET = 8;
+	public static final int HEALTHBOOST = 9;
+	public static final int MANABOOST = 10;
+	public static final int CHAOS =  11;
+	public static final int TELEPORT = 12;
+	public static final int DRAIN = 13;
+	public static final int TOUCHDRAIN = 14;
 	
 	public AbilityController(){
 	}
@@ -174,7 +175,7 @@ public class AbilityController {
 				}
 			}
 			case(SHADOWSTRIKE):{
-				((Unit)target).changeHP(-1* (int) Math.round(((Unit)target).getHP()/10));
+				((Unit)target).changeHP(-1* (int) Math.round(((Unit)target).getHP()/10) + 1 );
 				
 			}
 			default:

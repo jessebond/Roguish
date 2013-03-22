@@ -54,14 +54,39 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	private ButtonStyle delStyle;
 	
 	// Entity TextureRegions
-	private TextureRegion c_archer;
-	private TextureRegion c_mage;
-	private TextureRegion c_ninja;
-	private TextureRegion c_warrior;
-	private TextureRegion d_archer;
-	private TextureRegion d_mage;
-	private TextureRegion d_ninja;
-	private TextureRegion d_warrior;
+	private TextureRegion c_basicaxe;
+	private TextureRegion c_basicbow;
+	private TextureRegion c_basicxbow;
+	private TextureRegion c_basicshuriken;
+	private TextureRegion c_basicstaff;
+	private TextureRegion c_basicsword;
+	private TextureRegion c_basicwand;
+	private TextureRegion c_galoshes;
+	private TextureRegion c_gauntlet;
+	private TextureRegion c_healthboost;
+	private TextureRegion c_manaboost;
+	private TextureRegion c_chaos;
+	private TextureRegion c_teleport;
+	private TextureRegion c_drain;
+	private TextureRegion c_touchdrain;
+	
+	
+	
+	private TextureRegion d_basicaxe;
+	private TextureRegion d_basicbow;
+	private TextureRegion d_basicxbow;
+	private TextureRegion d_basicshuriken;
+	private TextureRegion d_basicstaff;
+	private TextureRegion d_basicsword;
+	private TextureRegion d_basicwand;
+	private TextureRegion d_galoshes;
+	private TextureRegion d_gauntlet;
+	private TextureRegion d_healthboost;
+	private TextureRegion d_manaboost;
+	private TextureRegion d_chaos;
+	private TextureRegion d_teleport;
+	private TextureRegion d_drain;
+	private TextureRegion d_touchdrain;
 	
 	private Image c_ent0;
 	private Image d_ent0;
@@ -71,6 +96,29 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	private Image d_ent2;
 	private Image c_ent3;
 	private Image d_ent3;
+	private Image c_ent4;
+	private Image d_ent4;
+	private Image c_ent5;
+	private Image d_ent5;
+	private Image c_ent6;
+	private Image d_ent6;
+	private Image c_ent7;
+	private Image d_ent7;
+	private Image c_ent8;
+	private Image d_ent8;
+	private Image c_ent9;
+	private Image d_ent9;
+	private Image c_ent10;
+	private Image d_ent10;
+	private Image c_ent11;
+	private Image d_ent11;
+	private Image c_ent12;
+	private Image d_ent12;
+	private Image c_ent13;
+	private Image d_ent13;
+	private Image c_ent14;
+	private Image d_ent14;
+
 	
 	// CardRing images
 	private Image cRing;
@@ -134,6 +182,28 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		stage.addActor(d_ent2);
 		stage.addActor(c_ent3);
 		stage.addActor(d_ent3);
+		stage.addActor(c_ent4);
+		stage.addActor(d_ent4);
+		stage.addActor(c_ent5);
+		stage.addActor(d_ent5);
+		stage.addActor(c_ent6);
+		stage.addActor(d_ent6);
+		stage.addActor(c_ent7);
+		stage.addActor(d_ent7);
+		stage.addActor(c_ent8);
+		stage.addActor(d_ent8);
+		stage.addActor(c_ent9);
+		stage.addActor(d_ent9);
+		stage.addActor(c_ent10);
+		stage.addActor(d_ent10);
+		stage.addActor(c_ent11);
+		stage.addActor(d_ent11);
+		stage.addActor(c_ent12);
+		stage.addActor(d_ent12);
+		stage.addActor(c_ent13);
+		stage.addActor(d_ent13);
+		stage.addActor(c_ent14);
+		stage.addActor(d_ent14);
 		stage.addActor(cRing);
 		stage.addActor(cRing0);
 		stage.addActor(cRing1);
@@ -235,14 +305,38 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		System.out.println("ChooseClassScreen:LoadEnt()");
 		entAtlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));
 		
-		c_archer = entAtlas.findRegion("C_Archer");
-		d_archer = entAtlas.findRegion("D_Archer");
-		c_mage = entAtlas.findRegion("C_Mage");
-		d_mage = entAtlas.findRegion("D_Mage");
-		c_ninja = entAtlas.findRegion("C_Ninja");
-		d_ninja = entAtlas.findRegion("D_Ninja");
-		c_warrior = entAtlas.findRegion("C_Warrior");
-		d_warrior = entAtlas.findRegion("D_Warrior");
+		c_basicaxe = entAtlas.findRegion("C_BasicAxe");
+		d_basicaxe = entAtlas.findRegion("D_Sword");				// Need
+		c_basicbow = entAtlas.findRegion("C_BasicBow");
+		d_basicbow = entAtlas.findRegion("D_Bow");					
+		c_basicxbow = entAtlas.findRegion("C_BasicCrossbow");
+		d_basicxbow = entAtlas.findRegion("D_Bow");                 // Need
+		c_basicshuriken = entAtlas.findRegion("C_BasicShuriken");
+		d_basicshuriken = entAtlas.findRegion("D_Stars");
+		c_basicstaff  = entAtlas.findRegion("C_BasicStaff");
+		d_basicstaff  = entAtlas.findRegion("D_Staff");
+		c_basicsword = entAtlas.findRegion("C_BasicSword");
+		d_basicsword = entAtlas.findRegion("D_Sword");
+		c_basicwand = entAtlas.findRegion("C_BasicWand");
+		d_basicwand = entAtlas.findRegion("D_Staff");  			// Need
+		c_galoshes = entAtlas.findRegion("C_Galoshes");
+		d_galoshes = entAtlas.findRegion("D_Boots");
+		c_gauntlet = entAtlas.findRegion("C_Gauntlet");
+		d_gauntlet = entAtlas.findRegion("D_Glove");
+		c_healthboost = entAtlas.findRegion("C_HealthBoost");
+		d_healthboost = entAtlas.findRegion("D_Plus_R");		// Need
+		c_manaboost = entAtlas.findRegion("C_ManaBoost");
+		d_manaboost = entAtlas.findRegion("D_Plus_B");
+		c_chaos = entAtlas.findRegion("C_Mage");  				//Need
+		d_chaos = entAtlas.findRegion("D_RandomChaos");
+		c_teleport = entAtlas.findRegion("C_Mage");				// Need
+		d_teleport = entAtlas.findRegion("D_Teleport");
+		c_drain = entAtlas.findRegion("C_Mage");				// Need
+		d_drain = entAtlas.findRegion("D_LifeSteal");
+		c_touchdrain = entAtlas.findRegion("C_Mage");			//Need
+		d_touchdrain = entAtlas.findRegion("D_LifeStealTouch");
+		
+		
 	}
 	
 	private void loadStyles(){
@@ -298,6 +392,50 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				c_ent3.addAction(Actions.alpha(1));
 				d_ent3.addAction(Actions.alpha(1));
 				break;
+			case 4:
+				c_ent4.addAction(Actions.alpha(1));
+				d_ent4.addAction(Actions.alpha(1));
+				break;
+			case 5:
+				c_ent5.addAction(Actions.alpha(1));
+				d_ent5.addAction(Actions.alpha(1));
+				break;
+			case 6:
+				c_ent6.addAction(Actions.alpha(1));
+				d_ent6.addAction(Actions.alpha(1));
+				break;
+			case 7:
+				c_ent7.addAction(Actions.alpha(1));
+				d_ent7.addAction(Actions.alpha(1));
+				break;
+			case 8:
+				c_ent8.addAction(Actions.alpha(1));
+				d_ent8.addAction(Actions.alpha(1));
+				break;
+			case 9:
+				c_ent9.addAction(Actions.alpha(1));
+				d_ent9.addAction(Actions.alpha(1));
+				break;
+			case 10:
+				c_ent10.addAction(Actions.alpha(1));
+				d_ent10.addAction(Actions.alpha(1));
+				break;
+			case 11:
+				c_ent11.addAction(Actions.alpha(1));
+				d_ent11.addAction(Actions.alpha(1));
+				break;
+			case 12:
+				c_ent12.addAction(Actions.alpha(1));
+				d_ent12.addAction(Actions.alpha(1));
+				break;
+			case 13:
+				c_ent13.addAction(Actions.alpha(1));
+				d_ent13.addAction(Actions.alpha(1));
+				break;
+			case 14:
+				c_ent14.addAction(Actions.alpha(1));
+				d_ent14.addAction(Actions.alpha(1));
+				break;
 			default:
 				break;
 		}
@@ -322,6 +460,51 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				c_ent3.addAction(Actions.alpha(0));
 				d_ent3.addAction(Actions.alpha(0));
 				break;
+			case 4:
+				c_ent4.addAction(Actions.alpha(0));
+				d_ent4.addAction(Actions.alpha(0));
+				break;
+			case 5:
+				c_ent5.addAction(Actions.alpha(0));
+				d_ent5.addAction(Actions.alpha(0));
+				break;
+			case 6:
+				c_ent6.addAction(Actions.alpha(0));
+				d_ent6.addAction(Actions.alpha(0));
+				break;
+			case 7:
+				c_ent7.addAction(Actions.alpha(0));
+				d_ent7.addAction(Actions.alpha(0));
+				break;
+			case 8:
+				c_ent8.addAction(Actions.alpha(0));
+				d_ent8.addAction(Actions.alpha(0));
+				break;
+			case 9:
+				c_ent9.addAction(Actions.alpha(0));
+				d_ent9.addAction(Actions.alpha(0));
+				break;
+			case 10:
+				c_ent10.addAction(Actions.alpha(0));
+				d_ent10.addAction(Actions.alpha(0));
+				break;
+			case 11:
+				c_ent11.addAction(Actions.alpha(0));
+				d_ent11.addAction(Actions.alpha(0));
+				break;
+			case 12:
+				c_ent12.addAction(Actions.alpha(0));
+				d_ent12.addAction(Actions.alpha(0));
+				break;
+			case 13:
+				c_ent13.addAction(Actions.alpha(0));
+				d_ent13.addAction(Actions.alpha(0));
+				break;
+			case 14:
+				c_ent14.addAction(Actions.alpha(0));
+				d_ent14.addAction(Actions.alpha(0));
+				break;
+				
 			default:
 				c_ent0.addAction(Actions.alpha(0));
 				d_ent0.addAction(Actions.alpha(0));
@@ -331,6 +514,28 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				d_ent2.addAction(Actions.alpha(0));
 				c_ent3.addAction(Actions.alpha(0));
 				d_ent3.addAction(Actions.alpha(0));
+				c_ent4.addAction(Actions.alpha(0));
+				d_ent4.addAction(Actions.alpha(0));
+				c_ent5.addAction(Actions.alpha(0));
+				d_ent5.addAction(Actions.alpha(0));
+				c_ent6.addAction(Actions.alpha(0));
+				d_ent6.addAction(Actions.alpha(0));
+				c_ent7.addAction(Actions.alpha(0));
+				d_ent7.addAction(Actions.alpha(0));
+				c_ent8.addAction(Actions.alpha(0));
+				d_ent8.addAction(Actions.alpha(0));
+				c_ent9.addAction(Actions.alpha(0));
+				d_ent9.addAction(Actions.alpha(0));
+				c_ent10.addAction(Actions.alpha(0));
+				d_ent10.addAction(Actions.alpha(0));
+				c_ent11.addAction(Actions.alpha(0));
+				d_ent11.addAction(Actions.alpha(0));
+				c_ent12.addAction(Actions.alpha(0));
+				d_ent12.addAction(Actions.alpha(0));
+				c_ent13.addAction(Actions.alpha(0));
+				d_ent13.addAction(Actions.alpha(0));
+				c_ent14.addAction(Actions.alpha(0));
+				d_ent14.addAction(Actions.alpha(0));
 				break;
 		}
 	}
@@ -388,32 +593,99 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		int dx = 316;
 		int dy = 225;
 				
-		c_ent0 = new Image(c_archer);
-		c_ent1 = new Image(c_mage);
-		c_ent2 = new Image(c_ninja);
-		c_ent3 = new Image(c_warrior);
+		c_ent0 = new Image(c_basicaxe);
+		c_ent1 = new Image(c_basicbow);
+		c_ent2 = new Image(c_basicxbow);
+		c_ent3 = new Image(c_basicshuriken);
+		c_ent4 = new Image(c_basicstaff);
+		c_ent5 = new Image(c_basicsword);
+		c_ent6 = new Image(c_basicwand);
+		c_ent7 = new Image(c_galoshes);
+		c_ent8 = new Image(c_gauntlet);
+		c_ent9 = new Image(c_healthboost);
+		c_ent10 = new Image(c_manaboost);
+		c_ent11 = new Image(c_chaos);
+		c_ent12 = new Image(c_teleport);
+		c_ent13 = new Image(c_drain);
+		c_ent14 = new Image(c_touchdrain);
+		
 		c_ent0.setScaling(Scaling.fill);
 		c_ent1.setScaling(Scaling.fill);
 		c_ent2.setScaling(Scaling.fill);
 		c_ent3.setScaling(Scaling.fill);
+		c_ent4.setScaling(Scaling.fill);
+		c_ent5.setScaling(Scaling.fill);
+		c_ent6.setScaling(Scaling.fill);
+		c_ent7.setScaling(Scaling.fill);
+		c_ent8.setScaling(Scaling.fill);
+		c_ent9.setScaling(Scaling.fill);
+		c_ent10.setScaling(Scaling.fill);
+		c_ent11.setScaling(Scaling.fill);
+		c_ent12.setScaling(Scaling.fill);
+		c_ent13.setScaling(Scaling.fill);
+		c_ent14.setScaling(Scaling.fill);
 		c_ent0.setPosition(cx, cy);
 		c_ent1.setPosition(cx, cy);
 		c_ent2.setPosition(cx, cy);
 		c_ent3.setPosition(cx, cy);
+		c_ent4.setPosition(cx, cy);
+		c_ent5.setPosition(cx, cy);
+		c_ent6.setPosition(cx, cy);
+		c_ent7.setPosition(cx, cy);
+		c_ent8.setPosition(cx, cy);
+		c_ent9.setPosition(cx, cy);
+		c_ent10.setPosition(cx, cy);
+		c_ent11.setPosition(cx, cy);
+		c_ent12.setPosition(cx, cy);
+		c_ent13.setPosition(cx, cy);
+		c_ent14.setPosition(cx, cy);
 		
 		// decks
-		d_ent0 = new Image(d_archer);
-		d_ent1 = new Image(d_mage);
-		d_ent2 = new Image(d_ninja);
-		d_ent3 = new Image(d_warrior);
+		d_ent0 = new Image(d_basicaxe);
+		d_ent1 = new Image(d_basicbow);
+		d_ent2 = new Image(d_basicxbow);
+		d_ent3 = new Image(d_basicshuriken);
+		d_ent4 = new Image(d_basicstaff);
+		d_ent5 = new Image(d_basicsword);
+		d_ent6 = new Image(d_basicwand);
+		d_ent7 = new Image(d_galoshes);
+		d_ent8 = new Image(d_gauntlet);
+		d_ent9 = new Image(d_healthboost);
+		d_ent10 = new Image(d_manaboost);
+		d_ent11 = new Image(d_chaos);
+		d_ent12 = new Image(d_teleport);
+		d_ent13 = new Image(d_drain);
+		d_ent14 = new Image(d_touchdrain);
 		d_ent0.setScaling(Scaling.fill);
 		d_ent1.setScaling(Scaling.fill);
 		d_ent2.setScaling(Scaling.fill);
 		d_ent3.setScaling(Scaling.fill);
+		d_ent4.setScaling(Scaling.fill);
+		d_ent5.setScaling(Scaling.fill);
+		d_ent6.setScaling(Scaling.fill);
+		d_ent7.setScaling(Scaling.fill);
+		d_ent8.setScaling(Scaling.fill);
+		d_ent9.setScaling(Scaling.fill);
+		d_ent10.setScaling(Scaling.fill);
+		d_ent11.setScaling(Scaling.fill);
+		d_ent12.setScaling(Scaling.fill);
+		d_ent13.setScaling(Scaling.fill);
+		d_ent14.setScaling(Scaling.fill);
 		d_ent0.setPosition(dx, dy);
 		d_ent1.setPosition(dx, dy);
 		d_ent2.setPosition(dx, dy);
 		d_ent3.setPosition(dx, dy);
+		d_ent4.setPosition(dx, dy);
+		d_ent5.setPosition(dx, dy);
+		d_ent6.setPosition(dx, dy);
+		d_ent7.setPosition(dx, dy);
+		d_ent8.setPosition(dx, dy);
+		d_ent9.setPosition(dx, dy);
+		d_ent10.setPosition(dx, dy);
+		d_ent11.setPosition(dx, dy);
+		d_ent12.setPosition(dx, dy);
+		d_ent13.setPosition(dx, dy);
+		d_ent14.setPosition(dx, dy);
 	}
 	
 	private void getRingImages(){
