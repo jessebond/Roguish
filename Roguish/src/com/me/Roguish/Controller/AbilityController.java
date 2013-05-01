@@ -95,9 +95,13 @@ public class AbilityController {
 				break;
 			}
 			case (HEALTHBOOST):{
+				((Unit)origin).changeHP(Dice.nextInt(5));
+				((Unit)origin).updateMana(-5);
 				break;
 			}
 			case (MANABOOST):{
+				((Unit)origin).changeHP(-1 * Dice.nextInt(5));
+				((Unit)origin).updateMana(5);
 				break;
 			}
 			case(BITE):{

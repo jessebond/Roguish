@@ -71,6 +71,9 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	private TextureRegion c_teleport;
 	private TextureRegion c_drain;
 	private TextureRegion c_touchdrain;
+	private TextureRegion c_icebolt;
+	private TextureRegion c_fireball;
+	private TextureRegion c_earthquake;
 	
 	
 	
@@ -89,6 +92,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	private TextureRegion d_teleport;
 	private TextureRegion d_drain;
 	private TextureRegion d_touchdrain;
+	private TextureRegion d_icebolt;
+	private TextureRegion d_fireball;
+	private TextureRegion d_earthquake;
+	
 	
 	private Image c_ent0;
 	private Image d_ent0;
@@ -120,6 +127,16 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 	private Image d_ent13;
 	private Image c_ent14;
 	private Image d_ent14;
+	private Image c_ent15;
+	private Image d_ent15;
+	private Image c_ent16;
+	private Image d_ent16;
+	private Image c_ent17;
+	private Image d_ent17;
+	private Image c_ent18;
+	private Image d_ent18;
+	private Image c_ent19;
+	private Image d_ent19;
 
 	
 	// CardRing images
@@ -206,6 +223,16 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		stage.addActor(d_ent13);
 		stage.addActor(c_ent14);
 		stage.addActor(d_ent14);
+		stage.addActor(c_ent15);
+		stage.addActor(d_ent15);
+		stage.addActor(c_ent16);
+		stage.addActor(d_ent16);
+		stage.addActor(c_ent17);
+		stage.addActor(d_ent17);
+		//stage.addActor(c_ent18);
+		//stage.addActor(d_ent18);
+		//stage.addActor(c_ent19);
+		//stage.addActor(d_ent19);
 		stage.addActor(cRing);
 		stage.addActor(cRing0);
 		stage.addActor(cRing1);
@@ -233,6 +260,15 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				System.out.println("Next Button Down, Class cardNo: " + cardNo);
 				if(abilities.size == 5)
 					game.setScreen(new GameScreen(game, cCard, abilities));
+				else{
+					abilities.add(0);
+					abilities.add(1);
+					abilities.add(2);
+					abilities.add(3);
+					abilities.add(4);
+					game.setScreen(new GameScreen(game, cCard, abilities));
+					
+				}
 				return false;
 			}
 		});
@@ -313,11 +349,11 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		entAtlas = new TextureAtlas(Gdx.files.internal("data/entity/pack/Entities.pack"));
 		
 		c_basicaxe = entAtlas.findRegion("C_BasicAxe");
-		d_basicaxe = entAtlas.findRegion("D_Sword");				// Need
+		d_basicaxe = entAtlas.findRegion("D_Axe");				
 		c_basicbow = entAtlas.findRegion("C_BasicBow");
 		d_basicbow = entAtlas.findRegion("D_Bow");					
 		c_basicxbow = entAtlas.findRegion("C_BasicCrossbow");
-		d_basicxbow = entAtlas.findRegion("D_Bow");                 // Need
+		d_basicxbow = entAtlas.findRegion("D_Crossbow");                 
 		c_basicshuriken = entAtlas.findRegion("C_BasicShuriken");
 		d_basicshuriken = entAtlas.findRegion("D_Stars");
 		c_basicstaff  = entAtlas.findRegion("C_BasicStaff");
@@ -325,23 +361,31 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		c_basicsword = entAtlas.findRegion("C_BasicSword");
 		d_basicsword = entAtlas.findRegion("D_Sword");
 		c_basicwand = entAtlas.findRegion("C_BasicWand");
-		d_basicwand = entAtlas.findRegion("D_Staff");  			// Need
+		d_basicwand = entAtlas.findRegion("D_Wand");  			
 		c_galoshes = entAtlas.findRegion("C_Galoshes");
 		d_galoshes = entAtlas.findRegion("D_Boots");
 		c_gauntlet = entAtlas.findRegion("C_Gauntlet");
 		d_gauntlet = entAtlas.findRegion("D_Glove");
 		c_healthboost = entAtlas.findRegion("C_HealthBoost");
-		d_healthboost = entAtlas.findRegion("D_Plus_R");		// Need
+		d_healthboost = entAtlas.findRegion("D_Plus_R");		
 		c_manaboost = entAtlas.findRegion("C_ManaBoost");
 		d_manaboost = entAtlas.findRegion("D_Plus_B");
-		c_chaos = entAtlas.findRegion("C_Mage");  				//Need
+		c_chaos = entAtlas.findRegion("C_RandomChaos");  				
 		d_chaos = entAtlas.findRegion("D_RandomChaos");
-		c_teleport = entAtlas.findRegion("C_Mage");				// Need
+		c_teleport = entAtlas.findRegion("C_Teleport");				
 		d_teleport = entAtlas.findRegion("D_Teleport");
-		c_drain = entAtlas.findRegion("C_Mage");				// Need
+		c_drain = entAtlas.findRegion("C_LifeSteal");				
 		d_drain = entAtlas.findRegion("D_LifeSteal");
-		c_touchdrain = entAtlas.findRegion("C_Mage");			//Need
+		c_touchdrain = entAtlas.findRegion("C_LifeStealTouch");		
 		d_touchdrain = entAtlas.findRegion("D_LifeStealTouch");
+		c_icebolt = entAtlas.findRegion("C_Fireball");
+		d_icebolt = entAtlas.findRegion("D_Fireball");
+		c_fireball = entAtlas.findRegion("C_Fireball");
+		d_fireball = entAtlas.findRegion("D_Fireball");
+		c_earthquake = entAtlas.findRegion("C_Fireball");
+		d_earthquake = entAtlas.findRegion("D_Fireball");
+		
+		
 		
 		
 	}
@@ -443,6 +487,22 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				c_ent14.addAction(Actions.alpha(1));
 				d_ent14.addAction(Actions.alpha(1));
 				break;
+			case 15:
+				c_ent15.addAction(Actions.alpha(1));
+				d_ent15.addAction(Actions.alpha(1));
+				break;
+			case 16:
+				c_ent16.addAction(Actions.alpha(1));
+				d_ent16.addAction(Actions.alpha(1));
+				break;
+			case 17:
+				c_ent17.addAction(Actions.alpha(1));
+				d_ent17.addAction(Actions.alpha(1));
+				break;
+			case 18:
+				c_ent18.addAction(Actions.alpha(1));
+				d_ent18.addAction(Actions.alpha(1));
+				break;
 			default:
 				break;
 		}
@@ -511,6 +571,22 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				c_ent14.addAction(Actions.alpha(0));
 				d_ent14.addAction(Actions.alpha(0));
 				break;
+			case 15:
+				c_ent15.addAction(Actions.alpha(0));
+				d_ent15.addAction(Actions.alpha(0));
+				break;
+			case 16:
+				c_ent16.addAction(Actions.alpha(0));
+				d_ent16.addAction(Actions.alpha(0));
+				break;
+			case 17:
+				c_ent17.addAction(Actions.alpha(0));
+				d_ent17.addAction(Actions.alpha(0));
+				break;
+			case 18:
+				c_ent18.addAction(Actions.alpha(0));
+				d_ent18.addAction(Actions.alpha(0));
+				break;
 				
 			default:
 				c_ent0.addAction(Actions.alpha(0));
@@ -543,6 +619,15 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 				d_ent13.addAction(Actions.alpha(0));
 				c_ent14.addAction(Actions.alpha(0));
 				d_ent14.addAction(Actions.alpha(0));
+				c_ent15.addAction(Actions.alpha(0));
+				d_ent15.addAction(Actions.alpha(0));
+				c_ent16.addAction(Actions.alpha(0));
+				d_ent16.addAction(Actions.alpha(0));
+				c_ent17.addAction(Actions.alpha(0));
+				d_ent17.addAction(Actions.alpha(0));
+				//c_ent18.addAction(Actions.alpha(0));
+				//d_ent18.addAction(Actions.alpha(0));
+				
 				break;
 		}
 	}
@@ -615,6 +700,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		c_ent12 = new Image(c_teleport);
 		c_ent13 = new Image(c_drain);
 		c_ent14 = new Image(c_touchdrain);
+		c_ent15 = new Image(c_icebolt);
+		c_ent16 = new Image(c_fireball);
+		c_ent17 = new Image(c_earthquake);
+		
 		
 		c_ent0.setScaling(Scaling.fill);
 		c_ent1.setScaling(Scaling.fill);
@@ -631,6 +720,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		c_ent12.setScaling(Scaling.fill);
 		c_ent13.setScaling(Scaling.fill);
 		c_ent14.setScaling(Scaling.fill);
+		c_ent15.setScaling(Scaling.fill);
+		c_ent16.setScaling(Scaling.fill);
+		c_ent17.setScaling(Scaling.fill);
+		//c_ent18.setScaling(Scaling.fill);
 		c_ent0.setPosition(cx, cy);
 		c_ent1.setPosition(cx, cy);
 		c_ent2.setPosition(cx, cy);
@@ -646,6 +739,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		c_ent12.setPosition(cx, cy);
 		c_ent13.setPosition(cx, cy);
 		c_ent14.setPosition(cx, cy);
+		c_ent15.setPosition(cx, cy);
+		c_ent16.setPosition(cx, cy);
+		c_ent17.setPosition(cx, cy);
+		//c_ent18.setPosition(cx, cy);
 		
 		// decks
 		d_ent0 = new Image(d_basicaxe);
@@ -663,6 +760,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		d_ent12 = new Image(d_teleport);
 		d_ent13 = new Image(d_drain);
 		d_ent14 = new Image(d_touchdrain);
+		d_ent15 = new Image(d_touchdrain);
+		d_ent16 = new Image(d_icebolt);
+		d_ent17 = new Image(d_fireball);
+		d_ent18 = new Image(d_earthquake);
 		d_ent0.setScaling(Scaling.fill);
 		d_ent1.setScaling(Scaling.fill);
 		d_ent2.setScaling(Scaling.fill);
@@ -678,6 +779,10 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		d_ent12.setScaling(Scaling.fill);
 		d_ent13.setScaling(Scaling.fill);
 		d_ent14.setScaling(Scaling.fill);
+		d_ent15.setScaling(Scaling.fill);
+		d_ent16.setScaling(Scaling.fill);
+		d_ent17.setScaling(Scaling.fill);
+		d_ent18.setScaling(Scaling.fill);
 		d_ent0.setPosition(dx, dy);
 		d_ent1.setPosition(dx, dy);
 		d_ent2.setPosition(dx, dy);
@@ -693,6 +798,11 @@ public class ChooseAbilitiesScreen extends AbstractScreen{
 		d_ent12.setPosition(dx, dy);
 		d_ent13.setPosition(dx, dy);
 		d_ent14.setPosition(dx, dy);
+		d_ent14.setPosition(dx, dy);
+		d_ent15.setPosition(dx, dy);
+		d_ent16.setPosition(dx, dy);
+		d_ent17.setPosition(dx, dy);
+		d_ent18.setPosition(dx, dy);
 	}
 	
 	private void getRingImages(){
